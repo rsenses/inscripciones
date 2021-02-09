@@ -72,7 +72,7 @@ class RegistrationController extends Controller
 
         $registration = Registration::create($request->except('_token'));
 
-        $registration->status = 'active';
+        $registration->status = 'accepted';
         $registration->save();
 
         return redirect()->route('registrations.show', [
@@ -138,11 +138,36 @@ class RegistrationController extends Controller
 
         $registration->update($request->except('_token'));
 
-        $registration->status = 'active';
+        $registration->status = 'accepted';
         $registration->save();
 
         return redirect()->route('registrations.show', [
             'registration' => $registration
+        ]);
+    }
+
+        /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Registration  $registration
+     * @return \Illuminate\Http\Response
+     */
+    public function status(Request $request, Registration $registration)
+    {
+        $request->validate([
+            'action' => [
+                'required',
+                'in:accept,deny,cancel,pay',
+            ],
+        ]);
+
+        $action = $request->action;
+
+        $registration->$action();
+
+        return redirect()->route('products.show', [
+            'product' => $registration->product
         ]);
     }
 

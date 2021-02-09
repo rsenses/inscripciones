@@ -31,6 +31,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::resource('products', ProductController::class);
     Route::resource('registrations', RegistrationController::class);
+    Route::post('registrations/status/{registration}', [RegistrationController::class, 'status'])->name('registrations.update-status');
     Route::resource('users', UserController::class);
     Route::resource('partners', PartnerController::class);
 });

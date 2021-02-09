@@ -18,7 +18,8 @@ class Registration extends Model
         'user_id',
         'product_id',
         'unique_id',
-        'metadata'
+        'metadata',
+        'status'
     ];
 
     /**
@@ -57,4 +58,49 @@ class Registration extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    private function changeStatus($status)
+    {
+        $this->status = $status;
+        $this->save();
+
+        return $this;
+    }
+
+    public function accept()
+    {
+        $registration = $this->changeStatus('accepted');
+
+        // Lanzamos evento de inscripción aceptada
+
+        return $registration;
+    }
+
+    public function deny()
+    {
+        $registration = $this->changeStatus('denied');
+
+        // Lanzamos evento de inscripción denegada
+
+        return $registration;
+    }
+
+    public function cancel()
+    {
+        $registration = $this->changeStatus('cancelled');
+
+        // Lanzamos evento de inscripción cancelada
+
+        return $registration;
+    }
+
+    public function pay()
+    {
+        $registration = $this->changeStatus('paid');
+
+        // Lanzamos evento de inscripción paid
+
+        return $registration;
+    }
+
 }

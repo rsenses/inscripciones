@@ -49,6 +49,30 @@ class User extends Authenticatable
     ];
 
     /**
+     * Get the addresses for the user
+     */
+    public function addresses()
+    {
+        return $this->hasMany(Address::class);
+    }
+
+    /**
+     * Get the checkouts for the user
+     */
+    public function checkouts()
+    {
+        return $this->hasMany(Checkout::class);
+    }
+
+    /**
+     * Get all of the invoices for the user.
+     */
+    public function invoices()
+    {
+        return $this->hasManyThrough(Invoices::class, Checkout::class);
+    }
+
+    /**
      * Get the registrations for the user.
      */
     public function registrations()

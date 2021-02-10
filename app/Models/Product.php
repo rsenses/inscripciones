@@ -38,6 +38,14 @@ class Product extends Model
     }
 
     /**
+     * Get the checkouts for the product
+     */
+    public function checkouts()
+    {
+        return $this->hasMany(Checkout::class);
+    }
+
+    /**
      * The partners that belong to the product.
      */
     public function partners()

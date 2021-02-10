@@ -20,8 +20,8 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('last_name');
-            $table->string('tax_id')->nullable();
-            $table->string('phone')->nullable();
+            $table->string('tax_id', 32)->nullable();
+            $table->string('phone', 50)->nullable();
             $table->string('company')->nullable();
             $table->string('position')->nullable();
             $table->string('role')->default('customer');

@@ -1,0 +1,1 @@
+Hola {{ $checkout->user->name }}

@@ -1,9 +1,11 @@
 <div class="table">
-    <table class="table table-striped" {{ $showProduct ? '' : 'data-toggle=table' }} data-search="true" data-show-export="true" data-export-data-type="basic" data-export-types="['csv']" data-locale="es_ES">
+    <table class="table table-striped" {{ $showProduct ? '' : 'data-toggle=table' }} data-search="true" data-show-export="true" data-export-data-type="basic" data-export-types="['csv']" data-locale="es_ES" data-filter-control="true">
         <thead>
             <tr>
                 @if($showProduct)
                     <th data-field="product" data-sortable="true">Producto</th>
+                @else
+                    <th data-field="status" data-sortable="true" data-filter-control="select">Status</th>
                 @endif
                 <th data-field="created_at" data-sortable="true">Fecha</th>
                 <th data-field="full_name" data-sortable="true">Nombre</th>
@@ -18,6 +20,8 @@
                 <tr>
                     @if($showProduct)
                         <td>{{ $registration->product->name }}</td>
+                    @else
+                        <td>{{ $registration->status }}</td>
                     @endif
                     <td>{{ $registration->created_at }}</td>
                     <td>{{ $registration->user->full_name }}</td>
@@ -26,18 +30,18 @@
                     <td><a href="{{ route('registrations.show', ['registration' => $registration]) }}">ver</a></td>
                     @if(!$showProduct)
                         <td>
-                            @if($registration->status !== 'cancelled' && $registration->status !== 'denied')
-                                <a href="#0" data-toggle="modal" data-target="#actionsModal{{ $index }}">acciones</a>
-                                <x-modal :id="'actionsModal' . $index" :title="'Acciones sobre la inscripción'" :footer="''">
-                                    @if($registration->status === 'new')
-                                        <div class="row">
-                                            <div class="col">
-                                                <form action="{{ route('registrations.update-status', ['registration' => $registration]) }}" method="POST">
-                                                    <input type="hidden" name="action" value="accept">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-success">Confirmar solicitud</button>
-                                                </form>
-                                            </div>
+                            <a href="#0" data-toggle="modal" data-target="#actionsModal{{ $index }}">acciones</a>
+                            <x-modal :id="'actionsModal' . $index" :title="'Acciones sobre la inscripción'" :footer="''">
+                                @if($registration->status !== 'paid' && $registration->status !== 'accepted')
+                                    <div class="row">
+                                        <div class="col">
+                                            <form action="{{ route('registrations.update-status', ['registration' => $registration]) }}" method="POST">
+                                                <input type="hidden" name="action" value="accept">
+                                                @csrf
+                                                <button type="submit" class="btn btn-success">Confirmar solicitud</button>
+                                            </form>
+                                        </div>
+                                        @if($registration->status === 'new')
                                             <div class="col text-right">
                                                 <form action="{{ route('registrations.update-status', ['registration' => $registration]) }}" method="POST">
                                                     <input type="hidden" name="action" value="deny">
@@ -45,30 +49,30 @@
                                                     <button type="submit" class="btn btn-danger">Denegar solicitud</button>
                                                 </form>
                                             </div>
-                                        </div>
-                                    @endif
-                                    @if($registration->status === 'paid' || $registration->status === 'accepted')
-                                        <div class="row">
-                                            <div class="col">
-                                                @if($registration->status === 'accepted')
-                                                    <form action="{{ route('registrations.update-status', ['registration' => $registration]) }}" method="POST">
-                                                        <input type="hidden" name="action" value="pay">
-                                                        @csrf
-                                                        <button type="submit" class="btn btn-success">Confirmar pago</button>
-                                                    </form>
-                                                @endif
-                                            </div>
-                                            <div class="col text-right">
+                                        @endif
+                                    </div>
+                                @endif
+                                @if($registration->status === 'paid' || $registration->status === 'accepted')
+                                    <div class="row">
+                                        <div class="col">
+                                            @if($registration->status === 'accepted')
                                                 <form action="{{ route('registrations.update-status', ['registration' => $registration]) }}" method="POST">
-                                                    <input type="hidden" name="action" value="cancel">
+                                                    <input type="hidden" name="action" value="pay">
                                                     @csrf
-                                                    <button type="submit" class="btn btn-danger">Cancelar compra</button>
+                                                    <button type="submit" class="btn btn-success">Confirmar pago</button>
                                                 </form>
-                                            </div>
+                                            @endif
                                         </div>
-                                    @endif
-                                </x-modal>
-                            @endif
+                                        <div class="col text-right">
+                                            <form action="{{ route('registrations.update-status', ['registration' => $registration]) }}" method="POST">
+                                                <input type="hidden" name="action" value="cancel">
+                                                @csrf
+                                                <button type="submit" class="btn btn-danger">Cancelar compra</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                @endif
+                            </x-modal>
                         </td>
                     @endif
                 </tr>

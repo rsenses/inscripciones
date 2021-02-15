@@ -1,0 +1,1 @@
+Hola {{ $registration->user->name }}

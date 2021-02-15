@@ -22,7 +22,11 @@ class DashboardController extends Controller
             }])
             ->get();
 
-        $latestRegistrations = Registration::latest()->take(10)->get();
+        $latestRegistrations = Registration::latest()
+            ->where('status', '!=', 'denied')
+            ->where('status', '!=', 'cancelled')
+            ->take(10)
+            ->get();
 
         return view('dashboard', [
             'products' => $activeProducts,

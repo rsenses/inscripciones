@@ -12,3 +12,4 @@ require('bootstrap-table');
 require('tableexport.jquery.plugin/tableExport.js');
 require('bootstrap-table/dist/extensions/export/bootstrap-table-export.js');
 require('bootstrap-table/dist/bootstrap-table-locale-all.js');
+require('bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-control.js');

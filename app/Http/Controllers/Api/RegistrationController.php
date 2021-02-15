@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
+use App\Events\RegistrationCreated;
 
 class RegistrationController extends Controller
 {
@@ -37,6 +38,8 @@ class RegistrationController extends Controller
             'product_id' => $request->product_id,
             'metadata' => $request->all()
         ]);
+
+        RegistrationCreated::dispatch($registration);
 
         return response()->json($registration);
     }

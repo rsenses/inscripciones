@@ -2,6 +2,10 @@
 
 namespace App\Models;
 
+use App\Events\RegistrationAccepted;
+use App\Events\RegistrationCancelled;
+use App\Events\RegistrationDenied;
+use App\Events\RegistrationPaid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -44,6 +48,15 @@ class Registration extends Model
     }
 
     /**
+     * Get the checkout associated with the registration.
+     */
+    public function checkout() {
+        return Checkout::where('user_id', $this->user_id)
+            ->where('product_id', $this->product->id)
+            ->first();
+    }
+
+    /**
      * Get the product that owns the registration.
      */
     public function product()
@@ -71,7 +84,7 @@ class Registration extends Model
     {
         $registration = $this->changeStatus('accepted');
 
-        // Lanzamos evento de inscripción aceptada
+        RegistrationAccepted::dispatch($registration);
 
         return $registration;
     }
@@ -80,7 +93,7 @@ class Registration extends Model
     {
         $registration = $this->changeStatus('denied');
 
-        // Lanzamos evento de inscripción denegada
+        RegistrationDenied::dispatch($registration);
 
         return $registration;
     }
@@ -89,7 +102,11 @@ class Registration extends Model
     {
         $registration = $this->changeStatus('cancelled');
 
-        // Lanzamos evento de inscripción cancelada
+        $checkout = $registration->checkout();
+
+        if ($checkout) {
+            $checkout->cancel();
+        }
 
         return $registration;
     }
@@ -98,9 +115,12 @@ class Registration extends Model
     {
         $registration = $this->changeStatus('paid');
 
-        // Lanzamos evento de inscripción paid
+        $checkout = $registration->checkout();
+
+        if ($checkout) {
+            $checkout->pay();
+        }
 
         return $registration;
     }
-
 }

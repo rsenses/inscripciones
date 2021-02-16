@@ -10,6 +10,22 @@ class Address extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'tax_type',
+        'tax_id',
+        'street',
+        'zip',
+        'city',
+        'country',
+        'state',
+    ];
+
+    /**
      * Get the invoices for the address
      */
     public function invoices()

@@ -34,6 +34,7 @@
                             <a href="{{ route('registrations.index') }}" class="list-group-item list-group-item-action bg-light">Inscripciones</a>
                             <a href="{{ route('users.index', ['role' => 'customer']) }}" class="list-group-item list-group-item-action bg-light">Usuarios</a>
                             <a href="{{ route('partners.index') }}" class="list-group-item list-group-item-action bg-light">Cabeceras</a>
+                            <a href="{{ route('invoices.index') }}" class="list-group-item list-group-item-action bg-light">Financiero</a>
                         </div>
                     </div>
                     <!-- /#sidebar-wrapper -->
@@ -64,19 +65,7 @@
                                 <!-- Right Side Of Navbar -->
                                 <ul class="navbar-nav ml-auto">
                                     <!-- Authentication Links -->
-                                    @guest
-                                        @if (Route::has('login'))
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                            </li>
-                                        @endif
-
-                                        @if (Route::has('register'))
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                            </li>
-                                        @endif
-                                    @else
+                                    @auth
                                         <li class="nav-item dropdown">
                                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                 {{ Auth::user()->name }}
@@ -94,7 +83,7 @@
                                                 </form>
                                             </div>
                                         </li>
-                                    @endguest
+                                    @endauth
                                 </ul>
                             </div>
                         </div>

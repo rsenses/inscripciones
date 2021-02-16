@@ -5,7 +5,7 @@
     </mj-raw>
     <mj-section>
       <mj-column>
-        <mj-image width="200px" src="{{ $registration->product->partners[0]->image }}" href="{{ $registration->product->partners[0]->name }}"></mj-image>
+        <mj-image width="200px" src="{{ $checkout->product->partners[0]->image }}" href="{{ $checkout->product->partners[0]->name }}"></mj-image>
       </mj-column>
     </mj-section>
     <mj-wrapper background-color="#fff" padding="0">
@@ -19,7 +19,10 @@
       </mj-section>
       <mj-section padding="0 0 30px">
         <mj-column width="500px">
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Hola <strong>{{ $registration->user->name }}</strong></mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Hola <strong>{{ $checkout->user->name }}</strong></mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">
+              URL: <a href="{{ Config::get('app.url') }}/checkouts/{{ $checkout->id }}?t={{ $checkout->token }}">{{ Config::get('app.url') }}/checkouts/{{ $checkout->id }}?t={{ $checkout->token }}</a>
+            </mj-text>
         </mj-column>
       </mj-section>
     </mj-wrapper>

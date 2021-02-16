@@ -10,6 +10,16 @@ class Invoice extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'checkout_id',
+        'address_id',
+    ];
+
+    /**
      * Get the address that owns the invoice.
      */
     public function address()
@@ -22,7 +32,7 @@ class Invoice extends Model
      */
     public function checkout()
     {
-        return $this->belongsTo(Invoice::class);
+        return $this->belongsTo(Checkout::class);
     }
 
     /**

@@ -15,7 +15,7 @@ class CreateInvoicesTable extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('checkout_id')->unsigned();
+            $table->bigInteger('checkout_id')->unsigned()->unique();
             $table->bigInteger('address_id')->unsigned();
             $table->string('number', 36)->nullable();
             $table->string('order')->nullable();

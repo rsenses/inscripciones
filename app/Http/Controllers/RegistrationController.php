@@ -181,6 +181,12 @@ class RegistrationController extends Controller
      */
     public function destroy(Registration $registration)
     {
+        $checkout = $registration->checkout();
+
+        if ($checkout) {
+            $checkout->delete();
+        }
+
         $registration->delete();
 
         return redirect()->route('registrations.index');

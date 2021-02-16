@@ -22,8 +22,29 @@ class Checkout extends Model
         'product_id',
         'user_id',
         'amount',
-        'paid_at'
+        'paid_at',
+        'token'
     ];
+
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::creating(function ($model) {
+            $model->token = uniqid();
+        });
+    }
+
+    /**
+     * Get the invoice associated with the checkout.
+     */
+    public function invoice()
+    {
+        return $this->hasOne(Invoice::class);
+    }
 
     /**
      * Get the product that owns the checkout.
@@ -69,7 +90,7 @@ class Checkout extends Model
         return $checkout;
     }
 
-    public function invoice()
+    public function setInvoice()
     {
         $checkout = $this->changeStatus('billed');
 

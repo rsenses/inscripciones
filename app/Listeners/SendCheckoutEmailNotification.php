@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\CheckoutCreated as MailCheckoutCreated;
+use App\Models\Checkout;
 
 class SendCheckoutEmailNotification
 {
@@ -15,7 +16,7 @@ class SendCheckoutEmailNotification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Checkout $checkout)
     {
         //
     }

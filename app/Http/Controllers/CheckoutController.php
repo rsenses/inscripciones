@@ -8,6 +8,7 @@ use App\Models\Invoice;
 use App\Rules\Nie;
 use App\Rules\Nif;
 use Illuminate\Http\Request;
+use Sermepa\Tpv\Tpv;
 
 class CheckoutController extends Controller
 {
@@ -119,14 +120,16 @@ class CheckoutController extends Controller
             $address = $checkout->user->addresses()->create($request->all());
         }
 
-        $invoice = Invoice::create([
-            'checkout_id' => $checkout->id,
+        $checkout->invoice()->create([
             'address_id' => $address->id
         ]);
 
+        $form = $checkout->generatePaymentForm();
+
         return view('checkouts.payment', [
             'checkout' => $checkout,
-            'address' => $address
+            'address' => $address,
+            'form' => $form
         ]);
     }
 

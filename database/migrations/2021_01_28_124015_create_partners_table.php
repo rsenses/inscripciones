@@ -17,7 +17,8 @@ class CreatePartnersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('image');
-            $table->string('url_payment');
+            $table->string('merchant_code');
+            $table->string('merchant_key');
             $table->timestamps();
         });
     }

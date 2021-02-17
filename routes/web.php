@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\TpvController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,11 @@ Route::get('/', function () {
 
 Route::get('/checkouts/{checkout}', [CheckoutController::class, 'show'])->name('checkouts');
 Route::post('/checkouts/{checkout}', [CheckoutController::class, 'update'])->name('checkouts.update');
+
+// TPV
+Route::post('tpv/notify/{checkout}', [TpvController::class, 'notify'])->name('tpv.notify');
+Route::get('tpv/success/{checkout}', [TpvController::class, 'success'])->name('tpv.success');
+Route::get('tpv/error/{checkout}', [TpvController::class, 'error'])->name('tpv.error');
 
 require __DIR__.'/auth.php';
 

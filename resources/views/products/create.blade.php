@@ -12,6 +12,14 @@
                     <div class="invalid-feedback">{{ $errors->first('name') }}</div>
                 @endif
             </div>
+            <div class="form-group">
+                <label for="url">Url</label>
+                <small id="urlHelp" class="form-text text-muted">Url de la web del producto</small>
+                <input type="text" id="url" name="url" required class="form-control {{ $errors->has('url') ? 'is-invalid' : '' }}" value="{{ old('url') }}" placeholder="ej: https://foro.expansion.com" aria-describedby="urlHelp">
+                @if ($errors->has('url'))
+                    <div class="invalid-feedback">{{ $errors->first('url') }}</div>
+                @endif
+            </div>
             <div class="form-row">
                 <div class="col col-sm-4">
                     <label for="partners">Cabeceras</label><br>

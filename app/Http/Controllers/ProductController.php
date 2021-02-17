@@ -51,6 +51,7 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'url' => 'required|active_url',
             'description' => 'nullable',
             'price' => 'nullable|numeric|min:0',
             'mode' => 'required|in:presencial,online',
@@ -120,6 +121,7 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'url' => 'required|active_url',
             'description' => 'nullable',
             'price' => 'nullable|numeric|min:0',
             'mode' => 'required|in:presencial,online',

@@ -23,6 +23,14 @@
                 </div>
             </div>
             <div class="form-group">
+                <label for="corporation">Corporación</label>
+                <small id="corporationHelp" class="form-text text-muted">Id del comercio electrónico para el pago</small>
+                <input type="text" id="corporation" name="corporation" required class="form-control {{ $errors->has('corporation') ? 'is-invalid' : '' }}" value="{{ $partner->corporation }}" placeholder="ej: 77" aria-describedby="corporationHelp">
+                @if ($errors->has('corporation'))
+                    <div class="invalid-feedback">{{ $errors->first('corporation') }}</div>
+                @endif
+            </div>
+            <div class="form-group">
                 <label for="merchant_code">Merchant Code</label>
                 <small id="merchant_codeHelp" class="form-text text-muted">Id del comercio electrónico para el pago</small>
                 <input type="text" id="merchant_code" name="merchant_code" required class="form-control {{ $errors->has('merchant_code') ? 'is-invalid' : '' }}" value="{{ $partner->merchant_code }}" placeholder="ej: 055672454" aria-describedby="merchant_codeHelp">

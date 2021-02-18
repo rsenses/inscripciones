@@ -19,6 +19,7 @@ class CreatePartnersTable extends Migration
             $table->string('image');
             $table->string('merchant_code')->nullable();
             $table->string('merchant_key')->nullable();
+            $table->string('corporation');
             $table->timestamps();
         });
     }

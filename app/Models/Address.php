@@ -40,4 +40,14 @@ class Address extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Get the full address.
+     *
+     * @return string
+     */
+    public function getFullAddressAttribute()
+    {
+        return "{$this->street}, {$this->zip} - {$this->city} ({$this->state}), {$this->country}";
+    }
 }

@@ -44,14 +44,18 @@ class PartnerController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'image' => ['required', 'mimes:png'],
-            'url_payment' => ['required', 'active_url']
+            'merchant_code' => ['required', 'string', 'max:255'],
+            'merchant_key' => ['required', 'string', 'max:255'],
+            'corporation' => ['required', 'string', 'max:255'],
         ]);
 
         $path = $request->file('image')->store('partners', 'public');
 
         $partner = Partner::create([
             'name' => $request->name,
-            'url_payment' => $request->url_payment,
+            'merchant_code' => $request->merchant_code,
+            'merchant_key' => $request->merchant_key,
+            'corporation' => $request->corporation,
             'image' => $path
         ]);
 
@@ -105,7 +109,9 @@ class PartnerController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'image' => ['nullable', 'mimes:png'],
-            'url_payment' => ['required', 'active_url']
+            'merchant_code' => ['required', 'string', 'max:255'],
+            'merchant_key' => ['required', 'string', 'max:255'],
+            'corporation' => ['required', 'string', 'max:255'],
         ]);
 
         if ($request->image) {
@@ -114,7 +120,9 @@ class PartnerController extends Controller
 
         $data = [
             'name' => $request->name,
-            'url_payment' => $request->url_payment,
+            'merchant_code' => $request->merchant_code,
+            'merchant_key' => $request->merchant_key,
+            'corporation' => $request->corporation,
         ];
 
         if (isset($path)) {
@@ -124,7 +132,6 @@ class PartnerController extends Controller
         $partner->update($data);
 
         return redirect()->route('partners.show', ['partner' => $partner]);
-
     }
 
     /**

@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\TpvController;
 use App\Http\Controllers\PreUserController;
+use App\Http\Controllers\InvoiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +49,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('registrations/status/{registration}', [RegistrationController::class, 'status'])->name('registrations.update-status');
     Route::resource('users', UserController::class);
     Route::resource('partners', PartnerController::class);
-    Route::get('invoices', [FinancialController::class, 'index'])->name('invoices.index');
-    Route::get('invoices/export', [FinancialController::class, 'export'])->name('invoices.export');
-    Route::post('invoices/import', [FinancialController::class, 'import'])->name('invoices.import');
+    Route::get('invoices', [InvoiceController::class, 'index'])->name('invoices.index');
+    Route::get('invoices/export', [InvoiceController::class, 'export'])->name('invoices.export');
+    Route::post('invoices/import', [InvoiceController::class, 'import'])->name('invoices.import');
 });

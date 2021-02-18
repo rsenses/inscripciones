@@ -17,7 +17,9 @@ class Partner extends Model
     protected $fillable = [
         'name',
         'image',
-        'url_payment'
+        'merchant_code',
+        'merchant_key',
+        'corporation'
     ];
 
     /**

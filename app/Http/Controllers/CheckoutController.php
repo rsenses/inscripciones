@@ -51,6 +51,10 @@ class CheckoutController extends Controller
      */
     public function show(Request $request, Checkout $checkout)
     {
+        if (!$checkout->user->password) {
+            return redirect()->route('preusers.show', ['user' => $checkout->user, 'redirect' => url()->full()]);
+        }
+
         $checkout = Checkout::where('id', $checkout->id)
             ->where('token', $request->t)
             ->first();

@@ -26,7 +26,8 @@ class User extends Authenticatable
         'phone',
         'company',
         'position',
-        'role'
+        'role',
+        'advertising'
     ];
 
     /**
@@ -88,5 +89,11 @@ class User extends Authenticatable
     public function getFullNameAttribute()
     {
         return "{$this->name} {$this->last_name}";
+    }
+
+    public function redirectIfNotPasswordSet()
+    {
+        if (!$this->password) {
+        }
     }
 }

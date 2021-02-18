@@ -8,6 +8,7 @@ use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\TpvController;
+use App\Http\Controllers\PreUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,9 @@ use App\Http\Controllers\TpvController;
 Route::get('/', function () {
     return redirect()->route('login');
 });
+
+Route::get('/preusers/{user}', [PreUserController::class, 'show'])->name('preusers.show');
+Route::post('/preusers/{user}', [PreUserController::class, 'update'])->name('preusers.update');
 
 Route::get('/checkouts/{checkout}', [CheckoutController::class, 'show'])->name('checkouts');
 Route::post('/checkouts/{checkout}', [CheckoutController::class, 'update'])->name('checkouts.update');

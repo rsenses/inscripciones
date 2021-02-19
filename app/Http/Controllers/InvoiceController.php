@@ -193,8 +193,56 @@ class InvoiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function import()
+    public function import(Request $request)
     {
-        //
+        $request->validate([
+            'import' => 'required|mimes:csv,txt',
+        ]);
+
+        $fileName = $request->file('import')->store('invoices/import');
+        $path = Storage::disk('local')->path($fileName);
+        $data = array_map(function($v) {
+            return str_getcsv($v, ";");
+        }, file($path));
+
+        foreach($data as $index => $import) {
+            if ((isset($import[1]) && $import[1] == 'Factura') || $index === 0) {
+                continue;
+            }
+
+            $price = str_replace(' ', '', $import[3]);
+            $price = floatval(str_replace(',', '.', str_replace('.', '', $price)));
+            $vat = floatval(str_replace(',', '.', str_replace('.', '', $import[5])));
+            $finalPrice = $price + $vat;
+
+            if (round($finalPrice - floor($finalPrice), 2) === 0.99) {
+                $finalPrice = number_format(floor($finalPrice) + 1, 2, '.', '');
+            } else {
+                $finalPrice = number_format($finalPrice, 2, '.', '');
+            }
+
+            $invoice = Invoice::where('checkout_id', $import[0])->first();
+
+            if ($invoice) {
+                $invoice->number = $import[1];
+                $invoice->billed_at = date('Y-m-d H:i:s', strtotime($import[2]));
+
+                $invoice->save();
+            } else {
+                $errors[$index]['id'] = $import[0];
+                $errors[$index]['price'] = $finalPrice;
+            }
+        }
+
+        if (!empty($errors)) {
+            $errorMessage = '';
+
+            foreach ($errors as $error) {
+                $errorMessage .= 'Compra ' . $error['id'] . ' con precio ' . $error['price'] . '<br />';
+            }
+            return redirect()->back()->with('danger', '<strong>Errores en el archivo</strong>:<br />' . $errorMessage);
+        } else {
+            return redirect()->back()->with('success', '<strong>Facturas añadidas correctamente</strong>');
+        }
     }
 }

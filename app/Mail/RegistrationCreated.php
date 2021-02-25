@@ -31,7 +31,8 @@ class RegistrationCreated extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.registrations.created')
+        return $this->subject('Hemos recibido correctamente su solicitud')
+            ->view('emails.registrations.created')
             ->text('emails.registrations.created_plain');
     }
 }

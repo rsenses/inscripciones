@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\CheckoutPaid;
 use App\Models\Checkout;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -27,7 +28,7 @@ class TpvController extends Controller
             if ($redsys->check($key, $request->all()) && $DsResponse <= 99) {
                 $checkout->method = $request->method === 'transfer' ?: 'card';
 
-                if($request->method !== 'transfer') {
+                if ($request->method !== 'transfer') {
                     $checkout->pay();
                 }
 
@@ -50,6 +51,8 @@ class TpvController extends Controller
 
     public function success(Checkout $checkout)
     {
+        CheckoutPaid::dispatch($checkout);
+
         return view('payments.success', [
             'checkout' => $checkout
         ]);

@@ -31,7 +31,8 @@ class CheckoutCreated extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.checkouts.created')
+        return $this->subject('Solicitud aceptada')
+            ->view('emails.checkouts.created')
             ->text('emails.checkouts.created_plain');
     }
 }

@@ -20,10 +20,12 @@
       <mj-section padding="0 0 30px">
         <mj-column width="500px">
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Estimado D./ Dña. <strong>{{ $checkout->user->full_name }}</strong></mj-text>
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Sentimos comunicarle que el aforo está completo y <strong>no es posible confirmar su inscripción</strong>.</mj-text>
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Si finalmente quedara alguna plaza libre nos pondremos en contacto con Usted.</mj-text>
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Muchas gracias por su interés. </mj-text>
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Un cordial saludo,</mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Ha confirmado que desea realizar el pago por transferencia.</mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Le indicamos a continuación los datos bancarios para poder realizar el pago:</mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">>>Datos bancarios</mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">>>Número de cuenta</mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Envíenos el  justificante al siguiente correo: lorem ipsum (confirmar con financiero)</mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Atentamente,</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Relaciones Institucionales<br><strong>Expansión</strong></mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a"><small>Más información: <a href="mailto:foro.expansion@unidadeditorial.es">foro.expansion@unidadeditorial.es</a></small></mj-text>
         </mj-column>

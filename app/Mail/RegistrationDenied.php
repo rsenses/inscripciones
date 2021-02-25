@@ -31,7 +31,8 @@ class RegistrationDenied extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.registrations.denied')
+        return $this->subject('Aforo completo')
+            ->view('emails.registrations.denied')
             ->text('emails.registrations.denied_plain');
     }
 }

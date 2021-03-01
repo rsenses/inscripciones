@@ -21,8 +21,6 @@ class ProductController extends Controller
         }, 'registrations.user'])
             ->find($product->id);
 
-        return [
-            'product' => $product
-        ];
+        return $product;
     }
 }

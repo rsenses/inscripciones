@@ -2,18 +2,36 @@
 //@import url('https://fonts.googleapis.com/css?family=Nunito');
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;800&display=swap");
-
+@import url("https://fonts.googleapis.com/css?family=Muli:200,300,400,700");
 @import url("http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css");
 
 // Variables
 @import "variables";
 
+
+
+
+$primary: $teal;
+$secondary: #6f7f8c;
+$success: #115c39;
+$danger: #96242f;
+$warning: #626262;
+$info: #0989a3;
+$light: #eceeec;
+$dark: #1e2b37;
+
+$font-family-base: Muli;
+$headings-font-family: Montserrat;
+
+$enable-grid-classes: true;
+$enable-rounded:false;
+
 // Bootstrap
-//@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap';
 @import "~bootstrap-select/sass/bootstrap-select";
 @import "~bootstrap-table/src/bootstrap-table";
 @import "~font-awesome/scss/font-awesome";
-@import "../sass/theme";
+
 
 /*!
  * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template/simple-sidebar)
@@ -110,6 +128,58 @@ button.bg-light:focus {
         padding: 0.75rem 1.25rem 0.5rem;
         i {
             font-size: 1.25rem;
+        }
+    }
+}
+
+.custom-select{
+
+    &.form-control-lg {
+        font-size: 1.125rem;
+        height: calc(1.5em + 1rem + 2px);
+        padding: 0.5rem 1rem;
+        line-height: 1.5;
+    }
+}
+.selectpicker{
+    &+.btn-light{
+        background-color: $white;
+        border: 1px solid $gray-400;
+    }
+}
+
+.bs-ok-default{
+    &.check-mark{
+        color: $success;
+    }
+
+}
+// input[type="file"] {
+//     display: none;
+// }
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.custom-file-label::after {
+    font-size: 1.2rem;
+    font-family: 'Ionicons';
+    content: "\f255";
+}
+
+
+.input-group-addon{
+    position: absolute;
+    top: 43px;
+    right: 10px;
+}
+#price {
+    &.is-invalid {
+    +.input-group-addon{
+        right: 37px;
         }
     }
 }

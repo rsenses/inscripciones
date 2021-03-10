@@ -1,5 +1,5 @@
 <div class="table">
-    <table class="table table-striped">
+    <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -12,12 +12,14 @@
         <tbody>
             @foreach($products as $product)
                 <tr>
-                    <td>{{ $product->name }}</td>
-                    <td>{{ $product->start_date }}</td>
-                    <td>{{ $product->price }}</td>
-                    <td>{{ $product->registrations_count }}</td>
-                    <td>
-                        <a href="{{ route('products.show', ['product' => $product]) }}">Ver</a>
+                    <td class="font-weight">{{ $product->name }}</td>
+                    <td class="text-center">{{ $product->start_date }}</td>
+                    <td class="text-right">{{ $product->price }} €</td>
+                    <td class="text-right">{{ $product->registrations_count }}</td>
+                    <td class="bg-primary text-center">
+                        <a class="text-light " href="{{ route('products.show', ['product' => $product]) }}">
+                            <i class="ion ion-ios-eye" aria-hidden="true"></i> Ver
+                        </a>
                     </td>
                 </tr>
             @endforeach

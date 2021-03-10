@@ -2,7 +2,19 @@
 
 @section('content')
     <div class="container">
-        <h2>Inscripciones <small><a href="{{ route('registrations.create') }}">Nueva inscripción</a></small></h2>
-        <x-registrations.table :registrations="$registrations"/>
+        <div class="mb-3"> 
+            <a class="btn btn-primary text-white pull-right d-block" data-toggle="tooltip" data-placement="bottom" title="Crear nueva" href="{{ route('registrations.create') }}">
+                <i class="ion ion-plus"></i>
+            </a>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="card bg-light">
+            <div class="card-body">
+            <h2 class="card-title text-primary">Inscripciones</h2>
+            <x-registrations.table :registrations="$registrations"/>
+            </div>
+        </div>
+        
     </div>
 @endsection

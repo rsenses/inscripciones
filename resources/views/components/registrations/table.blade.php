@@ -1,5 +1,5 @@
 <div class="table">
-    <table class="table table-striped" {{ $showProduct ? '' : 'data-toggle=table' }} data-search="true" data-show-export="true" data-export-data-type="basic" data-export-types="['csv']" data-locale="es_ES" data-filter-control="true">
+    <table class="table table-striped table-bordered" {{ $showProduct ? '' : 'data-toggle=table' }} data-search="true" data-show-export="true" data-export-data-type="basic" data-export-types="['csv']" data-locale="es_ES" data-filter-control="true">
         <thead>
             <tr>
                 @if($showProduct)
@@ -12,7 +12,9 @@
                 <th data-field="company" data-sortable="true">Empresa</th>
                 <th data-field="position" data-sortable="true">Cargo</th>
                 <th></th>
+                @if(!$showProduct)
                 <th></th>
+                @endif
             </tr>
         </thead>
         <tbody>
@@ -21,16 +23,19 @@
                     @if($showProduct)
                         <td>{{ $registration->product->name }}</td>
                     @else
-                        <td>{{ $registration->status }}</td>
+                        <td class="alert {{ $registration->status === 'accepted' ? 'alert-info' : ($registration->status === 'paid' ? 'alert-success' : ($registration->status === 'rejected' ? 'alert-danger' : ($registration->status === 'cancelled' ? 'alert-warning' : ''))) }}">
+                        <i class="ion 
+                        {{ $registration->status === 'accepted' ? 'ion-thumbsup' : ($registration->status === 'paid' ? 'ion-cash' : ($registration->status === 'rejected' ? 'ion-thumbsdown' : ($registration->status === 'cancelled' ? 'ion-close-circled' : ''))) }}" aria-hidden="true"></i>&ensp;
+                        
+                        {{ ucfirst($registration->status) }}</td>
                     @endif
-                    <td>{{ $registration->created_at }}</td>
+                    <td>{{ $registration->created_at->format('d-m-Y | H:i' ) }}</td>
                     <td>{{ $registration->user->full_name }}</td>
                     <td>{{ $registration->user->company }}</td>
                     <td>{{ $registration->user->position }}</td>
-                    <td><a href="{{ route('registrations.show', ['registration' => $registration]) }}">ver</a></td>
-                    @if(!$showProduct)
+                     @if(!$showProduct)
                         <td>
-                            <a href="#0" data-toggle="modal" data-target="#actionsModal{{ $index }}">acciones</a>
+                        <a href="#0" data-toggle="modal" data-target="#actionsModal{{ $index }}"><i class="ion ion-gear-a" aria-hidden="true"></i>&ensp;acciones</a>
                             <x-modal :id="'actionsModal' . $index" :title="'Acciones sobre la inscripción'" :footer="''">
                                 @if($registration->status !== 'paid' && $registration->status !== 'accepted')
                                     <div class="row">
@@ -75,6 +80,7 @@
                             </x-modal>
                         </td>
                     @endif
+                    <td class="bg-primary text-center"><a class="text-light" href="{{ route('registrations.show', ['registration' => $registration]) }}"><i class="ion ion-ios-eye" aria-hidden="true"></i> Ver</a></td>
                 </tr>
             @endforeach
         </tbody>

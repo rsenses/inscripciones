@@ -17,14 +17,14 @@ class CreateCheckoutsTable extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('product_id')->unsigned();
-            $table->decimal('amount', 8, 2)->default(0.00)->unsigned();
+            $table->decimal('amount', 8, 2)->default(0.00);
             $table->tinyInteger('quantity')->default(1)->unsigned();
             $table->string('method');
             $table->string('token');
             $table->string('status')->default('new');
             $table->dateTime('paid_at')->nullable();
             $table->timestamps();
-            $table->unique(['product_id', 'user_id']);
+            $table->unique(['product_id', 'user_id', 'amount']);
         });
     }
 

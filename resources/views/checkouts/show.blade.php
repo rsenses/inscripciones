@@ -120,6 +120,20 @@
                                 </div>
 
                                 <div class="form-group row">
+                                    <label for="street_number" class="col-md-4 col-form-label text-md-right">{{ __('Número') }}</label>
+
+                                    <div class="col-md-8">
+                                        <input id="street_number" type="text" class="form-control @error('street_number') is-invalid @enderror" name="street_number" value="{{ old('street_number') }}" required autocomplete="street_number">
+
+                                        @error('street_number')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
                                     <label for="zip" class="col-md-4 col-form-label text-md-right">{{ __('Código postal') }}</label>
 
                                     <div class="col-md-4">

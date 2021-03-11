@@ -115,6 +115,7 @@ class CheckoutController extends Controller
                 'tax_type' => 'required|in:CIF,NIF,NIE,Pasaporte,Extranjero',
                 'tax_id' => $taxId,
                 'street' => 'required',
+                'street_number' => 'required',
                 'zip' => 'required',
                 'city' => 'required',
                 'country' => 'required|string|max:2',

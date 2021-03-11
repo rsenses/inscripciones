@@ -19,6 +19,7 @@ class Address extends Model
         'tax_type',
         'tax_id',
         'street',
+        'street_number',
         'zip',
         'city',
         'country',

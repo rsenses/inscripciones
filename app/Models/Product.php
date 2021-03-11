@@ -25,6 +25,16 @@ class Product extends Model
         'end_date'
     ];
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'start_date',
+        'end_date',
+    ];
+
         /**
      * The "booted" method of the model.
      *

@@ -84,12 +84,19 @@ class InvoiceController extends Controller
                     $clientCode = '0' . $taxId;
                 }
 
-                $concept = $invoice->concept ?: $checkout->product->name;
-                $concept = substr(strip_tags(trim(preg_replace('/\t+/', '', $concept))), 0, 132);
+                if ($checkout->method === 'transfer') {
+                    $method = 7;
+                    $conditions = 'ZU06';
+                } else {
+                    $method = 6;
+                    $conditions = 'ZU01';
+                }
+
+                $concept = substr(strip_tags(trim(preg_replace('/\t+/', '', $checkout->product->name))), 0, 132);
 
                 $input = [
                     $counter,
-                    'ZCF',
+                    $checkout->amount > 0 ? 'ZAT' : 'ZAB',
                     str_pad($corporation, 4, '0', STR_PAD_LEFT),
                     str_pad($corporation, 4, '0', STR_PAD_LEFT),
                     '02',
@@ -101,23 +108,23 @@ class InvoiceController extends Controller
                     strftime('%d.%m.%Y', strtotime(date('Y-m-d H:i:s'))),
                     $vat > 0 ? 'SDPATROCPUB' : 'SDPATROCPUB0',
                     $checkout->id,
-                    $checkout->amount > 0 ? 'ZL2N' : 'ZG2N',
+                    $checkout->amount > 0 ? 'L2N' : 'G2N',
+                    $checkout->product->sap,
                     ' ',
-                    $checkout->product->sap,  // Debe existir?
                     $checkout->quantity,
                     number_format(((abs($checkout->amount) / (1 + ($vat / 100))) / $checkout->quantity), 2, ',', ''),
                     $checkout->quantity,
-                    $checkout->method === 'transfer' ? 7 : 6,
-                    'ZU01',
+                    $method,
+                    $conditions,
                     ' ',
                     ' ',
-                    'C20',
-                    'COF',
+                    'C10',
+                    ' ',
                     $concept,
                     $type,
                     $clientCode,
                     $address->name,
-                    $address->contact, // Debe existir?
+                    $address->contact,
                     $address->street ?: ' ',
                     $address->street_number ?: ' ', // Debe existir?
                     $address->city,
@@ -127,7 +134,7 @@ class InvoiceController extends Controller
                     ' ',
                     $checkout->user->email,
                     $address->name,
-                    $address->contact, // Debe existir?
+                    $address->contact,
                     $address->street,
                     $address->street_number, // Debe existir?
                     $address->city,
@@ -135,9 +142,9 @@ class InvoiceController extends Controller
                     $address->country,
                     ' ',
                     ' ',
-                    ' ',
+                    $checkout->user->email,
                     '999999',
-                    'C20',
+                    'C10',
                     $taxId,
                     $address->country . $taxId,
                     ' ',
@@ -152,22 +159,22 @@ class InvoiceController extends Controller
                     ' ',
                     '430700',
                     ' ',
-                    'ZU01',
+                    $conditions,
                     'X',
-                    7,
+                    $method,
                     '0001',
                     ' ',
-                    ' ',
-                    ' ',
+                    'MY',
+                    'MY',
                     'A',
                     ' ',
                     ' ',
                     ' ',
-                    'ZU01',
+                    $conditions,
                     '02',
-                    1,
                     0,
-                    $checkout->iban, // Debe existir?
+                    0,
+                    $checkout->iban,
                     ' ',
                     ' ',
                     ' ',

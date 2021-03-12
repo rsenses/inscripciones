@@ -17,7 +17,7 @@
                 <label for="name">Id.</label>
                     <input type="text" id="product_id" name="product_id" readonly="readonly" required
                         class="text-right form-control form-control-lg {{ $errors->has('product_id') ? 'is-invalid' : '' }}"
-                        value="130{{ $product->product_id }}">
+                        value="{{ $product->product_id }}">
                 </div>
                 <div class="col-11">
                     <label for="name">Nombre</label>

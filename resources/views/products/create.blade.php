@@ -12,7 +12,7 @@
                 <label for="name">Id.</label>
                     <input type="text" id="product_id" name="product_id" required
                         class="text-right form-control form-control-lg {{ $errors->has('product_id') ? 'is-invalid' : '' }}"
-                        value="130{{ old('product_id') }}">
+                        value="{{ old('product_id') }}">
                 </div>
                 <div class="col-11">
             

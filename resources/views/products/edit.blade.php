@@ -12,7 +12,14 @@
                 method="POST" enctype="multipart/form-data" id="js-upload-form">
                 @method('PUT')
                 @csrf
-                <div class="form-group">
+                <div class="form-row mb-4">
+                <div class="col-1">
+                <label for="name">Id.</label>
+                    <input type="text" id="product_id" name="product_id" readonly="readonly" required
+                        class="text-right form-control form-control-lg {{ $errors->has('product_id') ? 'is-invalid' : '' }}"
+                        value="130{{ $product->product_id }}">
+                </div>
+                <div class="col-11">
                     <label for="name">Nombre</label>
                     <input type="text" id="name" name="name" autofocus required
                         class=" form-control form-control-lg {{ $errors->has('name') ? 'is-invalid' : '' }}"
@@ -21,6 +28,8 @@
                         <div class="invalid-feedback">{{ $errors->first('name') }}</div>
                     @endif
                 </div>
+                </div>
+                
                 <div class="form-group">
                     <label for="url">Url</label>
                     <small id="urlHelp" class="form-text text-muted">Url de la web del producto</small>

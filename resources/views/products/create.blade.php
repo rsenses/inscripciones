@@ -7,12 +7,21 @@
           <div class="card-body">
           <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="form-group">
+            <div class="form-row mb-4">
+            <div class="col-1">
+                <label for="name">Id.</label>
+                    <input type="text" id="product_id" name="product_id" required
+                        class="text-right form-control form-control-lg {{ $errors->has('product_id') ? 'is-invalid' : '' }}"
+                        value="130{{ old('product_id') }}">
+                </div>
+                <div class="col-11">
+            
                 <label for="name">Nombre</label>
                 <input type="text" id="name" name="name" autofocus required class="form-control form-control-lg {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name') }}">
                 @if ($errors->has('name'))
                     <div class="invalid-feedback">{{ $errors->first('name') }}</div>
                 @endif
+            </div>
             </div>
             <div class="form-group">
                 <label for="url">Url</label>

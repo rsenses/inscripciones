@@ -14,8 +14,10 @@
                     <td>
                         <img src="{{ asset('storage/' . $partner->image) }}" alt="{{ $partner->name }}" class="img-fuid" style="max-width: 200px;">
                     </td>
-                    <td>
-                        <a href="{{ route('partners.show', ['partner' => $partner]) }}">Ver</a>
+                    <td  class="bg-primary text-center">
+                        <a class="text-light " href="{{ route('partners.show', ['partner' => $partner]) }}">
+                        <i class="ion ion-ios-eye" aria-hidden="true"></i> Ver
+                        </a>
                     </td>
                 </tr>
             @endforeach

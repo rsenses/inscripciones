@@ -1,5 +1,5 @@
 <div class="table">
-    <table class="table table-striped">
+    <table class="table table-stripe table-bordered">
         <thead>
             <tr>
                 <th>Producto</th>
@@ -20,7 +20,7 @@
                         {{ $invoice->address->full_address }}
                     </td>
                     <td>{{ $invoice->checkout->created_at }}</td>
-                    <td>{{ $invoice->checkout->amount }}</td>
+                    <td class="text-right">{{ $invoice->checkout->amount }}</td>
                 </tr>
             @endforeach
         </tbody>

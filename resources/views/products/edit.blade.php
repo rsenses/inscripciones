@@ -150,7 +150,7 @@
         method="POST">
         @csrf
         @method('delete')
-        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <button type="submit" class="btn btn-danger pull-right">Eliminar</button>
     </form>
 </x-modal>
 @endsection

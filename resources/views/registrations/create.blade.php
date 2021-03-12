@@ -7,9 +7,7 @@
         @csrf
         <div class="row align-items-stretch mb-4">
             <div class="col">
-
                 <div class="card bg-light">
-
                     <div class="card-body">
                         <div class="form-group">
                             <label for="product_id" class="card-title h4 text-primary">Producto</label><br>
@@ -31,9 +29,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
             </div>
             <div class="col">
                 <div class="card bg-light">

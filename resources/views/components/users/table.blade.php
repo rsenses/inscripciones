@@ -1,5 +1,5 @@
 <div class="table">
-    <table class="table table-striped">
+    <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -16,12 +16,14 @@
                 <tr>
                     <td>{{ $user->full_name }}</td>
                     <td>{{ $user->email }}</td>
-                    <td>{{ $user->tax_id }}</td>
-                    <td>{{ $user->phone }}</td>
+                    <td class="text-right">{{ $user->tax_id }}</td>
+                    <td class="text-right">{{ $user->phone }}</td>
                     <td>{{ $user->company }}</td>
                     <td>{{ $user->position }}</td>
-                    <td>
-                        <a href="{{ route('users.show', ['user' => $user]) }}">Ver</a>
+                    <td class="bg-primary text-center">
+                        <a class="text-light" href="{{ route('users.show', ['user' => $user]) }}">
+                        <i class="ion ion-ios-eye" aria-hidden="true"></i> Ver
+                        </a>
                     </td>
                 </tr>
             @endforeach

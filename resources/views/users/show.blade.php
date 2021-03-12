@@ -1,30 +1,47 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <h2>{{ $user->full_name }} <small class="text-xs"><a href="{{ route('users.edit', ['user' => $user]) }}">Editar</a></small></h2>
-        <div class="table">
-            <table class="table table-striped">
-                <tr>
-                    <td>Email</td>
-                    <td>{{ $user->email }}</td>
-                </tr>
-                <tr>
-                    <td>Teléfono</td>
-                    <td>{{ $user->phone }}</td>
-                </tr>
-                <tr>
-                    <td>Empresa</td>
-                    <td>{{ $user->company }}</td>
-                </tr>
-                <tr>
-                    <td>Cargo</td>
-                    <td>{{ $user->position }}</td>
-                </tr>
-            </table>
-        </div>
-        <hr class="my-5">
-        <h3>Inscripciones</h3>
-        <x-registrations.table :registrations="$user->registrations"/>
+<div class="container">
+    <h2>{{ $user->full_name }} <a class="pull-right btn btn-info text-light" title="editar"
+            href="{{ route('users.edit', ['user' => $user]) }}"
+            data-toggle="tooltip" data-placement="bottom">
+            <i class="ion ion-edit"></i>
+        </a></h2>
+
+<div class="card bg-light">
+
+  <div class="card-body">
+  <div class="table">
+        <table class="table table-striped table-bordered">
+            <tr>
+                <td>Email</td>
+                <td>{{ $user->email }}</td>
+            </tr>
+            <tr>
+                <td>Teléfono</td>
+                <td>{{ $user->phone }}</td>
+            </tr>
+            <tr>
+                <td>Empresa</td>
+                <td>{{ $user->company }}</td>
+            </tr>
+            <tr>
+                <td>Cargo</td>
+                <td>{{ $user->position }}</td>
+            </tr>
+        </table>
     </div>
+  </div>
+</div>
+
+    <hr class="my-5">
+    <div class="card bg-light">
+      <img class="card-img-top" src="holder.js/100px180/" alt="">
+      <div class="card-body">
+        <h4 class="card-title text-primary">Inscripciones</h4>
+        <x-registrations.table :registrations="$user->registrations" />
+      </div>
+    </div>
+
+</div>
 @endsection

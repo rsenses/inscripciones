@@ -14,6 +14,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="product_id" class="card-title h4 text-primary">Producto</label><br>
+                            <small id="productHelp" class="form-text text-muted">&nbsp;</small>
                             <select id="product_id" name="product_id" required
                                 class="selectpicker {{ $errors->has('product_id') ? 'is-invalid' : '' }}"
                                 data-live-search="true">
@@ -24,7 +25,7 @@
                                         {{ $product->name }}</option>
                                 @endforeach
                             </select>
-                            <small id="productHelp" class="form-text text-muted">&nbsp;</small>
+
                             @if($errors->has('product_id'))
                                 <div class="invalid-feedback">{{ $errors->first('product_id') }}
                                 </div>

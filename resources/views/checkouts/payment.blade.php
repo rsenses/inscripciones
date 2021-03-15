@@ -22,8 +22,8 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
+            <div class="col-lg-6">
+                <div class="card bg-light">
                     <div class="card-body">
                         <p class="text-center">
                         <strong>CON TARJETA DE DÉBITO/CRÉDITO</strong>
@@ -35,8 +35,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="card">
+            <div class="col-lg-6">
+                <div class="card bg-light">
                     <div class="card-body">
                         <p class="text-center"><strong>CON TRANSFERENCIA desde tu banco:</strong></p>
                         <p>

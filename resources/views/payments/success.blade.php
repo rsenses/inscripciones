@@ -8,7 +8,7 @@
 
             <div class="card bg-light">
                 <div class="card-body">
-                    <h4 class="card-title">Title</h4>
+                <img class="card-img-top" src="{{ asset('storage/' . $checkout->product->image) }}" alt="{{ $checkout->product->name }}">
                     <p class="card-text">
                         <div class="table mb-4">
                             <table class="table table-striped table-bordered">
@@ -19,7 +19,7 @@
                                     </tr>
                                     <tr>
                                         <td><strong>Precio</strong></td>
-                                        <td>{{ $checkout->amount }}€</td>
+                                        <td class="text-right">{{ $checkout->amount }}€</td>
                                     </tr>
                                 </tbody>
                             </table>

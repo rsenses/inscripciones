@@ -6,6 +6,7 @@
             <div class="col-md-8">
                 <h2>{{ $checkout->product->name }}</h2>
                 <div class="card bg-light">
+                <img class="card-img-top" src="{{ asset('storage/' . $checkout->product->image) }}" alt="{{ $checkout->product->name }}">
                   <div class="card-body">
                   <div class="table">
                     <table class="table table-striped table-bordered">

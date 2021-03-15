@@ -13,7 +13,7 @@
             @foreach($products as $product)
                 <tr>
                     <td class="font-weight">{{ $product->name }}</td>
-                    <td class="text-center">{{ $product->start_date }}</td>
+                    <td>{{ $product->start_date->format('d-m-Y / H:i' ) }}</td>
                     <td class="text-right">{{ $product->price }} €</td>
                     <td class="text-right">{{ $product->registrations_count }}</td>
                     <td class="bg-primary text-center">

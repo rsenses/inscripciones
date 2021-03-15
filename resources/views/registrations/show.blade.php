@@ -20,7 +20,7 @@
                     </tr>
                     <tr>
                         <td>Fecha de inscripción</td>
-                        <td>{{ $registration->created_at }}</td>
+                        <td>{{ $registration->created_at->format('d-m-Y / H:i' ) }}</td>
                     </tr>
                     <tr>
                         <td>Tipo</td>

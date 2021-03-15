@@ -41,11 +41,11 @@
                             </tr>
                             <tr>
                                 <td>Fecha de inicio</td>
-                                <td>{{ $product->start_date }}</td>
+                                <td>{{ $product->start_date->format('d-m-Y / H:i' ) }}</td>
                             </tr>
                             <tr>
                                 <td>Fecha de fin</td>
-                                <td>{{ $product->end_date }}</td>
+                                <td>{{ $product->end_date->format('d-m-Y / H:i' ) }}</td>
                             </tr>
                             <tr>
                                 <td>Cabeceras</td>

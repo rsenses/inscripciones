@@ -19,8 +19,8 @@
                         {{ $invoice->address->tax_type }}: {{ $invoice->address->tax_id }}<br>
                         {{ $invoice->address->full_address }}
                     </td>
-                    <td>{{ $invoice->checkout->created_at }}</td>
-                    <td class="text-right">{{ $invoice->checkout->amount }}</td>
+                    <td>{{ $invoice->checkout->created_at->format('d-m-Y / H:i:s' ) }}</td>
+                    <td class="text-right">{{ $invoice->checkout->amount }} €</td>
                 </tr>
             @endforeach
         </tbody>

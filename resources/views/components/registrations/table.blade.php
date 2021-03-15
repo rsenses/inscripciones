@@ -29,7 +29,7 @@
                         
                         {{ ucfirst($registration->status) }}</td>
                     @endif
-                    <td>{{ $registration->created_at->format('d-m-Y | H:i' ) }}</td>
+                    <td>{{ $registration->created_at->format('d-m-Y / H:i' ) }}</td>
                     <td>{{ $registration->user->full_name }}</td>
                     <td>{{ $registration->user->company }}</td>
                     <td>{{ $registration->user->position }}</td>

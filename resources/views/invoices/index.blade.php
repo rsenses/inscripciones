@@ -13,16 +13,27 @@
                 {!! session()->get('danger') !!}
             </div>
         @endif
-        <div class="row mb-4">
+
+        <div class="card bg-light">
+          <div class="card-body">
+          <div class="row mb-4">
             <div class="col">
-                <h3>Facturas pendientes de generar</h3>
+                <h3 class="card-title text-primary">Facturas pendientes de generar</h3>
             </div>
             <div class="col text-right">
-                <a href="{{ route('invoices.export') }}" class="btn btn-primary">Exportar</a>
-                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#importModal">Importar</button>
+                <a href="{{ route('invoices.export') }}" class="btn btn-primary">
+                <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                Exportar</a>
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#importModal">
+               <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                
+                Importar</button>
             </div>
         </div>
         <x-invoices.table :invoices="$invoices"/>
+          </div>
+        </div>
+
     </div>
     <div class="modal fade" id="importModal" tabindex="-1" aria-labelledby="importModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -43,7 +54,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" form="importForm" class="btn btn-primary">Importar</button>
+                    <button type="submit" form="importForm" class="btn btn-primary pull-right">Importar</button>
                 </div>
             </div>
         </div>

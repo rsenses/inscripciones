@@ -5,7 +5,10 @@
         <div class="row justify-content-center mb-4">
             <div class="col-md-8">
                 <h2>{{ $checkout->product->name }}</h2>
-                <div class="table">
+                <div class="card bg-light">
+                <img class="card-img-top" src="{{ asset('storage/' . $checkout->product->image) }}" alt="{{ $checkout->product->name }}">
+                  <div class="card-body">
+                  <div class="table">
                     <table class="table table-striped">
                         <tbody>
                             <tr>
@@ -19,11 +22,14 @@
                         </tbody>
                     </table>
                 </div>
+                  </div>
+                </div>
+
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
+            <div class="col-lg-6">
+                <div class="card bg-light">
                     <div class="card-body">
                         <p class="text-center">
                         <strong>CON TARJETA DE DÉBITO/CRÉDITO</strong>
@@ -35,8 +41,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="card">
+            <div class="col-lg-6">
+                <div class="card bg-light">
                     <div class="card-body">
                         <p class="text-center"><strong>CON TRANSFERENCIA desde tu banco:</strong></p>
                         <p>

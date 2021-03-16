@@ -15,8 +15,8 @@
     <div class="row mb-5 align-items-stretch">
         <div class="col col-sm-4">
         <div class="card bg-light h-100">
-          <div class="card-body">
-          <p><img src="{{ $product->image ? asset('storage/' . $product->image) : 'https://www.fillmurray.com/400/600' }}"
+          <div class="card-body d-flex align-items-center">
+          <p><img src="{{ asset('storage/' . $product->image) }}"
                     alt="El producto no tiene imagen" class="img-fluid"></p>
           </div>
         </div>
@@ -41,11 +41,11 @@
                             </tr>
                             <tr>
                                 <td>Fecha de inicio</td>
-                                <td>{{ $product->start_date }}</td>
+                                <td>{{ $product->start_date->format('d-m-Y / H:i' ) }}</td>
                             </tr>
                             <tr>
                                 <td>Fecha de fin</td>
-                                <td>{{ $product->end_date }}</td>
+                                <td>{{ $product->end_date->format('d-m-Y / H:i' ) }}</td>
                             </tr>
                             <tr>
                                 <td>Cabeceras</td>

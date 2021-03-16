@@ -5,8 +5,11 @@
         <div class="row justify-content-center mb-4">
             <div class="col-md-8">
                 <h2>{{ $checkout->product->name }}</h2>
-                <div class="table">
-                    <table class="table table-striped">
+                <div class="card bg-light">
+                <img class="card-img-top" src="{{ asset('storage/' . $checkout->product->image) }}" alt="{{ $checkout->product->name }}">
+                  <div class="card-body">
+                  <div class="table">
+                    <table class="table table-striped table-bordered">
                         <tbody>
                             <tr>
                                 <td><strong>Asistente</strong></td>
@@ -14,11 +17,14 @@
                             </tr>
                             <tr>
                                 <td><strong>Precio</strong></td>
-                                <td>{{ $checkout->amount }}€</td>
+                                <td class="text-right">{{ $checkout->amount }}€</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+                  </div>
+                </div>
+
             </div>
         </div>
         <div class="row justify-content-center">
@@ -31,7 +37,9 @@
                     <div class="col-12 col-sm-6">
                         <form method="POST" action="{{ route('checkouts.update', ['checkout' => $checkout]) }}">
                             @csrf
-                            <p>Puedes usar una de estas direcciones de facturación, o si lo prefieres, crear una nueva en el siguiente panel</p>
+                    <div class="card bg-light">
+                            <p class="card-header">Puedes usar una de estas direcciones de facturación, o si lo prefieres, crear una nueva en el siguiente panel</p>
+                        <div class="card-body">
                             @foreach($addresses as $index => $address)
                                 <div class="card">
                                     <div class="card-body">
@@ -52,12 +60,15 @@
                                 <p><small class="text-muted">Con la dirección de facturación seleccionada</small></p>
                             </div>
                         </form>
+                        </div>
+                    </div>
+
                     </div>
                 @endif
                 <div class="col-12 col-sm-6">
                     <form method="POST" action="{{ route('checkouts.update', ['checkout' => $checkout]) }}">
                         @csrf
-                        <div class="card">
+                        <div class="card bg-light">
                             <div class="card-header">{{ __('Nueva dirección de facturación') }}</div>
 
                             <div class="card-body">

@@ -21,18 +21,21 @@ class RegistrationController extends Controller
      */
     public function store(Request $request)
     {
-        $user = auth()->user();
-
         $request->validate([
+            'user_id' => ['required', 'exists:users,id'],
             'product_id' => [
                 'required',
                 'exists:products,id',
-                Rule::unique('registrations')->where(function ($query) use($request, $user) {
+                Rule::unique('registrations')->where(function ($query) use($request) {
+                    $user = User::find($request->user_id);
+
                     return $query->where('user_id', $user->id)
                     ->where('product_id', $request->product_id);
                 }),
             ],
         ]);
+
+        $user = User::find($request->user_id);
 
         $registration = $user->registrations()->create([
             'product_id' => $request->product_id,

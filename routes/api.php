@@ -17,10 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('v1')->group(function () {
     Route::post('/login', 'App\Http\Controllers\Api\AuthController@login');
     Route::post('/register', 'App\Http\Controllers\Api\AuthController@register');
+    Route::post('/registration', 'App\Http\Controllers\Api\RegistrationController@store');
 
     Route::middleware(['auth:api'])->group(function () {
         Route::post('/logout', 'App\Http\Controllers\Api\AuthController@logout');
-        Route::post('/registration', 'App\Http\Controllers\Api\RegistrationController@store');
         Route::get('/products/{product}', 'App\Http\Controllers\Api\ProductController@show');
     });
 });

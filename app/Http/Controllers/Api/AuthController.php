@@ -12,26 +12,32 @@ class AuthController extends Controller
 {
     public function register(Request $request)
     {
+        $user = User::where('email', $request->email)->first();
+
+        if($user) {
+            return response()->json($user);
+        }
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'email' => ['required', 'email', 'unique:users'],
             'tax_id' => ['nullable', 'string', 'max:255'],
             'phone' => ['nullable', 'string', 'max:255'],
             'company' => ['nullable', 'string', 'max:255'],
             'position' => ['nullable', 'string', 'max:255'],
+            'advertising' => ['required', 'boolean']
         ]);
 
         $user = User::create([
             'name' => $request->name, 
             'last_name' => $request->last_name,
             'email' => $request->email, 
-            'password' => bcrypt($request->password),
             'tax_id' => $request->tax_id,
             'phone' => $request->phone,
             'company' => $request->company,
             'position' => $request->position,
+            'advertising' => $request->advertising,
         ]);
 
         return response()->json($user);

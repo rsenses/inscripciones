@@ -109,7 +109,7 @@ class InvoiceController extends Controller
                     $vat > 0 ? 'SDPATROCPUB' : 'SDPATROCPUB0',
                     $checkout->id,
                     $checkout->amount > 0 ? 'L2N' : 'G2N',
-                    $checkout->product->sap,
+                    $checkout->product->product_id,
                     ' ',
                     $checkout->quantity,
                     number_format(((abs($checkout->amount) / (1 + ($vat / 100))) / $checkout->quantity), 2, ',', ''),

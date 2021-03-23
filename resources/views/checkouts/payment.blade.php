@@ -46,9 +46,12 @@
                     <div class="card-body">
                         <p class="text-center"><strong>CON TRANSFERENCIA desde tu banco:</strong></p>
                         <p>
-                        <strong>Beneficiario</strong>: Unidad Editorial Formación S.L.<br>
-                        <strong>Cuenta destino</strong>: BBVA - IBAN: ES74 0182 3999 3802 0151 9985 SWIFT: BBVAESMMXXX<br>
-                        <strong class="text-danger">Imprescindible</strong>: <strong>Indicar</strong> en el concepto el número de la factura proforma y antes del inicio <strong>enviar justificante de pago</strong> a <a href="mailto:informacion@escuelaunidadeditorial.es?subject=Justificante de pago {{ $checkout->proforma }}" class="btn-link">informacion@escuelaunidadeditorial.es</a>.
+                        <strong>Beneficiario</strong>: U.E.INFOR. ECONÓM. S.L.U<br>
+                        <strong>Nombre del Banco</strong>: Bankinter<br>
+                        <strong>Cuenta</strong>: 42 0128 6035 77 0100000587<br>
+                        <strong>IBAN</strong>: ES 42 0128 6035 77 0100000587<br>
+                        <strong>BIC</strong>: SWIFT BKBKESMMXXX<br>
+                        <strong>Concepto de transferencia</strong>: Asistencia {{ $checkout->product->mode === 'online' ? 'Online' : 'Presencial' }} {{ $checkout->user->full_name }} {{ $checkout->invoice->number }}<br>
                         </p>
                     </div>
                     <div class="card-footer">

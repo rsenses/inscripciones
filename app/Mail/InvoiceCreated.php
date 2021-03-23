@@ -2,26 +2,26 @@
 
 namespace App\Mail;
 
-use App\Models\Checkout;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use App\Models\Invoice;
 
-class CheckoutCancelled extends Mailable
+class InvoiceCreated extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $checkout;
+    public $invoice;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Checkout $checkout)
+    public function __construct(Invoice $invoice)
     {
-        $this->checkout = $checkout;
+        $this->invoice = $invoice;
     }
 
     /**
@@ -31,8 +31,8 @@ class CheckoutCancelled extends Mailable
      */
     public function build()
     {
-        return $this->subject('Cancelación de asistencia')
-            ->view('emails.checkouts.cancelled')
-            ->text('emails.checkouts.cancelled_plain');
+        return $this->subject('Aquí tiene su factura')
+            ->view('emails.invoices.created')
+            ->text('emails.invoices.created_plain');
     }
 }

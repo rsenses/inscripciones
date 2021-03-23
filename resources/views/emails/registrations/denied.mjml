@@ -5,7 +5,7 @@
     </mj-raw>
     <mj-section>
       <mj-column>
-        <mj-image width="200px" src="{{ $checkout->product->partners[0]->image }}" href="{{ $checkout->product->partners[0]->name }}"></mj-image>
+        <mj-image width="200px" src="{{ asset('storage/' . $registration->product->partners[0]->image) }}" href="{{ $registration->product->partners[0]->name }}"></mj-image>
       </mj-column>
     </mj-section>
     <mj-wrapper background-color="#fff" padding="0">
@@ -14,7 +14,7 @@
       </mj-raw>
       <mj-section padding="0">
         <mj-column>
-          <mj-image src="https://reportes.intradel.es/images/job.jpg?v1"></mj-image>
+          <mj-image src="{{ asset('storage/' . $registration->product->image) }}" alt="{{ $registration->product->name }}"></mj-image>
         </mj-column>
       </mj-section>
       <mj-section padding="0 0 30px">

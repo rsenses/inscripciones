@@ -1,13 +1,22 @@
 Estimado D./ Dña. {{ $checkout->user->full_name }}
 
-Su solicitud para asistir al {{ $checkout->product->name }} ha sido aceptada.
+Bienvenido al {{ $checkout->product->name }}.
 
-Para proceder al pago y confirmar su asistencia PRESENCIAL/ ON LINE registrese en el siguiente enlace y complete su inscripción:
-          
-{{ Config::get('app.url') }}/checkouts/{{ $checkout->id }}?t={{ $checkout->token }}
+Su inscripción ha sido confirmada y ya puede acceder a la zona privada del site del Foro.
 
-Atentamente,
+A través del siguiente enlace podrá acceder a toda la información relativa al encuentro:
+https://foro.expansion.com
 
+• Cómo llegar.
+• Programa y ponentes. 
+• Listado de asistentes (pendiente AAJJ).
+• Protocolo Covid.
+• Zona de preguntas en directo.
+• Actualizaciones de última hora.
+
+Incluir evento en mi calendario:
+
+Esperamos que disfrute del evento,
 Relaciones Institucionales
 Expansión
 

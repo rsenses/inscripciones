@@ -5,7 +5,7 @@
     </mj-raw>
     <mj-section>
       <mj-column>
-        <mj-image width="200px" src="{{ asset('storage/' . $registration->product->partners[0]->image) }}" href="{{ $registration->product->partners[0]->name }}"></mj-image>
+        <mj-image width="200px" src="{{ asset('storage/' . $invoice->checkout->product->partners[0]->image) }}" href="{{ $invoice->checkout->product->partners[0]->name }}"></mj-image>
       </mj-column>
     </mj-section>
     <mj-wrapper background-color="#fff" padding="0">
@@ -14,15 +14,21 @@
       </mj-raw>
       <mj-section padding="0">
         <mj-column>
-          <mj-image src="{{ asset('storage/' . $registration->product->image) }}" alt="{{ $registration->product->name }}"></mj-image>
+          <mj-image src="{{ asset('storage/' . $invoice->checkout->product->image) }}" alt="{{ $invoice->checkout->product->name }}"></mj-image>
         </mj-column>
       </mj-section>
       <mj-section padding="0 0 30px">
         <mj-column width="500px">
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Estimado D./ Dña. <strong>{{ $registration->user->full_name }}</strong></mj-text>
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Su solicitud para asistir al <strong>{{ $registration->product->name }}</strong> ha sido registrada correctamente.</mj-text>
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">En breve nos pondremos en contacto con usted para confirmar si su solicitud ha sido aceptada.</mj-text>
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Le recordamos que el aforo es limitado y por riguroso orden de inscripción.</mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Estimado D./ Dña. <strong>{{ $invoice->checkout->user->full_name }}</strong></mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Adjunto enviamos el duplicado de su factura de asistencia al {{ $invoice->checkout->product->name }}.</mj-text>
+          <mj-button href="https://eventosue.com/invoices/{{ $invoice->number }}.pdf" background-color="#f45e43" color="white">
+            Descargar factura
+          </mj-button>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">
+          @if($invoice->checkout->status != 'paid')
+            Rogamos haga efectivo el pago de la factura a treinta días fecha factura y cómo mínimo 24 horas antes del comienzo del evento.
+          @endif
+          </mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Atentamente,</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Relaciones Institucionales<br><strong>Expansión</strong></mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a"><small>Más información: <a href="mailto:foro.expansion@unidadeditorial.es">foro.expansion@unidadeditorial.es</a></small></mj-text>

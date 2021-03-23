@@ -5,7 +5,7 @@
     </mj-raw>
     <mj-section>
       <mj-column>
-        <mj-image width="200px" src="{{ $checkout->product->partners[0]->image }}" href="{{ $checkout->product->partners[0]->name }}"></mj-image>
+        <mj-image width="200px" src="{{ asset('storage/' . $checkout->product->partners[0]->image) }}" href="{{ $checkout->product->partners[0]->name }}"></mj-image>
       </mj-column>
     </mj-section>
     <mj-wrapper background-color="#fff" padding="0">
@@ -14,7 +14,7 @@
       </mj-raw>
       <mj-section padding="0">
         <mj-column>
-          <mj-image src="https://reportes.intradel.es/images/job.jpg?v1"></mj-image>
+          <mj-image src="{{ asset('storage/' . $checkout->product->image) }}" alt="{{ $checkout->product->name }}"></mj-image>
         </mj-column>
       </mj-section>
       <mj-section padding="0 0 30px">
@@ -23,6 +23,7 @@
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a"><strong>Bienvenido al {{ $checkout->product->name }}</strong>.</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Su inscripción ha sido confirmada y ya puede acceder a la zona privada del site del Foro.</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">A través del siguiente enlace podrá acceder a toda la información relativa al encuentro:</mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a"><a href="https://foro.expansion.com">https://foro.expansion.com</a></mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">
           • Cómo llegar.<br>
           • Programa y ponentes. <br>

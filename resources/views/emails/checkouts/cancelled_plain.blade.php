@@ -1,10 +1,8 @@
 Estimado D./ Dña. {{ $checkout->user->full_name }}
 
-Su solicitud para asistir al {{ $checkout->product->name }} ha sido aceptada.
+Hemos iniciado el proceso de cancelación de asistencia al II Foro Económico Expansión. En unos días recibirá la factura de abono.
 
-Para proceder al pago y confirmar su asistencia PRESENCIAL/ ON LINE registrese en el siguiente enlace y complete su inscripción:
-          
-{{ Config::get('app.url') }}/checkouts/{{ $checkout->id }}?t={{ $checkout->token }}
+Una vez recibida dicha factura procederemos a realizar la devolución del importe por el mismo método de pago con el que se realizó la inscripción, en el plazo máximo de 15 días.
 
 Atentamente,
 

@@ -27,50 +27,40 @@
 
             </div>
         </div>
-        <div class="row justify-content-center">
-            @if($checkout->invoice)
+        @if($checkout->invoice)
+            <div class="row justify-content-center">
                 <div class="alert alert-danger">
                     Proceso de compra realizado anteriormente, disculpe las molestias.<br>Si tiene alguna duda contacte con nosotros en <a href="mailto:foro.expansion@unidadeditorial.es">foro.expansion@unidadeditorial.es</a>
                 </div>
-            @else
-                @if($addresses->count())
-                    <div class="col-12 col-sm-6">
-                        <form method="POST" action="{{ route('checkouts.update', ['checkout' => $checkout]) }}">
+            </div>
+        @else
+            <form method="POST" action="{{ route('checkouts.update', ['checkout' => $checkout]) }}">
+                <div class="row justify-content-center">
+                    @if($addresses->count())
+                        <div class="col-12 col-sm-6 mb-4">
                             @csrf
-                    <div class="card bg-light">
-                            <p class="card-header">Puedes usar una de estas direcciones de facturación, o si lo prefieres, crear una nueva en el siguiente panel</p>
-                        <div class="card-body">
-                            @foreach($addresses as $index => $address)
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="address_id" id="address{{ $index }}" value="{{ $address->id }}" required>
-                                            <label class="form-check-label" for="address{{ $index }}">
-                                                {{ $address->name }} <small class="text-info">{{ $address->tax_id }}, {{ $address->street }} {{ $address->zip }} ({{ $address->city }})</small>
-                                            </label>
+                            <div class="card bg-light">
+                                    <p class="card-header">Puedes usar una de estas direcciones de facturación, o si lo prefieres, crear una nueva en el siguiente panel</p>
+                                <div class="card-body">
+                                    @foreach($addresses as $index => $address)
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="address_id" id="address{{ $index }}" value="{{ $address->id }}" required>
+                                                    <label class="form-check-label" for="address{{ $index }}">
+                                                        {{ $address->name }} <small class="text-info">{{ $address->tax_id }}, {{ $address->street }} {{ $address->zip }} ({{ $address->city }})</small>
+                                                    </label>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endforeach
                                 </div>
-                            @endforeach
-
-                            <div class="col-12 text-center mt-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Proceder al pago') }}
-                                </button>
-                                <p><small class="text-muted">Con la dirección de facturación seleccionada</small></p>
                             </div>
-                        </form>
                         </div>
-                    </div>
-
-                    </div>
-                @endif
-                <div class="col-12 col-sm-6">
-                    <form method="POST" action="{{ route('checkouts.update', ['checkout' => $checkout]) }}">
-                        @csrf
+                    @endif
+                    <div class="col-12 col-sm-6 mb-4">
                         <div class="card bg-light">
                             <div class="card-header">{{ __('Nueva dirección de facturación') }}</div>
-
                             <div class="card-body">
                                 <div class="form-group row">
                                     <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Pagador') }}</label>
@@ -498,16 +488,26 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Proceder al pago') }}
-                                </button>
-                                <p><small class="text-muted">Con una nueva dirección de facturación</small></p>
-                            </div>
                         </div>
-                    </form>
+                    </div>
+                    <div class="col-12 col-sm-12">
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="legal" required name="legal">
+                            <label class="form-check-label" for="legal">He leído y acepto los <a href="{{ route('terminos-y-condiciones') }}">términos y condiciones generales de la compra</a>.</label>
+                        </div>
+                        <p class="small">
+                        <strong>Responsable</strong>: los datos personales facilitados serán tratados por Unidad Editorial Información Económica, S.L.U., sociedad española con domicilio social en Avenida de San Luis, 25, C.P. 28033, Madrid (España), C.I.F. número B-85.157.790. <strong>Finalidad y Legitimación</strong>: gestionar su asistencia y participación en el evento II Foro Económico Internacional Expansión, siendo ello necesario para prestarle los servicios que conlleva la participación en dicho evento, siendo la base de legitimación del tratamiento la ejecución del contrato suscrito entre el interesado y Unidad Editorial Información Económica, S.L.U. Asimismo, en el evento se tomarán imágenes y se realizarán vídeos para su difusión periodística. Cuando se trate de planos generales y sonido ambiente, tratamiento estará basado en el interés legítimo de Unidad Editorial Información Económica, S.L.U. de mejorar sus actividades promocionales; por su parte, en caso de que se capten planos en los que se pueda reconocer directamente a los asistentes –e.g primeros planos-, la base legal será el consentimiento prestado al posar para la imagen. <strong>Destinatarios</strong>: En caso de que solicite alojamiento, sus datos serán comunicados a Paradores de Turismo de España S.M.E., S.A. para tramitar la reserva. <strong>Conservación</strong>: Sus datos personales serán conservados hasta la finalización del evento y, posteriormente, debidamente bloqueados, durante los plazos de prescripción de las obligaciones legales de Unidad Editorial Información Económica, S.L.U. y de las eventuales responsabilidades derivadas del tratamiento de dichos datos. <strong>Derechos</strong>: Podrá ejercitar sus derechos de acceso, rectificación, supresión, oposición, portabilidad y limitación del tratamiento mediante solicitud por escrito a la dirección de correo <a href="mailto:lopd@unidadeditorial.es">lopd@unidadeditorial.es</a>, adjuntando copia de documento identificativo en vigor (DNI, NIE o pasaporte). Le informamos igualmente de que podrá contactar con nuestro Delegado de Protección de datos a través del mail <a href="mailto:dpo@unidadeditorial.es">dpo@unidadeditorial.es</a> y/o presentar una reclamación ante la Agencia Española de Protección de Datos a través de su página web <a href="https://www.aepd.es" target="_blank">www.aepd.es</a>.
+                        </p>
+                    </div>
+                    <div class="col-12">
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary text-white">
+                                {{ __('Proceder al pago') }}
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </form>
         @endif
     </div>
 @endsection

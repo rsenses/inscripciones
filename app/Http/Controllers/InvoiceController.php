@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\InvoiceCreated;
 use App\Models\Invoice;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -235,6 +236,8 @@ class InvoiceController extends Controller
                 $invoice->billed_at = date('Y-m-d H:i:s', strtotime($import[2]));
 
                 $invoice->save();
+
+                InvoiceCreated::dispatch($invoice);
             } else {
                 $errors[$index]['id'] = $import[0];
                 $errors[$index]['price'] = $finalPrice;

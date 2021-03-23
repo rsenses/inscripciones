@@ -1,13 +1,15 @@
 Estimado D./ Dña. {{ $checkout->user->full_name }}
 
-Ha confirmado que desea realizar el pago por transferencia.
+Ha seleccionado transferencia bancaria como método de pago. Para reservar su plaza debe realizar una transferencia con los siguientes datos:
 
-Le indicamos a continuación los datos bancarios para poder realizar el pago:
-          
->>Datos bancarios 
->>Número de cuenta 
-
-Envíenos el  justificante al siguiente correo: lorem ipsum (confirmar con financiero)
+Importe: {{ $checkout->amount }}€
+Titular de la cuenta: U.E.INFOR. ECONÓM. S.L.U
+Concepto de transferencia: Asistencia {{ $checkout->product->mode === 'online' ? 'Online' : 'Presencial' }} {{ $checkout->user->full_name }} {{ $checkout->invoice->number }}
+Nombre del Banco: Bankinter
+Cuenta 42 0128 6035 77 0100000587
+******
+IBAN: ES 42 0128 6035 77 0100000587
+BIC: SWIFT BKBKESMMXXX
 
 Atentamente,
 

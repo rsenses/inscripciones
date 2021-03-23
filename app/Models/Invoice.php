@@ -34,12 +34,4 @@ class Invoice extends Model
     {
         return $this->belongsTo(Checkout::class);
     }
-
-    /**
-     * Get the invoice's owner.
-     */
-    public function user()
-    {
-        return $this->hasOneThrough(User::class, Checkout::class);
-    }
 }

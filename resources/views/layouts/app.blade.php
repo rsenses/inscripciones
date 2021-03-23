@@ -109,9 +109,31 @@
                 <main class="py-4">
                     @yield('content')
                 </main>
+
+                @guest
+                    <footer class="mt-5 mb-5">
+                        <div class="container">
+                            <div class="row align-self-end">
+                                <div class="col-12 col-md-6 text-center text-md-left">
+                                    &copy;{{ date('Y') }} Unidad Editorial Información Económica S.L.
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <ul class="list-inline text-center text-sm-right">
+                                        <li class="list-inline-item"><a class="text-xs-center" target="_blank" href="{{ route('terminos-y-condiciones') }}">Términos y condiciones</a></li>
+                                        <li class="list-inline-item"><a class="text-xs-center js-uecookiespolicy-preferences-show" href="http://cookies.unidadeditorial.es" target="_blank">Política de cookies</a></li>
+                                     </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                @endguest
             </div>
         </div>
     </div>
+
+    <script type="text/javascript" language="javascript" src="https://e00-ue.uecdn.es/cookies/js/policy_v3_utf8.js"></script>
+    <script type="text/javascript" src="https://sdk.privacy-center.org/loader.js" data-key="03f1af55-a479-4c1f-891a-7481345171ce" id="spcloader" async></script>
+    <script type="text/javascript" language="javascript" src="https://e00-ue.uecdn.es/cookies/js/gdpr_dfp.js"></script>
     <script>
         document.getElementById('menu-toggle').onclick = function () {
             var element = document.getElementById('wrapper');

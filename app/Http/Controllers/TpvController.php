@@ -15,6 +15,7 @@ class TpvController extends Controller
 {
     public function notify(Request $request, Checkout $checkout)
     {
+        Log::debug($request->all);
         try {
             $company = $checkout->product->partners[0];
             $key = $company->merchant_key;
@@ -25,14 +26,15 @@ class TpvController extends Controller
             $DsResponse = $parameters['Ds_Response'];
             $DsResponse += 0;
 
+            Log::debug($parameters);
+
             if ($redsys->check($key, $request->all()) && $DsResponse <= 99) {
-                $checkout->method = $request->method === 'transfer' ?: 'card';
+                $checkout->method = 'card';
+                $checkout->save();
 
-                if ($request->method !== 'transfer') {
-                    $checkout->pay();
-                }
+                $checkout->pay();
 
-                // Cambiar STATUS de la inscripción
+                $checkout->registration->pay();
 
                 // Evento compra confirmada para mandar email
             } else {

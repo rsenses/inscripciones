@@ -46,7 +46,7 @@
                                         <div class="card">
                                             <div class="card-body">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="address_id" id="address{{ $index }}" value="{{ $address->id }}" required>
+                                                    <input class="form-check-input" type="radio" name="address_id" id="address{{ $index }}" value="{{ $address->id }}">
                                                     <label class="form-check-label" for="address{{ $index }}">
                                                         {{ $address->name }} <small class="text-info">{{ $address->tax_id }}, {{ $address->street }} {{ $address->zip }} ({{ $address->city }})</small>
                                                     </label>
@@ -66,7 +66,7 @@
                                     <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Pagador') }}</label>
 
                                     <div class="col-md-8">
-                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
 
                                         @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -80,7 +80,7 @@
                                     <label for="tax_id" class="col-md-4 col-form-label text-md-right">{{ __('DNI') }}</label>
 
                                     <div class="col-md-3">
-                                        <select class="custom-select @error('tax_type') is-invalid @enderror" required="required" id="tax_type" name="tax_type">
+                                        <select class="custom-select @error('tax_type') is-invalid @enderror" id="tax_type" name="tax_type">
                                             <option value="CIF" {{ old('tax_type') === 'CIF' ? 'selected' : '' }}>CIF</option>
                                             <option value="NIF" {{ old('tax_type') === 'NIF' ? 'selected' : '' }}>NIF</option>
                                             <option value="NIE" {{ old('tax_type') === 'NIE' ? 'selected' : '' }}>NIE</option>
@@ -96,7 +96,7 @@
                                     </div>
 
                                     <div class="col-md-5">
-                                        <input id="tax_id" type="text" class="form-control @error('tax_id') is-invalid @enderror" name="tax_id" value="{{ old('tax_id') }}" required autocomplete="tax_id">
+                                        <input id="tax_id" type="text" class="form-control @error('tax_id') is-invalid @enderror" name="tax_id" value="{{ old('tax_id') }}" autocomplete="tax_id">
 
                                         @error('tax_id')
                                         <span class="invalid-feedback" role="alert">
@@ -110,7 +110,7 @@
                                     <label for="street" class="col-md-4 col-form-label text-md-right">{{ __('Dirección') }}</label>
 
                                     <div class="col-md-8">
-                                        <input id="street" type="text" class="form-control @error('street') is-invalid @enderror" name="street" value="{{ old('street') }}" required autocomplete="street">
+                                        <input id="street" type="text" class="form-control @error('street') is-invalid @enderror" name="street" value="{{ old('street') }}" autocomplete="street">
 
                                         @error('street')
                                         <span class="invalid-feedback" role="alert">
@@ -124,7 +124,7 @@
                                     <label for="street_number" class="col-md-4 col-form-label text-md-right">{{ __('Número') }}</label>
 
                                     <div class="col-md-8">
-                                        <input id="street_number" type="text" class="form-control @error('street_number') is-invalid @enderror" name="street_number" value="{{ old('street_number') }}" required autocomplete="street_number">
+                                        <input id="street_number" type="text" class="form-control @error('street_number') is-invalid @enderror" name="street_number" value="{{ old('street_number') }}" autocomplete="street_number">
 
                                         @error('street_number')
                                         <span class="invalid-feedback" role="alert">
@@ -138,7 +138,7 @@
                                     <label for="zip" class="col-md-4 col-form-label text-md-right">{{ __('Código postal') }}</label>
 
                                     <div class="col-md-4">
-                                        <input id="zip" type="text" class="form-control @error('zip') is-invalid @enderror" name="zip" value="{{ old('zip') }}" required autocomplete="zip">
+                                        <input id="zip" type="text" class="form-control @error('zip') is-invalid @enderror" name="zip" value="{{ old('zip') }}" autocomplete="zip">
 
                                         @error('zip')
                                         <span class="invalid-feedback" role="alert">
@@ -152,7 +152,7 @@
                                     <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('Ciudad') }}</label>
 
                                     <div class="col-md-8">
-                                        <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autocomplete="city">
+                                        <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" autocomplete="city">
 
                                         @error('city')
                                         <span class="invalid-feedback" role="alert">
@@ -166,7 +166,7 @@
                                     <label for="state" class="col-md-4 col-form-label text-md-right">{{ __('Provincia') }}</label>
 
                                     <div class="col-md-8">
-                                        <select class="custom-select @error('state') is-invalid @enderror" name="state" id="state" required>
+                                        <select class="custom-select @error('state') is-invalid @enderror" name="state" id="state">
                                             <option value="" selected disabled>-- Selecciona provincia --</option>
                                             <optgroup label="Extranjero">
                                                 <option value="Extranjero" {{ old('state') === 'Extranjero' ? 'selected' : '' }}>Resido fuera de España</option>
@@ -239,7 +239,7 @@
                                     <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Pais') }}</label>
 
                                     <div class="col-md-8">
-                                        <select class="custom-select @error('country') is-invalid @enderror" required="required" id="country" name="country">
+                                        <select class="custom-select @error('country') is-invalid @enderror" id="country" name="country">
                                             <option value="AF" {{ old('country') === 'AF' ? 'selected' : '' }}>Afganistán</option>
                                             <option value="AL" {{ old('country') === 'AL' ? 'selected' : '' }}>Albania</option>
                                             <option value="DE" {{ old('country') === 'DE' ? 'selected' : '' }}>Alemania</option>

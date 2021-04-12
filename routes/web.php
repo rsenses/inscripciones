@@ -41,7 +41,7 @@ Route::post('tpv/notify/{checkout}', [TpvController::class, 'notify'])->name('tp
 Route::get('tpv/success/{checkout}', [TpvController::class, 'success'])->name('tpv.success');
 Route::get('tpv/error/{checkout}', [TpvController::class, 'error'])->name('tpv.error');
 
-require __DIR__.'/auth.php';
+// require __DIR__.'/auth.php';
 
 Auth::routes();
 

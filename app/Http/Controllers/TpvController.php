@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\CheckoutPaid;
 use App\Models\Checkout;
+use App\Models\Registration;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Sermepa\Tpv\Tpv;
@@ -34,9 +35,12 @@ class TpvController extends Controller
 
                 $checkout->pay();
 
-                $checkout->registration->pay();
+                $registration = Registration::where('user_id', $checkout->user_id)
+                    ->where('product_id', $checkout->product_id)
+                    ->where('status', 'accepted')
+                    ->first();
 
-                // Evento compra confirmada para mandar email
+                $registration->pay();
             } else {
                 $newCheckout = $checkout->replicate();
 

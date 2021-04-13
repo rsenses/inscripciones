@@ -33,6 +33,7 @@ class CreateCheckout
 
         $checkout = Checkout::where('user_id', $registration->user_id)
             ->where('product_id', $registration->product_id)
+            ->where('status', '!=', 'disabled')
             ->first();
 
         if(!$checkout) {

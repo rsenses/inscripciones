@@ -57,6 +57,7 @@ class CheckoutController extends Controller
 
         $checkout = Checkout::where('id', $checkout->id)
             ->where('token', $request->t)
+            ->where('status', '!=', 'disabled')
             ->first();
 
         return view('checkouts.show', [

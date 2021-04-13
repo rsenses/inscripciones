@@ -42,7 +42,7 @@ class TpvController extends Controller
 
                 $newCheckout->push();
 
-                $checkout->delete();
+                $checkout->disable();
             }
         } catch (TpvException $e) {
             Log::debug($e->getMessage());
@@ -78,6 +78,13 @@ class TpvController extends Controller
 
         /*     $checkout = $newCheckout; */
         /* } */
+
+        if ($checkout->status === 'disabled') {
+            $checkout = Checkout::where('user_id', $checkout->user_id)
+                ->where('product_id', $checkout->product_id)
+                ->where('status', '!=', 'disabled')
+                ->first();
+        }
 
         return view('payments.error', [
             'checkout' => $checkout

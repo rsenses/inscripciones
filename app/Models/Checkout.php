@@ -82,6 +82,13 @@ class Checkout extends Model
         return $checkout;
     }
 
+    public function disable()
+    {
+        $checkout = $this->changeStatus('disabled');
+
+        return $checkout;
+    }
+
     public function pay()
     {
         $checkout = $this->changeStatus('paid');

@@ -32,7 +32,7 @@
           • Zona de preguntas en directo.<br>
           • Actualizaciones de última hora.
           </mj-text>
-          <mj-button href="calendario" background-color="#f45e43" color="white">
+          <mj-button href="{{ route('calendar.show', ['product' => $checkout->product]) }}" background-color="#f45e43" color="white">
             Incluir evento en mi calendario
           </mj-button>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Esperamos que disfrute del evento,</mj-text>

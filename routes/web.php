@@ -3,6 +3,7 @@
 use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\UserController;
@@ -41,7 +42,8 @@ Route::post('tpv/notify/{checkout}', [TpvController::class, 'notify'])->name('tp
 Route::get('tpv/success/{checkout}', [TpvController::class, 'success'])->name('tpv.success');
 Route::get('tpv/error/{checkout}', [TpvController::class, 'error'])->name('tpv.error');
 
-// require __DIR__.'/auth.php';
+// Calendar
+Route::get('/calendar/{product}', [CalendarController::class, 'show'])->name('calendar.show');
 
 Auth::routes();
 

@@ -24,7 +24,7 @@
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">
           Importe: {{ $checkout->amount }}€<br>
           Titular de la cuenta: U.E.INFOR. ECONÓM. S.L.U<br>
-          Concepto de transferencia: Asistencia {{ $checkout->product->mode === 'online' ? 'Online' : 'Presencial' }} {{ $checkout->user->full_name }} {{ $checkout->invoice->number }}<br>
+          Concepto de transferencia: Asistencia {{ $checkout->product->mode === 'online' ? 'Online' : 'Presencial' }} {{ $checkout->user->full_name }} {{ $checkout->id }}<br>
           Nombre del Banco: Bankinter<br>
           Cuenta 42 0128 6035 77 0100000587<br>
           ******<br>

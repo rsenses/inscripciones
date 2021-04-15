@@ -34,7 +34,7 @@
                 </div>
             </div>
         @else
-            <form method="POST" action="{{ route('checkouts.update', ['checkout' => $checkout]) }}">
+            <form method="POST" action="{{ route('checkouts.update', ['checkout' => $checkout]) }}" id="invoice-data">
                 <div class="row justify-content-center">
                     @if($addresses->count())
                         <div class="col-12 col-sm-6 mb-4">
@@ -84,7 +84,6 @@
                                             <option value="CIF" {{ old('tax_type') === 'CIF' ? 'selected' : '' }}>CIF</option>
                                             <option value="NIF" {{ old('tax_type') === 'NIF' ? 'selected' : '' }}>NIF</option>
                                             <option value="NIE" {{ old('tax_type') === 'NIE' ? 'selected' : '' }}>NIE</option>
-                                            <option value="Pasaporte" {{ old('tax_type') === 'Pasaporte' ? 'selected' : '' }}>Pasaporte</option>
                                             <option value="Extranjero" {{ old('tax_type') === 'Extranjero' ? 'selected' : '' }}>Extranjero</option>
                                         </select>
 
@@ -510,4 +509,56 @@
             </form>
         @endif
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        document.getElementById('tax_type').addEventListener("change", function(e) {
+            var state = document.getElementById('state');
+            var country = document.getElementById('country');
+            if (e.target.value == "Extranjero") {
+                state.value = 'Extranjero';
+                state.disabled = true;
+
+                var input = document.createElement("input");
+
+                input.setAttribute("type", "hidden");
+                input.setAttribute("name", "state");
+                input.setAttribute("value", "Extranjero");
+                input.setAttribute("id", "h_state");
+                //append to form element that you want .
+                document.getElementById('invoice-data').appendChild(input);
+
+                country.childNodes.forEach(function(element, index){
+                    if (element.value === 'ES') {
+                        element.classList.add('d-none');
+                        element.disabled = true;
+                    }
+                })
+                country.value = 'FR';
+            } else {
+                state.value = '';
+                state.disabled = false;
+
+                country.childNodes.forEach(function(element, index){
+                    if (element.value === 'ES') {
+                        element.classList.remove('d-none');
+                        element.disabled = false;
+                    }
+                })
+                country.value = 'ES';
+            }
+        });
+
+        document.getElementById('invoice-data').addEventListener("input", function(e) {
+            if (e.target.getAttribute("type") != "radio" && e.target.getAttribute('type') != 'checkbox') {
+                var radios = document.getElementsByTagName('input');
+                for (i=0; i < radios.length; i++) {
+                    if (radios[i].getAttribute("type") == "radio") {
+                        radios[i].checked = false;
+                    }
+                }
+            }
+        });
+    </script>
 @endsection

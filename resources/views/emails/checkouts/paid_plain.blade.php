@@ -14,7 +14,7 @@ https://foro.expansion.com
 • Zona de preguntas en directo.
 • Actualizaciones de última hora.
 
-Incluir evento en mi calendario:
+Incluir evento en mi calendario: {{ route('calendar.show', ['product' => $checkout->product]) }}
 
 Esperamos que disfrute del evento,
 Relaciones Institucionales

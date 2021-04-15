@@ -58,6 +58,8 @@ class AuthController extends Controller
             ]);
         }
 
+        // Añadir comprobación de pago del evento
+
         return response([
             'user' => $user,
             'access_token' => $user->createToken('Auth Token')->accessToken

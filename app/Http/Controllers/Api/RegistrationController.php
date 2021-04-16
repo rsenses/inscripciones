@@ -27,10 +27,8 @@ class RegistrationController extends Controller
                 'required',
                 'exists:products,id',
                 Rule::unique('registrations')->where(function ($query) use($request) {
-                    $user = User::find($request->user_id);
-
-                    return $query->where('user_id', $user->id)
-                    ->where('product_id', $request->product_id);
+                    return $query->where('user_id', $request->user_id)
+                        ->where('product_id', $request->product_id);
                 }),
             ],
         ]);

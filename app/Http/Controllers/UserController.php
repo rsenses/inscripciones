@@ -67,6 +67,7 @@ class UserController extends Controller
             'phone' => $request->phone,
             'company' => $request->company,
             'position' => $request->position,
+            'role' => $request->role,
         ]);
 
         return redirect()->route('users.show', ['user' => $user]);

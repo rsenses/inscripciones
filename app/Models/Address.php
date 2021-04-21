@@ -24,6 +24,9 @@ class Address extends Model
         'city',
         'country',
         'state',
+        'ofcont',
+        'gestor',
+        'untram'
     ];
 
     /**

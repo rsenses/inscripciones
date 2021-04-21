@@ -26,7 +26,8 @@
           </mj-button>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">
           @if($invoice->checkout->status != 'paid')
-            Rogamos haga efectivo el pago de la factura a treinta días fecha factura y cómo mínimo 24 horas antes del comienzo del evento.
+              Rogamos haga efectivo el pago de la factura a la mayor brevedad posible dentro de las próximas 48 horas.<br>
+              Por favor, envíenos el justificante de la transferencia a <a href="mailto:foro.expansion@unidadeditorial.es">foro.expansion@unidadeditorial.es</a>.
           @endif
           </mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Atentamente,</mj-text>

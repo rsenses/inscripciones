@@ -87,11 +87,11 @@ class InvoiceController extends Controller
 
                 if ($checkout->method === 'transfer') {
                     $method = 7;
-                    $conditions = 'ZU06';
                 } else {
                     $method = 6;
-                    $conditions = 'ZU01';
                 }
+
+                $conditions = 'ZU01';
 
                 $concept = substr(strip_tags(trim(preg_replace('/\t+/', '', $checkout->product->name))), 0, 132);
 
@@ -180,9 +180,9 @@ class InvoiceController extends Controller
                     ' ',
                     ' ',
                     ' ',
-                    ' ',
-                    ' ',
-                    ' ',
+                    $address->ofcont ? $address->ofcont : ' ',
+                    $address->gestor ? $address->gestor : ' ',
+                    $address->untram ? $address->untram : ' ',
                 ];
 
                 $invoice->billed_at = Carbon::now();

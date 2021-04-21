@@ -22,5 +22,9 @@ Route::prefix('v1')->group(function () {
     Route::middleware(['auth:api'])->group(function () {
         Route::post('/logout', 'App\Http\Controllers\Api\AuthController@logout');
         Route::get('/products/{product}', 'App\Http\Controllers\Api\ProductController@show');
+
+        // Específico del Foro
+        Route::get('/ii-foro/streaming', 'App\Http\Controllers\Api\IIForoController@streaming');
+        Route::get('/ii-foro/registrations', 'App\Http\Controllers\Api\IIForoController@registrations');
     });
 });

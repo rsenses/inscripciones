@@ -24,10 +24,9 @@
                         <td>{{ $registration->product->name }}</td>
                     @else
                         <td class="alert {{ $registration->status === 'accepted' ? 'alert-info' : ($registration->status === 'paid' ? 'alert-success' : ($registration->status === 'rejected' ? 'alert-danger' : ($registration->status === 'cancelled' ? 'alert-warning' : ''))) }}">
-                        <i class="ion 
-                        {{ $registration->status === 'accepted' ? 'ion-thumbsup' : ($registration->status === 'paid' ? 'ion-cash' : ($registration->status === 'rejected' ? 'ion-thumbsdown' : ($registration->status === 'cancelled' ? 'ion-close-circled' : ''))) }}" aria-hidden="true"></i>&ensp;
-                        
-                        {{ ucfirst($registration->status) }}</td>
+                        {{-- <i class="ion {{ $registration->status === 'accepted' ? 'ion-thumbsup' : ($registration->status === 'paid' ? 'ion-cash' : ($registration->status === 'rejected' ? 'ion-thumbsdown' : ($registration->status === 'cancelled' ? 'ion-close-circled' : ''))) }}" aria-hidden="true"></i> --}}
+                        {{ ucfirst($registration->status) }}
+                        </td>
                     @endif
                     <td>{{ $registration->created_at->format('d-m-Y / H:i' ) }}</td>
                     <td>{{ $registration->user->full_name }}</td>

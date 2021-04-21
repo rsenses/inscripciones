@@ -31,7 +31,7 @@
           IBAN: ES 42 0128 6035 77 0100000587<br>
           BIC: SWIFT BKBKESMMXXX
           </mj-text>
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Envíenos el justificante de la transferencia respondiendo a este email.</mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Por favor, envíenos el justificante de la transferencia respondiendo a este email.</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Atentamente,</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Relaciones Institucionales<br><strong>Expansión</strong></mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a"><small>Más información: <a href="mailto:foro.expansion@unidadeditorial.es">foro.expansion@unidadeditorial.es</a></small></mj-text>

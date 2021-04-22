@@ -26,22 +26,25 @@
                         </div>
                         <div class="justify-content-center">
                             <div class="col-12">
-                                <div class="alert alert-success">
-                                    Compra realizada correctamente.<br>
-                                    En unos instantes recibirá un email con los detalles de la misma.<br>
-                                </div>
                                 @if($checkout->method != 'card')
-                                    <p>Estos son los datos necesarios para realizar la transferencia.</p>
-                                    <p>
-                                        <strong>Beneficiario</strong>: Unidad Editorial Formación S.L.<br>
-                                        <strong>Cuenta destino</strong>: BBVA - IBAN: ES74 0182 3999 3802 0151 9985
-                                        SWIFT: BBVAESMMXXX<br>
-                                        <strong class="text-danger">Imprescindible</strong>: <strong>Indicar</strong> en
-                                        el concepto el número de la factura proforma y antes del inicio <strong>enviar
-                                            justificante de pago</strong> a <a
-                                            href="mailto:foro.expansion@unidadeditorial.es?subject=Justificante de pago {{ $checkout->proforma }}"
-                                            class="btn-link">foro.expansion@unidadeditorial.es</a>.
-                                    </p>
+                                    <div class="alert alert-success">
+                                        Inscripción realizada correctamente.<br>
+                                        En unos instantes recibirá un email con los detalles de la misma.<br>
+                                    </div>
+                                    <p>Para reservar su plaza debe realizar una transferencia con los siguientes datos:</mj-text>
+                                    <p>Importe: {{ $checkout->amount }}€<br>
+                                      Titular de la cuenta: U.E.INFOR. ECONÓM. S.L.U<br>
+                                      Concepto de transferencia: Asistencia {{ $checkout->product->mode === 'online' ? 'Online' : 'Presencial' }} {{ $checkout->user->full_name }} {{ $checkout->id }}<br>
+                                      Nombre del Banco: Bankinter<br>
+                                      Cuenta 42 0128 6035 77 0100000587<br>
+                                      ******<br>
+                                      IBAN: ES 42 0128 6035 77 0100000587<br>
+                                      BIC: SWIFT BKBKESMMXXX</p>
+                                @else
+                                    <div class="alert alert-success">
+                                        Compra realizada correctamente.<br>
+                                        En unos instantes recibirá un email con los detalles de la misma.<br>
+                                    </div>
                                 @endif
                                 <p class="text-center">
                                     <a href="{{ $checkout->product->url }}" class="btn btn-info">

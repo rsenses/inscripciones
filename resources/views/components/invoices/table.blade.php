@@ -17,7 +17,7 @@
                         <i class="ion-cash" aria-hidden="true"></i>&ensp;
                         {{ $invoice->checkout->status == 'paid' ? 'Pagado' : 'Pendiente' }}
                     </td>
-                    <td>{{ $invoice->checkout->amount }} €<br><span class="badge badge-info">{{ $invoice->checkout->method == 'card' ? 'Tarjeta' : 'Transferencia' }}</span></td>
+                    <td>{{ $invoice->checkout->amount }} €<br><span class="badge badge-info">{{ $invoice->checkout->method == 'card' ? 'Tarjeta' : 'Transferencia' }} {{ $invoice->checkout->id }}</span></td>
                     <td>{{ $invoice->checkout->product->name }}</td>
                     <td>{{ $invoice->checkout->user->full_name }}</td>
                     <td>

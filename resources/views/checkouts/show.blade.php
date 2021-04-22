@@ -95,7 +95,7 @@
                                     </div>
 
                                     <div class="col-md-5">
-                                        <input id="tax_id" type="text" class="form-control @error('tax_id') is-invalid @enderror" name="tax_id" value="{{ old('tax_id') }}" autocomplete="tax_id">
+                                        <input id="tax_id" type="text" class="form-control @error('tax_id') is-invalid @enderror" name="tax_id" value="{{ old('tax_id') }}" autocomplete="tax_id" maxlength="32">
 
                                         @error('tax_id')
                                         <span class="invalid-feedback" role="alert">
@@ -123,7 +123,7 @@
                                     <label for="street_number" class="col-md-4 col-form-label text-md-right">{{ __('Número') }}</label>
 
                                     <div class="col-md-8">
-                                        <input id="street_number" type="text" class="form-control @error('street_number') is-invalid @enderror" name="street_number" value="{{ old('street_number') }}" autocomplete="street_number">
+                                        <input id="street_number" type="text" class="form-control @error('street_number') is-invalid @enderror" name="street_number" value="{{ old('street_number') }}" autocomplete="street_number" maxlength="100">
 
                                         @error('street_number')
                                         <span class="invalid-feedback" role="alert">
@@ -137,7 +137,7 @@
                                     <label for="zip" class="col-md-4 col-form-label text-md-right">{{ __('Código postal') }}</label>
 
                                     <div class="col-md-4">
-                                        <input id="zip" type="text" class="form-control @error('zip') is-invalid @enderror" name="zip" value="{{ old('zip') }}" autocomplete="zip">
+                                        <input id="zip" type="text" class="form-control @error('zip') is-invalid @enderror" name="zip" value="{{ old('zip') }}" autocomplete="zip" maxlength="100">
 
                                         @error('zip')
                                         <span class="invalid-feedback" role="alert">
@@ -151,7 +151,7 @@
                                     <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('Ciudad') }}</label>
 
                                     <div class="col-md-8">
-                                        <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" autocomplete="city">
+                                        <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" autocomplete="city" maxlength="100">
 
                                         @error('city')
                                         <span class="invalid-feedback" role="alert">

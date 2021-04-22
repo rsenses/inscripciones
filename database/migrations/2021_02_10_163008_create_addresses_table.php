@@ -20,8 +20,8 @@ class CreateAddressesTable extends Migration
             $table->string('tax_type')->default('CIF'); // 'CIF','NIF','NIE','Pasaporte','Extranjero'
             $table->string('tax_id', 32);
             $table->string('street');
-            $table->string('street_address', 10);
-            $table->string('zip', 10);
+            $table->string('street_address', 100);
+            $table->string('zip', 100);
             $table->string('city', 100);
             $table->string('state');
             $table->string('country');

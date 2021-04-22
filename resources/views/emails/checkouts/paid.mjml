@@ -20,9 +20,9 @@
       <mj-section padding="0 0 30px">
         <mj-column width="500px">
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Estimado D./ Dña. <strong>{{ $checkout->user->full_name }}</strong></mj-text>
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a"><strong>Bienvenido al {{ $checkout->product->name }}</strong>.</mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a"><strong>Le damos la bienvenida al {{ $checkout->product->name }}</strong>.</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Su inscripción ha sido confirmada y ya puede acceder a la zona privada del site del Foro.</mj-text>
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">A través del siguiente enlace podrá acceder a toda la información relativa al encuentro:</mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">A través del siguiente enlace podrá acceder a toda la información relativa al evento:</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a"><a href="https://foro.expansion.com">https://foro.expansion.com</a></mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">
           • Cómo llegar.<br>
@@ -33,7 +33,7 @@
           • Actualizaciones de última hora.
           </mj-text>
           <mj-button href="{{ route('calendar.show', ['product' => $checkout->product]) }}" background-color="#f45e43" color="white">
-            Incluir evento en mi calendario
+            Incluir en mi calendario
           </mj-button>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Esperamos que disfrute del evento,</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Relaciones Institucionales<br><strong>Expansión</strong></mj-text>

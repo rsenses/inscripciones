@@ -26,7 +26,6 @@ class AuthController extends Controller
             'phone' => ['nullable', 'string', 'max:255'],
             'company' => ['nullable', 'string', 'max:255'],
             'position' => ['nullable', 'string', 'max:255'],
-            'advertising' => ['required', 'boolean']
         ]);
 
         $user = User::create([
@@ -37,7 +36,6 @@ class AuthController extends Controller
             'phone' => $request->phone,
             'company' => $request->company,
             'position' => $request->position,
-            'advertising' => $request->advertising,
         ]);
 
         return response()->json($user);

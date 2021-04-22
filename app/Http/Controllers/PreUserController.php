@@ -47,6 +47,7 @@ class PreUserController extends Controller
             'company' => ['nullable', 'string', 'max:255'],
             'position' => ['nullable', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'advertising' => ['required', 'boolean']
         ]);
 
         $user->update([
@@ -57,7 +58,8 @@ class PreUserController extends Controller
             'phone' => $request->phone,
             'company' => $request->company,
             'position' => $request->position,
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
+            'advertising' => $request->advertising,
         ]);
 
         return redirect($request->redirect);

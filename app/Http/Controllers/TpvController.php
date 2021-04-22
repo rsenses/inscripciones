@@ -16,7 +16,6 @@ class TpvController extends Controller
 {
     public function notify(Request $request, Checkout $checkout)
     {
-        Log::debug($request->all);
         try {
             $company = $checkout->product->partners[0];
             $key = $company->merchant_key;
@@ -26,8 +25,6 @@ class TpvController extends Controller
             $parameters = $redsys->getMerchantParameters($request->Ds_MerchantParameters);
             $DsResponse = $parameters['Ds_Response'];
             $DsResponse += 0;
-
-            Log::debug($parameters);
 
             if ($redsys->check($key, $request->all()) && $DsResponse <= 99) {
                 $checkout->method = 'card';
@@ -57,8 +54,6 @@ class TpvController extends Controller
 
     public function success(Checkout $checkout)
     {
-        CheckoutPaid::dispatch($checkout);
-
         return view('payments.success', [
             'checkout' => $checkout
         ]);

@@ -35,10 +35,10 @@
             </div>
         @else
             <form method="POST" action="{{ route('checkouts.update', ['checkout' => $checkout]) }}" id="invoice-data">
+                @csrf
                 <div class="row justify-content-center">
                     @if($addresses->count())
                         <div class="col-12 col-sm-6 mb-4">
-                            @csrf
                             <div class="card bg-light">
                                     <p class="card-header">Puedes usar una de estas direcciones de facturación, o si lo prefieres, crear una nueva en el siguiente panel</p>
                                 <div class="card-body">

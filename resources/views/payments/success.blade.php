@@ -28,18 +28,9 @@
                             <div class="col-12">
                                 @if($checkout->method != 'card')
                                     <div class="alert alert-success">
-                                        Inscripción realizada correctamente.<br>
-                                        En unos instantes recibirá un email con los detalles de la misma.<br>
+                                        Registro realizada correctamente.<br>
+                                        En breve le llegará un email con las indicaciones para poder completar el pago mediante transferencia bancaria.
                                     </div>
-                                    <p>Para reservar su plaza debe realizar una transferencia con los siguientes datos:</mj-text>
-                                    <p>Importe: {{ $checkout->amount }}€<br>
-                                      Titular de la cuenta: U.E.INFOR. ECONÓM. S.L.U<br>
-                                      Concepto de transferencia: Asistencia {{ $checkout->product->mode === 'online' ? 'Online' : 'Presencial' }} {{ $checkout->user->full_name }} {{ $checkout->id }}<br>
-                                      Nombre del Banco: Bankinter<br>
-                                      Cuenta 42 0128 6035 77 0100000587<br>
-                                      ******<br>
-                                      IBAN: ES 42 0128 6035 77 0100000587<br>
-                                      BIC: SWIFT BKBKESMMXXX</p>
                                 @else
                                     <div class="alert alert-success">
                                         Compra realizada correctamente.<br>

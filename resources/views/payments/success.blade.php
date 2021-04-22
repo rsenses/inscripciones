@@ -30,7 +30,7 @@
                                     Compra realizada correctamente.<br>
                                     En unos instantes recibirá un email con los detalles de la misma.<br>
                                 </div>
-                                @if($checkout->method === 'transfer')
+                                @if($checkout->method != 'card')
                                     <p>Estos son los datos necesarios para realizar la transferencia.</p>
                                     <p>
                                         <strong>Beneficiario</strong>: Unidad Editorial Formación S.L.<br>

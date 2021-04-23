@@ -19,7 +19,7 @@
       </mj-section>
       <mj-section padding="0 0 30px">
         <mj-column width="500px">
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Estimad@. <strong>{{ $checkout->user->full_name }}</strong></mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Estimad@ <strong>{{ $checkout->user->full_name }}</strong></mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Su solicitud para asistir al <strong>{{ $checkout->product->name }}</strong> ha sido <strong>aceptada</strong>.</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Para proceder al pago y confirmar su asistencia registrese en el siguiente enlace y complete su inscripción:</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">

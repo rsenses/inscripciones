@@ -1,4 +1,4 @@
-Estimad@. {{ $checkout->user->full_name }}
+Estimad@ {{ $checkout->user->full_name }}
 
 Su solicitud para asistir al {{ $checkout->product->name }} ha sido aceptada.
 

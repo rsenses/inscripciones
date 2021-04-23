@@ -19,7 +19,7 @@
       </mj-section>
       <mj-section padding="0 0 30px">
         <mj-column width="500px">
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Estimad@. <strong>{{ $registration->user->full_name }}</strong></mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Estimad@ <strong>{{ $registration->user->full_name }}</strong></mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Su solicitud para asistir al <strong>{{ $registration->product->name }}</strong> ha sido registrada correctamente.</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">En breve nos pondremos en contacto con usted para confirmar si su solicitud ha sido aceptada.</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Le recordamos que el aforo es limitado y por riguroso orden de inscripción.</mj-text>

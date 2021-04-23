@@ -19,7 +19,7 @@
       </mj-section>
       <mj-section padding="0 0 30px">
         <mj-column width="500px">
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Estimad@. <strong>{{ $invoice->checkout->user->full_name }}</strong></mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Estimad@ <strong>{{ $invoice->checkout->user->full_name }}</strong></mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Adjunto enviamos el duplicado de su factura de asistencia al {{ $invoice->checkout->product->name }}.</mj-text>
           <mj-button href="https://eventosue.com/invoices/{{ $invoice->number }}.pdf" background-color="#f45e43" color="white">
             Descargar factura

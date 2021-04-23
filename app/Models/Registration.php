@@ -50,7 +50,8 @@ class Registration extends Model
     /**
      * Get the checkout associated with the registration.
      */
-    public function checkout() {
+    public function checkout()
+    {
         return Checkout::where('user_id', $this->user_id)
             ->where('product_id', $this->product->id)
             ->where('status', '!=', 'disabled')
@@ -118,7 +119,7 @@ class Registration extends Model
 
         $checkout = $registration->checkout();
 
-        if ($checkout) {
+        if ($checkout && $checkout->status === 'accepted') {
             $checkout->pay();
         }
 

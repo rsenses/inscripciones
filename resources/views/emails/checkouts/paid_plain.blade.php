@@ -9,7 +9,7 @@ https://foro.expansion.com
 
 • Cómo llegar.
 • Programa y ponentes. 
-• Listado de asistentes (pendiente AAJJ).
+• Listado de asistentes.
 • Protocolo Covid.
 • Zona de preguntas en directo.
 • Actualizaciones de última hora.

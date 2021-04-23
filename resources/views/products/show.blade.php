@@ -14,13 +14,11 @@
     @endif
     <div class="row mb-5 align-items-stretch">
         <div class="col col-sm-4">
-        <div class="card bg-light h-100">
-          <div class="card-body d-flex align-items-center">
-          <p><img src="{{ asset('storage/' . $product->image) }}"
-                    alt="El producto no tiene imagen" class="img-fluid"></p>
-          </div>
-        </div>
-            
+            <div class="card bg-light h-100">
+              <div class="card-body d-flex align-items-center">
+              <p><img src="{{ asset('storage/' . $product->image) }}" alt="El producto no tiene imagen" class="img-fluid"></p>
+              </div>
+            </div>
         </div>
         <div class="col col-sm-8">
             <div class="card text-white bg-light">

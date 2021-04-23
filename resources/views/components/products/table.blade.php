@@ -15,7 +15,7 @@
                     <td class="font-weight">{{ $product->name }}</td>
                     <td>{{ $product->start_date->format('d-m-Y / H:i' ) }}</td>
                     <td class="text-right">{{ $product->price }} €</td>
-                    <td class="text-right">{{ $product->registrations_count }}</td>
+                    <td class="text-right">{{ $product->registrations_accepted_count }}</td>
                     <td class="bg-primary text-center">
                         <a class="text-light " href="{{ route('products.show', ['product' => $product]) }}">
                             <i class="ion ion-ios-eye" aria-hidden="true"></i> Ver

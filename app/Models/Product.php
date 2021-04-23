@@ -83,4 +83,19 @@ class Product extends Model
         return $query->where('end_date', '>', Carbon::now())
             ->where('status', 'active');
     }
+
+    /**
+     * Get the user's first name.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getRegistrationsAcceptedCountAttribute($value)
+    {
+        return $this->registrations()
+            ->where('status', '!=', 'new')
+            ->where('status', '!=', 'cancelled')
+            ->where('status', '!=', 'denied')
+            ->count();
+    }
 }

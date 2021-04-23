@@ -19,7 +19,7 @@
       </mj-section>
       <mj-section padding="0 0 30px">
         <mj-column width="500px">
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Estimado D./ Dña. <strong>{{ $checkout->user->full_name }}</strong></mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Estimad@. <strong>{{ $checkout->user->full_name }}</strong></mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Hemos iniciado el proceso de cancelación de asistencia al II Foro Económico Expansión. En unos días recibirá la factura de abono.</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Una vez recibida dicha factura procederemos a realizar la devolución del importe por el mismo método de pago con el que se realizó la inscripción, en el plazo máximo de 15 días.</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Atentamente,</mj-text>

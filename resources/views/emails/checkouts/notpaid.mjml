@@ -19,7 +19,7 @@
       </mj-section>
       <mj-section padding="0 0 30px">
         <mj-column width="500px">
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Estimado D./ Dña. <strong>{{ $checkout->user->full_name }}</strong></mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Estimad@. <strong>{{ $checkout->user->full_name }}</strong></mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Ha seleccionado <strong>transferencia bancaria</strong> como método de pago. Para reservar su plaza debe realizar una transferencia con los siguientes datos:</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">
           Importe: {{ $checkout->amount }}€<br>

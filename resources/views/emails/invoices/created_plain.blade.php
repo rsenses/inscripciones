@@ -1,4 +1,4 @@
-Estimado D./ Dña. {{ $invoice->checkout->user->full_name }}
+Estimad@. {{ $invoice->checkout->user->full_name }}
 
 Adjunto enviamos el duplicado de su factura de asistencia al {{ $invoice->checkout->product->name }}.
 

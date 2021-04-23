@@ -1,4 +1,4 @@
-Estimado D./ Dña. {{ $registration->user->full_name }}
+Estimad@. {{ $registration->user->full_name }}
 
 Su solicitud para asistir al {{ $registration->product->name }} ha sido registrada correctamente.
 

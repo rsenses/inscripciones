@@ -1,4 +1,4 @@
-Estimado D./ Dña. {{ $checkout->user->full_name }}
+Estimad@. {{ $checkout->user->full_name }}
 
 Le damos la bienvenida al {{ $checkout->product->name }}.
 

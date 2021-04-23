@@ -1,4 +1,4 @@
-Estimado D./ Dña. {{ $checkout->user->full_name }}
+Estimad@. {{ $checkout->user->full_name }}
 
 Hemos iniciado el proceso de cancelación de asistencia al II Foro Económico Expansión. En unos días recibirá la factura de abono.
 

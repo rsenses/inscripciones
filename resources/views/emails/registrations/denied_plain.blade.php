@@ -1,4 +1,4 @@
-Estimado D./ Dña. {{ $registration->user->full_name }}
+Estimad@. {{ $registration->user->full_name }}
 
 Sentimos comunicarle que el aforo está completo y no es posible confirmar su inscripción.  
 

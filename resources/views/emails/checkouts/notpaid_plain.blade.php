@@ -1,4 +1,4 @@
-Estimado D./ Dña. {{ $checkout->user->full_name }}
+Estimad@. {{ $checkout->user->full_name }}
 
 Ha seleccionado transferencia bancaria como método de pago. Para reservar su plaza debe realizar una transferencia con los siguientes datos:
 

@@ -137,4 +137,13 @@ class Product extends Model
             ->where('status', 'pending')
             ->count();
     }
+
+    public function getAmountAttribute()
+    {
+        $paidRegistrations = $this->registrations()
+            ->where('status', 'paid')
+            ->count();
+
+        return $paidRegistrations * $this->price;
+    }
 }

@@ -4,7 +4,7 @@
             <tr>
                 <th>Nombre</th>
                 <th>Fecha</th>
-                <th>PVP</th>
+                <th>Ingresos</th>
                 <th>Inscripciones</th>
                 <th></th>
             </tr>
@@ -14,7 +14,7 @@
                 <tr>
                     <td class="font-weight">{{ $product->name }}</td>
                     <td>{{ $product->start_date->format('d-m-Y / H:i' ) }}</td>
-                    <td class="text-right">{{ $product->price }} €</td>
+                    <td class="text-right">{{ $product->amount }} €</td>
                     <td class="text-right">
                         Sin validar: {{ $product->new_registrations_accepted_count }}<br>
                         Aceptadas: {{ $product->registrations_accepted_count }}<br>

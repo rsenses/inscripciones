@@ -17,9 +17,9 @@
                     <td class="text-right">Pagados: {{ $product->amount }} €</td>
                     <td class="text-right">
                         Aceptadas: {{ $product->registrations_accepted_count }}<br>
-                        Sin valorar: {{ $product->new_registrations_accepted_count }}<br>
-                        Pagadas: {{ $product->paid_registrations_accepted_count }}<br>
-                        Sin pagar: {{ $product->registrations_accepted_count - $product->paid_registrations_accepted_count }}<br>
+                        Sin valorar: {{ $product->new_registrations_count }}<br>
+                        Pagadas: {{ $product->paid_registrations_count }}<br>
+                        Sin pagar: {{ $product->registrations_accepted_count - $product->paid_registrations_count }}<br>
                     </td>
                     <td class="bg-primary text-center">
                         <a class="text-light " href="{{ route('products.show', ['product' => $product]) }}">

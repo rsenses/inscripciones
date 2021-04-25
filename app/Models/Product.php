@@ -90,7 +90,7 @@ class Product extends Model
      * @param  string  $value
      * @return string
      */
-    public function getNewRegistrationsAcceptedCountAttribute($value)
+    public function getNewRegistrationsCountAttribute($value)
     {
         return $this->registrations()
             ->where('status', 'new')
@@ -118,10 +118,36 @@ class Product extends Model
      * @param  string  $value
      * @return string
      */
-    public function getPaidRegistrationsAcceptedCountAttribute($value)
+    public function getPaidRegistrationsCountAttribute($value)
     {
         return $this->checkouts()
             ->where('status', 'paid')
+            ->count();
+    }
+
+    /**
+     * Get the registrations count.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getDeniedRegistrationsCountAttribute($value)
+    {
+        return $this->registrations()
+            ->where('status', 'denied')
+            ->count();
+    }
+
+    /**
+     * Get the registrations count.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getCancelledRegistrationsCountAttribute($value)
+    {
+        return $this->checkouts()
+            ->where('status', 'cancelled')
             ->count();
     }
 

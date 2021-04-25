@@ -63,6 +63,37 @@
         </div>
     </div>
 
+    <div class="card bg-light mb-5">
+        <div class="card-body">
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <td>Sin valorar</td>
+                    <td>{{ $product->new_registrations_count }}</td>
+                </tr>
+                <tr>
+                    <td>Aceptadas</td>
+                    <td>{{ $product->registrations_accepted_count }}</td>
+                </tr>
+                <tr>
+                    <td>Denegadas</td>
+                    <td>{{ $product->denied_registrations_count }}</td>
+                </tr>
+                <tr>
+                    <td>Pagadas</td>
+                    <td>{{ $product->paid_registrations_count }}</td>
+                </tr>
+                <tr>
+                    <td>Sin pagar</td>
+                    <td>{{ $product->registrations_accepted_count - $product->paid_registrations_count }}</td>
+                </tr>
+                <tr>
+                    <td>Canceladas</td>
+                    <td>{{ $product->cancelled_registrations_count }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
     <div class="card bg-light">
         <div class="card-body">
             <h2 class="card-title text-primary">Inscripciones</h2>

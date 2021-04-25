@@ -36,7 +36,7 @@ class Product extends Model
         'end_date',
     ];
 
-        /**
+    /**
      * The "booted" method of the model.
      *
      * @return void
@@ -120,27 +120,14 @@ class Product extends Model
      */
     public function getPaidRegistrationsAcceptedCountAttribute($value)
     {
-        return $this->registrations()
+        return $this->checkouts()
             ->where('status', 'paid')
-            ->count();
-    }
-
-    /**
-     * Get paid pending registrations count.
-     *
-     * @param  string  $value
-     * @return string
-     */
-    public function getPendingRegistrationsAcceptedCountAttribute($value)
-    {
-        return $this->registrations()
-            ->where('status', 'pending')
             ->count();
     }
 
     public function getAmountAttribute()
     {
-        $paidRegistrations = $this->registrations()
+        $paidRegistrations = $this->checkouts()
             ->where('status', 'paid')
             ->count();
 

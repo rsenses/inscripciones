@@ -72,19 +72,15 @@
                 </tr>
                 <tr>
                     <td>Aceptadas</td>
-                    <td>{{ $product->registrations_accepted_count }}</td>
+                    <td>
+                        {{ $product->registrations_accepted_count }}<br>
+                        <small>Pagadas</small>: {{ $product->paid_registrations_count }}<br>
+                        <small>Sin pagar</small>: {{ $product->registrations_accepted_count - $product->paid_registrations_count }}
+                    </td>
                 </tr>
                 <tr>
                     <td>Denegadas</td>
                     <td>{{ $product->denied_registrations_count }}</td>
-                </tr>
-                <tr>
-                    <td>Pagadas</td>
-                    <td>{{ $product->paid_registrations_count }}</td>
-                </tr>
-                <tr>
-                    <td>Sin pagar</td>
-                    <td>{{ $product->registrations_accepted_count - $product->paid_registrations_count }}</td>
                 </tr>
                 <tr>
                     <td>Canceladas</td>

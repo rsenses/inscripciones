@@ -55,8 +55,7 @@ class CheckoutController extends Controller
             return redirect()->route('preusers.show', ['user' => $checkout->user, 'redirect' => url()->full()]);
         }
 
-        $checkout = Checkout::where('id', $checkout->id)
-            ->where('token', $request->t)
+        $checkout = Checkout::where('token', $request->t)
             ->where('status', '!=', 'disabled')
             ->first();
 

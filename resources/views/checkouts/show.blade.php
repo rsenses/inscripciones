@@ -27,7 +27,7 @@
 
             </div>
         </div>
-        @if($checkout->invoice)
+        @if($checkout->status != 'new' && $checkout->invoice)
             <div class="row justify-content-center">
                 <div class="alert alert-danger">
                     Proceso de compra realizado anteriormente, disculpe las molestias.<br>Si tiene alguna duda contacte con nosotros en <a href="mailto:foro.expansion@unidadeditorial.es">foro.expansion@unidadeditorial.es</a>

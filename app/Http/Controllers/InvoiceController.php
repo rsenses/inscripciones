@@ -20,6 +20,10 @@ class InvoiceController extends Controller
     {
         $invoices = Invoice::whereNull('billed_at')
             ->whereNull('number')
+            ->whereHas('checkout', function ($q) {
+                $q->where('status', 'pending')
+                ->orWhere('status', 'paid');
+            })
             ->get();
 
         return view('invoices.index', [
@@ -209,11 +213,11 @@ class InvoiceController extends Controller
 
         $fileName = $request->file('import')->store('invoices/import');
         $path = Storage::disk('local')->path($fileName);
-        $data = array_map(function($v) {
+        $data = array_map(function ($v) {
             return str_getcsv($v, ";");
         }, file($path));
 
-        foreach($data as $index => $import) {
+        foreach ($data as $index => $import) {
             if ((isset($import[1]) && $import[1] == 'Factura') || $index === 0) {
                 continue;
             }

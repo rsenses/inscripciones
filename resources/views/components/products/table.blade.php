@@ -16,8 +16,8 @@
                     <td>{{ $product->start_date->format('d-m-Y / H:i' ) }}</td>
                     <td class="text-right">Pagados: {{ $product->amount }} €</td>
                     <td class="text-right">
-                        Aceptadas: {{ $product->registrations_accepted_count }}<br>
                         Sin valorar: {{ $product->new_registrations_count }}<br>
+                        Aceptadas: {{ $product->registrations_accepted_count }}<br>
                         Pagadas: {{ $product->paid_registrations_count }}<br>
                         Sin pagar: {{ $product->registrations_accepted_count - $product->paid_registrations_count }}<br>
                     </td>

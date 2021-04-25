@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h2>{{ $product->name }}
+    <h2>{{ $product->name }} <span class="badge badge-info">{{ $product->mode }}</span>
         @if(Auth::user()->role === 'superadmin')
             <a class="pull-right btn btn-info text-light" title="editar"
                 href="{{ route('products.edit', ['product' => $product]) }}"

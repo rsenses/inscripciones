@@ -15,7 +15,12 @@
                     <td class="font-weight">{{ $product->name }}</td>
                     <td>{{ $product->start_date->format('d-m-Y / H:i' ) }}</td>
                     <td class="text-right">{{ $product->price }} €</td>
-                    <td class="text-right">{{ $product->registrations_accepted_count }}</td>
+                    <td class="text-right">
+                        Sin validar: {{ $product->new_registrations_accepted_count }}<br>
+                        Aceptadas: {{ $product->registrations_accepted_count }}<br>
+                        Pagadas: {{ $product->paid_registrations_accepted_count }}<br>
+                        Sin pagar: {{ $product->pending_registrations_accepted_count }}<br>
+                    </td>
                     <td class="bg-primary text-center">
                         <a class="text-light " href="{{ route('products.show', ['product' => $product]) }}">
                             <i class="ion ion-ios-eye" aria-hidden="true"></i> Ver

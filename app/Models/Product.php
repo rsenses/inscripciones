@@ -85,7 +85,20 @@ class Product extends Model
     }
 
     /**
-     * Get the user's first name.
+     * Get the registrations count.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getNewRegistrationsAcceptedCountAttribute($value)
+    {
+        return $this->registrations()
+            ->where('status', 'new')
+            ->count();
+    }
+
+    /**
+     * Get the registrations count.
      *
      * @param  string  $value
      * @return string
@@ -96,6 +109,32 @@ class Product extends Model
             ->where('status', '!=', 'new')
             ->where('status', '!=', 'cancelled')
             ->where('status', '!=', 'denied')
+            ->count();
+    }
+
+    /**
+     * Get paid registrations count.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getPaidRegistrationsAcceptedCountAttribute($value)
+    {
+        return $this->registrations()
+            ->where('status', 'paid')
+            ->count();
+    }
+
+    /**
+     * Get paid pending registrations count.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getPendingRegistrationsAcceptedCountAttribute($value)
+    {
+        return $this->registrations()
+            ->where('status', 'pending')
             ->count();
     }
 }

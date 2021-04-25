@@ -12,7 +12,10 @@
         <tbody>
             @foreach($products as $product)
                 <tr>
-                    <td class="font-weight">{{ $product->name }}</td>
+                    <td class="font-weight">
+                        {{ $product->name }}<br>
+                        <span class="badge badge-info">{{ $product->mode }}</span>
+                    </td>
                     <td>{{ $product->start_date->format('d-m-Y / H:i' ) }}</td>
                     <td class="text-right">Pagados: {{ $product->amount }} €</td>
                     <td class="text-right">

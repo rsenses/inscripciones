@@ -21,7 +21,7 @@
                 <h3 class="card-title text-primary">Facturas pendientes de generar</h3>
             </div>
             <div class="col text-right">
-                <a href="{{ route('invoices.export') }}" class="btn btn-primary">
+                <a href="{{ route('invoices.export') }}" class="btn btn-primary" onclick="return confirm('Seguro que quieres generar el archivo de facturación?');">
                 <i class="fa fa-cloud-download" aria-hidden="true"></i>
                 Exportar</a>
                 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#importModal">

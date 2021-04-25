@@ -12,9 +12,6 @@
                 <th data-field="company" data-sortable="true">Empresa</th>
                 <th data-field="position" data-sortable="true">Cargo</th>
                 <th></th>
-                @if(!$showProduct)
-                <th></th>
-                @endif
             </tr>
         </thead>
         <tbody>
@@ -25,7 +22,7 @@
                     @else
                         <td class="alert {{ $registration->status === 'accepted' ? 'alert-info' : ($registration->status === 'paid' ? 'alert-success' : ($registration->status === 'denied' ? 'alert-danger' : ($registration->status === 'cancelled' ? 'alert-warning' : ($registration->status === 'pending' ? 'alert-info' : '')))) }}">
                         {{-- <i class="ion {{ $registration->status === 'accepted' ? 'ion-thumbsup' : ($registration->status === 'paid' ? 'ion-cash' : ($registration->status === 'denied' ? 'ion-thumbsdown' : ($registration->status === 'cancelled' ? 'ion-close-circled' : ''))) }}" aria-hidden="true"></i> --}}
-                        {{ ucfirst($registration->status) }}
+                        {{ __($registration->status) }}
                         </td>
                     @endif
                     <td>{{ $registration->created_at->format('d-m-Y / H:i' ) }}</td>
@@ -39,7 +36,7 @@
                                 @if($registration->status !== 'paid' && $registration->status !== 'accepted')
                                     <div class="row">
                                         <div class="col">
-                                            <form action="{{ route('registrations.update-status', ['registration' => $registration]) }}" method="POST">
+                                            <form action="{{ route('registrations.update-status', ['registration' => $registration]) }}" method="POST" onsubmit="return confirm('Seguro que quieres aceptar la inscripción?');">
                                                 <input type="hidden" name="action" value="accept">
                                                 @csrf
                                                 <button type="submit" class="btn btn-success">Confirmar solicitud</button>
@@ -47,7 +44,7 @@
                                         </div>
                                         @if($registration->status === 'new')
                                             <div class="col text-right">
-                                                <form action="{{ route('registrations.update-status', ['registration' => $registration]) }}" method="POST">
+                                                <form action="{{ route('registrations.update-status', ['registration' => $registration]) }}" method="POST" onsubmit="return confirm('Seguro que quieres denegar la inscripción?');">
                                                     <input type="hidden" name="action" value="deny">
                                                     @csrf
                                                     <button type="submit" class="btn btn-danger">Denegar solicitud</button>
@@ -60,7 +57,7 @@
                                     <div class="row">
                                         <div class="col">
                                             @if($registration->status === 'accepted')
-                                                <form action="{{ route('registrations.update-status', ['registration' => $registration]) }}" method="POST">
+                                                <form action="{{ route('registrations.update-status', ['registration' => $registration]) }}" method="POST" onsubmit="return confirm('Seguro que quieres confirmar el pago?');">
                                                     <input type="hidden" name="action" value="pay">
                                                     @csrf
                                                     <button type="submit" class="btn btn-success">Confirmar pago</button>
@@ -68,7 +65,7 @@
                                             @endif
                                         </div>
                                         <div class="col text-right">
-                                            <form action="{{ route('registrations.update-status', ['registration' => $registration]) }}" method="POST">
+                                            <form action="{{ route('registrations.update-status', ['registration' => $registration]) }}" method="POST" onsubmit="return confirm('Seguro que quieres cancelar la compra?');">
                                                 <input type="hidden" name="action" value="cancel">
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger">Cancelar compra</button>
@@ -79,7 +76,6 @@
                             </x-modal>
                         </td>
                     @endif
-                    <td class="bg-primary text-center"><a class="text-light" href="{{ route('registrations.show', ['registration' => $registration]) }}"><i class="ion ion-ios-eye" aria-hidden="true"></i> Ver</a></td>
                 </tr>
             @endforeach
         </tbody>

@@ -3,11 +3,13 @@
 @section('content')
 <div class="container">
     <h2>{{ $product->name }}
-        <a class="pull-right btn btn-info text-light" title="editar"
-            href="{{ route('products.edit', ['product' => $product]) }}"
-            data-toggle="tooltip" data-placement="bottom">
-            <i class="ion ion-edit"></i>
-        </a>
+        @if(Auth::user()->role === 'superadmin')
+            <a class="pull-right btn btn-info text-light" title="editar"
+                href="{{ route('products.edit', ['product' => $product]) }}"
+                data-toggle="tooltip" data-placement="bottom">
+                <i class="ion ion-edit"></i>
+            </a>
+        @endif
     </h2>
     @if($product->description)
         <p>{{ $product->description }}</p>

@@ -18,7 +18,7 @@ class Admin
     {
         $response = $next($request);
 
-        if (auth()->user()->role !== 'admin') {
+        if (auth()->user()->role !== 'admin' && auth()->user()->role !== 'superadmin') {
             auth()->logout();
 
             return redirect()->route('login');

@@ -3,9 +3,11 @@
 @section('content')
 <div class="container">
     <div class="mb-3">
-    <a class="btn btn-primary text-white pull-right d-block" data-toggle="tooltip" data-placement="bottom" title="Crear nuevo" href="{{ route('products.create') }}">
-            <i class="ion ion-plus"></i>
-        </a>
+        @if(Auth::user()->role === 'superadmin')
+            <a class="btn btn-primary text-white pull-right d-block" data-toggle="tooltip" data-placement="bottom" title="Crear nuevo" href="{{ route('products.create') }}">
+                <i class="ion ion-plus"></i>
+            </a>
+        @endif
         <div class="clearfix"></div>
     </div>
 

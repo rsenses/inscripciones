@@ -23,9 +23,7 @@ class DashboardController extends Controller
             ->get();
 
         $latestRegistrations = Registration::latest()
-            ->where('status', '!=', 'denied')
-            ->where('status', '!=', 'cancelled')
-            ->take(10)
+            ->where('status', 'new')
             ->get();
 
         return view('dashboard', [

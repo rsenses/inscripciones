@@ -36,15 +36,11 @@
                         <a href="{{ route('products.index') }}"
                             class="list-group-item list-group-item-action bg-light"><i class="ion ion-briefcase"
                                 aria-hidden="true"></i>&emsp;Productos</a>
-                        <a href="{{ route('registrations.index') }}"
-                            class="list-group-item list-group-item-action bg-light"><i class="ion ion-pricetags"
-                                aria-hidden="true"></i>&emsp;Inscripciones</a>
-                        <a href="{{ route('users.index', ['role' => 'customer']) }}"
-                            class="list-group-item list-group-item-action bg-light"><i class="ion ion-person-stalker"
-                                aria-hidden="true"></i>&emsp;Usuarios</a>
-                        <a href="{{ route('partners.index') }}"
-                            class="list-group-item list-group-item-action bg-light"><i class="ion ion-filing"
-                                aria-hidden="true"></i>&emsp;Cabeceras</a>
+                        @if(Auth::user()->role === 'superadmin')
+                            <a href="{{ route('registrations.index') }}" class="list-group-item list-group-item-action bg-light"><i class="ion ion-pricetags" aria-hidden="true"></i>&emsp;Inscripciones</a>
+                            <a href="{{ route('users.index', ['role' => 'customer']) }}" class="list-group-item list-group-item-action bg-light"><i class="ion ion-person-stalker" aria-hidden="true"></i>&emsp;Usuarios</a>
+                            <a href="{{ route('partners.index') }}" class="list-group-item list-group-item-action bg-light"><i class="ion ion-filing" aria-hidden="true"></i>&emsp;Cabeceras</a>
+                        @endif
                         <a href="{{ route('invoices.index') }}"
                             class="list-group-item list-group-item-action bg-light"><i class="ion ion-cash"
                                 aria-hidden="true"></i>&emsp;Financiero</a>

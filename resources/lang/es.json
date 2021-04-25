@@ -614,5 +614,11 @@
     "You may not leave a team that you created.": "No se puede abandonar un equipo que usted creó.",
     "Your email address is not verified.": "Su dirección de correo electrónico no está verificada.",
     "Zambia": "Zambia",
-    "Zimbabwe": "Zimbabwe"
+    "Zimbabwe": "Zimbabwe",
+    "new": "Pendiente de valorar",
+    "pending": "Pendiente de pago",
+    "accepted": "Aceptada",
+    "cancelled": "Cancelada",
+    "denied": "Denegada",
+    "paid": "Pagada"
 }

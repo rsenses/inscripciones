@@ -75,6 +75,7 @@ class PartnerController extends Controller
             }])
             ->withCount(['registrations' => function ($query) {
                 $query->where('status', '!=', 'cancelled');
+                $query->where('status', '!=', 'denied');
             }])
             ->get();
 

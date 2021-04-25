@@ -11,7 +11,9 @@
                 <th data-field="full_name" data-sortable="true">Nombre</th>
                 <th data-field="company" data-sortable="true">Empresa</th>
                 <th data-field="position" data-sortable="true">Cargo</th>
-                <th></th>
+                @if(!$showProduct)
+                    <th></th>
+                @endif
             </tr>
         </thead>
         <tbody>

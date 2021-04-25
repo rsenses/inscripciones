@@ -115,6 +115,8 @@ class Checkout extends Model
 
         $checkout->update(['method' => 'transfer']);
 
+        CheckoutPaid::dispatch($checkout);
+
         $registration = $this->registration('accepted');
 
         $registration->pending();

@@ -35,7 +35,7 @@
                         <td>
                         <a href="#0" data-toggle="modal" data-target="#actionsModal{{ $index }}"><i class="ion ion-gear-a" aria-hidden="true"></i>&ensp;acciones</a>
                             <x-modal :id="'actionsModal' . $index" :title="'Acciones sobre la inscripción'" :footer="''">
-                                @if($registration->status !== 'paid' && $registration->status !== 'accepted')
+                                @if($registration->status !== 'paid' && $registration->status !== 'accepted' && $registration->status !== 'pending')
                                     <div class="row">
                                         <div class="col">
                                             <form action="{{ route('registrations.update-status', ['registration' => $registration]) }}" method="POST" onsubmit="return confirm('Seguro que quieres aceptar la inscripción?');">
@@ -55,10 +55,10 @@
                                         @endif
                                     </div>
                                 @endif
-                                @if($registration->status === 'paid' || $registration->status === 'accepted')
+                                @if($registration->status === 'paid' || $registration->status === 'pending')
                                     <div class="row">
                                         <div class="col">
-                                            @if($registration->status === 'accepted')
+                                            @if($registration->status === 'pending')
                                                 <form action="{{ route('registrations.update-status', ['registration' => $registration]) }}" method="POST" onsubmit="return confirm('Seguro que quieres confirmar el pago?');">
                                                     <input type="hidden" name="action" value="pay">
                                                     @csrf

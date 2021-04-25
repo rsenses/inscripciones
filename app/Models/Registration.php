@@ -119,7 +119,7 @@ class Registration extends Model
 
         $checkout = $registration->checkout();
 
-        if ($checkout && $checkout->status === 'new') {
+        if ($checkout && ($checkout->status === 'new' || $checkout->status === 'pending')) {
             $checkout->pay();
         }
 

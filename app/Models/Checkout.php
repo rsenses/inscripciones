@@ -26,7 +26,8 @@ class Checkout extends Model
         'user_id',
         'amount',
         'paid_at',
-        'token'
+        'token',
+        'method'
     ];
 
     /**
@@ -65,6 +66,14 @@ class Checkout extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function registration($status)
+    {
+        return Registration::where('user_id', $this->user_id)
+            ->where('product_id', $this->product_id)
+            ->where('status', $status)
+            ->first();
+    }
+
     private function changeStatus($status)
     {
         $this->status = $status;
@@ -96,6 +105,19 @@ class Checkout extends Model
         $checkout->update(['paid_at' => Carbon::now()]);
 
         CheckoutPaid::dispatch($checkout);
+
+        return $checkout;
+    }
+
+    public function pending()
+    {
+        $checkout = $this->changeStatus('pending');
+
+        $checkout->update(['method' => 'transfer']);
+
+        $registration = $this->registration('accepted');
+
+        $registration->pending();
 
         return $checkout;
     }

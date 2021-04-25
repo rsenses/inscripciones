@@ -31,12 +31,9 @@ class CreateCheckout
     {
         $registration = $event->registration;
 
-        $checkout = Checkout::where('user_id', $registration->user_id)
-            ->where('product_id', $registration->product_id)
-            ->where('status', '!=', 'disabled')
-            ->first();
+        $checkout = $registration->checkout();
 
-        if(!$checkout) {
+        if (!$checkout) {
             $checkout = Checkout::create([
                 'user_id' => $registration->user_id,
                 'product_id' => $registration->product_id,

@@ -32,10 +32,7 @@ class TpvController extends Controller
 
                 $checkout->pay();
 
-                $registration = Registration::where('user_id', $checkout->user_id)
-                    ->where('product_id', $checkout->product_id)
-                    ->where('status', 'accepted')
-                    ->first();
+                $registration = $checkout->registration('accepted');
 
                 $registration->pay();
             } else {
@@ -52,8 +49,12 @@ class TpvController extends Controller
         }
     }
 
-    public function success(Checkout $checkout)
+    public function success(Request $request, Checkout $checkout)
     {
+        if ($request->method && $request->method === 'transfer') {
+            $checkout->pending();
+        }
+
         return view('payments.success', [
             'checkout' => $checkout
         ]);

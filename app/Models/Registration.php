@@ -125,4 +125,11 @@ class Registration extends Model
 
         return $registration;
     }
+
+    public function pending()
+    {
+        $registration = $this->changeStatus('pending');
+
+        return $registration;
+    }
 }

@@ -107,7 +107,7 @@
 
                         <div class="form-group row">
                             <div class="col">
-                                <p>Deseo recibir información sobre eventos, promociones, sorteos y otras comunicaciones comerciales sobre productos, servicios y contenidos del <a role="button" data-toggle="collapse" href="#sociedades" aria-expanded="false" aria-controls="collapseExample">Grupo Unidad Editorial</a>, y/o de terceros de distintos sectores, incluido por medios electrónicos. Por favor, <a href="/politica-de-privacidad" target="_blank">consulta aquí</a> la información detallada y dinos si estás de acuerdo.</p>
+                                <p>Deseo recibir información sobre eventos, promociones, sorteos y otras comunicaciones comerciales sobre productos, servicios y contenidos del <a role="button" data-toggle="collapse" href="#sociedades" aria-expanded="false" aria-controls="collapseExample">Grupo Unidad Editorial</a>, y/o de terceros de distintos sectores, incluido por medios electrónicos. Por favor, <a href="/politica-de-privacidad" target="_blank">consulta aquí</a> la información detallada y díganos si está de acuerdo.</p>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="advertising" id="inlineRadio1" value="1" required>
                                     <label class="form-check-label" for="inlineRadio1">Sí</label>

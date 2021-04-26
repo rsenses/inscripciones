@@ -53,7 +53,7 @@ class Registration extends Model
     public function checkout()
     {
         return Checkout::where('user_id', $this->user_id)
-            ->where('product_id', $this->product->id)
+            ->where('product_id', $this->product_id)
             ->where('status', '!=', 'disabled')
             ->first();
     }

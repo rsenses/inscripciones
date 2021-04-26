@@ -16,7 +16,7 @@
 
 <div class="card text-white bg-light">
   <div class="card-body">
-    <h2 class="card-title text-primary">Últimas inscripciones</h2>
+    <h2 class="card-title text-primary">Inscripciones pendientes de valorar</h2>
     <div class="table-responsive">
         <x-registrations.table :registrations="$registrations"/>
     </div>

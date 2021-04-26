@@ -21,7 +21,7 @@
         <mj-column width="500px">
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Estimad@ <strong>{{ $registration->user->full_name }}</strong></mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Sentimos comunicarle que el aforo está completo y <strong>no es posible confirmar su inscripción</strong>.</mj-text>
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Si finalmente quedara alguna plaza libre nos pondremos en contacto con Usted.</mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Si finalmente quedara alguna plaza libre, nos pondremos en contacto con Usted.</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Muchas gracias por su interés. </mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Un cordial saludo,</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Relaciones Institucionales<br><strong>Expansión</strong></mj-text>

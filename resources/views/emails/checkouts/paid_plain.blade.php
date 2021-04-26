@@ -2,9 +2,7 @@ Estimad@ {{ $checkout->user->full_name }}
 
 Le damos la bienvenida al {{ $checkout->product->name }}.
 
-Su inscripción {{ $checkout->product->mode === 'online' ? 'ON LINE' : 'PRESENCIAL' }} ha sido confirmada y ya puede acceder a la zona privada del site del Foro.
-
-A través del siguiente enlace podrá acceder a toda la información relativa al evento:
+Su inscripción {{ $checkout->product->mode === 'online' ? 'ON LINE' : 'PRESENCIAL' }} ha sido confirmada, a través del siguiente enlace podrá acceder a toda la información relativa al evento:
 https://foro.expansion.com
 
 • Cómo llegar.

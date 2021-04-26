@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h2>{{ $product->name }}
+    <h2>{{ $product->name }} <span class="badge badge-info">{{ $product->mode }}</span>
         @if(Auth::user()->role === 'superadmin')
             <a class="pull-right btn btn-info text-light" title="editar"
                 href="{{ route('products.edit', ['product' => $product]) }}"
@@ -31,14 +31,12 @@
                                 <td>Precio</td>
                                 <td>{{ $product->price }} €</td>
                             </tr>
-                            <tr>
-                                <td>Modalidad</td>
-                                <td>{{ $product->mode }}</td>
-                            </tr>
-                            <tr>
-                                <td>Lugar de Celebración</td>
-                                <td>{{ $product->place }}</td>
-                            </tr>
+                            @if($product->mode === 'presencial')
+                                <tr>
+                                    <td>Lugar de Celebración</td>
+                                    <td>{{ $product->place }}</td>
+                                </tr>
+                            @endif
                             <tr>
                                 <td>Fecha de inicio</td>
                                 <td>{{ $product->start_date->format('d-m-Y / H:i' ) }}</td>
@@ -75,7 +73,7 @@
                     <td>
                         {{ $product->registrations_accepted_count }}<br>
                         <small>Pagadas</small>: {{ $product->paid_registrations_count }}<br>
-                        <small>Sin pagar</small>: {{ $product->registrations_accepted_count - $product->paid_registrations_count }}
+                        <small>Sin pagar</small>: {{ $product->registrations_accepted_count - $product->paid_registrations_count }} <small class="text-info">(aceptadas + pendientes de pago)</small>
                     </td>
                 </tr>
                 <tr>

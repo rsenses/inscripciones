@@ -40,6 +40,10 @@ class InvoiceController extends Controller
     {
         $invoices = Invoice::whereNull('billed_at')
             ->whereNull('number')
+            ->whereHas('checkout', function ($q) {
+                $q->where('status', 'pending')
+                ->orWhere('status', 'paid');
+            })
             ->get();
 
         if ($invoices) {

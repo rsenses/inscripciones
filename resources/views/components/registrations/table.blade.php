@@ -75,6 +75,13 @@
                                         </div>
                                     </div>
                                 @endif
+                                @if($registration->status === 'accepted')
+                                    <div class="row">
+                                        <div class="col">
+                                            <p>Ninguna acción disponible hasta que el usuario no realice el proceso de compra.</p>
+                                        </div>
+                                    </div>
+                                @endif
                             </x-modal>
                         </td>
                     @endif

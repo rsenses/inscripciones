@@ -21,8 +21,8 @@
                     <td class="text-right">
                         Sin valorar: {{ $product->new_registrations_count }}<br>
                         Aceptadas: {{ $product->registrations_accepted_count }}<br>
-                        Pagadas: {{ $product->paid_registrations_count }}<br>
-                        Sin pagar: {{ $product->registrations_accepted_count - $product->paid_registrations_count }}<br>
+                        <small>Pagadas:</small> {{ $product->paid_registrations_count }}<br>
+                        <small>Sin pagar:</small> {{ $product->registrations_accepted_count - $product->paid_registrations_count }}<br>
                     </td>
                     <td class="bg-primary text-center">
                         <a class="text-light " href="{{ route('products.show', ['product' => $product]) }}">

@@ -120,6 +120,9 @@ class CheckoutController extends Controller
                 'city' => 'required',
                 'country' => 'required|string|max:2',
                 'state' => 'required|string',
+                'ofcont' => 'nullable|string',
+                'gestor' => 'nullable|string',
+                'untram' => 'nullable|string'
             ]);
 
             $address = $checkout->user->addresses()->create($request->all());

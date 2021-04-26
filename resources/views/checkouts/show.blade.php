@@ -486,6 +486,19 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-8 offset-sm-4">
+                                        <a class="btn btn-secondary btn-block mb-3 text-center" role="button" data-toggle="collapse" href="#publicCompanyFields" aria-expanded="true" aria-controls="publicCompanyFields"><i class="ion-md-android-clipboard"></i> Pertenezco a Empresa Pública</a>
+                                        <div class="collapse in" id="publicCompanyFields" aria-expanded="true" style="">
+                                            <label for="ofcont" class="control-label">Oficina Contable</label>
+                                                <input class="form-control mb-3" id="ofcont" title="Introduzca la oficina contable" name="ofcont" type="text">
+                                            <label for="gestor" class="control-label">Órgano Gestor</label>
+                                                <input class="form-control mb-3" id="gestor" title="Introduzca el órgano gestor" name="gestor" type="text">
+                                            <label for="untram" class="control-label">Unidad Tramitadora</label>
+                                                <input class="form-control mb-3" id="untram" title="Introduzca la Unidad Tramitadora" name="untram" type="text">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

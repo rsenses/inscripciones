@@ -16,6 +16,7 @@ class TpvController extends Controller
 {
     public function notify(Request $request, Checkout $checkout)
     {
+        Log::debug($request->all);
         try {
             $company = $checkout->product->partners[0];
             $key = $company->merchant_key;

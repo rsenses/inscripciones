@@ -197,11 +197,16 @@ class InvoiceController extends Controller
                 $invoice->billed_at = Carbon::now();
                 $invoice->save();
 
-                file_put_contents(storage_path() . '/app/invoices/' . $fileName, implode("\t", $input) . PHP_EOL, FILE_APPEND);
+                file_put_contents(storage_path() . '/app/invoices/' . $fileName, "\xEF\xBB\xBF" . implode("\t", $input) . PHP_EOL, FILE_APPEND);
                 ++$counter;
             }
 
-            return Storage::download('invoices/' . $fileName);
+            $headers = [
+                'Content-Encoding: UTF-8',
+                'Content-Type' => 'text/plain',
+            ];
+
+            return Storage::download('invoices/' . $fileName, null, $headers);
         }
     }
 

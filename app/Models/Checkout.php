@@ -142,6 +142,8 @@ class Checkout extends Model
     {
         $checkout = $this->replicate();
 
+        $checkout->status = 'new';
+
         $checkout->push();
 
         $this->disable();

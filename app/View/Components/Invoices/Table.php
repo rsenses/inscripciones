@@ -8,15 +8,17 @@ use Illuminate\View\Component;
 class Table extends Component
 {
     public $invoices;
+    public $toggle;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(Collection $invoices)
+    public function __construct(Collection $invoices, bool $toggle = false)
     {
         $this->invoices = $invoices;
+        $this->toggle = $toggle;
     }
 
     /**

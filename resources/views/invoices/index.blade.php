@@ -15,23 +15,34 @@
         @endif
 
         <div class="card bg-light">
-          <div class="card-body">
-          <div class="row mb-4">
-            <div class="col">
-                <h3 class="card-title text-primary">Facturas pendientes de generar</h3>
-            </div>
-            <div class="col text-right">
-                <a href="{{ route('invoices.export') }}" class="btn btn-primary" onclick="return confirm('Seguro que quieres generar el archivo de facturación?');">
-                <i class="fa fa-cloud-download" aria-hidden="true"></i>
-                Exportar</a>
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#importModal">
-               <i class="fa fa-cloud-upload" aria-hidden="true"></i>
-                
-                Importar</button>
+            <div class="card-body">
+                <div class="row mb-4">
+                    <div class="col">
+                        <h3 class="card-title text-primary">Facturas pendientes de generar</h3>
+                    </div>
+                    <div class="col text-right">
+                        <a href="{{ route('invoices.export') }}" class="btn btn-primary" onclick="return confirm('Seguro que quieres generar el archivo de facturación?');">
+                            <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                            Exportar</a>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#importModal">
+                            <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+
+                            Importar</button>
+                    </div>
+                </div>
+                <x-invoices.table :invoices="$invoices" :toggle="false"/>
             </div>
         </div>
-        <x-invoices.table :invoices="$invoices"/>
-          </div>
+
+        <div class="card bg-light mt-5">
+            <div class="card-body">
+                <div class="row mb-4">
+                    <div class="col">
+                        <h3 class="card-title text-primary">Facturadas</h3>
+                    </div>
+                </div>
+                <x-invoices.table :invoices="$billed" :toggle="true"/>
+            </div>
         </div>
 
     </div>

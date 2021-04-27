@@ -1,13 +1,13 @@
 <div class="table">
-    <table class="table table-stripe table-bordered">
+    <table class="table table-striped table-bordered" {{ $toggle ? 'data-toggle=table' : '' }} data-search="true"  data-locale="es_ES">
         <thead>
             <tr>
-                <th>Status</th>
-                <th>Pago</th>
-                <th>Producto</th>
-                <th>Usuario</th>
-                <th>Facturación</th>
-                <th>Fecha de compra</th>
+                <th data-field="status" data-sortable="false">Status</th>
+                <th data-field="payment" data-sortable="false">Pago</th>
+                <th data-field="product" data-sortable="true">Producto</th>
+                <th data-field="user" data-sortable="true">Usuario</th>
+                <th data-field="invoice" data-sortable="false">Facturación</th>
+                <th data-field="created_at" data-sortable="true">Fecha de compra</th>
             </tr>
         </thead>
         <tbody>
@@ -17,7 +17,11 @@
                         <i class="ion-cash" aria-hidden="true"></i>&ensp;
                         {{ $invoice->checkout->status == 'paid' ? 'Pagado' : 'Pendiente' }}
                     </td>
-                    <td>{{ $invoice->checkout->amount }} €<br><span class="badge badge-info">{{ $invoice->checkout->method == 'card' ? 'Tarjeta' : 'Transferencia' }} {{ $invoice->checkout->id }}</span></td>
+                    <td>
+                        {{ $invoice->checkout->amount }} €<br>
+                        <span class="badge badge-info">{{ $invoice->checkout->method == 'card' ? 'Tarjeta' : 'Transferencia' }} {{ $invoice->checkout->id }}</span><br>
+                        {!! $invoice->number ? '<small class="text-info">Fctr.:</small> ' . $invoice->number : '' !!}
+                    </td>
                     <td>{{ $invoice->checkout->product->name }}</td>
                     <td>{{ $invoice->checkout->user->full_name }}</td>
                     <td>

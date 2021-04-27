@@ -26,8 +26,14 @@ class InvoiceController extends Controller
             })
             ->get();
 
+        $billed = Invoice::whereNotNull('billed_at')
+            ->whereNotNull('number')
+            ->orderBy('billed_at', 'DESC')
+            ->get();
+
         return view('invoices.index', [
-            'invoices' => $invoices
+            'invoices' => $invoices,
+            'billed' => $billed
         ]);
     }
 

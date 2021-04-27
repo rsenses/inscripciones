@@ -98,6 +98,13 @@ class Checkout extends Model
         return $checkout;
     }
 
+    public function processing()
+    {
+        $checkout = $this->changeStatus('processing');
+
+        return $checkout;
+    }
+
     public function pay()
     {
         $checkout = $this->changeStatus('paid');
@@ -131,6 +138,17 @@ class Checkout extends Model
         return $checkout;
     }
 
+    public function new()
+    {
+        $checkout = $this->replicate();
+
+        $checkout->push();
+
+        $this->disable();
+
+        return $checkout;
+    }
+
     public function generatePaymentForm()
     {
         try {
@@ -156,6 +174,8 @@ class Checkout extends Model
 
             $signature = $redsys->generateMerchantSignature($company->merchant_key);
             $redsys->setMerchantSignature($signature);
+
+            $this->processing();
 
             return $redsys->createForm();
         } catch (TpvException $e) {

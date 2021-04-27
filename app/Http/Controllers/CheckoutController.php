@@ -60,6 +60,10 @@ class CheckoutController extends Controller
             ->where('status', '!=', 'disabled')
             ->first();
 
+        if ($checkout->status === 'processing') {
+            $checkout = $checkout->new();
+        }
+
         return view('checkouts.show', [
             'checkout' => $checkout,
             'addresses' => $checkout->user->addresses

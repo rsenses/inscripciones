@@ -37,11 +37,7 @@ class TpvController extends Controller
 
                 $registration->pay();
             } else {
-                $newCheckout = $checkout->replicate();
-
-                $newCheckout->push();
-
-                $checkout->disable();
+                $checkout->new();
             }
         } catch (TpvException $e) {
             Log::debug($e->getMessage());
@@ -69,13 +65,7 @@ class TpvController extends Controller
                 ->where('status', '!=', 'disabled')
                 ->first();
         } else {
-            $newCheckout = $checkout->replicate();
-
-            $newCheckout->push();
-
-            $checkout->disable();
-
-            $checkout = $newCheckout;
+            $checkout = $checkout->new();
         }
 
         return view('payments.error', [

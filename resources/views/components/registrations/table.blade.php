@@ -21,7 +21,11 @@
             @foreach($registrations as $index => $registration)
                 <tr>
                     @if($showProduct)
-                        <td>{{ $registration->product->name }}</td>
+                        <td>
+                            <a href="{{ route('products.show', ['product' => $registration->product]) }}">
+                                {{ $registration->product->name }} <span class="badge badge-info">{{ $registration->product->mode }}</span>
+                            </a>
+                        </td>
                     @else
                         <td class="alert {{ $registration->status === 'accepted' ? 'alert-info' : ($registration->status === 'paid' ? 'alert-success' : ($registration->status === 'denied' ? 'alert-danger' : ($registration->status === 'cancelled' ? 'alert-warning' : ($registration->status === 'pending' ? 'alert-info' : '')))) }}">
                         {{-- <i class="ion {{ $registration->status === 'accepted' ? 'ion-thumbsup' : ($registration->status === 'paid' ? 'ion-cash' : ($registration->status === 'denied' ? 'ion-thumbsdown' : ($registration->status === 'cancelled' ? 'ion-close-circled' : ''))) }}" aria-hidden="true"></i> --}}

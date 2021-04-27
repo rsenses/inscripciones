@@ -22,10 +22,10 @@
                     </div>
                     <div class="col text-right">
                         @if($invoices->count())
-                        <a href="{{ route('invoices.export') }}" class="btn btn-primary" onclick="return confirm('Seguro que quieres generar el archivo de facturación?');">
-                            <i class="fa fa-cloud-download" aria-hidden="true"></i>
-                            Exportar
-                        </a>
+                            <a href="{{ route('invoices.export') }}" class="btn btn-primary" onclick="return confirm('Seguro que quieres generar el archivo de facturación?');">
+                                <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                                Exportar
+                            </a>
                         @endif
                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#importModal">
                             <i class="fa fa-cloud-upload" aria-hidden="true"></i>
@@ -33,7 +33,15 @@
                         </button>
                     </div>
                 </div>
-                <x-invoices.table :invoices="$invoices" :toggle="false"/>
+                @if($invoices->count())
+                    <x-invoices.table :invoices="$invoices" :toggle="false"/>
+                @else
+                    <div class="row">
+                        <div class="col">
+                            <div class="alert alert-info">Ninguna compra pendiente de facturar en estos momentos.</div>
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
 

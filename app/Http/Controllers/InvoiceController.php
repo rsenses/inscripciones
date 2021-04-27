@@ -89,7 +89,7 @@ class InvoiceController extends Controller
                 if ($taxType == 'CIF') {
                     $clientCode = '@' . $taxId;
                 } elseif ($taxType == 'Pasaporte' || $taxType == 'Extranjero') {
-                    $clientCode = 'CEX' . str_pad($checkout->user->id, 7, '0', STR_PAD_LEFT);
+                    $clientCode = 'CEX9' . str_pad($checkout->user->id, 6, '0', STR_PAD_LEFT);
                 } else {
                     $clientCode = '0' . $taxId;
                 }

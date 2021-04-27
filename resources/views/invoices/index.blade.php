@@ -21,13 +21,16 @@
                         <h3 class="card-title text-primary">Facturas pendientes de generar</h3>
                     </div>
                     <div class="col text-right">
+                        @if($invoices->count())
                         <a href="{{ route('invoices.export') }}" class="btn btn-primary" onclick="return confirm('Seguro que quieres generar el archivo de facturación?');">
                             <i class="fa fa-cloud-download" aria-hidden="true"></i>
-                            Exportar</a>
+                            Exportar
+                        </a>
+                        @endif
                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#importModal">
                             <i class="fa fa-cloud-upload" aria-hidden="true"></i>
-
-                            Importar</button>
+                            Importar
+                        </button>
                     </div>
                 </div>
                 <x-invoices.table :invoices="$invoices" :toggle="false"/>

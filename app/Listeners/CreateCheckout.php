@@ -37,7 +37,8 @@ class CreateCheckout
             $checkout = Checkout::create([
                 'user_id' => $registration->user_id,
                 'product_id' => $registration->product_id,
-                'amount' => $registration->product->price
+                'amount' => $registration->product->price,
+                'token' => uniqid()
             ]);
         } else {
             $checkout->status = 'new';

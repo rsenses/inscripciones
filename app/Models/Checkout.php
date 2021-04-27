@@ -37,9 +37,9 @@ class Checkout extends Model
      */
     protected static function booted()
     {
-        static::creating(function ($model) {
-            $model->token = uniqid();
-        });
+        // static::creating(function ($model) {
+        //     $model->token = uniqid();
+        // });
     }
 
     /**

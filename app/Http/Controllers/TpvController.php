@@ -63,28 +63,19 @@ class TpvController extends Controller
 
     public function error(Request $request, Checkout $checkout)
     {
-        // Supuestamente esto no es necesario, se hace en notify
-        /* $redsys = new Tpv(); */
-
-        /* $parameters = $redsys->getMerchantParameters($request->Ds_MerchantParameters); */
-
-        /* if (!empty($parameters['Ds_Response']) && $parameters['Ds_Response'] == 9051) { */
-        /*     $newCheckout = $checkout->replicate(); */
-
-        /*     $newCheckout->push(); */
-
-        /*     $newCheckout->invoice()->save($checkout->invoice); */
-
-        /*     $checkout->delete(); */
-
-        /*     $checkout = $newCheckout; */
-        /* } */
-
         if ($checkout->status === 'disabled') {
             $checkout = Checkout::where('user_id', $checkout->user_id)
                 ->where('product_id', $checkout->product_id)
                 ->where('status', '!=', 'disabled')
                 ->first();
+        } else {
+            $newCheckout = $checkout->replicate();
+
+            $newCheckout->push();
+
+            $checkout->disable();
+
+            $checkout = $newCheckout;
         }
 
         return view('payments.error', [

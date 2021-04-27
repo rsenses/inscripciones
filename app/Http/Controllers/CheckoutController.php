@@ -7,6 +7,7 @@ use App\Models\Checkout;
 use App\Models\Invoice;
 use App\Rules\Nie;
 use App\Rules\Nif;
+use App\Rules\Cif;
 use Illuminate\Http\Request;
 use Sermepa\Tpv\Tpv;
 
@@ -100,7 +101,7 @@ class CheckoutController extends Controller
                     $taxId = ['alpha_num', new Nie, 'required', 'size:9', 'regex:/([XYZ]\d{7,8}[A-Z])/'];
                     break;
                 case 'CIF':
-                    $taxId = ['alpha_num', 'required', 'size:9', 'regex:/([ABCDEFGHJKLMNPQRSUVW])(\d{7})([0-9A-J])/'];
+                    $taxId = ['alpha_num', new Cif, 'required', 'size:9', 'regex:/([ABCDEFGHJKLMNPQRSUVW])(\d{7})([0-9A-J])/'];
                     break;
                 case 'Pasaporte':
                     $taxId = ['alpha_num', 'required', 'min:6', 'max:12'];

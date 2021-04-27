@@ -70,7 +70,8 @@ class InvoiceController extends Controller
                     $type = 'ATIN';
                 }
 
-                $vat = $type === 'COEX' ? 0.00 : 21.00;
+                // $vat = $type === 'COEX' ? 0.00 : 21.00;
+                $vat = 21.00;
 
                 if (strlen($taxId) > 9) {
                     $taxId = substr($taxId, 0, 9);

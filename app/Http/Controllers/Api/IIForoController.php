@@ -68,6 +68,7 @@ class IIForoController extends Controller
             $registrations[] = [
                 'name' => $registration->user->full_name_uppercase,
                 'last_name' => strtoupper($registration->user->last_name),
+                'descirption' => $registration->user->position . ', ' . $registration->user->company,
                 'speaker' => false,
                 'online' => false,
             ];

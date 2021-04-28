@@ -91,6 +91,17 @@ class User extends Authenticatable
         return "{$this->name} {$this->last_name}";
     }
 
+    /**
+     * Get the user's full name.
+     *
+     * @return string
+     */
+    public function getFullNameUppercaseAttribute()
+    {
+        return "{$this->name} " . strtoupper($this->last_name);
+    }
+
+
     public function redirectIfNotPasswordSet()
     {
         if (!$this->password) {

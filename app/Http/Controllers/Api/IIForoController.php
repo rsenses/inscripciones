@@ -27,6 +27,8 @@ class IIForoController extends Controller
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
 
+        // Cuando tentamos el streaming, hacer wrap con
+        //     <div class="embed-responsive embed-responsive-16by9">
         return [
             'streaming' => '<div class="alert alert-warning">Streaming no disponible actualmente.</div>'
         ];

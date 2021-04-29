@@ -61,7 +61,7 @@
                                         @endif
                                     </div>
                                 @endif
-                                @if($registration->status === 'paid' || $registration->status === 'pending')
+                                @if($registration->status === 'paid' || $registration->status === 'pending' || $registration->status === 'accepted')
                                     <div class="row">
                                         <div class="col">
                                             @if($registration->status === 'pending')
@@ -78,13 +78,6 @@
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger">Cancelar compra</button>
                                             </form>
-                                        </div>
-                                    </div>
-                                @endif
-                                @if($registration->status === 'accepted')
-                                    <div class="row">
-                                        <div class="col">
-                                            <p>Ninguna acción disponible hasta que el usuario no realice el proceso de compra.</p>
                                         </div>
                                     </div>
                                 @endif

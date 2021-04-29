@@ -84,9 +84,9 @@ class Checkout extends Model
 
     public function cancel()
     {
-        $checkout = $this->changeStatus('cancelled');
+        CheckoutCancelled::dispatch($this);
 
-        CheckoutCancelled::dispatch($checkout);
+        $checkout = $this->changeStatus('cancelled');
 
         return $checkout;
     }

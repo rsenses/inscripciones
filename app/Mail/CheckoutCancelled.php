@@ -31,8 +31,14 @@ class CheckoutCancelled extends Mailable
      */
     public function build()
     {
-        return $this->subject('Cancelación de asistencia')
-            ->view('emails.checkouts.cancelled')
-            ->text('emails.checkouts.cancelled_plain');
+        if ($this->checkout->status === 'paid') {
+            return $this->subject('Cancelación de asistencia')
+                ->view('emails.checkouts.cancelled_paid')
+                ->text('emails.checkouts.cancelled_paid_plain');
+        } else {
+            return $this->subject('Cancelación de asistencia')
+                ->view('emails.checkouts.cancelled')
+                ->text('emails.checkouts.cancelled_plain');
+        }
     }
 }

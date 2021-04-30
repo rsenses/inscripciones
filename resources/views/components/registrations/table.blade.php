@@ -12,6 +12,7 @@
                 <th data-field="company" data-sortable="true">Empresa</th>
                 <th data-field="position" data-sortable="true">Cargo</th>
                 <th data-field="email" data-sortable="true">Email</th>
+                <th data-field="phone" data-sortable="true">Tlf</th>
                 @if(!$showProduct)
                     <th></th>
                 @endif
@@ -37,6 +38,7 @@
                     <td>{{ $registration->user->company }}</td>
                     <td>{{ $registration->user->position }}</td>
                     <td>{{ $registration->user->email }}</td>
+                    <td>{{ $registration->user->phone }}</td>
                      @if(!$showProduct)
                         <td>
                         <a href="#0" data-toggle="modal" data-target="#actionsModal{{ $index }}"><i class="ion ion-gear-a" aria-hidden="true"></i>&ensp;acciones</a>

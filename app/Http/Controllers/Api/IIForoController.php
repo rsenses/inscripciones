@@ -65,13 +65,15 @@ class IIForoController extends Controller
         $registrations = [];
 
         foreach ($product->registrations as $registration) {
-            $registrations[] = [
-                'name' => $registration->user->full_name_uppercase,
-                'last_name' => strtoupper($registration->user->last_name),
-                'description' => $registration->user->position . ', ' . $registration->user->company,
-                'speaker' => false,
-                'online' => false,
-            ];
+            if($registration->status === 'paid') {
+                $registrations[] = [
+                    'name' => $registration->user->full_name_uppercase,
+                    'last_name' => strtoupper($registration->user->last_name),
+                    'description' => $registration->user->position . ', ' . $registration->user->company,
+                    'speaker' => false,
+                    'online' => false,
+                ];
+            }
         }
 
         $registrations = array_merge($speakers, $registrations);

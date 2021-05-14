@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <h2>Productos activos</h2>
         <x-products.table :products="$products"/>
 

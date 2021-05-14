@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <h2>Editar Cabecera</h2>
     <div class="card bg-light">
         <div class="card-body">

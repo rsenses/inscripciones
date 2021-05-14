@@ -31,12 +31,14 @@ class RegistrationController extends Controller
                         ->where('product_id', $request->product_id);
                 }),
             ],
+            'promo' => 'nullable|string'
         ]);
 
         $user = User::find($request->user_id);
 
         $registration = $user->registrations()->create([
             'product_id' => $request->product_id,
+            'promo' => $request->promo,
             'metadata' => $request->all()
         ]);
 

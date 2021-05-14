@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
     <div class="mb-3">
     @if($role === 'admin')
                 <a href="{{ route('users.index', ['role' => 'customer']) }}" class="btn btn-secondary">Asistentes</a>

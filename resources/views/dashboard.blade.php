@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
 
     <div class="card text-white bg-light mb-5">
       <div class="card-body">

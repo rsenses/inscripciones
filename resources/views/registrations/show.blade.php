@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <h2>{{ $registration->product->name }} <small class="text-xs">
         <a class="btn btn-info pull-right text-light" href="{{ route('registrations.edit', ['registration' => $registration]) }}">
             <i class="ion ion-edit" aria-hidden="true"></i>

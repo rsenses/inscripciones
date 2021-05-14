@@ -137,23 +137,24 @@ class CheckoutController extends Controller
             'address_id' => $address->id
         ]);
 
-        $form = $checkout->generatePaymentForm();
-
-        return view('checkouts.payment', [
-            'checkout' => $checkout,
-            'address' => $address,
-            'form' => $form
-        ]);
+        return redirect(route('checkouts.payment', ['checkout' => $checkout]));
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Payment for the specified resource.
      *
      * @param  \App\Models\Checkout  $checkout
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Checkout $checkout)
+    public function payment(Checkout $checkout)
     {
-        //
+        $form = $checkout->generatePaymentForm();
+
+        return view('checkouts.payment', [
+            'checkout' => $checkout,
+            'form' => $form,
+            'message' => null,
+            'discount' => false
+        ]);
     }
 }

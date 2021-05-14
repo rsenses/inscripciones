@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <h2>{{ $user->full_name }} <a class="pull-right btn btn-info text-light" title="editar"
             href="{{ route('users.edit', ['user' => $user]) }}"
             data-toggle="tooltip" data-placement="bottom">

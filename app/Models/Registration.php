@@ -23,7 +23,8 @@ class Registration extends Model
         'product_id',
         'unique_id',
         'metadata',
-        'status'
+        'status',
+        'promo'
     ];
 
     /**

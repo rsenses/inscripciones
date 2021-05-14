@@ -153,10 +153,10 @@ class Product extends Model
 
     public function getAmountAttribute()
     {
-        $paidRegistrations = $this->checkouts()
+        $amount = $this->checkouts()
             ->where('status', 'paid')
-            ->count();
+            ->sum('amount');
 
-        return $paidRegistrations * $this->price;
+        return $amount;
     }
 }

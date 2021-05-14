@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <h2>Nuevo Usuario</h2>
 
     <div class="card bg-light">

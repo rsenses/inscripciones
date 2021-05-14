@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <h2>Nueva Inscripción</h2>
     <form action="{{ route('registrations.store') }}" method="POST">
         @csrf

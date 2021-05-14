@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="mb-3">
         <a class="btn btn-primary text-white pull-right d-block" data-toggle="tooltip" data-placement="bottom"
             title="Crear nueva" href="{{ route('partners.create') }}">

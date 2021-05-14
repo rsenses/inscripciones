@@ -51,6 +51,14 @@ class Checkout extends Model
     }
 
     /**
+     * Get the deal associated with the checkout.
+     */
+    public function deal()
+    {
+        return $this->hasOne(Deal::class);
+    }
+
+    /**
      * Get the product that owns the checkout.
      */
     public function product()
@@ -183,5 +191,18 @@ class Checkout extends Model
         } catch (TpvException $e) {
             throw new Exception($e->getMessage());
         }
+    }
+
+    public function applyDiscount(Discount $discount)
+    {
+        $originalPrice = $this->amount;
+
+        $newPrice = $originalPrice * ((100 - $discount->quantity) / 100);
+
+        $this->amount = $newPrice;
+
+        $this->save();
+
+        return $this;
     }
 }

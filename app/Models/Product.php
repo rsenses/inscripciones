@@ -49,6 +49,14 @@ class Product extends Model
     }
 
     /**
+     * Get the discounts for the product
+     */
+    public function discounts()
+    {
+        return $this->hasMany(Discount::class);
+    }
+
+    /**
      * Get the checkouts for the product
      */
     public function checkouts()

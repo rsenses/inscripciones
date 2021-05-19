@@ -31,7 +31,14 @@ class CheckoutCreated extends Mailable
      */
     public function build()
     {
+        $promo = $this->checkout->registration('accepted')->promo;
+        $discount = $this->checkout->product->discounts->find(1);
+
         return $this->subject('Solicitud aceptada')
+            ->with([
+                'promo' => $promo,
+                'discount' => $discount,
+            ])
             ->view('emails.checkouts.created')
             ->text('emails.checkouts.created_plain');
     }

@@ -22,7 +22,7 @@
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Estimad@ <strong>{{ $checkout->user->full_name }}</strong></mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Su solicitud para asistir al <strong>{{ $checkout->product->name }}</strong> ha sido <strong>aceptada</strong>.</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">
-            @if($promo === 'SUSCRIPTOR')
+            @if($promo === 'SUSCRIPTOR' || $promo === 'PREMIUM')
             Para beneficiarse por ser suscriptor, incorpore el siguiente código de descuento durante el proceso de pago: <b>{{ $discount->code }}</b> y se le aplicará un descuento del {{ $discount->quantity }}%.
             @endif
           </mj-text>

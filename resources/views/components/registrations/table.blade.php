@@ -51,15 +51,22 @@
                                             <form action="{{ route('registrations.update-status', ['registration' => $registration]) }}" method="POST" onsubmit="return confirm('Seguro que quieres aceptar la inscripción?');">
                                                 <input type="hidden" name="action" value="accept">
                                                 @csrf
-                                                <button type="submit" class="btn btn-success">Confirmar solicitud</button>
+                                                <button type="submit" class="btn btn-success btn-block">Confirmar solicitud</button>
                                             </form>
                                         </div>
                                         @if($registration->status === 'new')
                                             <div class="col text-right">
+                                                <form action="{{ route('registrations.update-status', ['registration' => $registration]) }}" method="POST" onsubmit="return confirm('Seguro que quieres invitar al usuario?');">
+                                                    <input type="hidden" name="action" value="invite">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-warning btn-block">Invitar<br>Asistente</button>
+                                                </form>
+                                            </div>
+                                            <div class="col text-right">
                                                 <form action="{{ route('registrations.update-status', ['registration' => $registration]) }}" method="POST" onsubmit="return confirm('Seguro que quieres denegar la inscripción?');">
                                                     <input type="hidden" name="action" value="deny">
                                                     @csrf
-                                                    <button type="submit" class="btn btn-danger">Denegar solicitud</button>
+                                                    <button type="submit" class="btn btn-danger btn-block">Denegar solicitud</button>
                                                 </form>
                                             </div>
                                         @endif

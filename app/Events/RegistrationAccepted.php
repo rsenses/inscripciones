@@ -22,9 +22,10 @@ class RegistrationAccepted
      *
      * @return void
      */
-    public function __construct(Registration $registration)
+    public function __construct(Registration $registration, bool $invite = false)
     {
         $this->registration = $registration;
+        $this->invite = $invite;
     }
 
     /**

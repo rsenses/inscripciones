@@ -41,7 +41,6 @@
 
                                     <div class="col-md-8">
                                         <input id="code" type="text" class="form-control @error('code') is-invalid @enderror" name="code" value="{{ old('code') }}" autocomplete="code" autofocus>
-
                                         @error('code')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

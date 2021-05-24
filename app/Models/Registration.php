@@ -92,6 +92,19 @@ class Registration extends Model
         return $registration;
     }
 
+    public function invite()
+    {
+        $registration = $this->changeStatus('paid');
+
+        RegistrationAccepted::dispatch($registration, true);
+
+        $checkout = $registration->checkout();
+
+        $checkout->invite();
+
+        return $registration;
+    }
+
     public function deny()
     {
         $registration = $this->changeStatus('denied');

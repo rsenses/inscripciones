@@ -37,12 +37,13 @@ class CreateCheckout
             $checkout = Checkout::create([
                 'user_id' => $registration->user_id,
                 'product_id' => $registration->product_id,
-                'amount' => $registration->product->price,
+                'amount' => $event->invite ? 0.00 : $registration->product->price,
                 'token' => uniqid()
             ]);
         } else {
             $checkout->status = 'new';
             $checkout->paid_at = null;
+            $checkout->amount = $event->invite ? 0.00 : $checkout->amount;
             $checkout->save();
         }
 

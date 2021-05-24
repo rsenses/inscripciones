@@ -29,6 +29,8 @@ class SendCheckoutEmailNotification
      */
     public function handle(CheckoutCreated $event)
     {
-        Mail::to($event->checkout->user)->send(new MailCheckoutCreated($event->checkout));
+        if ($event->checkout->amount > 0) {
+            Mail::to($event->checkout->user)->send(new MailCheckoutCreated($event->checkout));
+        }
     }
 }

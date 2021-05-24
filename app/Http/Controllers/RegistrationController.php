@@ -160,7 +160,7 @@ class RegistrationController extends Controller
         $request->validate([
             'action' => [
                 'required',
-                'in:accept,deny,cancel,pay',
+                'in:accept,deny,cancel,pay,invite',
             ],
         ]);
 

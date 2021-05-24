@@ -124,6 +124,17 @@ class Checkout extends Model
         return $checkout;
     }
 
+    public function invite()
+    {
+        $checkout = $this->changeStatus('paid');
+
+        $checkout->update(['paid_at' => Carbon::now()]);
+
+        CheckoutPaid::dispatch($checkout);
+
+        return $checkout;
+    }
+
     public function pending()
     {
         $checkout = $this->changeStatus('pending');

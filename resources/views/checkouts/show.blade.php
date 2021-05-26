@@ -33,7 +33,7 @@
                     Proceso de compra realizado anteriormente, disculpe las molestias.<br>Si tiene alguna duda contacte con nosotros en <a href="mailto:foro.expansion@unidadeditorial.es">foro.expansion@unidadeditorial.es</a>
                 </div>
             </div>
-        @else
+       @else
             <form method="POST" action="{{ route('checkouts.update', ['checkout' => $checkout]) }}" id="invoice-data">
                 @csrf
                 <div class="row justify-content-center">
@@ -95,7 +95,7 @@
                                     </div>
 
                                     <div class="col-md-5">
-                                        <input id="tax_id" type="text" class="form-control @error('tax_id') is-invalid @enderror" name="tax_id" value="{{ old('tax_id') }}" autocomplete="tax_id" maxlength="32">
+                                        <input id="tax_id" type="text" class="form-control @error('tax_id') is-invalid @enderror" name="tax_id" value="{{ old('tax_id') }}" autocomplete="tax_id" maxlength="32" placeholder="Sin guiones: A12345678">
 
                                         @error('tax_id')
                                         <span class="invalid-feedback" role="alert">

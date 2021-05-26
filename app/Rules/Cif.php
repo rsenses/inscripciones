@@ -26,6 +26,7 @@ class Cif implements Rule
     public function passes($attribute, $value)
     {
         $cif = strtoupper($value);
+        $cif = str_replace('-', '', $cif);
 
         $cif_codes = 'JABCDEFGHI';
 

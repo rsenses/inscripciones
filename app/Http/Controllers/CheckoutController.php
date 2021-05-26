@@ -130,6 +130,8 @@ class CheckoutController extends Controller
                 'untram' => 'nullable|string'
             ]);
 
+            $request->tax_id = str_replace('-', '', $request->tax_id);
+
             $address = $checkout->user->addresses()->create($request->all());
         }
 

@@ -119,5 +119,47 @@
                 </ol>
             </div>
         </div>
+        <div class="row">
+            <div class="col col-sm-8 offset-sm-2">
+                <h2>SEGURIDAD</h2>
+                <p>El sitio web utiliza técnicas de seguridad de la información generalmente aceptada en la industria, tales como firewalls, procedimientos de control de acceso y mecanismos criptográficos, todo ello con el objeto de evitar el acceso no autorizado de datos y el posible robo de los mismos. Para lograr estos fines, el usuario/cliente acepta que el prestador obtenga datos para efecto de la correspondiente autenticación de los controles de acceso.</p>
+                <h3>Ofrecemos pago 100% seguro</h3>
+                <p>En tiendaonline.com garantizamos que cada una de las transacciones realizadas es 100% segura.</p>
+                <p>Todas las compras que realices en nuestra web están avaladas por el servidor seguro de la entidad bancaria Banco Santander, de manera que tus datos están protegidos y encriptados por la tecnología más avanzada, por lo cual es mucho más seguro enviar tus datos al Servidor Seguro de los bancos que pagar en una gasolinera, restaurante, etc.</p>
+                <h3>¿Qué ocurre cuando envío mis datos a través de la red?</h3>
+                <p>Cuando realizas la compra y eliges la forma de pago, en el momento de pinchar sobre el botón de Pago por tarjeta el sitio web conecta con el Servidor Seguro, a partir de ese momento entras a navegar en zona segura e inscribes tus datos bancarios en el Servidor Seguro del banco, que se asegura que la operación reúne los requisitos de seguridad exigidos y realiza la operación, tras la cual aparece la confirmación de la misma y el comprador regresa de nuevo a la tienda.</p>
+                <h3>¿Podría conocer alguien la clave de encriptación?</h3>
+                <p>Cada vez que un usuario se conecta a un Servidor Seguro, éste se encarga de generar una clave aleatoria para la sesión que está estableciendo con el usuario, mientras que el navegador del cliente genera otra clave, igualmente aleatoria, que le sirve para identificarse ante el servidor.</p>
+                <p>Si en el momento en que se ha establecido una conexión segura, otros usuarios se conectan al servidor, se vuelven a generar otras nuevas claves para identificar los participantes en la conexión.</p>
+                <p>El Servidor Seguro se encarga de que las claves generadas no coincidan nunca mientras se establecen varias conexiones simultáneas.</p>
+                <h3>¿Cómo sé que realmente se ha establecido una conexión segura?</h3>
+                <p>Podrás saber si has conectado a un Servidor Seguro si la dirección URL empieza por "https://". Además, los navegadores más utilizados lo indican de manera gráfica mediante un icono que muestra al usuario si hay o no una conexión segura (por ejemplo, en el caso de Internet Explorer aparece el candado cerrado amarillo).</p>
+                <h3>¿Qué protocolo de seguridad se utiliza en las transmisiones?</h3>
+                <p>En las conexiones con el Servidor Seguro se utilizan las últimas especificaciones del protocolo de seguridad standard en la red: SSL.</p>
+                <h3>¿Qué entidad financiera avala la seguridad en mis transacciones?</h3>
+                <p>Cuando realizas una compra con una tarjeta de débito o crédito en nuestra Tienda Online se establece una conexión con el Servidor Seguro de Banco Santander, aporta toda su experiencia e infraestructura tecnológica para dar soporte de manera segura y eficaz a todas las transacciones electrónicas de compras que se hagan en www.tiendaonline.com. Cuando llega una petición de pago al Servidor Seguro de Banco Santander, éste se encarga de gestionar la autorización o denegación, en tiempo real, del pago de esa compra tras corroborar que todos los datos son correctos para realizar el pago.</p>
+                <h3>¿Dónde puede obtener más información?</h3>
+                <p>Si deseas ampliar información sobre temas de seguridad puedes recurrir a la que proporciona Banco Santander en su web, <a href="https://www.bancosantander.es" target="_blank" rel="nofollow noopener">www.bancosantander.es</a>.</p>
+                <h3>3D Secure</h3>
+                <p>La pasarela de Banco Santander es compatible con los nuevos protocolos de pago seguro en internet introducidos por las marcas Visa y Mastercard.</p>
+                <p>3D Secure es el sistema de pago más seguro con tarjeta de crédito porque es capaz de autentificar al titular de la tarjeta, garantiza que el cliente que está usando un número de tarjeta es realmente el titular de la misma. Esto se realiza mediante una clave secreta que su propio banco le facilitará y que sólo conocerá usted, en la mayoría de los casos esta clave se puede solicitar on-line. Para más información puede consultar la web de su banco o ponerse en contacto con él.</p>
+                <h3>Muy importante</h3>
+                <p>Nuestra web sólo acepta el pago con tarjetas de crédito que estén securizadas (3D Secure), por lo que necesitará una clave especial para comprar por internet que deberá proporcionársela la entidad financiera emisora de la tarjeta, haciendo mención a la necesidad de tener la clave virtual de 3D Secure. Recomendamos utilizar este sistema 3D Secure, usted se asegura que es el único que puede realizar compras con la tarjeta por lo que se hace imposible su uso fraudulento en la red, garantizando la total seguridad de las transacciones.</p>
+                <h3>¿Cómo protegemos tu pago con tarjeta de crédito?</h3>
+                <p>tiendaonline.com utiliza un servidor basado en uno de los sistemas de pago seguro más fiables de Internet: el protocolo de seguridad SSL (Secure Socked Layer). (Si deseas más información, visita www.ssl.com).</p>
+                <p>Todos tus datos personales y la información que nos transmitas viaja de forma encriptada a través de la red, y se protegen y codifican antes de enviarse para su procesamiento.</p>
+                <p>Para el pago con Visa y Mastercard sólo se aceptarán transacciones CES (Comercio Electrónico Seguro). Después de verificar que la tarjeta está adherida al sistema CES, el sistema contactará con el banco que la ha emitido para que el comprador autorice la compra. Una vez que el banco confirme la autenticidad, se efectuará el cargo en la tarjeta. En caso contrario el pedido será cancelado.</p>
+                <p>La pasarela de pago que utilizamos para tu pago con tarjeta de crédito es de Banco Santander, que encripta tus datos por medio del protocolo SSL 256 bits. Nuestro sistema no almacena ningún dato bancario de tu tarjeta de crédito, sino que va directamente al TPV Ecommerce (Terminal Punto de Venta) del Banco.</p>
+                <h3>¿Qué es SSL?</h3>
+                <p>Los últimos avances en tecnología de navegadores y servidores han facilitado el uso de servicios web sin preocupaciones relacionadas con el fraude electrónico. Un ejemplo de ello es Secure Sockets Layer (SSL), desarrollado por Netscape, un protocolo de seguridad enviado a la Internet Engineering Task Force (IETF) como borrador de Internet. Básicamente, el protocolo permite al navegador y al servidor de una sesión web autenticarse entre sí y proteger la información que, posteriormente, fluirá entre ambos puntos. Mediante el uso de técnicas criptográficas como la codificación y la firma digital, el protocolo:</p>
+                <ul>
+                <li>Permite a los navegadores y servidores web autenticarse entre sí.</li>
+                <li>Permite a los propietarios de sitios web controlar el acceso a servidores, directorios, archivos o servicios
+                particulares</li>
+                <li>Permite compartir información confidencial (como, por ejemplo, números de tarjetas de crédito) entre el navegador y el servidor, manteniéndola inaccesible para terceros.</li>
+                <li>Permite asegurar que los datos intercambiados por el navegador y el servidor no puedan corromperse, ya sea de forma accidental o deliberada, sin que ello sea detectado.</li>
+                </ul>
+            </div>
+        </div>
     </div>
 @endsection

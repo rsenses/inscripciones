@@ -34,6 +34,29 @@ class IIForoController extends Controller
         ];
     }
 
+    public function streamingNoAuth()
+    {
+        $url = urlencode("https://foro.expansion.com/live.json");
+
+        $json = json_decode(file_get_contents($url), true);
+
+        dd($json);
+        // Cuando tentamos el streaming, hacer wrap con
+        //     <div class="embed-responsive embed-responsive-16by9">
+        return [
+            'streaming' => '<div class="alert alert-warning">Streaming no disponible actualmente.</div>'
+        ];
+    }
+
+    private function getSession()
+    {
+        $url = urlencode("https://foro.expansion.com/live.json");
+
+        $json = json_decode(file_get_contents($url), true);
+
+        dd($json);
+    }
+
     public function registrations()
     {
         $user = auth()->user();

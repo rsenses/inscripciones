@@ -27,34 +27,33 @@ class IIForoController extends Controller
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
 
-        // Cuando tentamos el streaming, hacer wrap con
-        //     <div class="embed-responsive embed-responsive-16by9">
-        return [
-            'streaming' => '<div class="alert alert-warning">Streaming no disponible actualmente.</div>'
-        ];
+        return $this->getStream();
     }
 
     public function streamingNoAuth()
     {
-        $url = urlencode("https://foro.expansion.com/live.json");
-
-        $json = json_decode(file_get_contents($url), true);
-
-        dd($json);
-        // Cuando tentamos el streaming, hacer wrap con
-        //     <div class="embed-responsive embed-responsive-16by9">
-        return [
-            'streaming' => '<div class="alert alert-warning">Streaming no disponible actualmente.</div>'
-        ];
+        return $this->getStream();
     }
 
-    private function getSession()
+    private function getStream()
     {
-        $url = urlencode("https://foro.expansion.com/live.json");
+        $url = 'https://foro.expansion.com/live.json';
 
         $json = json_decode(file_get_contents($url), true);
 
-        dd($json);
+        if($json['stream'] === 'stream-1-1') {
+            // Cuando tentamos el streaming, hacer wrap con
+            //     <div class="embed-responsive embed-responsive-16by9">
+            return [
+                'streaming' => '<div class="alert alert-warning">Streaming no disponible actualmente.</div>'
+            ];
+        } else {
+            // Cuando tentamos el streaming, hacer wrap con
+            //     <div class="embed-responsive embed-responsive-16by9">
+            return [
+                'streaming' => '<div class="alert alert-warning">Streaming no disponible actualmente.</div>'
+            ];
+        }
     }
 
     public function registrations()

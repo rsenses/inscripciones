@@ -20,6 +20,7 @@ Route::prefix('v1')->group(function () {
     Route::post('/registration', 'App\Http\Controllers\Api\RegistrationController@store');
 
     Route::get('/ii-foro/streaming-noauth', 'App\Http\Controllers\Api\IIForoController@streamingNoAuth');
+    Route::get('/ii-foro/registrations-noauth', 'App\Http\Controllers\Api\IIForoController@registrationsNoAuth');
     Route::middleware(['auth:api'])->group(function () {
         Route::post('/logout', 'App\Http\Controllers\Api\AuthController@logout');
         Route::get('/products/{product}', 'App\Http\Controllers\Api\ProductController@show');

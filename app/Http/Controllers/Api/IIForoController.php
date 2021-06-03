@@ -77,6 +77,18 @@ class IIForoController extends Controller
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
 
+        return $this->getRegistrations($productId);
+    }
+
+    public function registrationsNoAuth()
+    {
+        $productId = 2;
+
+        return $this->getRegistrations($productId);
+    }
+
+    private function getRegistrations(int $productId)
+    {
         $url = 'https://foro.expansion.com/api/speakers.json';
         $JSON = file_get_contents($url);
 

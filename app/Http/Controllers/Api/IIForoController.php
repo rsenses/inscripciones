@@ -46,11 +46,11 @@ class IIForoController extends Controller
             //     <div class="embed-responsive embed-responsive-16by9">
             if ($lang === 'en') {
                 return [
-                    'streaming' => '<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://c.themediacdn.com/embed/media/WSsdbK/IKE44b4smLf/imdCcrsYn2I_5" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay; fullscreen;"></iframe></div>'
+                    'streaming' => '<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%;"><iframe style="position: absolute; width: 100%; height: 100%;" src="https://ikuna.s3.amazonaws.com/sync01/event_660_ccf98b/streaming.html" frameborder="0" allowtransparency="true" allowfullscreen></iframe></div></div>'
                 ];
             } else {
                 return [
-                    'streaming' => '<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://c.themediacdn.com/embed/media/WSsdbK/IKE44b4smLf/imdCwbsYn2E_5" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay; fullscreen;"></iframe></div>'
+                    'streaming' => '<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%;"><iframe style="position: absolute; width: 100%; height: 100%;" src="https://ikuna.s3.amazonaws.com/sync01/event_659_20286a/streaming.html" frameborder="0" allowtransparency="true" allowfullscreen></iframe></div></div>'
                 ];
             }
         } elseif ($json['stream'] === 'stream-2-1') {
@@ -58,21 +58,21 @@ class IIForoController extends Controller
             //     <div class="embed-responsive embed-responsive-16by9">
             if ($lang === 'en') {
                 return [
-                    'streaming' => '<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://c.themediacdn.com/embed/media/WSsdbK/IKE44b4smLf/imdeOSsYn2C_5" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay; fullscreen;"></iframe></div>'
+                    'streaming' => '<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%;"><iframe style="position: absolute; width: 100%; height: 100%;" src="https://ikuna.s3.amazonaws.com/sync01/event_662_ddeb88/streaming.html" frameborder="0" allowtransparency="true" allowfullscreen></iframe></div></div>'
                 ];
             } else {
                 return [
-                    'streaming' => '<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://c.themediacdn.com/embed/media/WSsdbK/IKE44b4smLf/imdehosYn2N_5" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay; fullscreen;"></iframe></div>'
+                    'streaming' => '<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%;"><iframe style="position: absolute; width: 100%; height: 100%;" src="https://ikuna.s3.amazonaws.com/sync01/event_661_10b763/streaming.html" frameborder="0" allowtransparency="true" allowfullscreen></iframe></div></div>'
                 ];
             }
         } else {
             if ($lang === 'en') {
                 return [
-                    'streaming' => '<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://c.themediacdn.com/embed/media/WSsdbK/IKE44b4smLf/imdvlKsYn2t_5" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay; fullscreen;"></iframe></div>'
+                    'streaming' => '<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%;"><iframe style="position: absolute; width: 100%; height: 100%;" src="https://ikuna.s3.amazonaws.com/sync01/event_658_40b7d6/streaming.html" frameborder="0" allowtransparency="true" allowfullscreen></iframe></div></div>'
                 ];
             } else {
                 return [
-                    'streaming' => '<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://c.themediacdn.com/embed/media/WSsdbK/IKE44b4smLf/imdS3SsYn2X_5" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay; fullscreen;"></iframe></div>'
+                    'streaming' => '<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%;"><iframe style="position: absolute; width: 100%; height: 100%;" src="https://ikuna.s3.amazonaws.com/sync01/event_657_993572/streaming.html" frameborder="0" allowtransparency="true" allowfullscreen></iframe></div></div>'
                 ];
             }
         }

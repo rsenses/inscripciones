@@ -388,13 +388,6 @@ class IIForoController extends Controller
               "online" => false
             ],
             [
-              "name" => "Helena HERRERO",
-              "last_name" => "HERRERO",
-              "description" => "Presidenta de HP para el mercado del sur de Europa, HP",
-              "speaker" => false,
-              "online" => false
-            ],
-            [
               "name" => "Leopoldo SATRUSTEGUI",
               "last_name" => "SATRUSTEGUI",
               "description" => "DIRECTOR GENERAL, HYUNDAI ESPAÑA",
@@ -486,13 +479,6 @@ class IIForoController extends Controller
               "online" => false
             ],
             [
-              "name" => "Nadia CALVIÑO",
-              "last_name" => "CALVIÑO",
-              "description" => "Vicepresidenta segunda del Gobierno, ministra de Asuntos Económicos y Transformación Digital, MINISTERIO DE ASUNTOS ECONÓMICOS Y TRANFORMACIÓN DIGITAL",
-              "speaker" => false,
-              "online" => false
-            ],
-            [
               "name" => "Eduardo CÓRDOBA",
               "last_name" => "CÓRDOBA",
               "description" => "Comunicación, MINISTERIO DE ASUNTOS EXTERIORES Y COOPERACIÓN",
@@ -510,13 +496,6 @@ class IIForoController extends Controller
               "name" => "Vicente MONTÁVEZ",
               "last_name" => "MONTÁVEZ",
               "description" => "Asesor, MINISTERIO DE ASUNTOS EXTERIORES Y COOPERACIÓN",
-              "speaker" => false,
-              "online" => false
-            ],
-            [
-              "name" => "Teresa RIBERA",
-              "last_name" => "RIBERA",
-              "description" => "Vicepresidenta cuarta del Gobierno, ministra para la Transcición Ecológica y Reto Demográfico, MINISTERIO DE TRANSCICIÓN ECOLÓGICA Y RETO DEMOGRÁFICO",
               "speaker" => false,
               "online" => false
             ],
@@ -776,13 +755,6 @@ class IIForoController extends Controller
               "name" => "Amparo POLO",
               "last_name" => "POLO",
               "description" => "EXPANSIÓN, UNIDAD EDITORIAL",
-              "speaker" => false,
-              "online" => false
-            ],
-            [
-              "name" => "Marco POMPIGNOLI",
-              "last_name" => "POMPIGNOLI",
-              "description" => "Presidente, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],

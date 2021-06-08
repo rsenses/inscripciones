@@ -159,7 +159,7 @@ class IIForoController extends Controller
             [
               "name" => "Xavier GISBERT DA CRUZ",
               "last_name" => "GISBERT DA CRUZ",
-              "description" => "Presidente, Asociación de la Enseñanza Bilingüe",
+              "description" => "Presidente, ASOCIACIÓN DE LA ENSEÑANZA BILINGÜE",
               "speaker" => false,
               "online" => false
             ],
@@ -243,7 +243,7 @@ class IIForoController extends Controller
             [
               "name" => "Mónica AUSEJO SEGURA",
               "last_name" => "AUSEJO SEGURA",
-              "description" => "Directora Market Access Spain& Portugal, Bristol Myers Squibb",
+              "description" => "Directora Market Access Spain & Portugal, BRISTOL MYERS SQUIBB",
               "speaker" => false,
               "online" => false
             ],
@@ -278,7 +278,7 @@ class IIForoController extends Controller
             [
               "name" => "Manuel PÉREZ-SALA",
               "last_name" => "PÉREZ-SALA",
-              "description" => "Presidente, Círculo de Empresarios",
+              "description" => "Presidente, CÍRCULO DE EMPRESARIOS",
               "speaker" => false,
               "online" => false
             ],
@@ -299,35 +299,35 @@ class IIForoController extends Controller
             [
               "name" => "Hildur Eir JONSDOTTIR",
               "last_name" => "JONSDOTTIR",
-              "description" => "Socia directora de Assurance, EY España",
+              "description" => "Socia directora de Assurance, EY ESPAÑA",
               "speaker" => false,
               "online" => false
             ],
             [
               "name" => "Ramón PALACÍN",
               "last_name" => "PALACÍN",
-              "description" => "socio director, EY España",
+              "description" => "socio director, EY ESPAÑA",
               "speaker" => false,
               "online" => false
             ],
             [
               "name" => "Goyo PANADERO",
               "last_name" => "PANADERO",
-              "description" => "Director de Comunicación en España, EY España",
+              "description" => "Director de Comunicación en España, EY ESPAÑA",
               "speaker" => false,
               "online" => false
             ],
             [
               "name" => "Ignacio REL PLA",
               "last_name" => "REL PLA",
-              "description" => "Socio director de Consulting, EY España",
+              "description" => "Socio director de Consulting, EY ESPAÑA",
               "speaker" => false,
               "online" => false
             ],
             [
               "name" => "Juan PABLO RIESGO",
               "last_name" => "RIESGO",
-              "description" => "Socio responsable, EY España",
+              "description" => "Socio responsable, EY ESPAÑA",
               "speaker" => false,
               "online" => false
             ],
@@ -376,7 +376,7 @@ class IIForoController extends Controller
             [
               "name" => "José GARCÍA",
               "last_name" => "GARCÍA",
-              "description" => "Socio de la agencia de comunicación Grupo Albión, asesor de comunicación, GRUPO ALBIOL (Com. Tendam)",
+              "description" => "Socio de la agencia de comunicación Grupo Albión, asesor de comunicación, GRUPO ALBIOL",
               "speaker" => false,
               "online" => false
             ],
@@ -418,21 +418,21 @@ class IIForoController extends Controller
             [
               "name" => "Herminio GRANERO",
               "last_name" => "GRANERO",
-              "description" => "Executive Director, Ingram Micro Spain",
+              "description" => "Executive Director, INGRAM MICRO SPAIN",
               "speaker" => false,
               "online" => false
             ],
             [
               "name" => "Rocío Márquez PAPELL",
               "last_name" => "MÁRQUEZ PAPELL",
-              "description" => "Directora de Comunicación Josep Piqué, JOSEP PIQUÉ",
+              "description" => "Directora de Comunicación Josep Piqué",
               "speaker" => false,
               "online" => false
             ],
             [
               "name" => "Dimas GIMENO",
               "last_name" => "GIMENO",
-              "description" => "Presidente, Kapita / WOW",
+              "description" => "Presidente, KAPITA / WOW",
               "speaker" => false,
               "online" => false
             ],
@@ -467,7 +467,7 @@ class IIForoController extends Controller
             [
               "name" => "José Manuel INCHAUSTI",
               "last_name" => "INCHAUSTI",
-              "description" => "Vicepresidente y CEO, MAPFRE España",
+              "description" => "Vicepresidente y CEO, MAPFRE ESPAÑA",
               "speaker" => false,
               "online" => false
             ],
@@ -488,7 +488,7 @@ class IIForoController extends Controller
             [
               "name" => "Nadia CALVIÑO",
               "last_name" => "CALVIÑO",
-              "description" => "Vicepresidenta segunda del Gobierno, ministra de Asuntos Económicos y Transformación Digital, MINISTERIO DE ASUNTOS ECONÓMICOS Y \"TRANFORMACIÓN DIGITAL",
+              "description" => "Vicepresidenta segunda del Gobierno, ministra de Asuntos Económicos y Transformación Digital, MINISTERIO DE ASUNTOS ECONÓMICOS Y TRANFORMACIÓN DIGITAL",
               "speaker" => false,
               "online" => false
             ],
@@ -516,7 +516,7 @@ class IIForoController extends Controller
             [
               "name" => "Teresa RIBERA",
               "last_name" => "RIBERA",
-              "description" => "Vicepresidenta cuarta del Gobierno, ministra para la Transcición Ecológica y Reto Demográfico, MINISTERIO DE TRANSCICIÓN ECOLÓGICA Y RETO \"DEMOGRÁFICO",
+              "description" => "Vicepresidenta cuarta del Gobierno, ministra para la Transcición Ecológica y Reto Demográfico, MINISTERIO DE TRANSCICIÓN ECOLÓGICA Y RETO DEMOGRÁFICO",
               "speaker" => false,
               "online" => false
             ],
@@ -551,7 +551,7 @@ class IIForoController extends Controller
             [
               "name" => "Joan JORDI VALLVERDÚ",
               "last_name" => "JORDI VALLVERDÚ",
-              "description" => "CEO, Publicis",
+              "description" => "CEO, PUBLICIS",
               "speaker" => false,
               "online" => false
             ],
@@ -908,7 +908,7 @@ class IIForoController extends Controller
             [
               "name" => "Carmen ALVEAR",
               "last_name" => "ALVEAR",
-              "description" => "Directora de RRII, Vodafone",
+              "description" => "Directora de RRII, VODAFONE",
               "speaker" => false,
               "online" => false
             ],

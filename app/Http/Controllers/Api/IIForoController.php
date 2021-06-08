@@ -157,791 +157,791 @@ class IIForoController extends Controller
     {
         return [
             [
-              "name" => "Xavier",
+              "name" => "Xavier Gisbert da Cruz"
               "last_name" => "Gisbert da Cruz",
               "description" => "Presidente, Asociación de la Enseñanza Bilingüe",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Natalia",
+              "name" => "Natalia Díaz Larraura"
               "last_name" => "Díaz Larraura",
               "description" => "Comunicación, ASTRAZENECA",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Marta",
+              "name" => "Marta Moreno"
               "last_name" => "Moreno",
               "description" => "Directora de Asuntos Corporativos y Acceso al Mercado, ASTRAZENECA",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "María",
+              "name" => "María Arangueren"
               "last_name" => "Arangueren",
               "description" => "2º Teniente de Alcalde, AYUNTAMIENTO DE ALCALÁ DE HENARES",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Alberto",
+              "name" => "Alberto Blazquez"
               "last_name" => "Blazquez",
               "description" => "1er Teniente de Alcalde, AYUNTAMIENTO DE ALCALÁ DE HENARES",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Diana",
+              "name" => "Diana Díaz"
               "last_name" => "Díaz",
               "description" => "3er Teniente de Alcalde, AYUNTAMIENTO DE ALCALÁ DE HENARES",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Ricardo",
+              "name" => "Ricardo González-Parra"
               "last_name" => "González-Parra",
               "description" => "Portavoz Grupo Municipal Ciudadanos, AYUNTAMIENTO DE ALCALÁ DE HENARES",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Teresa",
+              "name" => "Teresa Lóper Hervas"
               "last_name" => "Lóper Hervas",
               "description" => "Portavoz Grupo municipal Unidas Podemos, AYUNTAMIENTO DE ALCALÁ DE HENARES",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Javier",
+              "name" => "Javier Moreno"
               "last_name" => "Moreno",
               "description" => "Portavoz Grupo Municipal VOX, AYUNTAMIENTO DE ALCALÁ DE HENARES",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Judith",
+              "name" => "Judith Piquet Flores"
               "last_name" => "Piquet Flores",
               "description" => "Portavoz Grupo Municipal PP, AYUNTAMIENTO DE ALCALÁ DE HENARES",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Víctor",
+              "name" => "Víctor Marquez"
               "last_name" => "Marquez",
               "description" => "Director de Comunicación, BANCO DE ESPAÑA",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Carina",
+              "name" => "Carina Mickeviciute"
               "last_name" => "Mickeviciute",
               "description" => "Corporate Communications Iberia, BLACKROCK",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Mónica",
+              "name" => "Mónica Ausejo Segura"
               "last_name" => "Ausejo Segura",
               "description" => "Directora Market Access Spain& Portugal, Bristol Myers Squibb",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Miguel",
+              "name" => "Miguel Garrido de la Cierva"
               "last_name" => "Garrido de la Cierva",
               "description" => "Presidente, CEIM",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Enrique",
+              "name" => "Enrique Roríguez"
               "last_name" => "Roríguez",
               "description" => "Director de Comunicación, CEPSA",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Juan",
+              "name" => "Juan Llobell"
               "last_name" => "Llobell",
               "description" => "Director de Comunicación y Relaciones Institucionales, CEPSA",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Ignacio",
+              "name" => "Ignacio Rodrígez-Solano"
               "last_name" => "Rodrígez-Solano",
               "description" => "Responsable de Relaciones Institucionales, CEPSA",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Manuel",
+              "name" => "Manuel Pérez-Sala"
               "last_name" => "Pérez-Sala",
               "description" => "Presidente, Círculo de Empresarios",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Isabel",
+              "name" => "Isabel Díaz Ayuso"
               "last_name" => "Díaz Ayuso",
               "description" => "Presidenta, COMUNIDAD DE MADRID",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Maru",
+              "name" => "Maru Merino"
               "last_name" => "Merino",
               "description" => "Jefe de Protocolo de la Consejera de Presidencia, COMUNIDAD DE MADRID",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Joaquin",
+              "name" => "Joaquin Gordon"
               "last_name" => "Gordon",
               "description" => "Director General, ELIZABETH ARDEN",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Hildur Eir",
+              "name" => "Hildur Eir Jonsdottir"
               "last_name" => "Jonsdottir",
               "description" => "Socia directora de Assurance, EY España",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Ramón",
+              "name" => "Ramón Palacín"
               "last_name" => "Palacín",
               "description" => "socio director, EY España",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Goyo",
+              "name" => "Goyo Panadero"
               "last_name" => "Panadero",
               "description" => "Director de Comunicación en España, EY España",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Ignacio",
+              "name" => "Ignacio Rel Pla"
               "last_name" => "Rel Pla",
               "description" => "Socio director de Consulting, EY España",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Juan Pablo",
+              "name" => "Juan Pablo Riesgo"
               "last_name" => "Riesgo",
               "description" => "Socio responsable, EY España",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Rafael",
+              "name" => "Rafael del Pino y Calvo-Sotelo"
               "last_name" => "del Pino y Calvo-Sotelo",
               "description" => "PRESIDENTE, FERROVIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Ana",
+              "name" => "Ana Cabos"
               "last_name" => "Cabos",
               "description" => "Directora de Comunicación, FUNDACIÓN FAES",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Rocío",
+              "name" => "Rocío Martínez-Sempere"
               "last_name" => "Martínez-Sempere",
               "description" => "Directora, FUNDACIÓN FELIPE GONZÁLEZ",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Miguel Ángel",
+              "name" => "Miguel Ángel Oliver"
               "last_name" => "Oliver",
               "description" => "Secretario de Estado de Comunicación, GOBIERNO DE ESPAÑA",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Begoña",
+              "name" => "Begoña De la Sota"
               "last_name" => "De la Sota",
               "description" => "CEO, GROUP M",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Beatriz",
+              "name" => "Beatriz Delgado"
               "last_name" => "Delgado",
               "description" => "CEO, GROUP M",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "José",
+              "name" => "José García"
               "last_name" => "García",
               "description" => "Socio de la agencia de comunicación Grupo Albión, asesor de comunicación, GRUPO ALBIOL (Com. Tendam)",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Raquel",
+              "name" => "Raquel García"
               "last_name" => "García",
               "description" => "Directora General, GRUPO LAUDER",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Helena",
+              "name" => "Helena Herrero"
               "last_name" => "Herrero",
               "description" => "Presidenta de HP para el mercado del sur de Europa, HP",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Leopoldo",
+              "name" => "Leopoldo Satrustegui"
               "last_name" => "Satrustegui",
               "description" => "DIRECTOR GENERAL, HYUNDAI ESPAÑA",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Félix",
+              "name" => "Félix Sanz Roldán"
               "last_name" => "Sanz Roldán",
               "description" => "Ex director del CNI, IBERDROLA",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Juan",
+              "name" => "Juan Cierco"
               "last_name" => "Cierco",
               "description" => "Director de Comunicación, IBERIA",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Herminio",
+              "name" => "Herminio Granero"
               "last_name" => "Granero",
               "description" => "Executive Director, Ingram Micro Spain",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Rocío",
+              "name" => "Rocío Márquez Papell"
               "last_name" => "Márquez Papell",
               "description" => "Directora de Comunicación Josep Piqué, JOSEP PIQUÉ",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Dimas",
+              "name" => "Dimas Gimeno"
               "last_name" => "Gimeno",
               "description" => "Presidente, Kapita / WOW",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Ana",
+              "name" => "Ana Jaureguizar"
               "last_name" => "Jaureguizar",
               "description" => "Directora General, L'OREAL DIVISIÓN PRODUCTOS DE LUJO",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Juan Alonso",
+              "name" => "Juan Alonso De Lomas"
               "last_name" => "De Lomas",
               "description" => "Presidente y Consejero delegado, L'OREAL ESPAÑA",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Juan Pedro",
+              "name" => "Juan Pedro Abeniacar"
               "last_name" => "Abeniacar",
               "description" => "CEO, LVMH",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Ignacio",
+              "name" => "Ignacio Baeza"
               "last_name" => "Baeza",
               "description" => "Vicepresidente, MAPFRE",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "José Manuel",
+              "name" => "José Manuel Inchausti"
               "last_name" => "Inchausti",
               "description" => "Vicepresidente y CEO, MAPFRE España",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Toni",
+              "name" => "Toni Martínez"
               "last_name" => "Martínez",
               "description" => "Director de Comunicación, MERCADONA",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Miguel",
+              "name" => "Miguel Primo de Rivera"
               "last_name" => "Primo de Rivera",
               "description" => "Conductor del acto, MICHI PRIMO DE RIVERA",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Nadia",
+              "name" => "Nadia Calviño"
               "last_name" => "Calviño",
               "description" => "Vicepresidenta segunda del Gobierno, ministra de Asuntos Económicos y Transformación Digital, MINISTERIO DE ASUNTOS ECONÓMICOS Y \"TRANFORMACIÓN DIGITAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Eduardo",
+              "name" => "Eduardo Córdoba"
               "last_name" => "Córdoba",
               "description" => "Comunicación, MINISTERIO DE ASUNTOS EXTERIORES Y COOPERACIÓN",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Arancha",
+              "name" => "Arancha González Laya"
               "last_name" => "González Laya",
               "description" => "Ministra, MINISTERIO DE ASUNTOS EXTERIORES Y COOPERACIÓN",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Vicente",
+              "name" => "Vicente Montávez"
               "last_name" => "Montávez",
               "description" => "Asesor, MINISTERIO DE ASUNTOS EXTERIORES Y COOPERACIÓN",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Teresa",
+              "name" => "Teresa Ribera"
               "last_name" => "Ribera",
               "description" => "Vicepresidenta cuarta del Gobierno, ministra para la Transcición Ecológica y Reto Demográfico, MINISTERIO DE TRANSCICIÓN ECOLÓGICA Y RETO \"DEMOGRÁFICO",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Jordi",
+              "name" => "Jordi García Tabernero"
               "last_name" => "García Tabernero",
               "description" => "DG Sostenibilidad, Marca y RRII, NATURGY",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Patricia",
+              "name" => "Patricia Benito  de Mateo"
               "last_name" => "Benito  de Mateo",
               "description" => "Directora General, OPEN BANK( TENDAM)",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Pedro",
+              "name" => "Pedro Soria"
               "last_name" => "Soria",
               "description" => "Director, PARADOR DE ALCALÁ DE HENARES",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Pablo",
+              "name" => "Pablo Casado"
               "last_name" => "Casado",
               "description" => "Presidente, PARTIDO POPULAR",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Joan",
+              "name" => "Joan Jordi Vallverdú"
               "last_name" => "Jordi Vallverdú",
               "description" => "CEO, Publicis",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Urbano",
+              "name" => "Urbano Cairo"
               "last_name" => "Cairo",
               "description" => "Presidente, RCS",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "António",
+              "name" => "António Simões"
               "last_name" => "Simões",
               "description" => "CEO Santander España y Europa, SANTANDER ESPAÑA",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Amalia",
+              "name" => "Amalia Navarro"
               "last_name" => "Navarro",
               "description" => "Directora de Comunicación, Secretaría General Iberoamericana (SEGIB)",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Andrés Miguel",
+              "name" => "Andrés Miguel Rondón"
               "last_name" => "Rondón",
               "description" => "Asesor de Gabinete, Secretaría General Iberoamericana (SEGIB)",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Manuel",
+              "name" => "Manuel Serrano"
               "last_name" => "Serrano",
               "description" => "Director general financiero, TENDAM",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Ignacio",
+              "name" => "Ignacio Sierra"
               "last_name" => "Sierra",
               "description" => "Director de Comunicación, TENDAM",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Marta",
+              "name" => "Marta Ortiz"
               "last_name" => "Ortiz",
               "description" => "Vicepresidenta, THE EUROPEAN HOUSE-AMBROSETTI",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Maria Adelaide",
+              "name" => "Maria Adelaide Piano Mortari"
               "last_name" => "Piano Mortari",
               "description" => "Associate Partner, THE EUROPEAN HOUSE-AMBROSETTI",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Jesús",
+              "name" => "Jesús Escudero González"
               "last_name" => "Escudero González",
               "description" => "Director de Banca Corporativa, UNICAJA",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "David",
+              "name" => "David Iglesias Rico"
               "last_name" => "Iglesias Rico",
               "description" => "Director de Segmento Empresas de Madrid, UNICAJA",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Francisco Javier",
+              "name" => "Francisco Javier Molinuevo"
               "last_name" => "Molinuevo",
               "description" => "Coordinador de Banca Corporativa, UNICAJA",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Isabel",
+              "name" => "Isabel Vilaplana Sempere"
               "last_name" => "Vilaplana Sempere",
               "description" => "Directora de Segmento Sector Público Norte, UNICAJA",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Mayte",
+              "name" => "Mayte Alonso Ayuso"
               "last_name" => "Alonso Ayuso",
               "description" => "EXPANSIÓN, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Rebeca",
+              "name" => "Rebeca Arroyo"
               "last_name" => "Arroyo",
               "description" => "EXPANSIÓN, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Stefania",
+              "name" => "Stefania Bedogni"
               "last_name" => "Bedogni",
               "description" => "Directora General y Consejera, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Pedro",
+              "name" => "Pedro Biurrun"
               "last_name" => "Biurrun",
               "description" => "Subdirector de Expansión, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Roberto",
+              "name" => "Roberto Casado"
               "last_name" => "Casado",
               "description" => "EXPANSIÓN, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Gonzalo",
+              "name" => "Gonzalo Casas"
               "last_name" => "Casas",
               "description" => "Director de Publicidad, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Raúl",
+              "name" => "Raúl Castillo Herrero"
               "last_name" => "Castillo Herrero",
               "description" => "Director Comercial, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Mar",
+              "name" => "Mar De Vicente"
               "last_name" => "De Vicente",
               "description" => "Directora de Publicidad, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Manuel",
+              "name" => "Manuel Del Pozo"
               "last_name" => "Del Pozo",
               "description" => "Director Adjunto de Expansión, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Valentín",
+              "name" => "Valentín Fernández"
               "last_name" => "Fernández",
               "description" => "Redactor Jefe Expansión, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Aurelio",
+              "name" => "Aurelio Fernández Lozano"
               "last_name" => "Fernández Lozano",
               "description" => "Director General de Publicaciones, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Luis",
+              "name" => "Luis Fontán"
               "last_name" => "Fontán",
               "description" => "Director de Negocio de Expansión, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Ignacio",
+              "name" => "Ignacio Garay"
               "last_name" => "Garay",
               "description" => "Director Adjunto de Expansión, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Juan José",
+              "name" => "Juan José Garrido de la Cierva"
               "last_name" => "Garrido de la Cierva",
               "description" => "Redactor Jefe Expansión, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Miguel",
+              "name" => "Miguel González Corral"
               "last_name" => "González Corral",
               "description" => "Director del Área de Salud, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Joaquín",
+              "name" => "Joaquín Manso"
               "last_name" => "Manso",
               "description" => "Director Adjunto de El Mundo, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Javier",
+              "name" => "Javier Montalvo"
               "last_name" => "Montalvo",
               "description" => "Redactor Jefe Expansión, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Tacho",
+              "name" => "Tacho Orero"
               "last_name" => "Orero",
               "description" => "Director de Publicidad, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Miguel Ángel",
+              "name" => "Miguel Ángel Patiño"
               "last_name" => "Patiño",
               "description" => "Redactor Jefe de Expansión, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Ana I.",
+              "name" => "Ana I. Pereda"
               "last_name" => "Pereda",
               "description" => "Directora de Expansión, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Amparo",
+              "name" => "Amparo Polo"
               "last_name" => "Polo",
               "description" => "EXPANSIÓN, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Marco",
+              "name" => "Marco Pompignoli"
               "last_name" => "Pompignoli",
               "description" => "Presidente, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Silvia",
+              "name" => "Silvia Román"
               "last_name" => "Román",
               "description" => "Redactora Jefe de Internacional de El Mundo, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Francisco",
+              "name" => "Francisco Rosell"
               "last_name" => "Rosell",
               "description" => "Director de El Mundo, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Clara",
+              "name" => "Clara Ruiz de Gauna"
               "last_name" => "Ruiz de Gauna",
               "description" => "Redactora Jefe de Expansión, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Martí",
+              "name" => "Martí Saballs"
               "last_name" => "Saballs",
               "description" => "Director Adjunto de El Mundo, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Arancha",
+              "name" => "Arancha Sánchez Fernández"
               "last_name" => "Sánchez Fernández",
               "description" => "Directora de Publicidad, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "José Luis",
+              "name" => "José Luis Sánchez-Crespo"
               "last_name" => "Sánchez-Crespo",
               "description" => "Director de Publicidad, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Estela",
+              "name" => "Estela Santos"
               "last_name" => "Santos",
               "description" => "Redactora Jefe de Expansión, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Chary",
+              "name" => "Chary Serrano"
               "last_name" => "Serrano",
               "description" => "Directora de Negocio Área Salud, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Nicola",
+              "name" => "Nicola Speroni"
               "last_name" => "Speroni",
               "description" => "Director General y Consejero, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Miguel",
+              "name" => "Miguel Suárez"
               "last_name" => "Suárez",
               "description" => "Director de Publicidad, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Emelia",
+              "name" => "Emelia Viaña"
               "last_name" => "Viaña",
               "description" => "Redactora Jefe de Expansión, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Jesús",
+              "name" => "Jesús Zaballa"
               "last_name" => "Zaballa",
               "description" => "Director General de Publicidad, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Artur",
+              "name" => "Artur Zanon"
               "last_name" => "Zanon",
               "description" => "EXPANSIÓN, UNIDAD EDITORIAL",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Antonio",
+              "name" => "Antonio García Tabuenca"
               "last_name" => "García Tabuenca",
               "description" => "Decano de la facultad de Economicas, Empresariales y Turismo, UNIVERSIDAD DE ALCALÁ DE HENARES",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Jose",
+              "name" => "Jose Gonzalo Angulo"
               "last_name" => "Gonzalo Angulo",
               "description" => "Director del Dpto de Economía y Dirección de Empresas, UNIVERSIDAD DE ALCALÁ DE HENARES",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "",
+              "name" => " Mancha"
               "last_name" => "Mancha",
               "description" => "Catedratico de Economía Aplicada, UNIVERSIDAD DE ALCALÁ DE HENARES",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Carlos",
+              "name" => "Carlos Mario Gómez"
               "last_name" => "Mario Gómez",
               "description" => "Director del Dpto de Economía, UNIVERSIDAD DE ALCALÁ DE HENARES",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Carmen",
+              "name" => "Carmen Alvear"
               "last_name" => "Alvear",
               "description" => "Directora de RRII, Vodafone",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Colman",
+              "name" => "Colman Deegan"
               "last_name" => "Deegan",
               "description" => "CEO, Vodafone",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "Francisco José",
+              "name" => "Francisco José Pérez Botello"
               "last_name" => "Pérez Botello",
               "description" => "PRESIDENTE, VOLKSWAGEN GROUP",
               "speaker" => false,
               "online" => false
             ],
             [
-              "name" => "José María",
+              "name" => "José María Galofré"
               "last_name" => "Galofré",
               "description" => "Presidente, VOLVO CAR ESPAÑA",
               "speaker" => false,

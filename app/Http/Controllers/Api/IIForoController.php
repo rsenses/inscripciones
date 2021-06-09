@@ -486,13 +486,6 @@ class IIForoController extends Controller
               "online" => false
             ],
             [
-              "name" => "Arancha GONZÁLEZ LAYA",
-              "last_name" => "GONZÁLEZ LAYA",
-              "description" => "Ministra, MINISTERIO DE ASUNTOS EXTERIORES Y COOPERACIÓN",
-              "speaker" => false,
-              "online" => false
-            ],
-            [
               "name" => "Vicente MONTÁVEZ",
               "last_name" => "MONTÁVEZ",
               "description" => "Asesor, MINISTERIO DE ASUNTOS EXTERIORES Y COOPERACIÓN",

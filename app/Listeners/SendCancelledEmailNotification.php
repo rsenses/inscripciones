@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use App\Events\CheckoutCancelled;
 use App\Mail\CheckoutCancelled as MailCheckoutCancelled;
+use App\Services\DynamicMailer;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
@@ -28,6 +29,6 @@ class SendCancelledEmailNotification
      */
     public function handle(CheckoutCancelled $event)
     {
-        Mail::to($event->checkout->user)->send(new MailCheckoutCancelled($event->checkout));
+        DynamicMailer::send($event->checkout->user, new MailCheckoutCancelled($event->checkout));
     }
 }

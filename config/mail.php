@@ -44,6 +44,16 @@ return [
             'timeout' => null,
             'auth_mode' => null,
         ],
+        'smtp_telva' => [
+            'transport' => 'smtp',
+            'host' => env('MAIL_TELVA_HOST', 'smtp.mailgun.org'),
+            'port' => env('MAIL_TELVA_PORT', 587),
+            'encryption' => env('MAIL_TELVA_ENCRYPTION', 'tls'),
+            'username' => env('MAIL_TELVA_USERNAME'),
+            'password' => env('MAIL_TELVA_PASSWORD'),
+            'timeout' => null,
+            'auth_mode' => null,
+        ],
 
         'ses' => [
             'transport' => 'ses',

@@ -1,0 +1,151 @@
+.sidebar-heading {
+    background-color: var(--primary);
+    color: $white;
+}
+#wrapper {
+    overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+    margin-left: -15rem;
+    min-height: 100vh;
+    transition: margin 0.25s ease-out;
+    a {
+        &.bg-light {
+            background: $body-bg;
+            background: linear-gradient(0deg, $white 90%, #f4f4f4 100%);
+            color: var(var(--primary));
+            &::hover {
+                background: var(--primary);
+                color: $body-color;
+            }
+        }
+    }
+}
+
+#sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+    width: 15rem;
+}
+
+#page-content-wrapper {
+    min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+}
+
+@media (min-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
+
+    #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: -15rem;
+    }
+}
+
+nav {
+    &.navbar {
+        .btn.btn-link {
+            font-size: 1.6rem;
+            padding: 0 1rem;
+
+            &:focus {
+                box-shadow: none;
+            }
+        }
+    }
+}
+
+.card-body {
+    .table {
+        margin-bottom: 0;
+    }
+}
+
+a.bg-light:hover,
+a.bg-light:focus,
+button.bg-light:hover,
+button.bg-light:focus {
+    background: #dae0e5 !important;
+    color: $body-color !important;
+}
+
+.table {
+    th,
+    td {
+        padding: 0.75rem 1.25rem 0.5rem;
+        i {
+            position: relative;
+            top: 2px;
+            font-size: 1.25rem;
+        }
+    }
+}
+
+.custom-select{
+
+    &.form-control-lg {
+        font-size: 1.125rem;
+        height: calc(1.5em + 1rem + 2px);
+        padding: 0.5rem 1rem;
+        line-height: 1.5;
+    }
+}
+.selectpicker{
+    &+.btn-light{
+        background-color: $white;
+        border: 1px solid $gray-400;
+    }
+}
+
+.bs-ok-default{
+    &.check-mark{
+        color: $success;
+    }
+
+}
+// input[type="file"] {
+//     display: none;
+// }
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.custom-file-label::after {
+    font-size: 1.2rem;
+    font-family: 'Ionicons';
+    content: "\f255";
+}
+
+
+.input-group-addon{
+    position: absolute;
+    top: 43px;
+    right: 10px;
+}
+#price {
+    &.is-invalid {
+    +.input-group-addon{
+        right: 37px;
+        }
+    }
+}
+
+.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+    width: 100%;
+  }

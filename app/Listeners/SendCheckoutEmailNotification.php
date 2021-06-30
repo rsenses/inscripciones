@@ -8,6 +8,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\CheckoutCreated as MailCheckoutCreated;
 use App\Models\Checkout;
+use App\Services\DynamicMailer;
 
 class SendCheckoutEmailNotification
 {
@@ -30,7 +31,7 @@ class SendCheckoutEmailNotification
     public function handle(CheckoutCreated $event)
     {
         if ($event->checkout->amount > 0) {
-            Mail::to($event->checkout->user)->send(new MailCheckoutCreated($event->checkout));
+            DynamicMailer::send($event->checkout->user, new MailCheckoutCreated($event->checkout));
         }
     }
 }

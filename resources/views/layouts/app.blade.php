@@ -18,9 +18,23 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @if($domain === 'telva')
+        <link href="{{ asset('css/telva.css') }}" rel="stylesheet">
+        <style>
+            :root {
+                --primary: #D70065;
+            }
+        </style>
+    @else
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <style>
+            :root {
+                --primary: #1c776b;
+            }
+        </style>
+    @endif
 </head>
-<body>
+<body class="{{ $domain }}">
     <div id="app">
         <div class="d-flex" id="wrapper">
             @auth

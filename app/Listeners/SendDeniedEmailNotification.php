@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use App\Events\RegistrationDenied;
 use App\Mail\RegistrationDenied as MailRegistrationDenied;
+use App\Services\DynamicMailer;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
@@ -28,6 +29,6 @@ class SendDeniedEmailNotification
      */
     public function handle(RegistrationDenied $event)
     {
-        Mail::to($event->registration->user)->send(new MailRegistrationDenied($event->registration));
+        DynamicMailer::send($event->registration->user, new MailRegistrationDenied($event->registration));
     }
 }

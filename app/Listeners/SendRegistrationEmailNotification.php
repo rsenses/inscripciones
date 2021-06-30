@@ -7,6 +7,7 @@ use App\Mail\RegistrationCreated as MailRegistrationCreated;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
+use App\Services\DynamicMailer;
 
 class SendRegistrationEmailNotification
 {
@@ -28,6 +29,6 @@ class SendRegistrationEmailNotification
      */
     public function handle(RegistrationCreated $event)
     {
-        Mail::to($event->registration->user)->send(new MailRegistrationCreated($event->registration));
+        DynamicMailer::send($event->registration->user, new MailRegistrationCreated($event->registration));
     }
 }

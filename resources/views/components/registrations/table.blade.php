@@ -24,9 +24,7 @@
                 <tr>
                     @if($showProduct)
                         <td>
-                            <a href="{{ route('products.show', ['product' => $registration->product]) }}">
-                                {{ $registration->product->name }} <span class="badge badge-info">{{ $registration->product->mode }}</span>
-                            </a>
+                            {{ $registration->product->name }} <span class="badge badge-info">{{ $registration->product->mode }}</span>
                         </td>
                     @else
                         <td class="alert {{ $registration->status === 'accepted' ? 'alert-info' : ($registration->status === 'paid' ? 'alert-success' : ($registration->status === 'denied' ? 'alert-danger' : ($registration->status === 'cancelled' ? 'alert-warning' : ($registration->status === 'pending' ? 'alert-info' : '')))) }}">

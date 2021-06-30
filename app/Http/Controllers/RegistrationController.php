@@ -19,9 +19,7 @@ class RegistrationController extends Controller
      */
     public function index()
     {
-        $registrations = Registration::with(['product' => function ($query) {
-            $query->active();
-        }])
+        $registrations = Registration::with('product')
             ->latest()
             ->take(50)
             ->get();
@@ -60,7 +58,7 @@ class RegistrationController extends Controller
             'user_id' => [
                 'required',
                 'exists:users,id',
-                Rule::unique('registrations')->where(function ($query) use($request) {
+                Rule::unique('registrations')->where(function ($query) use ($request) {
                     return $query->where('user_id', $request->user_id)
                     ->where('product_id', $request->product_id);
                 }),
@@ -127,7 +125,7 @@ class RegistrationController extends Controller
             'user_id' => [
                 'required',
                 'exists:users,id',
-                Rule::unique('registrations')->where(function ($query) use($request) {
+                Rule::unique('registrations')->where(function ($query) use ($request) {
                     return $query->where('user_id', $request->user_id)
                     ->where('product_id', $request->product_id);
                 }),

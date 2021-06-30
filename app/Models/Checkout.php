@@ -31,6 +31,15 @@ class Checkout extends Model
     ];
 
     /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'paid_at' => 'datetime:Y-m-d H:i:s',
+    ];
+
+    /**
      * The "booted" method of the model.
      *
      * @return void

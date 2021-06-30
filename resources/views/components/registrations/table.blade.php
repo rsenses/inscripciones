@@ -7,10 +7,10 @@
                 @else
                     <th data-field="status" data-sortable="true" data-filter-control="select">Status</th>
                 @endif
-                <th data-field="created_at" data-sortable="true">Fecha</th>
+                <th data-field="paid_at" data-sortable="true">Fecha Pago</th>
+                <th data-field="amount" data-sortable="true">Precio</th>
                 <th data-field="full_name" data-sortable="true">Nombre</th>
                 <th data-field="company" data-sortable="true">Empresa</th>
-                <th data-field="position" data-sortable="true">Cargo</th>
                 <th data-field="email" data-sortable="true">Email</th>
                 <th data-field="phone" data-sortable="true">Tlf</th>
                 <th data-field="promo" data-sortable="true">Promo</th>
@@ -34,10 +34,10 @@
                         {{ __($registration->status) }}
                         </td>
                     @endif
-                    <td>{{ $registration->created_at->format('d-m-Y / H:i' ) }}</td>
+                    <td>{{ !empty($registration->checkout()->paid_at) ? $registration->checkout()->paid_at->format('d-m-Y H:i' ) : '' }}</td>
+                    <td>{{ !empty($registration->checkout()->amount) ? $registration->checkout()->amount . '€' : '' }}</td>
                     <td>{{ $registration->user->full_name }}</td>
-                    <td>{{ $registration->user->company }}</td>
-                    <td>{{ $registration->user->position }}</td>
+                    <td>{{ $registration->user->company }} <small>{{ $registration->user->position }}</small></td>
                     <td>{{ $registration->user->email }}</td>
                     <td>{{ $registration->user->phone }}</td>
                     <td>{{ $registration->promo }}</td>

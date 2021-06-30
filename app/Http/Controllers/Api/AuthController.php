@@ -14,7 +14,7 @@ class AuthController extends Controller
     {
         $user = User::where('email', $request->email)->first();
 
-        if($user) {
+        if ($user) {
             return response()->json($user);
         }
 
@@ -29,9 +29,9 @@ class AuthController extends Controller
         ]);
 
         $user = User::create([
-            'name' => $request->name, 
+            'name' => $request->name,
             'last_name' => $request->last_name,
-            'email' => $request->email, 
+            'email' => $request->email,
             'tax_id' => $request->tax_id,
             'phone' => $request->phone,
             'company' => $request->company,
@@ -56,15 +56,17 @@ class AuthController extends Controller
             ]);
         }
 
-        // Añadir comprobación de pago del evento
+        // Revoking previous tokens
+        $user->tokens()->delete();
 
         return response([
             'user' => $user,
-            'access_token' => $user->createToken('Auth Token')->accessToken
+            'access_token' => $user->createToken('Auth Token')->plainTextToken
         ]);
     }
 
-    public function logout(Request $request) {
+    public function logout(Request $request)
+    {
         $request->user()->token()->revoke();
 
         return response()->json([

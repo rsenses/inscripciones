@@ -5,17 +5,27 @@ namespace App\Services;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Mail\Mailable;
+use Illuminate\Support\Facades\Config;
 
 class DynamicMailer
 {
     public static function send(User $user, Mailable $mailable)
     {
-        Mail::mailer(self::selectMailer())
+        $mailer = self::mailer();
+
+        Mail::mailer($mailer)
             ->to($user)
             ->send($mailable);
     }
 
-    private static function selectMailer()
+    public static function getMailer()
+    {
+        $mailer = self::mailer();
+
+        return Config::get('mail.mailers.' . $mailer);
+    }
+
+    private static function mailer()
     {
         $mailer = 'smtp';
 

@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Checkout;
+use App\Services\DynamicMailer;
 
 class CheckoutCreated extends Mailable
 {
@@ -34,7 +35,10 @@ class CheckoutCreated extends Mailable
         $promo = $this->checkout->registration('accepted')->promo;
         $discount = $this->checkout->product->discounts->find(1);
 
+        $from = DynamicMailer::getMailer()['from'];
+
         return $this->subject('Solicitud aceptada')
+            ->from($from['address'], $from['name'])
             ->with([
                 'promo' => $promo,
                 'discount' => $discount,

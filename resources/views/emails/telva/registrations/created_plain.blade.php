@@ -8,7 +8,6 @@ Le recordamos que el aforo es limitado y por riguroso orden de inscripción.
 
 Atentamente,
 
-Relaciones Institucionales
-Expansión
+Telva
 
-Más información: foro.expansion@unidadeditorial.es
+Más información: inscripciones.telva@unidadeditorial.es

@@ -13,7 +13,6 @@ BIC: SWIFT BKBKESMMXXX
 
 Atentamente,
 
-Relaciones Institucionales
-Expansión
+Telva
 
-Más información: foro.expansion@unidadeditorial.es
+Más información: inscripciones.telva@unidadeditorial.es

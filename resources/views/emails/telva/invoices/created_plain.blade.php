@@ -10,7 +10,6 @@ Rogamos haga efectivo el pago de la factura a treinta días fecha factura y cóm
 
 Atentamente,
 
-Relaciones Institucionales
-Expansión
+Telva
 
-Más información: foro.expansion@unidadeditorial.es
+Más información: inscripciones.telva@unidadeditorial.es

@@ -8,7 +8,6 @@ Muchas gracias por su interés.
 
 Un cordial saludo,
 
-Relaciones Institucionales
-Expansión
+Telva
 
-Más información: foro.expansion@unidadeditorial.es
+Más información: inscripciones.telva@unidadeditorial.es

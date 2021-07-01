@@ -42,11 +42,8 @@ class RegistrationController extends Controller
             'metadata' => $request->all()
         ]);
 
-        $product = Product::find($request->product_id);
-
-        if ($product->first_action) {
-            $action = $product->first_action;
-            $registration->$action();
+        if ($registration->product->first_action) {
+            $registration->{$registration->product->first_action}();
         } else {
             RegistrationCreated::dispatch($registration);
         }

@@ -12,7 +12,6 @@ https://inscripciones.telva.com/checkouts/{{ $checkout->id }}?t={{ $checkout->to
 
 Atentamente,
 
-Relaciones Institucionales
-Expansión
+Telva
 
-Más información: foro.expansion@unidadeditorial.es
+Más información: inscripciones.telva@unidadeditorial.es

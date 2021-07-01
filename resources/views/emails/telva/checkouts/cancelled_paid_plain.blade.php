@@ -6,7 +6,6 @@ Una vez recibida dicha factura, procederemos a realizar la devolución del impor
 
 Atentamente,
 
-Relaciones Institucionales
-Expansión
+Telva
 
-Más información: foro.expansion@unidadeditorial.es
+Más información: inscripciones.telva@unidadeditorial.es

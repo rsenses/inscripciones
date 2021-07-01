@@ -4,7 +4,6 @@ Su reserva de inscripción {{ $checkout->product->mode === 'online' ? 'ON LINE' 
 
 Atentamente,
 
-Relaciones Institucionales
-Expansión
+Telva
 
-Más información: foro.expansion@unidadeditorial.es
+Más información: inscripciones.telva@unidadeditorial.es

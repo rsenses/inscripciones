@@ -26,7 +26,7 @@ class RegistrationController extends Controller
             'product_id' => [
                 'required',
                 'exists:products,id',
-                Rule::unique('registrations')->where(function ($query) use($request) {
+                Rule::unique('registrations')->where(function ($query) use ($request) {
                     return $query->where('user_id', $request->user_id)
                         ->where('product_id', $request->product_id);
                 }),
@@ -42,7 +42,14 @@ class RegistrationController extends Controller
             'metadata' => $request->all()
         ]);
 
-        RegistrationCreated::dispatch($registration);
+        $product = Product::find($request->product_id);
+
+        if ($product->first_action) {
+            $action = $product->first_action;
+            $registration->$action();
+        } else {
+            RegistrationCreated::dispatch($registration);
+        }
 
         return response()->json($registration);
     }

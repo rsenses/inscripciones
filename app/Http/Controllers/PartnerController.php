@@ -74,18 +74,16 @@ class PartnerController extends Controller
      */
     public function show(Partner $partner)
     {
-        $products = Product::with(['partners' => function ($query) use ($partner) {
-            $query->where('partners.id', $partner->id);
-        }])
-            ->withCount(['registrations' => function ($query) {
+        $partner = Partner::with(['products' => function ($query) {
+            $query->withCount(['registrations' => function ($query) {
                 $query->where('status', '!=', 'cancelled');
                 $query->where('status', '!=', 'denied');
-            }])
-            ->get();
+            }]);
+        }])
+            ->find($partner->id);
 
         return view('partners.show', [
-            'partner' => $partner,
-            'products' => $products
+            'partner' => $partner
         ]);
     }
 

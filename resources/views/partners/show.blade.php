@@ -8,8 +8,7 @@
     <h2>
     
     @if($partner->image)
-            <img src="{{ asset('storage/' . $partner->image) }}"
-                alt="{{ $partner->name }}" class="img-fuid" style="max-width: 200px;">
+        <img src="{{ asset('storage/' . $partner->image) }}" alt="{{ $partner->name }}" class="img-fuid" style="max-width: 200px;">
     @else
         {{ $partner->name }} 
     @endif
@@ -25,7 +24,7 @@
     <div class="card bg-light">
         <div class="card-body">
             <h2 class="card-title text-primary">Productos</h2>
-            <x-products.table :products="$products" />
+            <x-products.table :products="$partner->products" />
         </div>
     </div>
 </div>

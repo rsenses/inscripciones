@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use App\Models\Checkout;
+use App\Services\DynamicMailer;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -31,14 +32,19 @@ class CheckoutCancelled extends Mailable
      */
     public function build()
     {
+        $domain = DynamicMailer::getDomain();
+        $from = DynamicMailer::getMailer()['from'];
+
         if ($this->checkout->status === 'paid') {
             return $this->subject('Cancelación de asistencia')
-                ->view('emails.checkouts.cancelled_paid')
-                ->text('emails.checkouts.cancelled_paid_plain');
+                ->from($from['address'], $from['name'])
+                ->view('emails.' . $domain . '.checkouts.cancelled_paid')
+                ->text('emails.' . $domain . '.checkouts.cancelled_paid_plain');
         } else {
             return $this->subject('Cancelación de asistencia')
-                ->view('emails.checkouts.cancelled')
-                ->text('emails.checkouts.cancelled_plain');
+                ->from($from['address'], $from['name'])
+                ->view('emails.' . $domain . '.checkouts.cancelled')
+                ->text('emails.' . $domain . '.checkouts.cancelled_plain');
         }
     }
 }

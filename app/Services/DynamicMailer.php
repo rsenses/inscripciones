@@ -29,14 +29,19 @@ class DynamicMailer
     {
         $mailer = 'smtp';
 
-        $host = str_replace('.localhost', '', request()->getHost());
-        $hostNames = explode('.', $host);
-        $domain = $hostNames[count($hostNames) - 2];
+        $domain = self::getDomain();
 
         if ($domain !== 'expansion') {
             $mailer = 'smtp_' . $domain;
         }
 
         return $mailer;
+    }
+
+    public static function getDomain()
+    {
+        $host = str_replace('.localhost', '', request()->getHost());
+        $hostNames = explode('.', $host);
+        return $hostNames[count($hostNames) - 2];
     }
 }

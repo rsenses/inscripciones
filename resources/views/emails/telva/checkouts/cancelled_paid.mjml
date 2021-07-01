@@ -1,0 +1,41 @@
+<mjml>
+  <mj-body background-color="#f9f9f9">
+    <mj-raw>
+      <!-- Company Header -->
+    </mj-raw>
+    <mj-section>
+      <mj-column>
+        <mj-image width="200px" src="{{ asset('storage/' . $checkout->product->partners[0]->image) }}" href="{{ $checkout->product->partners[0]->name }}"></mj-image>
+      </mj-column>
+    </mj-section>
+    <mj-wrapper background-color="#fff" padding="0">
+      <mj-raw>
+        <!-- Image Header -->
+      </mj-raw>
+      <mj-section padding="0">
+        <mj-column>
+          <mj-image src="{{ asset('storage/' . $checkout->product->image) }}" alt="{{ $checkout->product->name }}"></mj-image>
+        </mj-column>
+      </mj-section>
+      <mj-section padding="0 0 30px">
+        <mj-column width="500px">
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Estimad@ <strong>{{ $checkout->user->full_name }}</strong></mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Hemos iniciado el proceso de cancelación de asistencia al {{ $checkout->product->name }}. En unos días recibirá la factura de abono.</mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Una vez recibida dicha factura, procederemos a realizar la devolución del importe por el mismo método de pago con el que se realizó la inscripción en el plazo máximo de 15 días.</mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Atentamente,</mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Relaciones Institucionales<br><strong>Expansión</strong></mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a"><small>Más información: <a href="mailto:foro.expansion@unidadeditorial.es">foro.expansion@unidadeditorial.es</a></small></mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-raw>
+      <!-- Footer text -->
+    </mj-raw>
+    <mj-section>
+      <mj-column>
+        <mj-text font-size="14px" color="#4a5a6a" align="center">© Unidad Editorial {{ now()->year }}</mj-text>
+        <mj-text font-size="14px" color="#4a5a6a" align="center">Para cualquier consulta contacta con <a href="mailto:foro.expansion@unidadeditorial.es" style="color:blue">foro.expansion@unidadeditorial.es</a></mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

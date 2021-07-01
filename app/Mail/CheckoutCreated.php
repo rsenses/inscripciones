@@ -35,6 +35,7 @@ class CheckoutCreated extends Mailable
         $promo = $this->checkout->registration('accepted')->promo;
         $discount = $this->checkout->product->discounts->find(1);
 
+        $domain = DynamicMailer::getDomain();
         $from = DynamicMailer::getMailer()['from'];
 
         return $this->subject('Solicitud aceptada')
@@ -43,7 +44,7 @@ class CheckoutCreated extends Mailable
                 'promo' => $promo,
                 'discount' => $discount,
             ])
-            ->view('emails.checkouts.created')
-            ->text('emails.checkouts.created_plain');
+            ->view('emails.' . $domain . '.checkouts.created')
+            ->text('emails.' . $domain . '.checkouts.created_plain');
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Registration;
+use App\Services\DynamicMailer;
 
 class RegistrationDenied extends Mailable
 {
@@ -31,8 +32,12 @@ class RegistrationDenied extends Mailable
      */
     public function build()
     {
+        $domain = DynamicMailer::getDomain();
+        $from = DynamicMailer::getMailer()['from'];
+
         return $this->subject('Aforo completo')
-            ->view('emails.registrations.denied')
-            ->text('emails.registrations.denied_plain');
+            ->from($from['address'], $from['name'])
+            ->view('emails.' . $domain . '.registrations.denied')
+            ->text('emails.' . $domain . '.registrations.denied_plain');
     }
 }

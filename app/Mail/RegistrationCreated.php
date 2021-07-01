@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use App\Models\Registration;
+use App\Services\DynamicMailer;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -31,8 +32,12 @@ class RegistrationCreated extends Mailable
      */
     public function build()
     {
+        $domain = DynamicMailer::getDomain();
+        $from = DynamicMailer::getMailer()['from'];
+
         return $this->subject('Hemos recibido correctamente su solicitud')
-            ->view('emails.registrations.created')
-            ->text('emails.registrations.created_plain');
+            ->from($from['address'], $from['name'])
+            ->view('emails.' . $domain . '.registrations.created')
+            ->text('emails.' . $domain . '.registrations.created_plain');
     }
 }

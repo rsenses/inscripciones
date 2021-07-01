@@ -19,7 +19,9 @@ class Partner extends Model
         'image',
         'merchant_code',
         'merchant_key',
-        'corporation'
+        'corporation',
+        'conditions',
+        'legal',
     ];
 
     /**

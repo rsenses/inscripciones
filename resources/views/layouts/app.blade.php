@@ -129,7 +129,9 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <ul class="list-inline text-center text-sm-right">
-                                        <li class="list-inline-item"><a class="text-xs-center" target="_blank" href="{{ route('terminos-y-condiciones') }}">Términos y condiciones</a></li>
+                                        @if(isset($checkout))
+                                            <li class="list-inline-item"><a class="text-xs-center" target="_blank" href="{{ route('terminos-y-condiciones') }}?c={{ $checkout->id }}">Términos y condiciones</a></li>
+                                        @endif
                                         <li class="list-inline-item"><a class="text-xs-center" href="http://cookies.unidadeditorial.es" target="_blank">Política de cookies</a></li>
                                      </ul>
                                 </div>

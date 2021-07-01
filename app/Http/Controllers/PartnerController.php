@@ -47,6 +47,8 @@ class PartnerController extends Controller
             'merchant_code' => ['required', 'string', 'max:255'],
             'merchant_key' => ['required', 'string', 'max:255'],
             'corporation' => ['required', 'string', 'max:255'],
+            'conditions' => ['required', 'string'],
+            'legal' => ['required', 'string'],
         ]);
 
         $path = $request->file('image')->store('partners', 'public');
@@ -56,6 +58,8 @@ class PartnerController extends Controller
             'merchant_code' => $request->merchant_code,
             'merchant_key' => $request->merchant_key,
             'corporation' => $request->corporation,
+            'conditions' => $request->conditions,
+            'legal' => $request->legal,
             'image' => $path
         ]);
 
@@ -71,8 +75,8 @@ class PartnerController extends Controller
     public function show(Partner $partner)
     {
         $products = Product::with(['partners' => function ($query) use ($partner) {
-                $query->where('partners.id', $partner->id);
-            }])
+            $query->where('partners.id', $partner->id);
+        }])
             ->withCount(['registrations' => function ($query) {
                 $query->where('status', '!=', 'cancelled');
                 $query->where('status', '!=', 'denied');
@@ -113,6 +117,8 @@ class PartnerController extends Controller
             'merchant_code' => ['required', 'string', 'max:255'],
             'merchant_key' => ['required', 'string', 'max:255'],
             'corporation' => ['required', 'string', 'max:255'],
+            'conditions' => ['required', 'string'],
+            'legal' => ['required', 'string'],
         ]);
 
         if ($request->image) {
@@ -124,6 +130,8 @@ class PartnerController extends Controller
             'merchant_code' => $request->merchant_code,
             'merchant_key' => $request->merchant_key,
             'corporation' => $request->corporation,
+            'conditions' => $request->conditions,
+            'legal' => $request->legal
         ];
 
         if (isset($path)) {

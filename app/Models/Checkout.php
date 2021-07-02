@@ -128,7 +128,9 @@ class Checkout extends Model
 
         $checkout->update(['paid_at' => Carbon::now()]);
 
-        CheckoutPaid::dispatch($checkout);
+        $registration = $this->registration('paid');
+
+        CheckoutPaid::dispatch($checkout, $registration);
 
         return $checkout;
     }
@@ -139,7 +141,9 @@ class Checkout extends Model
 
         $checkout->update(['paid_at' => Carbon::now()]);
 
-        CheckoutPaid::dispatch($checkout);
+        $registration = $this->registration('paid');
+
+        CheckoutPaid::dispatch($checkout, $registration);
 
         return $checkout;
     }
@@ -150,11 +154,11 @@ class Checkout extends Model
 
         $checkout->update(['method' => 'transfer']);
 
-        CheckoutPaid::dispatch($checkout);
-
         $registration = $this->registration('accepted');
 
         $registration->pending();
+
+        CheckoutPaid::dispatch($checkout, $registration);
 
         return $checkout;
     }

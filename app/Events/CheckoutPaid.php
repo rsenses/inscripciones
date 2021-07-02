@@ -3,6 +3,7 @@
 namespace App\Events;
 
 use App\Models\Checkout;
+use App\Models\Registration;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -16,15 +17,17 @@ class CheckoutPaid
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $checkout;
+    public $registration;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(Checkout $checkout)
+    public function __construct(Checkout $checkout, Registration $registration)
     {
         $this->checkout = $checkout;
+        $this->registration = $registration;
     }
 
     /**

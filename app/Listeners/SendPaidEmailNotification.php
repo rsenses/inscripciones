@@ -29,6 +29,6 @@ class SendPaidEmailNotification
      */
     public function handle(CheckoutPaid $event)
     {
-        DynamicMailer::send($event->checkout->user, new MailCheckoutPaid($event->checkout));
+        DynamicMailer::send($event->checkout->user, new MailCheckoutPaid($event->checkout, $event->registration));
     }
 }

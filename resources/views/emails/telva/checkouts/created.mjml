@@ -20,13 +20,8 @@
       <mj-section padding="0 0 30px">
         <mj-column width="500px">
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Estimad@ <strong>{{ $checkout->user->full_name }}</strong></mj-text>
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Su solicitud para asistir al <strong>{{ $checkout->product->name }}</strong> ha sido <strong>aceptada</strong>.</mj-text>
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">
-            @if($promo === 'SUSCRIPTOR' || $promo === 'PREMIUM')
-            Para beneficiarse por ser suscriptor, incorpore el siguiente código de descuento durante el proceso de pago: <b>{{ $discount->code }}</b> y se le aplicará un descuento del {{ $discount->quantity }}%.
-            @endif
-          </mj-text>
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Para proceder al pago y confirmar su asistencia {{ $checkout->product->mode === 'online' ? 'ON LINE' : 'PRESENCIAL' }} regístrese en el siguiente enlace y complete su inscripción:</mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Tu solicitud para asistir al <strong>{{ $checkout->product->name }}</strong> ha sido <strong>completada</strong> correctamente.</mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Para proceder al pago y confirmar tu asistencia {{ $checkout->product->mode === 'online' ? 'ON LINE' : 'PRESENCIAL' }} regístrese en el siguiente enlace y complete tu inscripción:</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">
               <a href="https://inscripciones.telva.com/checkouts/{{ $checkout->id }}?t={{ $checkout->token }}">https://inscripciones.telva.com/checkouts/{{ $checkout->id }}?t={{ $checkout->token }}</a>
           </mj-text>

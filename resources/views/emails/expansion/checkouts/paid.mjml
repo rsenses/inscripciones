@@ -35,7 +35,7 @@
           <mj-button href="{{ route('calendar.show', ['product' => $checkout->product]) }}" background-color="#f45e43" color="white">
             Incluir en mi calendario
           </mj-button>
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Esperamos que disfrute del evento,</mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Esperamos que disfrutes del evento,</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Relaciones Institucionales<br><strong>Expansión</strong></mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a"><small>Más información: <a href="mailto:foro.expansion@unidadeditorial.es">foro.expansion@unidadeditorial.es</a></small></mj-text>
         </mj-column>

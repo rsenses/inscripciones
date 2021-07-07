@@ -20,14 +20,14 @@
       <mj-section padding="0 0 30px">
         <mj-column width="500px">
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Estimad@ <strong>{{ $invoice->checkout->user->full_name }}</strong></mj-text>
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Adjunto enviamos el duplicado de su factura de inscripción al {{ $invoice->checkout->product->name }}.</mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Adjunto enviamos el duplicado de tu factura de inscripción al {{ $invoice->checkout->product->name }}.</mj-text>
           <mj-button href="https://eventosue.com/invoices/{{ $invoice->number }}.pdf" background-color="#f45e43" color="white">
             Descargar factura
           </mj-button>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">
           @if($invoice->checkout->status != 'paid')
-              Rogamos haga efectivo el pago de la factura a la mayor brevedad posible dentro de las próximas 48 horas.<br>
-              Por favor, envíenos el justificante de la transferencia a <a href="mailto:inscripciones.telva@unidadeditorial.es">inscripciones.telva@unidadeditorial.es</a>.
+              Rogamos hagas efectivo el pago de la factura a la mayor brevedad posible dentro de las próximas 48 horas.<br>
+              Por favor, envíanos el justificante de la transferencia a <a href="mailto:inscripciones.telva@unidadeditorial.es">inscripciones.telva@unidadeditorial.es</a>.
           @endif
           </mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Atentamente,</mj-text>

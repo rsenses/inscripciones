@@ -20,12 +20,12 @@
       <mj-section padding="0 0 30px">
         <mj-column width="500px">
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Estimad@ <strong>{{ $checkout->user->full_name }}</strong></mj-text>
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a"><strong>Le damos la bienvenida al {{ $checkout->product->name }}</strong>.</mj-text>
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Su inscripción {{ $checkout->product->mode === 'online' ? 'ON LINE' : 'PRESENCIAL' }} ha sido confirmada.</mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a"><strong>Te damos la bienvenida al {{ $checkout->product->name }}</strong>.</mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Tu inscripción {{ $checkout->product->mode === 'online' ? 'ON LINE' : 'PRESENCIAL' }} ha sido confirmada.</mj-text>
           @if($checkout->product->mode === 'presencial')
           <mj-image width="200px" src="{!! $message->embedData(SimpleSoftwareIO\QrCode\Facades\QrCode::format('png')->generate($registration->unique_id), 'QrCode.png', 'image/png') !!}" />
           @endif
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">A través del siguiente enlace podrá acceder a toda la información relativa al evento:</mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">A través del siguiente enlace podrás acceder a toda la información relativa al evento:</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a"><a href="https://energiayfelicidad.telva.com/">https://energiayfelicidad.telva.com/</a></mj-text>
           <!-- <mj-text line-height="22px" font-size="14px" color="#2a3a4a">
           • Cómo llegar.<br>
@@ -37,8 +37,8 @@
           </mj-text> -->
           <mj-button href="{{ route('calendar.show', ['product' => $checkout->product]) }}" background-color="#f45e43" color="white">
             Incluir en mi calendario
-          </mj-button>
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Esperamos que disfrute del evento,</mj-text>
+          </mj-button>Rogamos hagas efectivo el pago de la factura a la mayor brevedad posible dentro de las próximas 48 horas.
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Esperamos que disfrutes del evento,</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a"><strong>Telva</strong></mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a"><small>Más información: <a href="mailto:inscripciones.telva@unidadeditorial.es">inscripciones.telva@unidadeditorial.es</a></small></mj-text>
         </mj-column>

@@ -16,7 +16,7 @@ https://foro.expansion.com
 
 Incluir en mi calendario: {{ route('calendar.show', ['product' => $checkout->product]) }}
 
-Esperamos que disfrute del evento,
+Esperamos que disfrutes del evento,
 Relaciones Institucionales
 Expansión
 

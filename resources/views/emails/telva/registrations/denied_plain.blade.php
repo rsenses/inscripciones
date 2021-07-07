@@ -1,10 +1,10 @@
 Estimad@ {{ $registration->user->full_name }}
 
-Sentimos comunicarle que el aforo está completo y no es posible confirmar su inscripción.  
+Sentimos comunicarte que el aforo está completo y no es posible confirmar tu inscripción.  
 
-Si finalmente quedara alguna plaza libre, nos pondremos en contacto con usted. 
+Si finalmente quedara alguna plaza libre, nos pondremos en contacto contigo. 
 
-Muchas gracias por su interés. 
+Muchas gracias por tu interés. 
 
 Un cordial saludo,
 

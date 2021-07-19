@@ -10,7 +10,7 @@ class PageController extends Controller
     public function terminos(Request $request)
     {
         $request->validate([
-            'c' => ['nullable', 'exists:checkouts,id'],
+            'c' => ['required', 'exists:checkouts,id'],
         ]);
 
         $checkout = null;

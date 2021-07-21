@@ -35,7 +35,7 @@
                         <div class="card-body">
                             <form method="POST" action="{{ route('deals.store', ['checkout_id' => $checkout->id]) }}" id="discount-data">
                                 @csrf
-                                <p>Si usted es suscriptor, escriba aquí el código que le han facilitado para el Foro</p>
+                                <p>Si usted es suscriptor, escriba aquí el código que le han facilitado.</p>
                                 <div class="form-group row">
                                     <label for="code" class="col-md-4 col-form-label text-md-right">{{ __('Código') }}</label>
 

@@ -35,7 +35,7 @@ class RegistrationCreated extends Mailable
         $domain = DynamicMailer::getDomain();
         $from = DynamicMailer::getMailer()['from'];
 
-        return $this->subject('Hemos recibido correctamente su solicitud')
+        return $this->subject('Solicitud recibida correctamente')
             ->from($from['address'], $from['name'])
             ->view('emails.' . $domain . '.registrations.created')
             ->text('emails.' . $domain . '.registrations.created_plain');

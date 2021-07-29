@@ -21,7 +21,7 @@
         <mj-column width="500px">
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Estimad@ <strong>{{ $checkout->user->full_name }}</strong></mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Tu solicitud para asistir al <strong>{{ $checkout->product->name }}</strong> ha sido <strong>completada</strong> correctamente.</mj-text>
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Para proceder al pago y confirmar tu asistencia {{ $checkout->product->mode === 'online' ? 'ON LINE' : 'PRESENCIAL' }} regístrese en el siguiente enlace y complete tu inscripción:</mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Para proceder al pago y confirmar tu asistencia {{ $checkout->product->mode === 'online' ? 'ON LINE' : 'PRESENCIAL' }} regístrate en el siguiente enlace y completa tu inscripción:</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">
               <a href="https://inscripciones.telva.com/checkouts/{{ $checkout->id }}?t={{ $checkout->token }}">https://inscripciones.telva.com/checkouts/{{ $checkout->id }}?t={{ $checkout->token }}</a>
           </mj-text>

@@ -128,9 +128,11 @@ class Checkout extends Model
 
         $checkout->update(['paid_at' => Carbon::now()]);
 
-        $registration = $this->registration('paid');
+        $registration = $this->registration('accepted');
 
         CheckoutPaid::dispatch($checkout, $registration);
+
+        $registration->pay();
 
         return $checkout;
     }

@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\CheckoutPaid;
 use App\Models\Checkout;
-use App\Models\Registration;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Sermepa\Tpv\Tpv;
 use Sermepa\Tpv\TpvException;
@@ -32,10 +29,6 @@ class TpvController extends Controller
                 $checkout->save();
 
                 $checkout->pay();
-
-                $registration = $checkout->registration('accepted');
-
-                $registration->pay();
             } else {
                 $checkout->new();
             }

@@ -35,7 +35,7 @@
                         <div class="card-body">
                             <form method="POST" action="{{ route('deals.store', ['checkout_id' => $checkout->id]) }}" id="discount-data">
                                 @csrf
-                                <p>Si usted es suscriptor, escriba aquí el código que le han facilitado.</p>
+                                <p>Si tienes un código de descuento, introdúcelo aquí</p>
                                 <div class="form-group row">
                                     <label for="code" class="col-md-4 col-form-label text-md-right">{{ __('Código') }}</label>
 
@@ -48,7 +48,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary float-right">Guardar código</button>
+                                <button type="submit" class="btn btn-primary float-right">Usar código</button>
                             </form>
                         </div>
                     </div>

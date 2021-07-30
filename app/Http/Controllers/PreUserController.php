@@ -42,10 +42,6 @@ class PreUserController extends Controller
                 'max:255',
                 Rule::unique('users')->ignore($user->id),
             ],
-            'tax_id' => ['nullable', 'string', 'max:255'],
-            'phone' => ['nullable', 'string', 'max:255'],
-            'company' => ['nullable', 'string', 'max:255'],
-            'position' => ['nullable', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'advertising' => ['required', 'boolean']
         ]);
@@ -54,10 +50,6 @@ class PreUserController extends Controller
             'name' => $request->name, 
             'last_name' => $request->last_name,
             'email' => $request->email, 
-            'tax_id' => $request->tax_id,
-            'phone' => $request->phone,
-            'company' => $request->company,
-            'position' => $request->position,
             'password' => Hash::make($request->password),
             'advertising' => $request->advertising,
         ]);

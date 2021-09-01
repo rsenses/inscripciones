@@ -48,6 +48,9 @@ class RegistrationController extends Controller
             RegistrationCreated::dispatch($registration);
         }
 
-        return response()->json([$registration, $registration->checkout()]);
+        return response()->json([
+            'registration' => $registration,
+            'checkout' => $registration->checkout()
+        ]);
     }
 }

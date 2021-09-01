@@ -47,6 +47,8 @@ class CreateCheckout
             $checkout->save();
         }
 
-        CheckoutCreated::dispatch($checkout);
+        if ($registration->product->first_action != 'accept') {
+            CheckoutCreated::dispatch($checkout);
+        }
     }
 }

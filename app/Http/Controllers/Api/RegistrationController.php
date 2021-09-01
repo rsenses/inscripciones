@@ -34,7 +34,7 @@ class RegistrationController extends Controller
             'promo' => 'nullable|string'
         ]);
 
-        $user = User::find($request->user_id);
+        $user = User::findOrFail($request->user_id);
 
         $registration = $user->registrations()->create([
             'product_id' => $request->product_id,
@@ -48,6 +48,6 @@ class RegistrationController extends Controller
             RegistrationCreated::dispatch($registration);
         }
 
-        return response()->json($registration);
+        return response()->json([$registration, $registration->checkout()]);
     }
 }

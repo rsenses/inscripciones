@@ -43,8 +43,15 @@
                         <td>
                         <a href="#0" data-toggle="modal" data-target="#actionsModal{{ $index }}"><i class="ion ion-gear-a" aria-hidden="true"></i>&ensp;acciones</a>
                             <x-modal :id="'actionsModal' . $index" :title="'Acciones sobre la inscripción'" :footer="''">
-                                @if($registration->status !== 'paid' && $registration->status !== 'accepted' && $registration->status !== 'pending')
-                                    <div class="row">
+                        <div class="row mb-3">
+                                    <div class="col">
+                                        <a href="{{ route('registrations.resend-email', ['registration' => $registration]) }}" class="btn btn-secondary btn-block" onsubmit="return confirm('Seguro que quieres reenviar el email?');">
+                                           Reenviar email
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    @if($registration->status !== 'paid' && $registration->status !== 'accepted' && $registration->status !== 'pending')
                                         <div class="col">
                                             <form action="{{ route('registrations.update-status', ['registration' => $registration]) }}" method="POST" onsubmit="return confirm('Seguro que quieres aceptar la inscripción?');">
                                                 <input type="hidden" name="action" value="accept">
@@ -52,26 +59,26 @@
                                                 <button type="submit" class="btn btn-success btn-block">Confirmar solicitud</button>
                                             </form>
                                         </div>
-                                        @if($registration->status === 'new')
-                                            <div class="col text-right">
-                                                <form action="{{ route('registrations.update-status', ['registration' => $registration]) }}" method="POST" onsubmit="return confirm('Seguro que quieres invitar al usuario?');">
-                                                    <input type="hidden" name="action" value="invite">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-warning btn-block">Invitar<br>Asistente</button>
-                                                </form>
-                                            </div>
-                                            <div class="col text-right">
-                                                <form action="{{ route('registrations.update-status', ['registration' => $registration]) }}" method="POST" onsubmit="return confirm('Seguro que quieres denegar la inscripción?');">
-                                                    <input type="hidden" name="action" value="deny">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-danger btn-block">Denegar solicitud</button>
-                                                </form>
-                                            </div>
-                                        @endif
-                                    </div>
-                                @endif
-                                @if($registration->status === 'paid' || $registration->status === 'pending' || $registration->status === 'accepted')
-                                    <div class="row">
+                                    @endif
+                                    @if($registration->status === 'new' || $registration->status === 'accepted')
+                                        <div class="col text-right">
+                                            <form action="{{ route('registrations.update-status', ['registration' => $registration]) }}" method="POST" onsubmit="return confirm('Seguro que quieres invitar al usuario?');">
+                                                <input type="hidden" name="action" value="invite">
+                                                @csrf
+                                                <button type="submit" class="btn btn-warning btn-block">Invitar<br>Asistente</button>
+                                            </form>
+                                        </div>
+                                    @endif
+                                    @if($registration->status === 'new')
+                                        <div class="col text-right">
+                                            <form action="{{ route('registrations.update-status', ['registration' => $registration]) }}" method="POST" onsubmit="return confirm('Seguro que quieres denegar la inscripción?');">
+                                                <input type="hidden" name="action" value="deny">
+                                                @csrf
+                                                <button type="submit" class="btn btn-danger btn-block">Denegar solicitud</button>
+                                            </form>
+                                        </div>
+                                    @endif
+                                    @if($registration->status === 'paid' || $registration->status === 'pending' || $registration->status === 'accepted')
                                         <div class="col">
                                             @if($registration->status === 'pending')
                                                 <form action="{{ route('registrations.update-status', ['registration' => $registration]) }}" method="POST" onsubmit="return confirm('Seguro que quieres confirmar el pago?');">
@@ -88,8 +95,8 @@
                                                 <button type="submit" class="btn btn-danger">Cancelar compra</button>
                                             </form>
                                         </div>
-                                    </div>
-                                @endif
+                                    @endif
+                                </div>
                             </x-modal>
                         </td>
                     @endif

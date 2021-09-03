@@ -16,16 +16,19 @@ class RegistrationAccepted
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $registration;
+    public $invite;
+    public $sendEmail;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(Registration $registration, bool $invite = false)
+    public function __construct(Registration $registration, bool $invite = false, bool $sendEmail = true)
     {
         $this->registration = $registration;
         $this->invite = $invite;
+        $this->sendEmail = $sendEmail;
     }
 
     /**

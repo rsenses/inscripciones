@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Events\CheckoutCancelled;
+use App\Events\CheckoutCreated;
+use App\Events\CheckoutPaid;
 use App\Events\RegistrationAccepted;
-use App\Events\RegistrationCancelled;
+use App\Events\RegistrationCreated;
 use App\Events\RegistrationDenied;
-use App\Events\RegistrationPaid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -85,9 +87,15 @@ class Registration extends Model
 
     public function accept()
     {
+        $invite = false;
+        $sendEmail = true;
         $registration = $this->changeStatus('accepted');
 
-        RegistrationAccepted::dispatch($registration);
+        if($registration->product->first_action === 'accept') {
+            $sendEmail = false;
+        }
+
+        RegistrationAccepted::dispatch($registration, $invite, $sendEmail);
 
         return $registration;
     }
@@ -145,5 +153,39 @@ class Registration extends Model
         $registration = $this->changeStatus('pending');
 
         return $registration;
+    }
+
+    public function resendLastEmail()
+    {
+        $this->sendEventByStatus($this->status);
+
+        return $this;
+    }
+
+    private function sendEventByStatus(string $status)
+    {
+        switch ($status) {
+            case 'accepted':
+                $invite = false;
+                $sendEmail = true;
+
+                RegistrationAccepted::dispatch($this, $invite, $sendEmail);
+                break;
+            case 'paid':
+                CheckoutPaid::dispatch($this->checkout(), $this);
+                break;
+            case 'pending':
+                CheckoutCreated::dispatch($this->checkout());
+                break;
+            case 'denied':
+                RegistrationDenied::dispatch($this);
+                break;
+            case 'cancelled':
+                CheckoutCancelled::dispatch($this->checkout());
+                break;
+            default:
+                RegistrationCreated::dispatch($this);
+                break;
+        }
     }
 }

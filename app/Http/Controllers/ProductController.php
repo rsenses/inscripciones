@@ -88,7 +88,6 @@ class ProductController extends Controller
     {
         $registrations = Registration::where('product_id', $product->id)
             ->latest()
-            ->take(50)
             ->get();
 
         return view('products.show', [

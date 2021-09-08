@@ -32,6 +32,9 @@ class RegistrationController extends Controller
                 }),
             ],
             'promo' => 'nullable|string'
+        ],
+        [
+            'product_id.unique' => 'Usuario previamente registrado en este evento.',
         ]);
 
         $user = User::findOrFail($request->user_id);

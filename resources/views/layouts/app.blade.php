@@ -193,9 +193,11 @@
             }
         }
         @if($domain === 'telva')
-            document.getElementById('submit').onclick = function (e) {
-                console.log('onclick');
-                envioSC("telva energiayfelicidad | pagar con tarjeta" );
+            document.getElementById('redsys_form').onsubmit = function (e) {
+                envioSC("telva energiayfelicidad | pagar con tarjeta");
+            }
+            document.getElementById('invoice-data').onsubmit = function (e) {
+                envioSC("telva energiayfelicidad | proceder al pago");
             }
         @endif
         window.onload =

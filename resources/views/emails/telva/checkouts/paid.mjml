@@ -23,6 +23,7 @@
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a"><strong>Te damos la bienvenida al {{ $checkout->product->name }}</strong>.</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Tu inscripción {{ $checkout->product->mode === 'online' ? 'ON LINE' : 'PRESENCIAL' }} ha sido confirmada.</mj-text>
           <mj-image width="200px" src="{!! $checkout->product->mode === 'presencial' ? $message->embedData(SimpleSoftwareIO\QrCode\Facades\QrCode::format('png')->generate($registration->unique_id), 'QrCode.png', 'image/png') : '' !!}"/>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Unos días antes del evento, te enviaremos un email con toda la información necesaria para acceder al evento.</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">A través del siguiente enlace podrás acceder a toda la información relativa al evento:</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a"><a href="https://energiayfelicidad.telva.com/">https://energiayfelicidad.telva.com/</a></mj-text>
           <!-- <mj-text line-height="22px" font-size="14px" color="#2a3a4a">

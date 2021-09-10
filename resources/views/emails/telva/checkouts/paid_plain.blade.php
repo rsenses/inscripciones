@@ -8,6 +8,8 @@ Tu inscripción {{ $checkout->product->mode === 'online' ? 'ON LINE' : 'PRESENCI
 Tu código de acceso es: $registration->unique_id
 @endif
 
+Unos días antes del evento, te enviaremos un email con toda la información necesaria para acceder al evento.
+
 A través del siguiente enlace podrás acceder a toda la información relativa al evento:
 https://energiayfelicidad.telva.com/
 

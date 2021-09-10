@@ -52,14 +52,18 @@ class DealController extends Controller
             'discount_id' => $discount->id
         ]);
 
-        $form = $checkout->generatePaymentForm();
+        if($discount->quantity === 100) {
+            return redirect(route('tpv.success', ['checkout' => $checkout]));
+        } else { 
+            $form = $checkout->generatePaymentForm();
 
-        return view('checkouts.payment', [
-            'checkout' => $checkout,
-            'form' => $form,
-            'message' => "Descuento del $discount->quantity% aplicado correctamente",
-            'discount' => true
-        ]);
+            return view('checkouts.payment', [
+                'checkout' => $checkout,
+                'form' => $form,
+                'message' => "Descuento del $discount->quantity% aplicado correctamente",
+                'discount' => true
+            ]);
+        }
     }
 
     /**

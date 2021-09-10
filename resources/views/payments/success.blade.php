@@ -26,7 +26,7 @@
                         </div>
                         <div class="justify-content-center">
                             <div class="col-12">
-                                @if($checkout->method != 'card')
+                                @if($checkout->method != 'card' && $checkout->amount > 0)
                                     <div class="alert alert-success">
                                         Registro realizada correctamente.<br>
                                         En breve le llegará un email con las indicaciones para poder completar el pago mediante transferencia bancaria.

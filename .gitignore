@@ -6,6 +6,7 @@
 /public/css/app.css
 /public/css/telva.css
 /public/css/app.css.*
+/public/css/telva.css.*
 /storage/*.key
 /vendor
 .env

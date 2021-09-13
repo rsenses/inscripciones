@@ -6,7 +6,6 @@ use App\Events\InvoiceCreated;
 use App\Models\Invoice;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class InvoiceController extends Controller

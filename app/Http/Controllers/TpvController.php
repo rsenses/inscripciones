@@ -45,7 +45,7 @@ class TpvController extends Controller
             $checkout->pending();
         }
 
-        if($checkout->status === 'processing') {
+        if ($checkout->status === 'processing') {
             $checkout->pay();
         }
 

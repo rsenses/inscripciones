@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -59,9 +58,9 @@ class UserController extends Controller
         ]);
 
         $user = User::create([
-            'name' => $request->name, 
+            'name' => $request->name,
             'last_name' => $request->last_name,
-            'email' => $request->email, 
+            'email' => $request->email,
             'password' => bcrypt($request->password),
             'tax_id' => $request->tax_id,
             'phone' => $request->phone,
@@ -128,9 +127,9 @@ class UserController extends Controller
         ]);
 
         $user->update([
-            'name' => $request->name, 
+            'name' => $request->name,
             'last_name' => $request->last_name,
-            'email' => $request->email, 
+            'email' => $request->email,
             'tax_id' => $request->tax_id,
             'phone' => $request->phone,
             'company' => $request->company,

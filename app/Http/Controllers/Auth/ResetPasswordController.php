@@ -27,5 +27,6 @@ class ResetPasswordController extends Controller
      * @var string
      */
     // protected $redirectTo = RouteServiceProvider::HOME;
-    protected $redirectTo = 'https://foro.expansion.com/';
+    //protected $redirectTo = RouteServiceProvider::EXPANSION;
+    protected $redirectTo = RouteServiceProvider::TELVA;
 }

@@ -18,6 +18,8 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     public const HOME = '/dashboard';
+    public const EXPANSION = 'https://inscripciones.expansion.com';
+    public const TELVA = 'https://inscripciones.telva.com';
 
     /**
      * The controller namespace for the application.
@@ -59,5 +61,14 @@ class RouteServiceProvider extends ServiceProvider
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
         });
+    }
+
+    public static function resetRedirect()
+    {
+        if (request()->getHost() === 'inscripciones.expansion.com') {
+            return self::EXPANSION;
+        } else {
+            return self::TELVA;
+        }
     }
 }

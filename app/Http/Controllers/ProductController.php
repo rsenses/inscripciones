@@ -67,7 +67,7 @@ class ProductController extends Controller
         $product = Product::create($request->except('_token'));
 
         $path = $request->file('image')->store('products', 'public');
-        
+
         $product->image = $path;
         $product->save();
 

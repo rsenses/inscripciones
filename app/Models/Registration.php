@@ -91,7 +91,7 @@ class Registration extends Model
         $sendEmail = true;
         $registration = $this->changeStatus('accepted');
 
-        if($registration->product->first_action === 'accept') {
+        if ($registration->product->first_action === 'accept') {
             $sendEmail = false;
         }
 

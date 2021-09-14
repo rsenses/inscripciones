@@ -13,6 +13,7 @@ use App\Http\Controllers\PreUserController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\DealController;
+use App\Http\Controllers\EmailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,4 +64,5 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('invoices', [InvoiceController::class, 'index'])->name('invoices.index');
     Route::get('invoices/export', [InvoiceController::class, 'export'])->name('invoices.export');
     Route::post('invoices/import', [InvoiceController::class, 'import'])->name('invoices.import');
+    Route::get('products/claim/{product}', [EmailController::class, 'claim'])->name('emails.claim');
 });

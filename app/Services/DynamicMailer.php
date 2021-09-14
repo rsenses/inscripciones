@@ -15,7 +15,7 @@ class DynamicMailer
 
         Mail::mailer($mailer)
             ->to($user)
-            ->send($mailable);
+            ->queue($mailable);
     }
 
     public static function getMailer()

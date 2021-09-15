@@ -7,7 +7,6 @@ use App\Models\Product;
 use App\Models\Registration;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\Rule;
 
 class RegistrationController extends Controller
@@ -60,7 +59,7 @@ class RegistrationController extends Controller
                 'exists:users,id',
                 Rule::unique('registrations')->where(function ($query) use ($request) {
                     return $query->where('user_id', $request->user_id)
-                    ->where('product_id', $request->product_id);
+                        ->where('product_id', $request->product_id);
                 }),
             ],
             'product_id' => [
@@ -127,7 +126,7 @@ class RegistrationController extends Controller
                 'exists:users,id',
                 Rule::unique('registrations')->where(function ($query) use ($request) {
                     return $query->where('user_id', $request->user_id)
-                    ->where('product_id', $request->product_id);
+                        ->where('product_id', $request->product_id);
                 }),
             ],
             'product_id' => [

@@ -10,7 +10,7 @@ use App\Mail\CheckoutCreated as MailCheckoutCreated;
 use App\Models\Checkout;
 use App\Services\DynamicMailer;
 
-class SendCheckoutEmailNotification
+class SendCheckoutEmailNotification implements ShouldQueue
 {
     /**
      * Create the event listener.

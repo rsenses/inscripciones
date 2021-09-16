@@ -9,7 +9,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
 use App\Services\DynamicMailer;
 
-class SendRegistrationEmailNotification
+class SendRegistrationEmailNotification implements ShouldQueue
 {
     /**
      * Create the event listener.

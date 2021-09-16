@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Models\Registration;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -13,14 +14,16 @@ class SendEmails implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    protected $registration;
+
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Registration $registration)
     {
-        //
+        $this->registration = $registration;
     }
 
     /**
@@ -30,6 +33,6 @@ class SendEmails implements ShouldQueue
      */
     public function handle()
     {
-        //
+        $this->registration->resendLastEmail();
     }
 }

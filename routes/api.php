@@ -29,5 +29,6 @@ Route::prefix('v1')->group(function () {
         // Específico del Foro
         Route::get('/ii-foro/streaming', 'App\Http\Controllers\Api\IIForoController@streaming');
         Route::get('/ii-foro/registrations', 'App\Http\Controllers\Api\IIForoController@registrations');
+        Route::get('/i-congreso/streaming', 'App\Http\Controllers\Api\ICongreso@streaming');
     });
 });

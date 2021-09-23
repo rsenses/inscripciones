@@ -33,7 +33,20 @@ class ICongresoController extends Controller
     private function getStream($lang = 'es')
     {
         return [
-            'streaming1' => '<iframe width="560" height="315" src="https://www.youtube.com/embed/Okkd8-L7qEc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+            'test_mañana' => 'XntGUHCjKWc',
+            'mañana' => 'nGBLFkKYjJI',
+            'test_tarde' => 'CtF9aLqI3Ro',
+            'tarde' => '80x88C0eH1I',
+            'test_taller_salud' => '6qzcEDScwAs',
+            'taller_salud' => 'zK7d_TLLIKo',
+            'test_taller_escucha' => 'iIJF5O6lomE',
+            'taller_escucha' => 'O08o16E8Rew',
+            'test_taller_meditacion' => 'YQ7K8G7BF34',
+            'taller_meditacion' => 'dlPvq2Uozlk',
+            'test_taller_humor' => 'WhOX3tUx9k4',
+            'taller_humor' => 'b31qp4lvXJA',
+            'test_gratis' => 'r3TK1xEeNW4',
+            'gratis' => 'EPPSYwAsDY4'
         ];
     }
 

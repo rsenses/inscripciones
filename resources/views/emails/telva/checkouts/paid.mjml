@@ -25,7 +25,7 @@
           <mj-image width="200px" src="{!! $checkout->product->mode === 'presencial' ? $message->embedData(SimpleSoftwareIO\QrCode\Facades\QrCode::format('png')->generate($registration->unique_id), 'QrCode.png', 'image/png') : '' !!}"/>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">A través del siguiente enlace podrás acceder a toda la información relativa al evento y a los vídeos:</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a"><a href="https://energiayfelicidad.telva.com/">https://energiayfelicidad.telva.com/</a></mj-text>
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Pincha en el botón "VUELVE A VERLO" de la web y accede mediante tu email y la contraseña que has elegido al inscribirte.</mj-text>
+          <mj-text line-height="22px" font-size="14px" color="#2a3a4a" font-weight="bold">Pincha en el botón "VUELVE A VERLO" del menú principal y accede mediante tu email y la contraseña que has elegido al inscribirte.</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Esperamos que disfrutes del evento,</mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a"><strong>Telva</strong></mj-text>
           <mj-text line-height="22px" font-size="14px" color="#2a3a4a"><small>Más información: <a href="mailto:inscripciones.telva@unidadeditorial.es">inscripciones.telva@unidadeditorial.es</a></small></mj-text>

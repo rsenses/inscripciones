@@ -11,7 +11,7 @@ Tu código de acceso es: $registration->unique_id
 A través del siguiente enlace podrás acceder a toda la información relativa al evento y a los vídeos:
 https://energiayfelicidad.telva.com/
 
-Pincha en el botón "VUELVE A VERLO" de la web y accede mediante tu email y la contraseña que has elegido al inscribirte.
+Pincha en el botón "VUELVE A VERLO" del menú principal y accede mediante tu email y la contraseña que has elegido al inscribirte.
 
 Esperamos que disfrutes del evento,
 Telva

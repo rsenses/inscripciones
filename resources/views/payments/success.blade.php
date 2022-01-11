@@ -4,23 +4,29 @@
 <div class="container">
     <div class="row justify-content-center mb-4">
         <div class="col-md-8">
-            <h2>{{ $checkout->product->name }}</h2>
+            <h2>Compra número: {{ $checkout->id }}<br>
+                Importe {{ $checkout->amount }}€
+            </h2>
 
             <div class="card bg-light">
                 <div class="card-body">
-                <img class="card-img-top" src="{{ asset('storage/' . $checkout->product->image) }}" alt="{{ $checkout->product->name }}">
+                    <h5 class="card-title">Productos</h5>
                     <p class="card-text">
                         <div class="table mb-4">
                             <table class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Cantidad</th>
+                                        <th>Evento</th>
+                                    </tr>
+                                </thead>
                                 <tbody>
-                                    <tr>
-                                        <td><strong>Asistente</strong></td>
-                                        <td>{{ $checkout->user->full_name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Precio</strong></td>
-                                        <td class="text-right">{{ $checkout->amount }}€</td>
-                                    </tr>
+                                    @foreach ($checkout->products->groupBy('id') as $product)
+                                        <tr>
+                                            <td>{{ $product->count() }}</td>
+                                            <td>{{ $product[0]->name }} <span class="text-uppercase">{{ $product[0]->mode }}</span></td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -38,10 +44,9 @@
                                     </div>
                                 @endif
                                 <p class="text-center">
-                                    <a href="{{ $checkout->product->url }}" class="btn btn-info">
+                                    <a href="{{ $checkout->products[0]->url }}" class="btn btn-info">
                                     <i class="ion ion-arrow-return-left" aria-hidden="true"></i>
-                                    Volver a la web de
-                                        "{{ $checkout->product->name }}"</a>
+                                    Volver a la web del evento</a>
                                 </p>
                             </div>
                         </div>

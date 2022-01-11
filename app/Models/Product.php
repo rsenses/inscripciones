@@ -62,7 +62,7 @@ class Product extends Model
      */
     public function checkouts()
     {
-        return $this->hasMany(Checkout::class);
+        return $this->belongsToMany(Checkout::class);
     }
 
     /**
@@ -107,12 +107,11 @@ class Product extends Model
     }
 
     /**
-     * Get the registrations count.
+     * Get the registrations accepted count.
      *
-     * @param  string  $value
      * @return string
      */
-    public function getRegistrationsAcceptedCountAttribute($value)
+    public function getRegistrationsAcceptedCountAttribute()
     {
         return $this->registrations()
             ->where('status', '!=', 'new')
@@ -122,12 +121,27 @@ class Product extends Model
     }
 
     /**
-     * Get paid registrations count.
+     * Get the registrations not paid count.
+     *
+     * @return string
+     */
+    public function getRegistrationsPendingCountAttribute()
+    {
+        return $this->registrations()
+            ->where(function ($q) {
+                $q->where('status', 'accepted');
+                $q->orWhere('status', 'pending');
+            })
+            ->count();
+    }
+
+    /**
+     * Get paid registrations paid count.
      *
      * @param  string  $value
      * @return string
      */
-    public function getPaidRegistrationsCountAttribute($value)
+    public function getRegistrationsPaidCountAttribute()
     {
         return $this->checkouts()
             ->where('status', 'paid')
@@ -137,10 +151,9 @@ class Product extends Model
     /**
      * Get the registrations count.
      *
-     * @param  string  $value
      * @return string
      */
-    public function getDeniedRegistrationsCountAttribute($value)
+    public function getRegistrationsDeniedCountAttribute()
     {
         return $this->registrations()
             ->where('status', 'denied')
@@ -150,10 +163,9 @@ class Product extends Model
     /**
      * Get the registrations count.
      *
-     * @param  string  $value
      * @return string
      */
-    public function getCancelledRegistrationsCountAttribute($value)
+    public function getRegistrationsCancelledCountAttribute()
     {
         return $this->checkouts()
             ->where('status', 'cancelled')

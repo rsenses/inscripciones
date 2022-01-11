@@ -1,49 +1,96 @@
 <mjml>
-  <mj-body background-color="#f9f9f9">
-    <mj-raw>
-      <!-- Company Header -->
-    </mj-raw>
-    <mj-section>
-      <mj-column>
-        <mj-image width="200px" src="{{ asset('storage/' . $checkout->product->partners[0]->image) }}" href="{{ $checkout->product->partners[0]->name }}"></mj-image>
-      </mj-column>
-    </mj-section>
-    <mj-wrapper background-color="#fff" padding="0">
-      <mj-raw>
-        <!-- Image Header -->
-      </mj-raw>
-      <mj-section padding="0">
-        <mj-column>
-          <mj-image src="{{ asset('storage/' . $checkout->product->image) }}" alt="{{ $checkout->product->name }}"></mj-image>
-        </mj-column>
-      </mj-section>
-      <mj-section padding="0 0 30px">
-        <mj-column width="500px">
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Estimad@ <strong>{{ $checkout->user->full_name }}</strong></mj-text>
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Su solicitud para asistir al <strong>{{ $checkout->product->name }}</strong> ha sido <strong>aceptada</strong>.</mj-text>
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">
-            @if($promo === 'SUSCRIPTOR' || $promo === 'PREMIUM')
-            Para beneficiarse por ser suscriptor, incorpore el siguiente código de descuento durante el proceso de pago: <b>{{ $discount->code }}</b> y se le aplicará un descuento del {{ $discount->quantity }}%.
-            @endif
-          </mj-text>
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Para proceder al pago y confirmar su asistencia {{ $checkout->product->mode === 'online' ? 'ON LINE' : 'PRESENCIAL' }} regístrese en el siguiente enlace y complete su inscripción:</mj-text>
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">
-              <a href="{{ Config::get('app.url') }}checkouts/{{ $checkout->id }}?t={{ $checkout->token }}">{{ Config::get('app.url') }}checkouts/{{ $checkout->id }}?t={{ $checkout->token }}</a>
-          </mj-text>
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Atentamente,</mj-text>
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a">Relaciones Institucionales<br><strong>Expansión</strong></mj-text>
-          <mj-text line-height="22px" font-size="14px" color="#2a3a4a"><small>Más información: <a href="mailto:foro.expansion@unidadeditorial.es">foro.expansion@unidadeditorial.es</a></small></mj-text>
-        </mj-column>
-      </mj-section>
-    </mj-wrapper>
-    <mj-raw>
-      <!-- Footer text -->
-    </mj-raw>
-    <mj-section>
-      <mj-column>
-        <mj-text font-size="14px" color="#4a5a6a" align="center">© Unidad Editorial {{ now()->year }}</mj-text>
-        <mj-text font-size="14px" color="#4a5a6a" align="center">Para cualquier consulta contacta con <a href="mailto:foro.expansion@unidadeditorial.es" style="color:blue">foro.expansion@unidadeditorial.es</a></mj-text>
-      </mj-column>
-    </mj-section>
-  </mj-body>
+    <mj-body background-color="#f9f9f9">
+        <mj-raw>
+            <!-- Company Header -->
+        </mj-raw>
+        <mj-section>
+            <mj-column>
+                <mj-image
+                    width="200px"
+                    src="{{ asset('storage/' . $partner->image) }}"
+                    href="{{ $partner->name }}"
+                ></mj-image>
+            </mj-column>
+        </mj-section>
+        <mj-wrapper background-color="#fff" padding="0">
+            <mj-raw>
+                <!-- Image Header -->
+            </mj-raw>
+            <mj-section padding="0 0 30px">
+                <mj-column width="500px">
+                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
+                        >Estimad@
+                        <strong
+                            >{{ $checkout->user->full_name }}</strong
+                        ></mj-text
+                    >
+                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
+                        >Su solicitud ha sido
+                        <strong>aceptada</strong>.</mj-text
+                    >
+                    <mj-text
+                        line-height="22px"
+                        font-size="14px"
+                        color="#2a3a4a"
+                    >
+                        @if($promo === 'SUSCRIPTOR' || $promo === 'PREMIUM')
+                        Para beneficiarse por ser suscriptor, incorpore el
+                        siguiente código de descuento durante el proceso de
+                        pago: <b>{{ $discount->code }}</b> y se le aplicará un
+                        descuento del {{ $discount->quantity }}%. @endif
+                    </mj-text>
+                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
+                        >Para proceder al pago y confirmar su asistencia
+                        regístrese en el siguiente enlace y complete su
+                        inscripción:</mj-text
+                    >
+                    <mj-text
+                        line-height="22px"
+                        font-size="14px"
+                        color="#2a3a4a"
+                    >
+                        <a
+                            href="{{ Config::get('app.url') }}checkouts/{{ $checkout->id }}?t={{ $checkout->token }}"
+                            >{{ Config::get('app.url') }}checkouts/{{
+                            $checkout->id }}?t={{ $checkout->token }}</a
+                        >
+                    </mj-text>
+                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
+                        >Atentamente,</mj-text
+                    >
+                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
+                        >Relaciones Institucionales<br /><strong
+                            >Expansión</strong
+                        ></mj-text
+                    >
+                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
+                        ><small
+                            >Más información:
+                            <a href="mailto:foro.expansion@unidadeditorial.es"
+                                >foro.expansion@unidadeditorial.es</a
+                            ></small
+                        ></mj-text
+                    >
+                </mj-column>
+            </mj-section>
+        </mj-wrapper>
+        <mj-raw>
+            <!-- Footer text -->
+        </mj-raw>
+        <mj-section>
+            <mj-column>
+                <mj-text font-size="14px" color="#4a5a6a" align="center"
+                    >© Unidad Editorial {{ now()->year }}</mj-text
+                >
+                <mj-text font-size="14px" color="#4a5a6a" align="center"
+                    >Para cualquier consulta contacta con
+                    <a
+                        href="mailto:foro.expansion@unidadeditorial.es"
+                        style="color: blue"
+                        >foro.expansion@unidadeditorial.es</a
+                    ></mj-text
+                >
+            </mj-column>
+        </mj-section>
+    </mj-body>
 </mjml>

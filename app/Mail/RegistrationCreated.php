@@ -32,7 +32,7 @@ class RegistrationCreated extends Mailable
      */
     public function build()
     {
-        $domain = DynamicMailer::getDomain();
+        $domain = $this->registration->product->partners[0]->slug;
         $from = DynamicMailer::getMailer()['from'];
 
         return $this->subject('Solicitud recibida correctamente')

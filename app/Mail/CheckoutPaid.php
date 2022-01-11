@@ -22,10 +22,9 @@ class CheckoutPaid extends Mailable
      *
      * @return void
      */
-    public function __construct(Checkout $checkout, Registration $registration)
+    public function __construct(Checkout $checkout)
     {
         $this->checkout = $checkout;
-        $this->registration = $registration;
     }
 
     /**
@@ -35,13 +34,12 @@ class CheckoutPaid extends Mailable
      */
     public function build()
     {
-        $domain = DynamicMailer::getDomain();
+        $domain = $this->checkout->products[0]->partners[0]->slug;
+        $name = $this->checkout->products[0]->partners[0]->name;
         $from = DynamicMailer::getMailer()['from'];
 
-        $name = $this->checkout->product->name;
-
         if ($this->checkout->status === 'paid') {
-            return $this->subject('Bienvenido al ' . $name)
+            return $this->subject($name . ' te da la Bienvenida')
                 ->from($from['address'], $from['name'])
                 ->view('emails.' . $domain . '.checkouts.paid')
                 ->text('emails.' . $domain . '.checkouts.paid_plain');

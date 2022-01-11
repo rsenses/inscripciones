@@ -2,8 +2,8 @@
 
 namespace App\Listeners;
 
-use App\Events\RegistrationCreated;
-use App\Mail\RegistrationCreated as MailRegistrationCreated;
+use App\Events\RegistrationAccepted;
+use App\Mail\RegistrationAccepted as MailRegistrationAccepted;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
@@ -27,8 +27,8 @@ class SendRegistrationEmailNotification implements ShouldQueue
      * @param  RegistrationCreated  $event
      * @return void
      */
-    public function handle(RegistrationCreated $event)
+    public function handle(RegistrationAccepted $event)
     {
-        DynamicMailer::send($event->registration->user, new MailRegistrationCreated($event->registration));
+        DynamicMailer::send($event->registration->user, new MailRegistrationAccepted($event->registration));
     }
 }

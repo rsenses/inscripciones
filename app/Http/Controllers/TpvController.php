@@ -15,7 +15,7 @@ class TpvController extends Controller
     {
         Log::debug($request->all);
         try {
-            $company = $checkout->product->partners[0];
+            $company = $checkout->products[0]->partners[0];
             $key = $company->merchant_key;
 
             $redsys = new Tpv();
@@ -58,8 +58,8 @@ class TpvController extends Controller
     {
         if ($checkout->status === 'disabled') {
             $checkout = Checkout::where('user_id', $checkout->user_id)
-                ->where('product_id', $checkout->product_id)
                 ->where('status', '!=', 'disabled')
+                ->where('token', $checkout->token)
                 ->first();
         } else {
             $checkout = $checkout->new();

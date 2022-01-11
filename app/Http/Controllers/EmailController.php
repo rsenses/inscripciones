@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\CheckoutCreated;
 use App\Models\Product;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 
 class EmailController extends Controller
 {

@@ -4,7 +4,7 @@ Ha seleccionado transferencia bancaria como método de pago. Para reservar su pl
 
 Importe: {{ $checkout->amount }}€
 Titular de la cuenta: U.E.INFOR. ECONÓM. S.L.U
-Concepto de transferencia: Asistencia {{ $checkout->product->mode === 'online' ? 'Online' : 'Presencial' }} {{ $checkout->user->full_name }} {{ $checkout->id }}
+Concepto de transferencia: Asistencia {{ $checkout->user->full_name }} {{ $checkout->id }}
 Nombre del Banco: Bankinter
 Cuenta 42 0128 6035 77 0100000587
 ******

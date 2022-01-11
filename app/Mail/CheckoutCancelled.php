@@ -32,7 +32,7 @@ class CheckoutCancelled extends Mailable
      */
     public function build()
     {
-        $domain = DynamicMailer::getDomain();
+        $domain = $this->checkout->products[0]->partners[0]->slug;
         $from = DynamicMailer::getMailer()['from'];
 
         if ($this->checkout->status === 'paid') {

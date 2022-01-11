@@ -31,7 +31,7 @@ class CreateRegistrationsTable extends Migration
                   ->references('id')
                   ->on('products')->onDelete('cascade');
 
-            $table->unique(['product_id', 'user_id']);
+            // $table->unique(['product_id', 'user_id']);
         });
     }
 

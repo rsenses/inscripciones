@@ -2,7 +2,7 @@
 
 namespace App\Rules;
 
-use App\Http\Controllers\DealController;
+use App\Models\Checkout;
 use App\Models\Deal;
 use App\Models\Discount as ModelsDiscount;
 use Carbon\Carbon;
@@ -15,10 +15,9 @@ class Discount implements Rule
      *
      * @return void
      */
-    public function __construct(int $product_id, int $checkout_id)
+    public function __construct(Checkout $checkout)
     {
-        $this->product_id = $product_id;
-        $this->checkout_id = $checkout_id;
+        $this->checkout = $checkout;
     }
 
     /**
@@ -30,17 +29,19 @@ class Discount implements Rule
      */
     public function passes($attribute, $value)
     {
-        $discount = ModelsDiscount::where('code', $value)
-            ->where('product_id', $this->product_id)
-            ->where(function($q) {
-                $q->whereNull('due_at');
-                $q->orWhere('due_at', '>=', Carbon::now());
-            })
-            ->count();
+        foreach ($this->checkout->products as $product) {
+            $discount = ModelsDiscount::where('code', $value)
+                ->where('product_id', $product->id)
+                ->where(function ($q) {
+                    $q->whereNull('due_at');
+                    $q->orWhere('due_at', '>=', Carbon::now());
+                })
+                ->count();
 
-        $deal = Deal::where('checkout_id', $this->checkout_id)->first();
+            $deal = Deal::where('checkout_id', $this->checkout->id)->first();
 
-        return $discount && !$deal;
+            return $discount && !$deal;
+        } 
     }
 
     /**
@@ -50,6 +51,16 @@ class Discount implements Rule
      */
     public function message()
     {
-        return 'Código de descuento no válido';
+        return 'Código de descuento no$discount = ModelsDiscount::where('code', $value)
+            ->where('product_id', $this->product_id)
+            ->where(function ($q) {
+                $q->whereNull('due_at');
+                $q->orWhere('due_at', '>=', Carbon::now());
+            })
+            ->count();
+
+        $deal = Deal::where('checkout_id', $this->checkout_id)->first();
+
+        return $discount && !$deal; válido';
     }
 }

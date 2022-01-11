@@ -5,9 +5,7 @@ namespace App\Listeners;
 use App\Events\CheckoutCreated;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Support\Facades\Mail;
 use App\Mail\CheckoutCreated as MailCheckoutCreated;
-use App\Models\Checkout;
 use App\Services\DynamicMailer;
 
 class SendCheckoutEmailNotification implements ShouldQueue
@@ -17,7 +15,7 @@ class SendCheckoutEmailNotification implements ShouldQueue
      *
      * @return void
      */
-    public function __construct(Checkout $checkout)
+    public function __construct()
     {
         //
     }

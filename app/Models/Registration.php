@@ -23,6 +23,7 @@ class Registration extends Model
     protected $fillable = [
         'user_id',
         'product_id',
+        'checkout_id',
         'unique_id',
         'metadata',
         'status',
@@ -55,10 +56,7 @@ class Registration extends Model
      */
     public function checkout()
     {
-        return Checkout::where('user_id', $this->user_id)
-            ->where('product_id', $this->product_id)
-            ->where('status', '!=', 'disabled')
-            ->first();
+        return $this->belongsTo(Checkout::class);
     }
 
     /**
@@ -87,15 +85,7 @@ class Registration extends Model
 
     public function accept()
     {
-        $invite = false;
-        $sendEmail = true;
         $registration = $this->changeStatus('accepted');
-
-        if ($registration->product->first_action === 'accept') {
-            $sendEmail = false;
-        }
-
-        RegistrationAccepted::dispatch($registration, $invite, $sendEmail);
 
         return $registration;
     }
@@ -105,10 +95,6 @@ class Registration extends Model
         $registration = $this->changeStatus('paid');
 
         RegistrationAccepted::dispatch($registration, true);
-
-        $checkout = $registration->checkout();
-
-        $checkout->invite();
 
         return $registration;
     }
@@ -126,12 +112,6 @@ class Registration extends Model
     {
         $registration = $this->changeStatus('cancelled');
 
-        $checkout = $registration->checkout();
-
-        if ($checkout) {
-            $checkout->cancel();
-        }
-
         return $registration;
     }
 
@@ -139,11 +119,7 @@ class Registration extends Model
     {
         $registration = $this->changeStatus('paid');
 
-        $checkout = $registration->checkout();
-
-        if ($checkout && ($checkout->status === 'new' || $checkout->status === 'pending')) {
-            $checkout->pay();
-        }
+        RegistrationAccepted::dispatch($registration);
 
         return $registration;
     }

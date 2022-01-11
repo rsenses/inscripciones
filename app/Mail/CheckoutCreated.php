@@ -7,7 +7,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Checkout;
+use App\Models\Discount;
 use App\Services\DynamicMailer;
+use Illuminate\Support\Facades\Log;
 
 class CheckoutCreated extends Mailable
 {
@@ -32,10 +34,11 @@ class CheckoutCreated extends Mailable
      */
     public function build()
     {
-        $promo = $this->checkout->registration('accepted')->promo;
-        $discount = $this->checkout->product->discounts->find(1);
+        $promo = $this->checkout->registrations()->where('status', 'accepted')->first()->promo;
+        $discount = Discount::where('code', $promo)->first();
 
-        $domain = DynamicMailer::getDomain();
+        $partner = $this->checkout->products[0]->partners[0];
+
         $from = DynamicMailer::getMailer()['from'];
 
         return $this->subject('Solicitud aceptada')
@@ -43,8 +46,9 @@ class CheckoutCreated extends Mailable
             ->with([
                 'promo' => $promo,
                 'discount' => $discount,
+                'partner' => $partner,
             ])
-            ->view('emails.' . $domain . '.checkouts.created')
-            ->text('emails.' . $domain . '.checkouts.created_plain');
+            ->view('emails.' . $partner->slug . '.checkouts.created')
+            ->text('emails.' . $partner->slug . '.checkouts.created_plain');
     }
 }

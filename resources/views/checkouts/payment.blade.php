@@ -4,25 +4,31 @@
     <div class="container">
         <div class="row justify-content-center mb-4">
             <div class="col-md-8">
-                <h2>{{ $checkout->product->name }}</h2>
+                <h2>Compra número: {{ $checkout->id }}<br>
+                    Importe {{ $checkout->amount }}€
+                </h2>
                 <div class="card bg-light">
-                <img class="card-img-top" src="{{ asset('storage/' . $checkout->product->image) }}" alt="{{ $checkout->product->name }}">
-                  <div class="card-body">
-                  <div class="table">
-                    <table class="table table-striped">
-                        <tbody>
-                            <tr>
-                                <td><strong>Asistente</strong></td>
-                                <td>{{ $checkout->user->full_name }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Precio</strong></td>
-                                <td>{{ $checkout->amount }}€</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                  </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Productos</h5>
+                        <div class="table">
+                            <table class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Cantidad</th>
+                                        <th>Evento</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($checkout->products->groupBy('id') as $product)
+                                        <tr>
+                                            <td>{{ $product->count() }}</td>
+                                            <td>{{ $product[0]->name }} <span class="text-uppercase">{{ $product[0]->mode }}</span></td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -91,7 +97,7 @@
                             <strong>Cuenta</strong>: 42 0128 6035 77 0100000587<br>
                             <strong>IBAN</strong>: ES 42 0128 6035 77 0100000587<br>
                             <strong>BIC</strong>: SWIFT BKBKESMMXXX<br>
-                            <strong>Concepto de transferencia</strong>: Asistencia {{ $checkout->product->mode === 'online' ? 'Online' : 'Presencial' }} {{ $checkout->user->full_name }} {{ $checkout->invoice->number }}<br>
+                            <strong>Concepto de transferencia</strong>: Asistencia {{ $checkout->user->full_name }} {{ $checkout->id }}<br>
                             </p>
                         </div>
                         <div class="card-footer">

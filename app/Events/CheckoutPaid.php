@@ -24,10 +24,9 @@ class CheckoutPaid
      *
      * @return void
      */
-    public function __construct(Checkout $checkout, Registration $registration)
+    public function __construct(Checkout $checkout)
     {
         $this->checkout = $checkout;
-        $this->registration = $registration;
     }
 
     /**

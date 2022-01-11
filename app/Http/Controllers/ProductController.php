@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\Registration;
+use App\Services\DynamicMailer;
 
 class ProductController extends Controller
 {
@@ -22,6 +23,9 @@ class ProductController extends Controller
             ->withCount(['registrations' => function (Builder $query) {
                 $query->where('status', '!=', 'cancelled');
             }])
+            ->whereHas('partners', function (Builder $query) {
+                $query->where('slug', DynamicMailer::getDomain());
+            })
             ->get();
 
         return view('products.index', [

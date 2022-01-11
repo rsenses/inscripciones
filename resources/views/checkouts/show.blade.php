@@ -4,22 +4,27 @@
 <div class="container">
     <div class="row justify-content-center mb-4">
         <div class="col-md-8">
-            <h2>{{ $checkout->product->name }}</h2>
+            <h2>Compra número: {{ $checkout->id }}<br>
+                Importe {{ $checkout->amount }}€
+            </h2>
             <div class="card bg-light">
-                <img class="card-img-top" src="{{ asset('storage/' . $checkout->product->image) }}"
-                    alt="{{ $checkout->product->name }}">
                 <div class="card-body">
+                    <h5 class="card-title">Productos</h5>
                     <div class="table">
                         <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Cantidad</th>
+                                    <th>Evento</th>
+                                </tr>
+                            </thead>
                             <tbody>
-                                <tr>
-                                    <td><strong>Asistente</strong></td>
-                                    <td>{{ $checkout->user->full_name }}</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Precio</strong></td>
-                                    <td class="text-right">{{ $checkout->amount }}€</td>
-                                </tr>
+                                @foreach ($checkout->products->groupBy('id') as $product)
+                                    <tr>
+                                        <td>{{ $product->count() }}</td>
+                                        <td>{{ $product[0]->name }} <span class="text-uppercase">{{ $product[0]->mode }}</span></td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -39,7 +44,7 @@
     <form method="POST" action="{{ route('checkouts.update', ['checkout' => $checkout]) }}" id="invoice-data">
         @csrf
         <div class="row justify-content-center">
-            <div class="col-12 col-sm-6">
+            <div class="col-12 col-sm-8">
                 <div class="alert alert-info" role="alert">
                     <strong>Datos de facturación</strong><br>Añade nueva dirección de facturación o utiliza una
                     existente.
@@ -96,7 +101,7 @@
 
                             <div class="col-md-3">
                                 <select class="custom-select @error('tax_type') is-invalid @enderror" id="tax_type"
-                                    name="tax_type" required>
+                                    name="tax_type">
                                     <option disabled selected value> -- Tipo de documento -- </option>
                                     <option value="NIF" {{ old('tax_type')==='NIF' ? 'selected' : '' }}>NIF</option>
                                     <option value="NIE" {{ old('tax_type')==='NIE' ? 'selected' : '' }}>NIE</option>
@@ -622,7 +627,7 @@
                             generales de la compra</a>.</label>
                 </div>
                 <p class="small">
-                    {!! $checkout->product->partners[0]->legal !!}
+                    {!! $checkout->products[0]->partners[0]->legal !!}
                 </p>
             </div>
             <div class="col-12">

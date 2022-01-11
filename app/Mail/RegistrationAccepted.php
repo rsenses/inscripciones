@@ -2,14 +2,14 @@
 
 namespace App\Mail;
 
+use App\Models\Registration;
+use App\Services\DynamicMailer;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use App\Models\Registration;
-use App\Services\DynamicMailer;
 
-class RegistrationDenied extends Mailable
+class RegistrationAccepted extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -35,9 +35,9 @@ class RegistrationDenied extends Mailable
         $domain = $this->registration->product->partners[0]->slug;
         $from = DynamicMailer::getMailer()['from'];
 
-        return $this->subject('Aforo completo')
+        return $this->subject('Bienvenido a ' . $this->registration->product->name . '!')
             ->from($from['address'], $from['name'])
-            ->view('emails.' . $domain . '.registrations.denied')
-            ->text('emails.' . $domain . '.registrations.denied_plain');
+            ->view('emails.' . $domain . '.registrations.created')
+            ->text('emails.' . $domain . '.registrations.created_plain');
     }
 }

@@ -163,7 +163,7 @@ class RegistrationController extends Controller
 
         $action = $request->action;
 
-        $registration->$action();
+        $registration->checkout->$action();
 
         return redirect()->route('products.show', [
             'product' => $registration->product
@@ -194,7 +194,7 @@ class RegistrationController extends Controller
      */
     public function destroy(Registration $registration)
     {
-        $checkout = $registration->checkout();
+        $checkout = $registration->checkout()->where('status', '!=', 'disabled')->first();
 
         if ($checkout) {
             $checkout->delete();

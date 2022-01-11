@@ -68,11 +68,11 @@ class Checkout extends Model
     }
 
     /**
-     * Get the product that owns the checkout.
+     * Get the products associated to the checkout.
      */
-    public function product()
+    public function products()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsToMany(Product::class);
     }
 
     /**
@@ -83,12 +83,12 @@ class Checkout extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function registration($status)
+    /**
+     * Get the registrations for the checkout
+     */
+    public function registrations()
     {
-        return Registration::where('user_id', $this->user_id)
-            ->where('product_id', $this->product_id)
-            ->where('status', $status)
-            ->first();
+        return $this->hasMany(Registration::class);
     }
 
     private function changeStatus($status)
@@ -128,11 +128,9 @@ class Checkout extends Model
 
         $checkout->update(['paid_at' => Carbon::now()]);
 
-        $registration = $this->registration('accepted');
+        $this->registrationsStatus('pay');
 
-        CheckoutPaid::dispatch($checkout, $registration);
-
-        $registration->pay();
+        CheckoutPaid::dispatch($checkout);
 
         return $checkout;
     }
@@ -143,9 +141,9 @@ class Checkout extends Model
 
         $checkout->update(['paid_at' => Carbon::now()]);
 
-        $registration = $this->registration('paid');
+        $this->registrationsStatus('pay');
 
-        CheckoutPaid::dispatch($checkout, $registration);
+        CheckoutPaid::dispatch($checkout);
 
         return $checkout;
     }
@@ -156,11 +154,9 @@ class Checkout extends Model
 
         $checkout->update(['method' => 'transfer']);
 
-        $registration = $this->registration('accepted');
+        $this->registrationsStatus('pending');
 
-        $registration->pending();
-
-        CheckoutPaid::dispatch($checkout, $registration);
+        CheckoutPaid::dispatch($checkout);
 
         return $checkout;
     }
@@ -176,7 +172,7 @@ class Checkout extends Model
     {
         $checkout = $this->replicate();
 
-        $checkout->status = 'new';
+        $checkout->status = 'accepted';
 
         $checkout->push();
 
@@ -188,7 +184,7 @@ class Checkout extends Model
     public function generatePaymentForm()
     {
         try {
-            $company = $this->product->partners[0];
+            $company = $this->products[0]->partners[0];
 
             $redsys = new Tpv();
             $redsys->setAmount($this->amount);
@@ -204,7 +200,7 @@ class Checkout extends Model
             $redsys->setVersion('HMAC_SHA256_V1');
             $redsys->setTradeName($company->name);
             $redsys->setTitular($this->user->full_name);
-            $redsys->setProductDescription($this->product->name);
+            $redsys->setProductDescription("Evento {$company->name} " . now()->year);
             $redsys->setEnvironment(config('app.env') === 'local' ? 'test' : 'live'); //Entorno test
             $redsys->setAttributesSubmit('submit', 'submit', 'Pagar con tarjeta', '', 'btn btn-primary btn-block btn-lg');
 
@@ -228,6 +224,15 @@ class Checkout extends Model
         $this->amount = $newPrice;
 
         $this->save();
+
+        return $this;
+    }
+
+    private function registrationsStatus(string $status)
+    {
+        foreach ($this->registrations()->get() as $registration) {
+            $registration->$status();
+        }
 
         return $this;
     }

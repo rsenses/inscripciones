@@ -63,7 +63,7 @@ class InvoiceController extends Controller
                 $taxId = strtoupper($address->tax_id);
                 $taxType = $address->tax_type;
                 
-                $corporation = $checkout->product->partners[0]->corporation;
+                $corporation = $checkout->products[0]->partners[0]->corporation;
 
                 if ($taxType == 'CIF') {
                     $type = 'ATIC';
@@ -107,7 +107,10 @@ class InvoiceController extends Controller
 
                 $conditions = 'ZU01';
 
-                $concept = substr(strip_tags(trim(preg_replace('/\t+/', '', $checkout->product->name))), 0, 132);
+                // TODO
+                // REVISAR ESTO CON FINANCIERO
+                // PARA LAS FACTURAS, HACER FOREACH DE PRODUCTS Y SACAR UNA DE CADA, PRECIO DIVIDIDO
+                $concept = substr(strip_tags(trim(preg_replace('/\t+/', '', $checkout->products[0]->name))), 0, 132);
 
                 $input = [
                     $counter,

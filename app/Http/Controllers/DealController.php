@@ -41,7 +41,7 @@ class DealController extends Controller
         $checkout = Checkout::findOrFail($checkout_id);
 
         $request->validate([
-            'code' => ['alpha_num', new Discount($checkout->product_id, $checkout->id), 'required'],
+            'code' => ['alpha_num', new Discount($checkout), 'required'],
         ]);
 
         $discount = ModelsDiscount::where('code', $request->code)->firstOrFail();
@@ -52,9 +52,9 @@ class DealController extends Controller
             'discount_id' => $discount->id
         ]);
 
-        if($discount->quantity === 100) {
+        if ($discount->quantity === 100) {
             return redirect(route('tpv.success', ['checkout' => $checkout]));
-        } else { 
+        } else {
             $form = $checkout->generatePaymentForm();
 
             return view('checkouts.payment', [

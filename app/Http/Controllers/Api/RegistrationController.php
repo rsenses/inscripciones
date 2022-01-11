@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Events\CheckoutCreated;
 use App\Models\Product;
 use App\Models\Registration;
+use App\Models\Checkout;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
@@ -22,38 +24,64 @@ class RegistrationController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'user_id' => ['required', 'exists:users,id'],
-            'product_id' => [
+            '*.user_id' => ['required', 'exists:users,id'],
+            '*.product_id' => [
                 'required',
                 'exists:products,id',
-                Rule::unique('registrations')->where(function ($query) use ($request) {
-                    return $query->where('user_id', $request->user_id)
-                        ->where('product_id', $request->product_id);
-                }),
             ],
-            'promo' => 'nullable|string'
-        ],
-        [
-            'product_id.unique' => 'Usuario previamente registrado en este evento.',
+            '*.promo' => 'nullable|string'
         ]);
 
-        $user = User::findOrFail($request->user_id);
+        $response = [];
+        $amount = 0;
+        $firstAction = null;
 
-        $registration = $user->registrations()->create([
-            'product_id' => $request->product_id,
-            'promo' => $request->promo,
-            'metadata' => $request->all()
+        $checkout = Checkout::create([
+            'user_id' => $request->all()[0]['user_id'],
+            'amount' => $request->promo ? 0.00 : $amount,
+            'token' => uniqid()
         ]);
 
-        if ($registration->product->first_action) {
-            $registration->{$registration->product->first_action}();
-        } else {
-            RegistrationCreated::dispatch($registration);
+        $response['checkout'] = $checkout;
+
+        foreach ($request->all() as $registrationAttempt) {
+            $product = Product::find($registrationAttempt['product_id']);
+            $user = User::find($registrationAttempt['user_id']);
+
+            $amount = $amount + $product->price;
+
+            $checkout->products()->attach($registrationAttempt['product_id']);
+
+            $registration = $user->registrations()->create([
+                'product_id' => $registrationAttempt['product_id'],
+                'checkout_id' => $checkout->id,
+                'promo' => $request->promo,
+                'metadata' => $request->all()
+            ]);
+
+            if (!$firstAction) {
+                $firstAction = $registration->product->first_action;
+            }
+
+            if ($registration->product->first_action) {
+                $registration->{$registration->product->first_action}();
+            } else {
+                RegistrationCreated::dispatch($registration);
+            }
+            
+            $response['registrations'][] = $registration;
         }
 
-        return response()->json([
-            'registration' => $registration,
-            'checkout' => $registration->checkout()
+        $checkout->update([
+            'amount' => $amount
         ]);
+        if ($firstAction === 'accept') {
+            $checkout->update([
+                'status' => 'accepted'
+            ]);
+            CheckoutCreated::dispatch($checkout);
+        }
+
+        return response()->json($response);
     }
 }

@@ -143,7 +143,7 @@ class Product extends Model
      */
     public function getRegistrationsPaidCountAttribute()
     {
-        return $this->checkouts()
+        return $this->registrations()
             ->where('status', 'paid')
             ->count();
     }

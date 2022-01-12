@@ -7,7 +7,7 @@ use App\Events\CheckoutCreated;
 use App\Events\CheckoutPaid;
 use App\Events\RegistrationAccepted;
 use App\Events\RegistrationCreated;
-use App\Events\RegistrationDenied;
+use App\Events\CheckoutDenied;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -99,15 +99,6 @@ class Registration extends Model
         return $registration;
     }
 
-    public function deny()
-    {
-        $registration = $this->changeStatus('denied');
-
-        RegistrationDenied::dispatch($registration);
-
-        return $registration;
-    }
-
     public function cancel()
     {
         $registration = $this->changeStatus('cancelled');
@@ -127,6 +118,13 @@ class Registration extends Model
     public function pending()
     {
         $registration = $this->changeStatus('pending');
+
+        return $registration;
+    }
+
+    public function deny()
+    {
+        $registration = $this->changeStatus('denied');
 
         return $registration;
     }
@@ -154,7 +152,7 @@ class Registration extends Model
                 CheckoutCreated::dispatch($this->checkout());
                 break;
             case 'denied':
-                RegistrationDenied::dispatch($this);
+                CheckoutDenied::dispatch($this);
                 break;
             case 'cancelled':
                 CheckoutCancelled::dispatch($this->checkout());

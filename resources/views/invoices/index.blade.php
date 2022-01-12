@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 @if($invoices->count())
-                    <x-invoices.table :invoices="$invoices" :toggle="false"/>
+                    <x-invoices.table :invoices="$invoices" :toggle="true"/>
                 @else
                     <div class="row">
                         <div class="col">

@@ -9,22 +9,22 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use App\Models\Registration;
+use App\Models\Checkout;
 
-class RegistrationDenied
+class CheckoutDenied
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $registration;
+    public $checkout;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(Registration $registration)
+    public function __construct(Checkout $checkout)
     {
-        $this->registration = $registration;
+        $this->checkout = $checkout;
     }
 
     /**

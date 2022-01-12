@@ -2,8 +2,8 @@
 
 namespace App\Listeners;
 
-use App\Events\RegistrationDenied;
-use App\Mail\RegistrationDenied as MailRegistrationDenied;
+use App\Events\CheckoutDenied;
+use App\Mail\CheckoutDenied as MailCheckoutDenied;
 use App\Services\DynamicMailer;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -24,11 +24,11 @@ class SendDeniedEmailNotification implements ShouldQueue
     /**
      * Handle the event.
      *
-     * @param  RegistrationDenied  $event
+     * @param  CheckoutDenied  $event
      * @return void
      */
-    public function handle(RegistrationDenied $event)
+    public function handle(CheckoutDenied $event)
     {
-        DynamicMailer::send($event->registration->user, new MailRegistrationDenied($event->registration));
+        DynamicMailer::send($event->checkout->user, new MailCheckoutDenied($event->checkout));
     }
 }

@@ -1,8 +1,8 @@
 <div class="table">
-    <table class="table table-striped table-bordered" {{ $toggle ? 'data-toggle=table' : '' }} data-search="true"  data-locale="es_ES">
+    <table class="table table-striped table-bordered" {{ $toggle ? 'data-toggle=table' : '' }} data-search="true"  data-locale="es_ES" data-pagination="true" data-page-size="50" data-page-list="[50, 100, all]">
         <thead>
             <tr>
-                <th data-field="status" data-sortable="false">Status</th>
+                <th data-field="status" data-sortable="false" data-visible="false">Status</th>
                 <th data-field="payment" data-sortable="false">Pago</th>
                 <th data-field="product" data-sortable="true">Producto</th>
                 <th data-field="user" data-sortable="true">Usuario</th>
@@ -12,17 +12,20 @@
         </thead>
         <tbody>
             @foreach($invoices as $invoice)
-                <tr>
-                    <td class="alert {{ $invoice->checkout->status === 'paid' ? 'alert-succes' : 'alert-danger' }}">
-                        <i class="ion-cash" aria-hidden="true"></i>&ensp;
-                        {{ $invoice->checkout->status == 'paid' ? 'Pagado' : 'Pendiente' }}
+                <tr class="{{ $invoice->checkout->status === 'paid' ? 'table-success' : 'table-danger' }}">
+                    <td>
+                        {{ $invoice->checkout->status == 'paid' ? 'Pagada' : 'Pendiente' }}
                     </td>
                     <td>
                         {{ $invoice->checkout->amount }} €<br>
                         <span class="badge badge-info">{{ $invoice->checkout->method == 'card' ? 'Tarjeta' : 'Transferencia' }} {{ $invoice->checkout->id }}</span><br>
                         {!! $invoice->number ? '<small class="text-info">Fctr.:</small> ' . $invoice->number : '' !!}
                     </td>
-                    <td>{{ $invoice->checkout->product->name }}</td>
+                    <td>
+                        @foreach ($invoice->checkout->products->groupBy('id') as $product)
+                            <span class="text-info">{{ $product->count() }} x</span> {{ $product[0]->name }} <span class="text-uppercase">{{ $product[0]->mode }}</span><br>
+                        @endforeach
+                    </td>
                     <td>{{ $invoice->checkout->user->full_name }}</td>
                     <td>
                         {{ $invoice->address->name }}<br>

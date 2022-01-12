@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Events\CheckoutBilled;
+use App\Events\CheckoutDenied;
 use App\Events\CheckoutCancelled;
 use App\Events\CheckoutPaid;
 use Carbon\Carbon;
@@ -157,6 +158,17 @@ class Checkout extends Model
         $this->registrationsStatus('pending');
 
         CheckoutPaid::dispatch($checkout);
+
+        return $checkout;
+    }
+
+    public function deny()
+    {
+        $checkout = $this->changeStatus('denied');
+
+        CheckoutDenied::dispatch($checkout);
+
+        $this->registrationsStatus('deny');
 
         return $checkout;
     }

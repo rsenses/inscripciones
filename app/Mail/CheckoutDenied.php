@@ -6,23 +6,23 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use App\Models\Registration;
+use App\Models\Checkout;
 use App\Services\DynamicMailer;
 
-class RegistrationDenied extends Mailable
+class CheckoutDenied extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $registration;
+    public $checkout;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Registration $registration)
+    public function __construct(Checkout $checkout)
     {
-        $this->registration = $registration;
+        $this->checkout = $checkout;
     }
 
     /**
@@ -32,12 +32,12 @@ class RegistrationDenied extends Mailable
      */
     public function build()
     {
-        $domain = $this->registration->product->partners[0]->slug;
+        $domain = $this->checkout->products[0]->partners[0]->slug;
         $from = DynamicMailer::getMailer()['from'];
 
         return $this->subject('Aforo completo')
             ->from($from['address'], $from['name'])
-            ->view('emails.' . $domain . '.registrations.denied')
-            ->text('emails.' . $domain . '.registrations.denied_plain');
+            ->view('emails.' . $domain . '.checkouts.denied')
+            ->text('emails.' . $domain . '.checkouts.denied_plain');
     }
 }

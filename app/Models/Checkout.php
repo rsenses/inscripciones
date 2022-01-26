@@ -202,6 +202,14 @@ class Checkout extends Model
 
         $checkout->push();
 
+        $checkout->products()->attach($this->products);
+
+        foreach ($this->registrations()->get() as $registration) {
+            $registration->update([
+                'checkout_id' => $checkout->id,
+            ]);
+        }
+
         $this->disable();
 
         return $checkout;

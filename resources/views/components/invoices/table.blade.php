@@ -2,7 +2,7 @@
     <table class="table table-striped table-bordered" {{ $toggle ? 'data-toggle=table' : '' }} data-search="true"  data-locale="es_ES" data-pagination="true" data-page-size="50" data-page-list="[50, 100, all]">
         <thead>
             <tr>
-                <th data-field="status" data-sortable="false" data-visible="false">Status</th>
+                <th data-field="status" data-sortable="false" data-visible="true">Status</th>
                 <th data-field="payment" data-sortable="false">Pago</th>
                 <th data-field="product" data-sortable="true">Producto</th>
                 <th data-field="user" data-sortable="true">Usuario</th>
@@ -12,9 +12,9 @@
         </thead>
         <tbody>
             @foreach($invoices as $invoice)
-                <tr class="{{ $invoice->checkout->status === 'paid' ? 'table-success' : 'table-danger' }}">
+                <tr class="{{ $invoice->checkout->status === 'paid' ? 'table-success' : ($invoice->checkout->status === 'pending' ? 'table-warning' : 'table-danger') }}">
                     <td>
-                        {{ $invoice->checkout->status == 'paid' ? 'Pagada' : 'Pendiente' }}
+                        {{ $invoice->checkout->status == 'paid' ? 'Pagada' : ($invoice->checkout->status === 'pending' ? 'Pendiente' : 'Cancelada') }}
                     </td>
                     <td>
                         {{ $invoice->checkout->amount }} €<br>
@@ -26,7 +26,10 @@
                             <span class="text-info">{{ $product->count() }} x</span> {{ $product[0]->name }} <span class="text-uppercase">{{ $product[0]->mode }}</span><br>
                         @endforeach
                     </td>
-                    <td>{{ $invoice->checkout->user->full_name }}</td>
+                    <td>
+                        {{ $invoice->checkout->user->full_name }}<br>
+                        <a href="mailto:{{ $invoice->checkout->user->email }}">{{ $invoice->checkout->user->email }}</a>
+                    </td>
                     <td>
                         {{ $invoice->address->name }}<br>
                         {{ $invoice->address->tax_type }}: {{ $invoice->address->tax_id }}<br>

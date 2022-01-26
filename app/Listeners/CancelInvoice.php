@@ -37,6 +37,8 @@ class CancelInvoice
 
                 $negativeCheckout->push();
 
+                $negativeCheckout->products()->attach($checkout->products);
+
                 $negativeCheckout->invoice()->create([
                     'address_id' => $invoice->address_id
                 ]);

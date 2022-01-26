@@ -49,9 +49,9 @@
                     {{ __($registration->status) }}
                 </td>
                 @endif
-                <td>{{ !empty($registration->checkout()->paid_at) ? $registration->checkout()->paid_at->format('d-m-Y
+                <td>{{ !empty($registration->checkout->paid_at) ? $registration->checkout->paid_at->format('d-m-Y
                     H:i' ) : '' }}</td>
-                <td>{{ !empty($registration->checkout()->amount) ? $registration->checkout()->amount . '€' : '' }}</td>
+                <td>{{ !empty($registration->checkout->amount) ? $registration->checkout->amount . '€' : '' }}</td>
                 <td>{{ $registration->user->full_name }}</td>
                 <td>{{ $registration->user->company }} <small>{{ $registration->user->position }}</small></td>
                 <td>{{ $registration->user->email }}</td>

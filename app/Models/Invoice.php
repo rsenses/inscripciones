@@ -20,6 +20,15 @@ class Invoice extends Model
     ];
 
     /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'billed_at' => 'datetime:Y-m-d H:i:s',
+    ];
+
+    /**
      * Get the address that owns the invoice.
      */
     public function address()

@@ -2,12 +2,13 @@
     <table class="table table-striped table-bordered" {{ $toggle ? 'data-toggle=table' : '' }} data-search="true"  data-locale="es_ES" data-pagination="true" data-page-size="50" data-page-list="[50, 100, all]">
         <thead>
             <tr>
-                <th data-field="status" data-sortable="false" data-visible="true">Status</th>
+                <th data-field="status" data-sortable="false" data-visible="false">Status</th>
                 <th data-field="payment" data-sortable="false">Pago</th>
                 <th data-field="product" data-sortable="true">Producto</th>
                 <th data-field="user" data-sortable="true">Usuario</th>
                 <th data-field="invoice" data-sortable="false">Facturación</th>
                 <th data-field="created_at" data-sortable="true">Fecha de compra</th>
+                <th data-field="billed_at" data-sortable="true">Fecha de factura</th>
             </tr>
         </thead>
         <tbody>
@@ -36,6 +37,7 @@
                         {{ $invoice->address->full_address }}
                     </td>
                     <td>{{ $invoice->checkout->created_at->format('d-m-Y / H:i:s' ) }}</td>
+                    <td>{{ $invoice->billed_at ? $invoice->billed_at->format('d-m-Y / H:i:s' ) : '' }}</td>
                 </tr>
             @endforeach
         </tbody>

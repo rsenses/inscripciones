@@ -9,7 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class RegistrationCreated extends Mailable
+class RegistrationPaid extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -32,12 +32,12 @@ class RegistrationCreated extends Mailable
      */
     public function build()
     {
-        $domain = $this->registration->product->partners[0]->slug;
+        $partner = $this->registration->product->partners[0];
         $from = DynamicMailer::getMailer()['from'];
 
-        return $this->subject('Solicitud recibida correctamente')
+        return $this->subject('Bienvenido al ' . $this->registration->product->name)
             ->from($from['address'], $from['name'])
-            ->view('emails.' . $domain . '.registrations.created')
-            ->text('emails.' . $domain . '.registrations.created_plain');
+            ->view('emails.' . $partner->slug . '.registrations.paid')
+            ->text('emails.' . $partner->slug . '.registrations.paid_plain');
     }
 }

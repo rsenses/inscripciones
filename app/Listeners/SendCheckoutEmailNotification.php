@@ -2,10 +2,10 @@
 
 namespace App\Listeners;
 
-use App\Events\CheckoutCreated;
+use App\Events\CheckoutAccepted;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
-use App\Mail\CheckoutCreated as MailCheckoutCreated;
+use App\Mail\CheckoutAccepted as MailCheckoutAccepted;
 use App\Services\DynamicMailer;
 
 class SendCheckoutEmailNotification implements ShouldQueue
@@ -23,13 +23,13 @@ class SendCheckoutEmailNotification implements ShouldQueue
     /**
      * Handle the event.
      *
-     * @param  CheckoutCreated  $event
+     * @param  CheckoutAccepted  $event
      * @return void
      */
-    public function handle(CheckoutCreated $event)
+    public function handle(CheckoutAccepted $event)
     {
         if ($event->checkout->amount > 0) {
-            DynamicMailer::send($event->checkout->user, new MailCheckoutCreated($event->checkout));
+            DynamicMailer::send($event->checkout->user, new MailCheckoutAccepted($event->checkout));
         }
     }
 }

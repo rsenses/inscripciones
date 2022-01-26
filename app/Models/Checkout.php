@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use App\Events\CheckoutBilled;
+use App\Events\CheckoutAccepted;
 use App\Events\CheckoutDenied;
 use App\Events\CheckoutCancelled;
 use App\Events\CheckoutPaid;
+use App\Events\CheckoutPending;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -106,6 +107,8 @@ class Checkout extends Model
 
         $checkout = $this->changeStatus('cancelled');
 
+        $this->registrationsStatus('cancel');
+
         return $checkout;
     }
 
@@ -149,6 +152,17 @@ class Checkout extends Model
         return $checkout;
     }
 
+    public function accept()
+    {
+        $checkout = $this->changeStatus('accepted');
+
+        $this->registrationsStatus('accept');
+
+        CheckoutAccepted::dispatch($this);
+
+        return $checkout;
+    }
+
     public function pending()
     {
         $checkout = $this->changeStatus('pending');
@@ -157,7 +171,7 @@ class Checkout extends Model
 
         $this->registrationsStatus('pending');
 
-        CheckoutPaid::dispatch($checkout);
+        CheckoutPending::dispatch($checkout);
 
         return $checkout;
     }

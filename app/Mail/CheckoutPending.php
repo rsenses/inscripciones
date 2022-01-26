@@ -10,7 +10,7 @@ use App\Models\Checkout;
 use App\Models\Registration;
 use App\Services\DynamicMailer;
 
-class CheckoutPaid extends Mailable
+class CheckoutPending extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -38,9 +38,9 @@ class CheckoutPaid extends Mailable
         $name = $this->checkout->products[0]->partners[0]->name;
         $from = DynamicMailer::getMailer()['from'];
 
-        return $this->subject($name . ' te da la Bienvenida')
+        return $this->subject('Está a un paso de confirmar su plaza')
                 ->from($from['address'], $from['name'])
-                ->view('emails.' . $domain . '.checkouts.paid')
-                ->text('emails.' . $domain . '.checkouts.paid_plain');
+                ->view('emails.' . $domain . '.checkouts.notpaid')
+                ->text('emails.' . $domain . '.checkouts.notpaid_plain');
     }
 }

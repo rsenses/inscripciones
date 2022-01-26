@@ -3,10 +3,9 @@
 namespace App\Models;
 
 use App\Events\CheckoutCancelled;
-use App\Events\CheckoutCreated;
-use App\Events\CheckoutPaid;
-use App\Events\RegistrationAccepted;
-use App\Events\RegistrationCreated;
+use App\Events\CheckoutPending;
+use App\Events\CheckoutAccepted;
+use App\Events\RegistrationPaid;
 use App\Events\CheckoutDenied;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -94,8 +93,6 @@ class Registration extends Model
     {
         $registration = $this->changeStatus('paid');
 
-        RegistrationAccepted::dispatch($registration, true);
-
         return $registration;
     }
 
@@ -110,7 +107,7 @@ class Registration extends Model
     {
         $registration = $this->changeStatus('paid');
 
-        RegistrationAccepted::dispatch($registration);
+        RegistrationPaid::dispatch($this);
 
         return $registration;
     }
@@ -143,22 +140,22 @@ class Registration extends Model
                 $invite = false;
                 $sendEmail = true;
 
-                RegistrationAccepted::dispatch($this, $invite, $sendEmail);
+                CheckoutAccepted::dispatch($this->checkout, $invite, $sendEmail);
                 break;
             case 'paid':
-                CheckoutPaid::dispatch($this->checkout(), $this);
+                RegistrationPaid::dispatch($this);
                 break;
             case 'pending':
-                CheckoutCreated::dispatch($this->checkout());
+                CheckoutPending::dispatch($this->checkout);
                 break;
             case 'denied':
-                CheckoutDenied::dispatch($this);
+                CheckoutDenied::dispatch($this->checkout);
                 break;
             case 'cancelled':
-                CheckoutCancelled::dispatch($this->checkout());
+                CheckoutCancelled::dispatch($this->checkout);
                 break;
             default:
-                RegistrationCreated::dispatch($this);
+                RegistrationPaid::dispatch($this);
                 break;
         }
     }

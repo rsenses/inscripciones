@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\RegistrationCreated;
 use App\Models\Product;
 use App\Models\Registration;
 use App\Models\User;
@@ -71,8 +70,6 @@ class RegistrationController extends Controller
         $registration = Registration::create($request->except('_token'));
 
         $registration->accept();
-
-        RegistrationCreated::dispatch($registration);
 
         return redirect()->route('registrations.show', [
             'registration' => $registration

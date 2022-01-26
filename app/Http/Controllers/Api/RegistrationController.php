@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Events\CheckoutCreated;
+use App\Events\CheckoutAccepted;
 use App\Models\Product;
 use App\Models\Registration;
 use App\Models\Checkout;
@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
-use App\Events\RegistrationCreated;
 
 class RegistrationController extends Controller
 {
@@ -65,8 +64,6 @@ class RegistrationController extends Controller
 
             if ($registration->product->first_action) {
                 $registration->{$registration->product->first_action}();
-            } else {
-                RegistrationCreated::dispatch($registration);
             }
             
             $response['registrations'][] = $registration;
@@ -75,11 +72,12 @@ class RegistrationController extends Controller
         $checkout->update([
             'amount' => $amount
         ]);
+
         if ($firstAction === 'accept') {
             $checkout->update([
                 'status' => 'accepted'
             ]);
-            CheckoutCreated::dispatch($checkout);
+            CheckoutAccepted::dispatch($checkout);
         }
 
         return response()->json($response);

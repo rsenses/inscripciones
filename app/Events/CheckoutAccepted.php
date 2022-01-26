@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\Checkout;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -9,22 +10,25 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use App\Models\Registration;
 
-class RegistrationCreated
+class CheckoutAccepted
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $registration;
+    public $checkout;
+    public $invite;
+    public $sendEmail;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(Registration $registration)
+    public function __construct(Checkout $checkout, bool $invite = false, bool $sendEmail = true)
     {
-        $this->registration = $registration;
+        $this->checkout = $checkout;
+        $this->invite = $invite;
+        $this->sendEmail = $sendEmail;
     }
 
     /**

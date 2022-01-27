@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\Rule;
 use Carbon\Carbon;
+use App\Services\DynamicMailer;
 
 class TicketController extends Controller
 {
@@ -31,8 +32,20 @@ class TicketController extends Controller
         Carbon::setLocale('es');
         setlocale(LC_TIME, 'es_ES');
 
+        $domain = DynamicMailer::getDomain();
+
+        if ($domain === 'telva') {
+            $colors = [0, 0, 0];
+            $logo = null;
+        } else {
+            $colors = [28, 119, 107];
+            $logo = null;
+        }
+
         return view('tickets.show', [
-            'registration' => $registration
+            'registration' => $registration,
+            'colors' => $colors,
+            'logo' => $logo,
         ]);
     }
 }

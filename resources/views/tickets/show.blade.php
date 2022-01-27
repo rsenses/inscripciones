@@ -11,18 +11,27 @@
     <title>Entrada {{ $registration->product->name }}</title>
     <meta name="description" content="Descripción del encuentro para el que es la entrada">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    @if($domain === 'telva')
+        <style>
+            :root {
+                /* --primary: #D70065; */
+                --primary: #000;
+            }
+        </style>
+    @else
+        <style>
+            :root {
+                --primary: #1c776b;
+            }
+        </style>
+    @endif
     <link rel="stylesheet" href="/css/ticket.css">
 </head>
-<style>
-
-</style>
-
 <body>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- <script src="" async defer></script> -->
 
     <div class="cardWrap">
         <div class="card cardLeft">
@@ -50,7 +59,7 @@
         </div>
         <div class="card cardRight">
             <div class="qr-container">
-                {{ SimpleSoftwareIO\QrCode\Facades\QrCode::format('svg')->generate($registration->unique_id) }} 
+                {{ SimpleSoftwareIO\QrCode\Facades\QrCode::color(...$colors)->format('svg')->generate($registration->unique_id) }} 
                 <p>{{ $registration->unique_id }}</p>
             </div>
         </div>

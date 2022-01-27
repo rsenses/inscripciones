@@ -54,7 +54,12 @@ class RegisterController extends Controller
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'role' => ['nullable', 'in:customer,admin']
+            'role' => ['nullable', 'in:customer,admin'],
+            'tax_id' => ['nullable', 'string', 'max:255'],
+            'phone' => ['nullable', 'string', 'max:255'],
+            'company' => ['nullable', 'string', 'max:255'],
+            'position' => ['nullable', 'string', 'max:255'],
+            'advertising' => ['nullable', 'boolean']
         ]);
     }
 
@@ -71,6 +76,11 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'role' => $data['role'],
+            'tax_id' => $data['tax_id'],
+            'phone' => $data['phone'],
+            'company' => $data['company'],
+            'position' => $data['position'],
+            'advertising' => $data['advertising'] ?: 0,
         ]);
     }
 }

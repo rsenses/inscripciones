@@ -1,0 +1,116 @@
+.cardWrap {
+  width: 42em;
+  margin: 3em auto;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+.card {
+  background: linear-gradient(to bottom, black 0%, black 26%, #ecedef 26%, #ecedef 100%);
+  height: 17.5em;
+  float: left;
+  position: relative;
+  padding: 1em;
+  margin-top: 100px;
+}
+
+.cardLeft {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  width: 26.5em;
+}
+
+.cardRight {
+  width: 8em;
+  border-left: 0.18em dashed #fff;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.cardRight:before, .cardRight:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 0.9em;
+  height: 0.9em;
+  background: #fff;
+  border-radius: 50%;
+  left: -0.5em;
+}
+
+.cardRight:before {
+  top: -0.4em;
+}
+
+.cardRight:after {
+  bottom: -0.4em;
+}
+
+h1 {
+  font-size: 1.25em;
+  margin: 17.5px 0 2em;
+}
+
+h1 span {
+  font-weight: normal;
+}
+
+.title, .name {
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
+.title h2, .name h2, .place h2, .time h2 {
+  font-size: 0.9em;
+  line-height: 1em;
+  color: #525252;
+  margin: 0;
+}
+
+.place h2 {
+  font-size: 1em
+}
+
+.title span, .name span, .place span, .time span {
+  font-size: 0.7em;
+  color: #a2aeae;
+}
+
+.title {
+  margin: 2em 0 0 0;
+}
+
+.name, .place, .time {
+  margin: 0.7em 0 0 0;
+}
+
+.time {
+  margin: 0.7em 2em 0 0;
+}
+
+.place, .date, .time {
+  float: left;
+}
+
+
+.qr-container{
+  position: relative;
+  top: 90px;
+  background-color: white;
+  padding: .6em;
+}
+
+.card.cardRight svg {
+  display: block;
+  margin-bottom: 0;
+  width: 100%
+}
+
+.card.cardRight p {
+  display: block;
+  margin: 15px auto 0;
+  text-align: center;
+  color: #a2aeae;
+  font-size: 0.9em;
+  width: 100%
+}

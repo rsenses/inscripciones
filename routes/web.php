@@ -14,6 +14,7 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\DealController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\TicketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,8 @@ Route::post('/preusers/{user}', [PreUserController::class, 'update'])->name('pre
 Route::get('/checkouts/{checkout}', [CheckoutController::class, 'show'])->name('checkouts');
 Route::post('/checkouts/{checkout}', [CheckoutController::class, 'update'])->name('checkouts.update');
 Route::get('/checkouts/payment/{checkout}', [CheckoutController::class, 'payment'])->name('checkouts.payment');
+
+Route::get('/tickets/{registration}/{id}', [TicketController::class, 'show'])->name('tickets.show');
 
 Route::post('/deals/{checkout_id}', [DealController::class, 'store'])->name('deals.store');
 

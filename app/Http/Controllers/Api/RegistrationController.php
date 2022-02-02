@@ -56,7 +56,7 @@ class RegistrationController extends Controller
             $registration = $user->registrations()->create([
                 'product_id' => $registrationAttempt['product_id'],
                 'checkout_id' => $checkout->id,
-                'promo' => $request->promo,
+                'promo' => $registrationAttempt['promo'],
                 'metadata' => $request->all()
             ]);
 

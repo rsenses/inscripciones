@@ -154,11 +154,15 @@ class Checkout extends Model
 
     public function accept()
     {
-        $checkout = $this->changeStatus('accepted');
+        if ($this->amount > 0) {
+            $checkout = $this->changeStatus('accepted');
 
-        $this->registrationsStatus('accept');
+            $this->registrationsStatus('accept');
 
-        CheckoutAccepted::dispatch($this);
+            CheckoutAccepted::dispatch($this);
+        } else {
+            $this->pay();
+        }
 
         return $checkout;
     }

@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\Rule;
+use App\Rules\MaxRegistrations;
 use App\Http\Controllers\Controller;
 
 class RegistrationController extends Controller
@@ -27,6 +28,7 @@ class RegistrationController extends Controller
             '*.product_id' => [
                 'required',
                 'exists:products,id',
+                new MaxRegistrations($request),
             ],
             '*.promo' => 'nullable|string'
         ]);
@@ -61,10 +63,6 @@ class RegistrationController extends Controller
             if (!$firstAction) {
                 $firstAction = $registration->product->first_action;
             }
-
-            if ($registration->product->first_action) {
-                $registration->{$registration->product->first_action}();
-            }
             
             $response['registrations'][] = $registration;
         }
@@ -74,10 +72,7 @@ class RegistrationController extends Controller
         ]);
 
         if ($firstAction === 'accept') {
-            $checkout->update([
-                'status' => 'accepted'
-            ]);
-            CheckoutAccepted::dispatch($checkout);
+            $checkout->accept();
         }
 
         return response()->json($response);

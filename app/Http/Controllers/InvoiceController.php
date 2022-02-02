@@ -54,7 +54,7 @@ class InvoiceController extends Controller
         if ($invoices) {
             $counter = 1;
             $fileName = 'bills-' . strftime('%Y%m%d%H%M', time()) . '.txt';
-            Storage::put('invoices/' . $fileName, '');
+            Storage::put('invoices/' . $fileName, "\xEF\xBB\xBF");
 
             foreach ($invoices as $invoice) {
                 $checkout = $invoice->checkout;
@@ -110,8 +110,6 @@ class InvoiceController extends Controller
 
                 foreach ($products as $product) {
                     // TODO
-                    // REVISAR ESTO CON FINANCIERO
-                    // PARA LAS FACTURAS, HACER FOREACH DE PRODUCTS Y SACAR UNA DE CADA, PRECIO DIVIDIDO
                     $concept = substr(strip_tags(trim(preg_replace('/\t+/', '', $product->name))), 0, 132);
                     $quantity = $checkout->products->where('id', $product->id)->count();
 
@@ -205,7 +203,7 @@ class InvoiceController extends Controller
                         $address->untram ? $address->untram : ' ',
                     ];
 
-                    file_put_contents(storage_path() . '/app/invoices/' . $fileName, "\xEF\xBB\xBF" . implode("\t", $input) . PHP_EOL, FILE_APPEND);
+                    file_put_contents(storage_path() . '/app/invoices/' . $fileName, implode("\t", $input) . PHP_EOL, FILE_APPEND);
                 }
 
                 $invoice->billed_at = Carbon::now();

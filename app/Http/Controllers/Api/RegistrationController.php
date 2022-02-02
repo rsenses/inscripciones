@@ -71,8 +71,8 @@ class RegistrationController extends Controller
             'amount' => $amount
         ]);
 
-        if ($firstAction === 'accept') {
-            $checkout->accept();
+        if ($firstAction) {
+            $checkout->$firstAction();
         }
 
         return response()->json($response);

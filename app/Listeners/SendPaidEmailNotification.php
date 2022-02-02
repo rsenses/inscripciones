@@ -29,6 +29,8 @@ class SendPaidEmailNotification implements ShouldQueue
      */
     public function handle(CheckoutPaid $event)
     {
-        DynamicMailer::send($event->checkout->user, new MailCheckoutPaid($event->checkout));
+        if ($event->checkout->amount > 0) {
+            DynamicMailer::send($event->checkout->user, new MailCheckoutPaid($event->checkout));
+        }
     }
 }

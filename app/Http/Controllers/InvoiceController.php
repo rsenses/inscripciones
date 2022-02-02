@@ -58,12 +58,13 @@ class InvoiceController extends Controller
 
             foreach ($invoices as $invoice) {
                 $checkout = $invoice->checkout;
+                $products = $invoice->checkout->products;
                 $address = $invoice->address;
 
                 $taxId = strtoupper($address->tax_id);
                 $taxType = $address->tax_type;
                 
-                $corporation = $checkout->products[0]->partners[0]->corporation;
+                $corporation = $products[0]->partners[0]->corporation;
 
                 if ($taxType == 'CIF') {
                     $type = 'ATIC';
@@ -107,105 +108,109 @@ class InvoiceController extends Controller
 
                 $conditions = 'ZU01';
 
-                // TODO
-                // REVISAR ESTO CON FINANCIERO
-                // PARA LAS FACTURAS, HACER FOREACH DE PRODUCTS Y SACAR UNA DE CADA, PRECIO DIVIDIDO
-                $concept = substr(strip_tags(trim(preg_replace('/\t+/', '', $checkout->products[0]->name))), 0, 132);
+                foreach ($products as $product) {
+                    // TODO
+                    // REVISAR ESTO CON FINANCIERO
+                    // PARA LAS FACTURAS, HACER FOREACH DE PRODUCTS Y SACAR UNA DE CADA, PRECIO DIVIDIDO
+                    $concept = substr(strip_tags(trim(preg_replace('/\t+/', '', $product->name))), 0, 132);
+                    $quantity = $checkout->products->where('id', $product->id)->count();
 
-                $input = [
-                    $counter,
-                    $checkout->amount > 0 ? 'ZAT' : 'ZAB',
-                    str_pad($corporation, 4, '0', STR_PAD_LEFT),
-                    str_pad($corporation, 4, '0', STR_PAD_LEFT),
-                    '02',
-                    '08',
-                    $clientCode,
-                    ' ',
-                    ' ',
-                    ' ',
-                    strftime('%d.%m.%Y', strtotime(date('Y-m-d H:i:s'))),
-                    $vat > 0 ? 'SDPATROCPUB' : 'SDPATROCPUB0',
-                    $checkout->id,
-                    $checkout->amount > 0 ? 'L2N' : 'G2N',
-                    $checkout->product->product_id,
-                    ' ',
-                    $checkout->quantity,
-                    number_format(((abs($checkout->amount) / (1 + ($vat / 100))) / $checkout->quantity), 2, ',', ''),
-                    $checkout->quantity,
-                    $method,
-                    $conditions,
-                    ' ',
-                    ' ',
-                    'C10',
-                    ' ',
-                    $concept,
-                    $type,
-                    $clientCode,
-                    $address->name,
-                    $address->contact,
-                    $address->street ?: ' ',
-                    $address->street_number ?: ' ', // Debe existir?
-                    $address->city,
-                    $address->zip,
-                    $address->country,
-                    ' ',
-                    ' ',
-                    $checkout->user->email,
-                    $address->name,
-                    $address->contact,
-                    $address->street,
-                    $address->street_number, // Debe existir?
-                    $address->city,
-                    $address->zip,
-                    $address->country,
-                    ' ',
-                    ' ',
-                    $checkout->user->email,
-                    '999999',
-                    'C10',
-                    $taxId,
-                    $address->country . $taxId,
-                    ' ',
-                    ' ',
-                    ' ',
-                    ' ',
-                    ' ',
-                    ' ',
-                    ' ',
-                    ' ',
-                    ' ',
-                    ' ',
-                    '430700',
-                    ' ',
-                    $conditions,
-                    'X',
-                    $method,
-                    '0001',
-                    ' ',
-                    'MY',
-                    'MY',
-                    'A',
-                    ' ',
-                    ' ',
-                    ' ',
-                    $conditions,
-                    '02',
-                    0,
-                    0,
-                    $checkout->iban,
-                    ' ',
-                    ' ',
-                    ' ',
-                    ' ',
-                    $address->ofcont ? $address->ofcont : ' ',
-                    $address->gestor ? $address->gestor : ' ',
-                    $address->untram ? $address->untram : ' ',
-                ];
+                    $input = [
+                        $counter,
+                        $checkout->amount > 0 ? 'ZAT' : 'ZAB',
+                        str_pad($corporation, 4, '0', STR_PAD_LEFT),
+                        str_pad($corporation, 4, '0', STR_PAD_LEFT),
+                        '02',
+                        '08',
+                        $clientCode,
+                        ' ',
+                        ' ',
+                        ' ',
+                        strftime('%d.%m.%Y', strtotime(date('Y-m-d H:i:s'))),
+                        $vat > 0 ? 'SDPATROCPUB' : 'SDPATROCPUB0',
+                        $checkout->id,
+                        $checkout->amount > 0 ? 'L2N' : 'G2N',
+                        $product->product_id,
+                        ' ',
+                        $quantity,
+                        number_format(((abs($product->price) / (1 + ($vat / 100))) / $quantity), 2, ',', ''),
+                        $quantity,
+                        $method,
+                        $conditions,
+                        ' ',
+                        ' ',
+                        'C10',
+                        ' ',
+                        $concept,
+                        $type,
+                        $clientCode,
+                        $address->name,
+                        $address->contact,
+                        $address->street ?: ' ',
+                        $address->street_number ?: ' ', // Debe existir?
+                        $address->city,
+                        $address->zip,
+                        $address->country,
+                        ' ',
+                        ' ',
+                        $checkout->user->email,
+                        $address->name,
+                        $address->contact,
+                        $address->street,
+                        $address->street_number, // Debe existir?
+                        $address->city,
+                        $address->zip,
+                        $address->country,
+                        ' ',
+                        ' ',
+                        $checkout->user->email,
+                        '999999',
+                        'C10',
+                        $taxId,
+                        $address->country . $taxId,
+                        ' ',
+                        ' ',
+                        ' ',
+                        ' ',
+                        ' ',
+                        ' ',
+                        ' ',
+                        ' ',
+                        ' ',
+                        ' ',
+                        '430700',
+                        ' ',
+                        $conditions,
+                        'X',
+                        $method,
+                        '0001',
+                        ' ',
+                        'MY',
+                        'MY',
+                        'A',
+                        ' ',
+                        ' ',
+                        ' ',
+                        $conditions,
+                        '02',
+                        0,
+                        0,
+                        $checkout->iban,
+                        ' ',
+                        ' ',
+                        ' ',
+                        ' ',
+                        $address->ofcont ? $address->ofcont : ' ',
+                        $address->gestor ? $address->gestor : ' ',
+                        $address->untram ? $address->untram : ' ',
+                    ];
+
+                    file_put_contents(storage_path() . '/app/invoices/' . $fileName, "\xEF\xBB\xBF" . implode("\t", $input) . PHP_EOL, FILE_APPEND);
+                }
 
                 $invoice->billed_at = Carbon::now();
                 $invoice->save();
 
-                file_put_contents(storage_path() . '/app/invoices/' . $fileName, "\xEF\xBB\xBF" . implode("\t", $input) . PHP_EOL, FILE_APPEND);
                 ++$counter;
             }
 

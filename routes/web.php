@@ -41,6 +41,7 @@ Route::get('/checkouts/{checkout}', [CheckoutController::class, 'show'])->name('
 Route::post('/checkouts/{checkout}', [CheckoutController::class, 'update'])->name('checkouts.update');
 Route::get('/checkouts/payment/{checkout}', [CheckoutController::class, 'payment'])->name('checkouts.payment');
 
+Route::get('/tickets/checkout/{checkout}/{token}', [TicketController::class, 'showCheckout'])->name('tickets.show.checkout');
 Route::get('/tickets/{registration}/{id}', [TicketController::class, 'show'])->name('tickets.show');
 
 Route::post('/deals/{checkout_id}', [DealController::class, 'store'])->name('deals.store');

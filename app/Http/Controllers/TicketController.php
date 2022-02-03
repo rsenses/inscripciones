@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Checkout;
 use App\Models\Product;
 use App\Models\Registration;
 use App\Models\User;
@@ -13,6 +14,30 @@ use App\Services\DynamicMailer;
 
 class TicketController extends Controller
 {
+    public function __construct()
+    {
+        Carbon::setLocale('es');
+        setlocale(LC_TIME, 'es_ES');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Registration  $registration
+     * @return \Illuminate\Http\Response
+     */
+    public function showCheckout(Checkout $checkout, $token)
+    {
+        if ($checkout->token != $token) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        return view('tickets.checkout', [
+            'checkout' => $checkout,
+            'brand' => $this->getBrand(),
+        ]);
+    }
+
     /**
      * Display the specified resource.
      *
@@ -29,23 +54,27 @@ class TicketController extends Controller
             return redirect()->route('preusers.show', ['user' => $registration->user, 'redirect' => $request->path()]);
         }
 
-        Carbon::setLocale('es');
-        setlocale(LC_TIME, 'es_ES');
+        return view('tickets.show', [
+            'registration' => $registration,
+            'brand' => $this->getBrand(),
+        ]);
+    }
 
+    private function getBrand()
+    {
         $domain = DynamicMailer::getDomain();
 
         if ($domain === 'telva') {
-            $colors = [0, 0, 0];
+            $color = [0, 0, 0];
             $logo = null;
         } else {
-            $colors = [28, 119, 107];
+            $color = [28, 119, 107];
             $logo = null;
         }
 
-        return view('tickets.show', [
-            'registration' => $registration,
-            'colors' => $colors,
+        return [
             'logo' => $logo,
-        ]);
+            'color' => $color,
+        ];
     }
 }

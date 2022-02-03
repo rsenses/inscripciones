@@ -3,14 +3,13 @@ $registrations = App\Models\Registration::all();
 $checkouts = App\Models\Checkout::all();
 
 foreach($registrations as $registration) {
-    $id = $registration->checkout() ? $registration->checkout()->id : null;
-    echo $id . "\n";
-    if ($id) {
-        $registration->checkout_id = $id;
+    $checkout = App\Models\Checkout::where('user_id', $registration->user_id)->where('product_id', $registration->product_id)->where('status', '!=', 'disabled')->first();
+    if ($checkout) {
+        $registration->checkout_id = $checkout->id;
     }
     $registration->save();
 }
 
 foreach($checkouts as $checkout) {
-    $checkout->products()->save($checkout->product);
+    $checkout->products()->attach([$checkout->product_id]);
 }

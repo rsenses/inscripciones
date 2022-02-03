@@ -59,7 +59,7 @@
         </div>
         <div class="card cardRight">
             <div class="qr-container">
-                {{ SimpleSoftwareIO\QrCode\Facades\QrCode::color(...$colors)->format('svg')->generate($registration->unique_id) }} 
+                {{ SimpleSoftwareIO\QrCode\Facades\QrCode::color(...$brand['color'])->format('svg')->generate($registration->unique_id) }} 
                 <p>{{ $registration->unique_id }}</p>
             </div>
         </div>

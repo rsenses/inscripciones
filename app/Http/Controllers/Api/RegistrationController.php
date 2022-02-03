@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Events\CheckoutAccepted;
+use App\Events\CheckoutCreated;
 use App\Models\Product;
 use App\Models\Registration;
 use App\Models\Checkout;
@@ -74,6 +75,8 @@ class RegistrationController extends Controller
         if ($firstAction) {
             $checkout->$firstAction();
         }
+
+        CheckoutCreated::dispatch($checkout);
 
         return response()->json($response);
     }

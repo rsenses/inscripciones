@@ -1,14 +1,10 @@
 Estimad@ {{ $checkout->user->full_name }}
 
-Su solicitud ha sido aceptada.
+Su solicitud para asistir al {{ $checkout->products[0]->name }} ha sido registrada correctamente.
 
-@if($promo === 'SUSCRIPTOR' || $promo === 'PREMIUM')
-Para beneficiarse por ser suscriptor, incorpore el siguiente código de descuento durante el proceso de pago: <b>{{ $discount->code }}</b> y se le aplicará un descuento del {{ $discount->quantity }}%.
-@endif
+En breve nos pondremos en contacto con usted para confirmar si su solicitud ha sido aceptada.
 
-Para proceder al pago y confirmar su asistencia regístrese en el siguiente enlace y complete su inscripción:
-          
-{{ Config::get('app.url') }}checkouts/{{ $checkout->id }}?t={{ $checkout->token }}
+Le recordamos que el aforo es limitado y por riguroso orden de inscripción.
 
 Atentamente,
 

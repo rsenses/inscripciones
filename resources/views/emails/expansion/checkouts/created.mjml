@@ -13,9 +13,6 @@
             </mj-column>
         </mj-section>
         <mj-wrapper background-color="#fff" padding="0">
-            <mj-raw>
-                <!-- Image Header -->
-            </mj-raw>
             <mj-section padding="0 0 30px">
                 <mj-column width="500px">
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
@@ -25,36 +22,18 @@
                         ></mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Su solicitud ha sido
-                        <strong>aceptada</strong>.</mj-text
+                        >Su solicitud para asistir al
+                        <strong>{{ $checkout->products[0]->name }}</strong> ha
+                        sido registrada correctamente.</mj-text
                     >
-                    <mj-text
-                        line-height="22px"
-                        font-size="14px"
-                        color="#2a3a4a"
-                    >
-                        @if($promo === 'SUSCRIPTOR' || $promo === 'PREMIUM')
-                        Para beneficiarse por ser suscriptor, incorpore el
-                        siguiente código de descuento durante el proceso de
-                        pago: <b>{{ $discount->code }}</b> y se le aplicará un
-                        descuento del {{ $discount->quantity }}%. @endif
-                    </mj-text>
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Para proceder al pago y confirmar su asistencia
-                        regístrese en el siguiente enlace y complete su
-                        inscripción:</mj-text
+                        >En breve nos pondremos en contacto con usted para
+                        confirmar si su solicitud ha sido aceptada.</mj-text
                     >
-                    <mj-text
-                        line-height="22px"
-                        font-size="14px"
-                        color="#2a3a4a"
+                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
+                        >Le recordamos que el aforo es limitado y por riguroso
+                        orden de inscripción.</mj-text
                     >
-                        <a
-                            href="{{ Config::get('app.url') }}checkouts/{{ $checkout->id }}?t={{ $checkout->token }}"
-                            >{{ Config::get('app.url') }}checkouts/{{
-                            $checkout->id }}?t={{ $checkout->token }}</a
-                        >
-                    </mj-text>
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         >Atentamente,</mj-text
                     >

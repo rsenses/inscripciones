@@ -34,18 +34,13 @@ class CheckoutCreated extends Mailable
      */
     public function build()
     {
-        $promo = $this->checkout->registrations()->where('status', 'accepted')->first()->promo;
-        $discount = Discount::where('code', $promo)->first();
-
         $partner = $this->checkout->products[0]->partners[0];
 
         $from = DynamicMailer::getMailer()['from'];
 
-        return $this->subject('Solicitud aceptada')
+        return $this->subject('Solicitud registrada')
             ->from($from['address'], $from['name'])
             ->with([
-                'promo' => $promo,
-                'discount' => $discount,
                 'partner' => $partner,
             ])
             ->view('emails.' . $partner->slug . '.checkouts.created')

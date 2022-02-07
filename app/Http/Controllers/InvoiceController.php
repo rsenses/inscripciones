@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\InvoiceCreated;
+use App\Models\Campaign;
 use App\Models\Invoice;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -15,24 +16,42 @@ class InvoiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $campaignId = $request->campaign;
+
         $invoices = Invoice::whereNull('billed_at')
             ->whereNull('number')
-            ->whereHas('checkout', function ($q) {
+            ->whereHas('checkout', function ($q) use ($campaignId) {
                 $q->where('status', 'pending')
                 ->orWhere('status', 'paid');
+                if ($campaignId) {
+                    $q->whereHas('products', function ($q) use ($campaignId) {
+                        $q->where('campaign_id', $campaignId);
+                    });
+                }
             })
             ->get();
 
         $billed = Invoice::whereNotNull('billed_at')
             ->whereNotNull('number')
+            ->whereHas('checkout', function ($q) use ($campaignId) {
+                if ($campaignId) {
+                    $q->whereHas('products', function ($q) use ($campaignId) {
+                        $q->where('campaign_id', $campaignId);
+                    });
+                }
+            })
             ->orderBy('billed_at', 'DESC')
             ->get();
 
+        $campaigns = Campaign::orderBy('created_at', 'DESC')->get();
+
         return view('invoices.index', [
             'invoices' => $invoices,
-            'billed' => $billed
+            'billed' => $billed,
+            'campaigns' => $campaigns,
+            'campaignId' => $campaignId,
         ]);
     }
 

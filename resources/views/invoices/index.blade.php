@@ -14,6 +14,20 @@
             </div>
         @endif
 
+        <div class="row mb-4">
+            <div class="col">
+                <div class="form-group">
+                <p>Filtrar por campaña.</p>
+                <select class="form-control" onchange="this.options[this.selectedIndex].value && (window.location = '{{ URL::current() }}?campaign=' + this.options[this.selectedIndex].value);">
+                    <option selected value="0">-- Sin filtro --</option>
+                    @foreach ($campaigns as $campaign)
+                        <option value="{{ $campaign->id }}" {{ $campaign->id == $campaignId ? 'selected' : '' }}>{{ $campaign->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            </div>
+        </div>
+
         <div class="card bg-light">
             <div class="card-body">
                 <div class="row">

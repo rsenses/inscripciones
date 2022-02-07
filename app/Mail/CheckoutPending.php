@@ -34,13 +34,12 @@ class CheckoutPending extends Mailable
      */
     public function build()
     {
-        $domain = $this->checkout->products[0]->partners[0]->slug;
-        $name = $this->checkout->products[0]->partners[0]->name;
+        $folder = $this->checkout->campaign()->folder;
         $from = DynamicMailer::getMailer()['from'];
 
         return $this->subject('Está a un paso de confirmar su plaza')
                 ->from($from['address'], $from['name'])
-                ->view('emails.' . $domain . '.checkouts.notpaid')
-                ->text('emails.' . $domain . '.checkouts.notpaid_plain');
+                ->view('emails.' . $folder . '.checkouts.notpaid')
+                ->text('emails.' . $folder . '.checkouts.notpaid_plain');
     }
 }

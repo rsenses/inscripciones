@@ -32,19 +32,19 @@ class CheckoutCancelled extends Mailable
      */
     public function build()
     {
-        $domain = $this->checkout->products[0]->partners[0]->slug;
+        $folder = $this->checkout->campaign()->folder;
         $from = DynamicMailer::getMailer()['from'];
 
         if ($this->checkout->status === 'paid') {
             return $this->subject('Cancelación de asistencia')
                 ->from($from['address'], $from['name'])
-                ->view('emails.' . $domain . '.checkouts.cancelled_paid')
-                ->text('emails.' . $domain . '.checkouts.cancelled_paid_plain');
+                ->view('emails.' . $folder . '.checkouts.cancelled_paid')
+                ->text('emails.' . $folder . '.checkouts.cancelled_paid_plain');
         } else {
             return $this->subject('Cancelación de asistencia')
                 ->from($from['address'], $from['name'])
-                ->view('emails.' . $domain . '.checkouts.cancelled')
-                ->text('emails.' . $domain . '.checkouts.cancelled_plain');
+                ->view('emails.' . $folder . '.checkouts.cancelled')
+                ->text('emails.' . $folder . '.checkouts.cancelled_plain');
         }
     }
 }

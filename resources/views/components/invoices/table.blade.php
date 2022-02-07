@@ -20,7 +20,7 @@
                     <td>
                         {{ $invoice->checkout->amount }} €<br>
                         <span class="badge badge-info">{{ $invoice->checkout->method == 'card' ? 'Tarjeta' : 'Transferencia' }} {{ $invoice->checkout->id }}</span><br>
-                        {!! $invoice->number ? '<small class="text-info">Fctr.:</small> <a href="https://invoice.eventosue.com/' . $invoice->number . '.pdf">' . $invoice->number . '</a>' : '' !!} 
+                        {!! $invoice->number ? '<small class="text-info">Fctr.:</small> <a href="https://invoice.eventosue.com/' . $invoice->number . '.pdf" target="_blank">' . $invoice->number . '</a>' : '' !!} 
                     </td>
                     <td>
                         @foreach ($invoice->checkout->products->groupBy('id') as $product)

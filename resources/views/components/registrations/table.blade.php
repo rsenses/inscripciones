@@ -20,7 +20,7 @@
                 @else
                 <th data-field="status" data-sortable="true" data-filter-control="select">Status</th>
                 @endif
-                <th data-field="paid_at" data-sortable="true">Fecha Pago</th>
+                <th data-field="paid_at" data-sortable="true">Fecha Insc./Pago</th>
                 <th data-field="amount" data-sortable="true">Precio</th>
                 <th data-field="full_name" data-sortable="true">Nombre</th>
                 <th data-field="company" data-sortable="true">Empresa</th>
@@ -50,7 +50,8 @@
                 </td>
                 @endif
                 <td>{{ !empty($registration->checkout->paid_at) ? $registration->checkout->paid_at->format('d-m-Y
-                    H:i' ) : '' }}</td>
+                    H:i' ) : $registration->created_at->format('d-m-Y
+                    H:i' ) }}</td>
                 <td>{{ !empty($registration->checkout->amount) ? $registration->checkout->amount . '€' : '' }}</td>
                 <td>{{ $registration->user->full_name }}</td>
                 <td>{{ $registration->user->company }} <small>{{ $registration->user->position }}</small></td>

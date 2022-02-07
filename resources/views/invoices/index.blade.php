@@ -16,7 +16,7 @@
 
         <div class="card bg-light">
             <div class="card-body">
-                <div class="row mb-4">
+                <div class="row">
                     <div class="col">
                         <h3 class="card-title text-primary">Facturas pendientes de generar</h3>
                     </div>
@@ -47,7 +47,7 @@
 
         <div class="card bg-light mt-5">
             <div class="card-body">
-                <div class="row mb-4">
+                <div class="row">
                     <div class="col">
                         <h3 class="card-title text-primary">Facturadas</h3>
                     </div>

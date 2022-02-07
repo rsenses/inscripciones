@@ -25,6 +25,14 @@ class Partner extends Model
     ];
 
     /**
+     * Get the campaigns for the partner.
+     */
+    public function campaign()
+    {
+        return $this->hasMany(Campaign::class);
+    }
+
+    /**
      * The products that belong to the partner.
      */
     public function products()

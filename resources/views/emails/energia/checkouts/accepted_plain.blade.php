@@ -1,10 +1,11 @@
 Estimad@ {{ $checkout->user->full_name }}
 
-Su solicitud ha sido aceptada.
+Tu solicitud ha sido completada correctamente. A continuación te enviamos el resumen de tu compra:
 
-@if($promo === 'SUSCRIPTOR' || $promo === 'PREMIUM')
-Para beneficiarse por ser suscriptor, incorpore el siguiente código de descuento durante el proceso de pago: <b>{{ $discount->code }}</b> y se le aplicará un descuento del {{ $discount->quantity }}%.
-@endif
+Cantidad    Producto
+@foreach ($checkout->products->groupBy('id') as $product)
+{{ $product->count() }}x {{ $product[0]->name }} {{ $product[0]->mode }}
+@endforeach
 
 Para proceder al pago y confirmar su asistencia regístrese en el siguiente enlace y complete su inscripción:
           

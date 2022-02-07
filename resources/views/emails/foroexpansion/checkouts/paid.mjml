@@ -3,19 +3,7 @@
         <mj-raw>
             <!-- Company Header -->
         </mj-raw>
-        <mj-section>
-            <mj-column>
-                <mj-image
-                    width="200px"
-                    src="{{ asset('storage/' . $partner->image) }}"
-                    href="{{ $partner->name }}"
-                ></mj-image>
-            </mj-column>
-        </mj-section>
         <mj-wrapper background-color="#fff" padding="0">
-            <mj-raw>
-                <!-- Image Header -->
-            </mj-raw>
             <mj-section padding="0 0 30px">
                 <mj-column width="500px">
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
@@ -25,38 +13,46 @@
                         ></mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Su solicitud ha sido
-                        <strong>aceptada</strong>.</mj-text
+                        ><strong
+                            >Le damos la bienvenida al {{
+                            $checkout->products[0]->name }}</strong
+                        >.</mj-text
+                    >
+                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
+                        >Su inscripción {{ $checkout->products[0]->mode ===
+                        'online' ? 'ON LINE' : 'PRESENCIAL' }} ha sido
+                        confirmada.</mj-text
+                    >
+                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
+                        >A través del siguiente enlace podrá acceder a toda la
+                        información relativa al evento:</mj-text
+                    >
+                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
+                        ><a href="https://foro.expansion.com"
+                            >https://foro.expansion.com</a
+                        ></mj-text
                     >
                     <mj-text
                         line-height="22px"
                         font-size="14px"
                         color="#2a3a4a"
                     >
-                        @if($promo === 'SUSCRIPTOR' || $promo === 'PREMIUM')
-                        Para beneficiarse por ser suscriptor, incorpore el
-                        siguiente código de descuento durante el proceso de
-                        pago: <b>{{ $discount->code }}</b> y se le aplicará un
-                        descuento del {{ $discount->quantity }}%. @endif
+                        • Cómo llegar.<br />
+                        • Programa y ponentes. <br />
+                        • Listado de asistentes.<br />
+                        • Protocolo Covid.<br />
+                        • Zona de preguntas en directo.<br />
+                        • Actualizaciones de última hora.
                     </mj-text>
-                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Para proceder al pago y confirmar su asistencia
-                        regístrese en el siguiente enlace y complete su
-                        inscripción:</mj-text
+                    <mj-button
+                        href="{{ route('calendar.show', ['product' => $checkout->products[0]]) }}"
+                        background-color="#f45e43"
+                        color="white"
                     >
-                    <mj-text
-                        line-height="22px"
-                        font-size="14px"
-                        color="#2a3a4a"
-                    >
-                        <a
-                            href="{{ Config::get('app.url') }}checkouts/{{ $checkout->id }}?t={{ $checkout->token }}"
-                            >{{ Config::get('app.url') }}checkouts/{{
-                            $checkout->id }}?t={{ $checkout->token }}</a
-                        >
-                    </mj-text>
+                        Incluir en mi calendario
+                    </mj-button>
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Atentamente,</mj-text
+                        >Esperamos que disfrutes del evento,</mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         >Relaciones Institucionales<br /><strong

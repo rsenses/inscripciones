@@ -32,12 +32,12 @@ class CheckoutDenied extends Mailable
      */
     public function build()
     {
-        $domain = $this->checkout->products[0]->partners[0]->slug;
+        $folder = $this->checkout->campaign()->folder;
         $from = DynamicMailer::getMailer()['from'];
 
         return $this->subject('Aforo completo')
             ->from($from['address'], $from['name'])
-            ->view('emails.' . $domain . '.checkouts.denied')
-            ->text('emails.' . $domain . '.checkouts.denied_plain');
+            ->view('emails.' . $folder . '.checkouts.denied')
+            ->text('emails.' . $folder . '.checkouts.denied_plain');
     }
 }

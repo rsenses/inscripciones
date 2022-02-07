@@ -51,6 +51,14 @@ class Registration extends Model
     }
 
     /**
+     * Get the campaing tha owns the registration.
+     */
+    public function campaign()
+    {
+        return Campaign::findOrFail($this->product->campaign_id);
+    }
+
+    /**
      * Get the checkout associated with the registration.
      */
     public function checkout()

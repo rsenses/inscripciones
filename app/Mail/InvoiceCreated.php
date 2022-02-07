@@ -32,12 +32,12 @@ class InvoiceCreated extends Mailable
      */
     public function build()
     {
-        $domain = $this->invoice->checkout->products[0]->partners[0]->slug;
+        $folder = $this->checkout->campaign()->folder;
         $from = DynamicMailer::getMailer()['from'];
 
         return $this->subject('Aquí tiene su factura')
             ->from($from['address'], $from['name'])
-            ->view('emails.' . $domain . '.invoices.created')
-            ->text('emails.' . $domain . '.invoices.created_plain');
+            ->view('emails.' . $folder . '.invoices.created')
+            ->text('emails.' . $folder . '.invoices.created_plain');
     }
 }

@@ -25,13 +25,14 @@ class RegistrationController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            '*.user_id' => ['required', 'exists:users,id'],
-            '*.product_id' => [
+            'user_id' => ['required', 'exists:users,id'],
+            'products' => ['required', 'array'],
+            'products.*' => [
                 'required',
                 'exists:products,id',
                 new MaxRegistrations($request),
             ],
-            '*.promo' => 'nullable|string'
+            'promo' => 'nullable|string'
         ]);
 
         $response = [];
@@ -39,25 +40,25 @@ class RegistrationController extends Controller
         $firstAction = null;
 
         $checkout = Checkout::create([
-            'user_id' => $request->all()[0]['user_id'],
+            'user_id' => $request->user_id,
             'amount' => $request->promo ? 0.00 : $amount,
             'token' => uniqid()
         ]);
 
         $response['checkout'] = $checkout;
 
-        foreach ($request->all() as $registrationAttempt) {
-            $product = Product::find($registrationAttempt['product_id']);
-            $user = User::find($registrationAttempt['user_id']);
+        foreach ($request->products as $productId) {
+            $product = Product::find($productId);
+            $user = User::find($request->user_id);
 
             $amount = $amount + $product->price;
 
-            $checkout->products()->attach($registrationAttempt['product_id']);
+            $checkout->products()->attach($productId);
 
             $registration = $user->registrations()->create([
-                'product_id' => $registrationAttempt['product_id'],
+                'product_id' => $productId,
                 'checkout_id' => $checkout->id,
-                'promo' => $registrationAttempt['promo'],
+                'promo' => $request->promo,
                 'metadata' => $request->all()
             ]);
 
@@ -74,9 +75,9 @@ class RegistrationController extends Controller
 
         if ($firstAction) {
             $checkout->$firstAction();
+        } else {
+            CheckoutCreated::dispatch($checkout);
         }
-
-        CheckoutCreated::dispatch($checkout);
 
         return response()->json($response);
     }

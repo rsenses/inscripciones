@@ -70,6 +70,14 @@ class Checkout extends Model
     }
 
     /**
+     * Get the campaing tha owns the checkout.
+     */
+    public function campaign()
+    {
+        return Campaign::findOrFail($this->products[0]->campaign_id);
+    }
+
+    /**
      * Get the products associated to the checkout.
      */
     public function products()
@@ -273,5 +281,19 @@ class Checkout extends Model
         }
 
         return $this;
+    }
+
+    public function CheckForDiscounts()
+    {
+        if ($this->products->count() > 1) {
+            $discount = [
+                'concept' => 'Descuento por compra múltiple',
+                'amount' => 100,
+            ];
+
+            return $discount;
+        }
+
+        return false;
     }
 }

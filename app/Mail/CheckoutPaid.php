@@ -34,13 +34,13 @@ class CheckoutPaid extends Mailable
      */
     public function build()
     {
-        $domain = $this->checkout->products[0]->partners[0]->slug;
-        $name = $this->checkout->products[0]->partners[0]->name;
+        $folder = $this->checkout->campaign()->folder;
+        $name = $this->checkout->campaign()->partner->name;
         $from = DynamicMailer::getMailer()['from'];
 
         return $this->subject($name . ' te da la Bienvenida')
                 ->from($from['address'], $from['name'])
-                ->view('emails.' . $domain . '.checkouts.paid')
-                ->text('emails.' . $domain . '.checkouts.paid_plain');
+                ->view('emails.' . $folder . '.checkouts.paid')
+                ->text('emails.' . $folder . '.checkouts.paid_plain');
     }
 }

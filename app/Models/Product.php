@@ -58,6 +58,14 @@ class Product extends Model
     }
 
     /**
+     * Get the campaign that owns the product.
+     */
+    public function campaign()
+    {
+        return $this->belongsTo(Campaign::class);
+    }
+
+    /**
      * Get the checkouts for the product
      */
     public function checkouts()

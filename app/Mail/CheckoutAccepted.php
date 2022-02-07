@@ -36,7 +36,8 @@ class CheckoutAccepted extends Mailable
         $promo = $this->checkout->registrations()->where('status', 'accepted')->first()->promo;
         $discount = Discount::where('code', $promo)->first();
 
-        $partner = $this->checkout->products[0]->partners[0];
+        $partner = $this->checkout->campaign()->partner;
+        $folder = $this->checkout->campaign()->folder;
 
         $from = DynamicMailer::getMailer()['from'];
 
@@ -47,7 +48,7 @@ class CheckoutAccepted extends Mailable
                 'discount' => $discount,
                 'partner' => $partner,
             ])
-            ->view('emails.' . $partner->slug . '.checkouts.accepted')
-            ->text('emails.' . $partner->slug . '.checkouts.accepted_plain');
+            ->view('emails.' . $folder . '.checkouts.accepted')
+            ->text('emails.' . $folder . '.checkouts.accepted_plain');
     }
 }

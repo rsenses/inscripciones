@@ -18,7 +18,7 @@ class MaxRegistrations implements Rule
      */
     public function __construct(Request $request)
     {
-        $this->request = $request->all();
+        $this->request = $request;
     }
 
     /**
@@ -30,11 +30,11 @@ class MaxRegistrations implements Rule
      */
     public function passes($attribute, $value)
     {
-        foreach ($this->request as $registrationAttempt) {
-            $product = Product::findOrFail($registrationAttempt['product_id']);
+        foreach ($this->request->products as $productId) {
+            $product = Product::findOrFail($productId);
 
             $registrationCount = Registration::where('product_id', $product->id)
-                ->where('user_id', $registrationAttempt['user_id'])
+                ->where('user_id', $this->request->user_id)
                 ->count();
             
             if ($registrationCount >= $product->max_quantity && $product->max_quantity > 0) {

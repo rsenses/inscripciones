@@ -34,7 +34,8 @@ class CheckoutCreated extends Mailable
      */
     public function build()
     {
-        $partner = $this->checkout->products[0]->partners[0];
+        $partner = $this->checkout->campaign()->partner;
+        $folder = $this->checkout->campaign()->folder;
 
         $from = DynamicMailer::getMailer()['from'];
 
@@ -43,7 +44,7 @@ class CheckoutCreated extends Mailable
             ->with([
                 'partner' => $partner,
             ])
-            ->view('emails.' . $partner->slug . '.checkouts.created')
-            ->text('emails.' . $partner->slug . '.checkouts.created_plain');
+            ->view('emails.' . $folder . '.checkouts.created')
+            ->text('emails.' . $folder . '.checkouts.created_plain');
     }
 }

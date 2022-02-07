@@ -32,12 +32,12 @@ class RegistrationPaid extends Mailable
      */
     public function build()
     {
-        $partner = $this->registration->product->partners[0];
+        $folder = $this->checkout->campaign()->folder;
         $from = DynamicMailer::getMailer()['from'];
 
         return $this->subject('Bienvenido al ' . $this->registration->product->name)
             ->from($from['address'], $from['name'])
-            ->view('emails.' . $partner->slug . '.registrations.paid')
-            ->text('emails.' . $partner->slug . '.registrations.paid_plain');
+            ->view('emails.' . $folder . '.registrations.paid')
+            ->text('emails.' . $folder . '.registrations.paid_plain');
     }
 }

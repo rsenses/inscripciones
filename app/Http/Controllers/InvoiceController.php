@@ -77,7 +77,7 @@ class InvoiceController extends Controller
 
             foreach ($invoices as $invoice) {
                 $checkout = $invoice->checkout;
-                $products = $invoice->checkout->products;
+                $products = $invoice->checkout->products()->distinct()->get();
                 $address = $invoice->address;
 
                 $taxId = strtoupper($address->tax_id);
@@ -152,7 +152,7 @@ class InvoiceController extends Controller
                         $product->product_id,
                         ' ',
                         $quantity,
-                        number_format(((abs($product->price) / (1 + ($vat / 100))) / $quantity), 2, ',', ''),
+                        number_format((abs($product->price) / (1 + ($vat / 100))), 2, ',', ''),
                         $quantity,
                         $method,
                         $conditions,
@@ -230,7 +230,7 @@ class InvoiceController extends Controller
                 if ($discount && $checkout->amount > 0) {
                     $input = [
                         $counter,
-                        'ZAB',
+                        'ZAT',
                         str_pad($corporation, 4, '0', STR_PAD_LEFT),
                         str_pad($corporation, 4, '0', STR_PAD_LEFT),
                         '02',

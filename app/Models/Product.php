@@ -24,7 +24,8 @@ class Product extends Model
         'mode',
         'place',
         'start_date',
-        'end_date'
+        'end_date',
+        'campaign_id'
     ];
 
     /**

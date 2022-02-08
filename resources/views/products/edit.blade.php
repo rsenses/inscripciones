@@ -42,27 +42,7 @@
                     @endif
                 </div>
                 <div class="form-row mb-4">
-                    <div class="col col-sm-4">
-                        <label>Selecciona una imagen</label>
-                        <div class="card">
-                            <div class="card-body">
-
-                                <input type="file" id="image" name="image"
-                                    class="custom-file-input {{ $errors->has('image') ? 'is-invalid' : '' }}"
-                                    aria-describedby="imageHelp">
-                                <label class="custom-file-label" for="exampleInputFile"> Selecciona un archivo</label>
-
-                                <small id="imageHelp" class="form-text text-muted">Se usa para el envío de emails, ancho
-                                    de 600px, peso máximo 300kb</small>
-                                @if($errors->has('image'))
-                                    <div class="invalid-feedback">{{ $errors->first('image') }}
-                                    </div>
-                                @endif
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col col-sm-8">
+                    <div class="col">
                         <label for="description">Descripción</label>
                         <textarea id="description" name="description" cols="30" rows="10"
                             class=" form-control form-control-lg {{ $errors->has('description') ? 'is-invalid' : '' }}">{{ $product->description }}</textarea>
@@ -74,15 +54,19 @@
                 </div>
                 <div class="form-row mb-4">
                     <div class="col">
-                        <label for="partners">Cabeceras</label><br>
-                        <select class="form-control form-control-lg selectpicker" multiple id="partners"
-                            name="partners[]">
-                            @foreach($partners as $partner)
-                                <option value={{ $partner->id }}
-                                    {{ in_array($partner->id, $product->partners->pluck('id')->toArray()) ? 'selected' : '' }}>
-                                    {{ $partner->name }}</option>
+                        <label for="campaign_id">Campaña</label><br>
+                        <select class="form-control form-control-lg" id="campaign_id"
+                            name="campaign_id">
+                            @foreach($campaigns as $campaign)
+                                <option value={{ $campaign->id }}
+                                    {{ $campaign->id == $campaign->campaign_id ? 'selected' : '' }}>
+                                    {{ $campaign->name }}</option>
                             @endforeach
                         </select>
+                        @if($errors->has('campaign_id'))
+                            <div class="invalid-feedback">{{ $errors->first('campaign_id') }}
+                            </div>
+                        @endif
                     </div>
                     <div class="col">
                         <label for="price">Precio</label>

@@ -15,6 +15,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\DealController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\CampaignController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +61,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('products', ProductController::class);
+    Route::resource('campaigns', CampaignController::class);
     Route::resource('registrations', RegistrationController::class);
     Route::post('registrations/status/{registration}', [RegistrationController::class, 'status'])->name('registrations.update-status');
     Route::get('registrations/resend/{registration}', [RegistrationController::class, 'resend'])->name('registrations.resend-email');

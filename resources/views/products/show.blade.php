@@ -18,7 +18,7 @@
         <div class="col col-sm-4">
             <div class="card bg-light h-100">
               <div class="card-body d-flex align-items-center">
-              <p><img src="{{ asset('storage/' . $product->image) }}" alt="El producto no tiene imagen" class="img-fluid"></p>
+              <p><img src="{{ asset('storage/' . $product->campaign->image) }}" alt="El producto no tiene imagen" class="img-fluid"></p>
               </div>
             </div>
         </div>
@@ -46,12 +46,12 @@
                                 <td>{{ $product->end_date->format('d-m-Y / H:i' ) }}</td>
                             </tr>
                             <tr>
-                                <td>Cabeceras</td>
-                                <td>
-                                    @foreach($product->partners as $partner)
-                                        {{ $partner->name }}<br>
-                                    @endforeach
-                                </td>
+                                <td>Campaña</td>
+                                <td>{{ $product->campaign->name }}</td>
+                            </tr>
+                            <tr>
+                                <td>Cabecera</td>
+                                <td>{{ $product->campaign->partner->name }}</td>
                             </tr>
                         </table>
                     </div>

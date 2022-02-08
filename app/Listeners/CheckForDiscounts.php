@@ -30,7 +30,9 @@ class CheckForDiscounts
 
         $discount = $checkout->CheckForDiscounts();
 
-        $checkout->amount = $checkout->amount - $discount['amount'];
-        $checkout->save();
+        if ($discount) {
+            $checkout->amount = $checkout->amount - $discount['amount'];
+            $checkout->save();
+        }
     }
 }

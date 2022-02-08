@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Campaign;
 use App\Models\Partner;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -41,7 +42,7 @@ class ProductController extends Controller
     public function create()
     {
         return view('products.create', [
-            'partners' => Partner::orderBy('name')->get()
+            'campaigns' => Campaign::orderBy('name')->get()
         ]);
     }
 
@@ -60,22 +61,13 @@ class ProductController extends Controller
             'description' => 'nullable',
             'price' => 'nullable|numeric|min:0',
             'mode' => 'required|in:presencial,online',
-            'image' => 'required|mimes:jpg,png|max:1000',
             'place' => 'nullable|string|max:255',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
-            'partners' => ['required', 'array'],
-            'partneres.*' => ['required', 'exists:partners,id']
+            'campaign_id' => ['required', 'exists:campaigns,id']
         ]);
 
         $product = Product::create($request->except('_token'));
-
-        $path = $request->file('image')->store('products', 'public');
-
-        $product->image = $path;
-        $product->save();
-
-        $product->partners()->sync($request->partners);
 
         return redirect()->route('products.show', [
             'product' => $product
@@ -110,7 +102,7 @@ class ProductController extends Controller
     {
         return view('products.edit', [
             'product' => $product,
-            'partners' => Partner::orderBy('name')->get()
+            'campaigns' => Campaign::orderBy('name')->get()
         ]);
     }
 
@@ -130,24 +122,13 @@ class ProductController extends Controller
             'description' => 'nullable',
             'price' => 'nullable|numeric|min:0',
             'mode' => 'required|in:presencial,online',
-            'image' => 'nullable|mimes:jpg,png|max:1000',
             'place' => 'nullable|string|max:255',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
-            'partners' => ['required', 'array'],
-            'partneres.*' => ['required', 'exists:partners,id']
+            'campaign_id' => ['required', 'exists:campaigns,id']
         ]);
 
         $product->update($request->except('_token'));
-
-        if ($request->image) {
-            $path = $request->file('image')->store('products', 'public');
-
-            $product->image = $path;
-            $product->save();
-        }
-
-        $product->partners()->sync($request->partners);
 
         return redirect()->route('products.show', [
             'product' => $product,

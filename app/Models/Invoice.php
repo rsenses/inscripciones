@@ -17,6 +17,7 @@ class Invoice extends Model
     protected $fillable = [
         'checkout_id',
         'address_id',
+        'to_bill'
     ];
 
     /**
@@ -26,6 +27,7 @@ class Invoice extends Model
      */
     protected $casts = [
         'billed_at' => 'datetime:Y-m-d H:i:s',
+        'to_bill' => 'boolean',
     ];
 
     /**

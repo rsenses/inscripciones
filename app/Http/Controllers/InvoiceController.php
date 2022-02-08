@@ -22,6 +22,7 @@ class InvoiceController extends Controller
 
         $invoices = Invoice::whereNull('billed_at')
             ->whereNull('number')
+            ->where('to_bill', true)
             ->whereHas('checkout', function ($q) use ($campaignId) {
                 $q->where('status', 'pending')
                 ->orWhere('status', 'paid');
@@ -64,6 +65,7 @@ class InvoiceController extends Controller
     {
         $invoices = Invoice::whereNull('billed_at')
             ->whereNull('number')
+            ->where('to_bill', true)
             ->whereHas('checkout', function ($q) {
                 $q->where('status', 'pending')
                 ->orWhere('status', 'paid');

@@ -127,15 +127,21 @@ class CheckoutController extends Controller
                 'state' => 'required|string',
                 'ofcont' => 'nullable|string',
                 'gestor' => 'nullable|string',
-                'untram' => 'nullable|string'
+                'untram' => 'nullable|string',
+                'to_bill' => ['nullable', 'boolean'],
             ]);
 
             $address = $checkout->user->addresses()->create($request->all());
         }
 
-        $checkout->invoice()->create([
-            'address_id' => $address->id
+        $toBill = $request->has('to_bill') && $request->to_bill == 0 ? false : true;
+
+        $invoice = Invoice::firstOrCreate(['checkout_id' => $checkout->id], [
+            'address_id' => $address->id,
+            'to_bill' => $toBill
         ]);
+
+        $checkout->invoice()->save($invoice);
 
         return redirect(route('checkouts.payment', ['checkout' => $checkout]));
     }

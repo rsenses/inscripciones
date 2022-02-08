@@ -35,7 +35,7 @@ Route::get('/', function () {
 Route::get('/terminos-y-condiciones', [PageController::class, 'terminos'])->name('terminos-y-condiciones');
 Route::get('/politica-de-privacidad', [PageController::class, 'politica'])->name('politica-de-privacidad');
 
-Route::get('/preusers/{user}', [PreUserController::class, 'show'])->name('preusers.show');
+Route::get('/preusers/{user}/{checkout}', [PreUserController::class, 'show'])->name('preusers.show');
 Route::post('/preusers/{user}', [PreUserController::class, 'update'])->name('preusers.update');
 
 Route::get('/checkouts/{checkout}', [CheckoutController::class, 'show'])->name('checkouts');

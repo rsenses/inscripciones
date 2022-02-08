@@ -50,8 +50,8 @@ class TicketController extends Controller
             abort(403, 'Unauthorized action.');
         }
 
-        if (!$registration->user->password) {
-            return redirect()->route('preusers.show', ['user' => $registration->user, 'redirect' => $request->path()]);
+        if (!$registration->asigned) {
+            return redirect()->route('preusers.show', ['user' => $registration->user, 'checkout' => $registration->checkout, 'redirect' => $request->path()]);
         }
 
         return view('tickets.show', [

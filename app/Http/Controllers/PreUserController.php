@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Checkout;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -15,10 +16,11 @@ class PreUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, User $user)
+    public function show(Request $request, User $user, Checkout $checkout)
     {
         return view('auth.register', [
             'user' => $user,
+            'checkout' => $checkout,
             'redirect' => $request->redirect
         ]);
     }
@@ -47,9 +49,9 @@ class PreUserController extends Controller
         ]);
 
         $user->update([
-            'name' => $request->name, 
+            'name' => $request->name,
             'last_name' => $request->last_name,
-            'email' => $request->email, 
+            'email' => $request->email,
             'password' => Hash::make($request->password),
             'advertising' => $request->advertising,
         ]);

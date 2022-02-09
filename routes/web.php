@@ -44,6 +44,8 @@ Route::get('/checkouts/payment/{checkout}', [CheckoutController::class, 'payment
 
 Route::get('/tickets/checkout/{checkout}/{token}', [TicketController::class, 'showCheckout'])->name('tickets.show.checkout');
 Route::get('/tickets/{registration}/{id}', [TicketController::class, 'show'])->name('tickets.show');
+Route::get('/tickets/assign/{registration}/{id}', [TicketController::class, 'assign'])->name('tickets.assign');
+Route::put('/tickets/update/{registration}/{id}', [TicketController::class, 'update'])->name('tickets.update');
 
 Route::post('/deals/{checkout_id}', [DealController::class, 'store'])->name('deals.store');
 

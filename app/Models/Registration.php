@@ -26,7 +26,8 @@ class Registration extends Model
         'unique_id',
         'metadata',
         'status',
-        'promo'
+        'promo',
+        'asigned'
     ];
 
     /**
@@ -36,6 +37,7 @@ class Registration extends Model
      */
     protected $casts = [
         'metadata' => 'array',
+        'asigned' => 'boolean',
     ];
 
     /**

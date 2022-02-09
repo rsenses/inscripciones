@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Partner;
-use App\Models\Product;
 use App\Models\Registration;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller

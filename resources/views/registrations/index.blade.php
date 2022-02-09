@@ -9,7 +9,7 @@
             <div class="clearfix"></div>
         </div>
 
-        <div class="card bg-light">
+        <div class="card bg-white">
             <div class="card-body">
             <h4 class="card-title">Inscripciones</h2>
             <x-registrations.table :registrations="$registrations"/>

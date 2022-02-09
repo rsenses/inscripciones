@@ -1,10 +1,38 @@
-body{
+body {
     font-weight: 300;
+    @include content($body-bg, $body-color);
+}
+body#dark {
+    @include content($body-dark-bg, $body-dark-color);
+    .card{
+        background-color: $body-dark-bg;
+        color: $body-dark-color
+    }
+    .bg-white {
+        color: $body-dark-color !important;
+        background-color: $black !important;
+    }
+    .table {
+        color: $body-dark-color !important;
+    }
+    .form-control,
+    .custom-file-label,
+    .custom-select {
+        color: $body-dark-color;
+        background-color: $body-dark-bg;
+        border: 1px solid #ced4da;
+    }
+    .selectpicker + .btn-light {
+        background-color: $body-dark-bg;
+        color: $body-dark-color;
+        border: 1px solid #ced4da;
+    }
 }
 .sidebar-heading {
     background-color: var(--primary);
     color: $white;
 }
+
 #wrapper {
     overflow-x: hidden;
 }
@@ -14,7 +42,7 @@ body{
     min-height: 100vh;
     transition: margin 0.25s ease-out;
     a {
-        &.bg-light {
+        &.bg-white {
             font-size: 0.75rem;
             font-weight: 200;
             text-transform: uppercase;
@@ -23,7 +51,6 @@ body{
             &:hover {
                 color: hsla(0, 0%, 100%, 1) !important;
                 font-weight: 400;
-
             }
         }
     }
@@ -41,7 +68,6 @@ body{
                 color: hsla(0, 0%, 100%, 0.8);
                 position: relative;
             }
-            
         }
     }
 }
@@ -55,6 +81,7 @@ body{
     margin-top: 2rem;
     width: 15rem;
     .list-group-item {
+        line-height: 30px;
         border: 0;
         padding: 1.15rem;
     }
@@ -114,6 +141,8 @@ button.bg-light:focus {
     th,
     td {
         padding: 0.75rem 0.75rem 0.5rem;
+        max-width: 100%;
+        white-space: nowrap;
         i {
             position: relative;
             top: 2px;
@@ -121,7 +150,14 @@ button.bg-light:focus {
         }
     }
 }
-
+.table th {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 0 solid #dee2e6;
+}
+td.has-icon {
+    min-width: 110px;
+}
 .custom-select {
     &.form-control-lg {
         font-size: 1.125rem;
@@ -175,48 +211,84 @@ button.bg-light:focus {
     width: 100%;
 }
 
-.card{
+.card {
     background: #fff;
-    box-shadow: 0 1px 15px 0 hsla(0,0%,48%,.05);
-    border-radius: .2857rem;
-    border: 0
+    box-shadow: 0 1px 15px 0 hsla(0, 0%, 48%, 0.05);
+    border-radius: 0.2857rem;
+    border: 0;
 }
-
+.table-responsive {
+    max-height: 75vh;
+}
 .table thead th {
     vertical-align: bottom;
     border-bottom: 0px solid #dee2e6;
     font-weight: 400;
-    font-size: .8rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
 }
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
-  margin-bottom: 0.5rem;
-  font-family: Poppins;
-  font-weight: 500;
-  line-height: 1.2;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    margin-bottom: 0.5rem;
+    font-family: Poppins;
+    font-weight: 500;
+    line-height: 1.2;
 }
 
-h1, .h1 {
-  font-size: 1.802rem;
+h1,
+.h1 {
+    font-size: 1.802rem;
 }
 
-h2, .h2 {
-  font-size: 1.602rem;
+h2,
+.h2 {
+    font-size: 1.602rem;
 }
 
-h3, .h3 {
-  font-size: 1.424rem;
+h3,
+.h3 {
+    font-size: 1.424rem;
 }
 
-h4, .h4 {
-  font-size: 1.266rem;
+h4,
+.h4 {
+    font-size: 1.266rem;
 }
 
-h5, .h5 {
-  font-size: 1.125rem;
+h5,
+.h5 {
+    font-size: 1.125rem;
 }
 
-h6, .h6 {
-  font-size: 1rem;
+h6,
+.h6 {
+    font-size: 1rem;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.5em 0.75em;
+    font-size: 75%;
+    font-weight: 400;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    border-radius: 0.3rem;
+    -webkit-border-radius: 0.3rem;
+    -moz-border-radius: 0.3rem;
+    -ms-border-radius: 0.3rem;
+    -o-border-radius: 0.3rem;
 }

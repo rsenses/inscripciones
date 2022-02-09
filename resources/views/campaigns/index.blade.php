@@ -12,7 +12,7 @@
     </div>
 
 
-    <div class="card bg-light">
+    <div class="card bg-white">
         <div class="card-body">
         <h4 class="card-title">Campañas</h2>
             <x-campaigns.table :campaigns="$campaigns" />

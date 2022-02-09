@@ -10,7 +10,7 @@
         <div class="clearfix"></div>
     </div>
 
-    <div class="card bg-light">
+    <div class="card bg-white">
         <div class="card-body">
             <h4 class="card-title">Cabeceras</h2>
             <x-partners.table :partners="$partners" />

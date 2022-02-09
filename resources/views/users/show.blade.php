@@ -8,7 +8,7 @@
             <i class="ion ion-edit"></i>
         </a></h2>
 
-<div class="card bg-light">
+<div class="card bg-white">
 
   <div class="card-body">
   <div class="table-responsive">
@@ -35,7 +35,7 @@
 </div>
 
     <hr class="my-5">
-    <div class="card bg-light">
+    <div class="card bg-white">
       <img class="card-img-top" src="holder.js/100px180/" alt="">
       <div class="card-body">
         <h4 class="card-title">Inscripciones</h4>

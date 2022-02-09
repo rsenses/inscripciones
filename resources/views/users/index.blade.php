@@ -15,7 +15,7 @@
     </div>
 
     
-    <div class="card bg-light">
+    <div class="card bg-white">
       <img class="card-img-top" src="holder.js/100px180/" alt="">
       <div class="card-body">
         <h4 class="card-title"> <i class="fas fa-user-friends"></i> Usuarios</h4>

@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
         <h2>Nuevo Producto</h2>
-        <div class="card bg-light">
+        <div class="card bg-white">
           <div class="card-body">
           <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -40,7 +40,7 @@
                     @endif
                 </div>
             </div>
-            <div class="form-row mb-4">
+            <div class="form-row my-4">
                 <div class="col">
                     <label for="campaign_id">Campaña</label><br>
                     <select class="form-control form-control-lg" id="campaign_id"
@@ -58,7 +58,7 @@
                 <div class="col">
                     <label for="price">Precio</label>
                     <input type="text" placeholder="Decimal separado por punto, ej: 200.50" name="price" class="text-right form-control form-control-lg {{ $errors->has('price') ? 'is-invalid' : '' }}" value="{{ old('price') }}">
-                    <span class="input-group-addon">€</span>
+                    <span class="input-group-addon">&ensp;€</span>
                     @if ($errors->has('price'))
                         <div class="invalid-feedback">{{ $errors->first('price') }}</div>
                     @endif

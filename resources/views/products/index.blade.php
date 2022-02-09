@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
 
-    <div class="card bg-light">
+    <div class="card bg-white">
         <div class="card-body">
             <h4 class="card-title">Productos
                 @if(Auth::user()->role === 'superadmin')

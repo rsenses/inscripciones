@@ -28,7 +28,7 @@
             </div>
         </div>
 
-        <div class="card bg-light">
+        <div class="card bg-white">
             <div class="card-body">
                 <div class="row">
                     <div class="col">
@@ -59,7 +59,7 @@
             </div>
         </div>
 
-        <div class="card bg-light mt-5">
+        <div class="card bg-white mt-5">
             <div class="card-body">
                 <div class="row">
                     <div class="col">

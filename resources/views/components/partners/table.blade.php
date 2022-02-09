@@ -16,7 +16,7 @@
                     </td>
                     <td  class="bg-primary text-center" style="vertical-align: middle;">
                         <a class="text-light " href="{{ route('partners.show', ['partner' => $partner]) }}">
-                        <i class="ion ion-ios-eye" aria-hidden="true"></i> Ver
+                        <i class="ion ion-ios-eye-outline" aria-hidden="true"></i> Ver
                         </a>
                     </td>
                 </tr>

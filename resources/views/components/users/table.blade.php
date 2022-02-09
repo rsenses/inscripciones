@@ -7,8 +7,8 @@
                 <th>DNI</th>
                 <th>Teléfono</th>
                 <th>Empresa</th>
-                <th>Cargo</th>
-                <th></th>
+                <th colspan="2">Cargo</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -20,9 +20,9 @@
                     <td class="text-right">{{ $user->phone }}</td>
                     <td>{{ $user->company }}</td>
                     <td>{{ $user->position }}</td>
-                    <td class="bg-primary text-center">
+                    <td class="bg-primary text-center has-icon">
                         <a class="text-light" href="{{ route('users.show', ['user' => $user]) }}">
-                        <i class="ion ion-ios-eye" aria-hidden="true"></i> Ver
+                        <i class="ion ion-ios-eye-outline" aria-hidden="true"></i> Ver
                         </a>
                     </td>
                 </tr>

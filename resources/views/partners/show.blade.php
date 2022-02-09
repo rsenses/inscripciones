@@ -21,7 +21,7 @@
     </h2>
    
 
-    <div class="card bg-light">
+    <div class="card bg-white">
         <div class="card-body">
             <h4 class="card-title">Productos</h2>
             <x-products.table :products="$partner->products" />

@@ -5,7 +5,7 @@
     <h2>Editar Producto</h2>
 
 
-    <div class="card bg-light">
+    <div class="card bg-white">
         <div class="card-body">
             <form
                 action="{{ route('products.update', ['product' => $product]) }}"

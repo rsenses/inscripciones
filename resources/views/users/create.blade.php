@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <h2>Nuevo Usuario</h2>
 
-    <div class="card bg-light">
+    <div class="card bg-white">
         <div class="card-body">
             <form action="{{ route('users.store') }}" method="POST">
                 @csrf

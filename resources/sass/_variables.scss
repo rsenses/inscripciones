@@ -2,6 +2,15 @@
 $body-bg: #f5f6fa;
 $body-color: #525f7f;
 
+$body-dark-bg: #212121;
+$body-dark-color: #d4d4d4;
+
+@mixin content($color-default, $color-main) {
+  background-color: $color-default;
+  color: $color-main;
+}
+
+
 // Typography
 $font-family-sans-serif: "Montserrat", sans-serif;
 $font-size-base: 0.9rem;

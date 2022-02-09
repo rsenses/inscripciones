@@ -24,9 +24,10 @@
                         <small>Pagadas:</small> {{ $product->registrations_paid_count }}<br>
                         <small>Sin pagar:</small> {{ $product->registrations_pending_count }}<br>
                     </td>
-                    <td class="bg-primary text-center">
-                        <a class="text-light " href="{{ route('products.show', ['product' => $product]) }}">
-                            <i class="ion ion-ios-eye" aria-hidden="true"></i> Ver
+                    <td class="text-primary text-center">
+                        <a class="text-primary" href="{{ route('products.show', ['product' => $product]) }}">
+                            <i class="ion ion-ios-eye-outline"
+                               aria-hidden="true"></i> Ver
                         </a>
                     </td>
                 </tr>

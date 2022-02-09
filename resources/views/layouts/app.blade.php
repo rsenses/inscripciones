@@ -35,7 +35,7 @@
         </style>
     @endif
 </head>
-<body class="{{ $domain }}">
+<body  class="{{ $domain }}">
     @if($domain === 'telva')
         <script language="JavaScript" type="text/javascript" >
         var ueDataLayer = ueDataLayer || {};
@@ -80,25 +80,25 @@
                     </div>
                     <div class="list-group list-group-flush">
                         <a href="{{ route('dashboard') }}"
-                            class="list-group-item list-group-item-action bg-light"><i
+                            class="list-group-item list-group-item-action bg-white"><i
                                class="lni lni-dashboard"></i>&emsp;Dashboard</a>
                         <a href="{{ route('products.index') }}"
-                            class="list-group-item list-group-item-action bg-light"><i
+                            class="list-group-item list-group-item-action bg-white"><i
                                class="lni lni-briefcase"></i>&emsp;Productos</a>
                         @if(Auth::user()->role === 'superadmin')
-                            <a href="{{ route('campaigns.index') }}" class="list-group-item list-group-item-action bg-light"><i class="ion ion-ios-analytics" aria-hidden="true"></i>&emsp;Campañas</a>
+                            <a href="{{ route('campaigns.index') }}" class="list-group-item list-group-item-action bg-white"><i class="ion ion-ios-analytics" aria-hidden="true"></i>&emsp;Campañas</a>
                             <a href="{{ route('registrations.index') }}"
-                               class="list-group-item list-group-item-action bg-light"><i
+                               class="list-group-item list-group-item-action bg-white"><i
                                    class="lni lni-pencil-alt"></i>&emsp;Inscripciones</a>
                             <a href="{{ route('users.index', ['role' => 'customer']) }}"
-                               class="list-group-item list-group-item-action bg-light"><i
+                               class="list-group-item list-group-item-action bg-white"><i
                                    class="lni lni-users"></i>&emsp;Usuarios</a>
                             <a href="{{ route('partners.index') }}"
-                               class="list-group-item list-group-item-action bg-light"><i
+                               class="list-group-item list-group-item-action bg-white"><i
                                   class="lni lni-bookmark-alt"></i>&emsp;Cabeceras</a>
                         @endif
                         <a href="{{ route('invoices.index') }}"
-                            class="list-group-item list-group-item-action bg-light"><i
+                            class="list-group-item list-group-item-action bg-white"><i
                                class="lni lni-revenue"></i>&emsp;Financiero</a>
                     </div>
                 </div>

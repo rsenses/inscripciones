@@ -16,7 +16,7 @@
     @endif
     <div class="row mb-5 align-items-stretch">
         <div class="col col-sm-4">
-            <div class="card bg-light h-100">
+            <div class="card bg-white h-100">
               <div class="card-body d-flex align-items-center">
               <p><img src="{{ asset('storage/' . $product->campaign->image) }}" alt="El producto no tiene imagen" class="img-fluid"></p>
               </div>
@@ -61,7 +61,7 @@
         </div>
     </div>
 
-    <div class="card bg-light mb-5">
+    <div class="card bg-white mb-5">
         <div class="card-body">
             <table class="table ">
                 <tr>
@@ -88,7 +88,7 @@
         </div>
     </div>
 
-    <div class="card bg-light">
+    <div class="card bg-white">
         <div class="card-body">
             <h4 class="card-title">Inscripciones</h2>
             <x-registrations.table :registrations="$registrations" :show-product="false" />

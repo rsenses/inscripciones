@@ -15,7 +15,7 @@ class TpvController extends Controller
     {
         Log::debug($request->all);
         try {
-            $company = $checkout->products[0]->partners[0];
+            $company = $checkout->campaign->partner;
             $key = $company->merchant_key;
 
             $redsys = new Tpv();

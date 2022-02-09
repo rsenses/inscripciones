@@ -37,6 +37,21 @@ class Partner extends Model
      */
     public function products()
     {
-        return $this->belongsToMany(Product::class);
+        return $this->hasManyThrough(Product::class, Campaign::class, 'partner_id', 'campaign_id');
+    }
+
+    /**
+     * Scope a query to only include active products.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeCurrent($query)
+    {
+        $host = str_replace('.localhost', '', request()->getHost());
+        $hostNames = explode('.', $host);
+        $domain = $hostNames[count($hostNames) - 2];
+
+        return $query->where('slug', $domain);
     }
 }

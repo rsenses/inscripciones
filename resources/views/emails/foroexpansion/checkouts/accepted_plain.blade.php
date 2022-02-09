@@ -1,6 +1,6 @@
 Estimad@ {{ $checkout->user->full_name }}
 
-Tu solicitud ha sido completada correctamente. A continuación te enviamos el resumen de tu compra:
+Su solicitud ha sido completada correctamente. A continuación le enviamos el resumen de su compra:
 
 Cantidad    Producto
 @foreach ($checkout->products->groupBy('id') as $product)

@@ -31,9 +31,9 @@ class CheckoutDenied extends Mailable
      */
     public function build()
     {
-        $folder = $this->checkout->campaign()->folder;
-        $fromAddress = $this->checkout->campaign()->from_address;
-        $fromName = $this->checkout->campaign()->from_name;
+        $folder = $this->checkout->campaign->folder;
+        $fromAddress = $this->checkout->campaign->from_address;
+        $fromName = $this->checkout->campaign->from_name;
 
         return $this->subject('Aforo completo')
             ->from($fromAddress, $fromName)

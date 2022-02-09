@@ -29,7 +29,7 @@ class SendCheckoutEmailNotification implements ShouldQueue
     public function handle(CheckoutAccepted $event)
     {
         if ($event->checkout->amount > 0) {
-            Mail::mailer($event->checkout->campaign()->mailer)
+            Mail::mailer($event->checkout->campaign->mailer)
             ->to($event->checkout->user)
             ->queue(new MailCheckoutAccepted($event->checkout));
         }

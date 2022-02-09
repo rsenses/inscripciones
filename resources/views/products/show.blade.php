@@ -88,10 +88,9 @@
         </div>
     </div>
 
-    <div class="card bg-white">
         <div class="card-body">
+            <x-registrations.table :registrations="$registrations" :product="$product" :show-product="false" />
             <h4 class="card-title">Inscripciones</h2>
-            <x-registrations.table :registrations="$registrations" :show-product="false" />
         </div>
     </div>
 

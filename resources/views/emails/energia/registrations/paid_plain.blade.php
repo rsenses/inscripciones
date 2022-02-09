@@ -1,14 +1,21 @@
 Estimad@ {{ $registration->user->full_name }}
 
-Su solicitud para asistir al {{ $registration->product->name }} ha sido registrada correctamente.
+Le damos la bienvenida al {{ $registration->product->name }}. Su inscripción ha sido confirmada.
 
-En breve nos pondremos en contacto con usted para confirmar si su solicitud {{ $registration->product->mode === 'online' ? 'ON LINE' : 'PRESENCIAL' }} ha sido aceptada.
+A través del siguiente enlace podrá acceder a toda la información relativa al evento:
+https://foro.expansion.com
 
-Le recordamos que el aforo es limitado y por riguroso orden de inscripción.
+• Cómo llegar.
+• Programa y ponentes. 
+• Listado de asistentes.
+• Protocolo Covid.
+• Zona de preguntas en directo.
+• Actualizaciones de última hora.
 
-Atentamente,
+Incluir en mi calendario: {{ route('calendar.show', ['product' => $registration->product]) }}
 
-Relaciones Institucionales
-Expansión
+Esperamos que disfrutes del evento,
 
-Más información: foro.expansion@unidadeditorial.es
+Telva
+
+Más información: inscripciones.telva@unidadeditorial.es

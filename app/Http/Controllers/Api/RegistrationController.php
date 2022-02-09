@@ -53,7 +53,7 @@ class RegistrationController extends Controller
 
             $amount = $amount + $product->price;
 
-            $checkout->products()->attach($productId);
+            // $checkout->products()->attach($productId);
 
             $registration = $user->registrations()->create([
                 'product_id' => $productId,

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Partner;
 use App\Models\Registration;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -16,17 +16,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $host = str_replace('.localhost', '', request()->getHost());
-        $hostNames = explode('.', $host);
-        $domain = $hostNames[count($hostNames) - 2];
+        $partner = Partner::current()->first();
 
-        $activeProducts = Product::active()
-            ->withCount(['registrations' => function (Builder $query) {
-                $query->where('status', '!=', 'cancelled');
-            }])
-            ->whereHas('partners', function (Builder $query) use ($domain) {
-                $query->where('slug', $domain);
-            })
+        $activeProducts = $partner->products()
+            ->active()
             ->get();
 
         $latestRegistrations = Registration::latest()

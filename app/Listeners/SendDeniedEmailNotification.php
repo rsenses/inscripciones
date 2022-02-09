@@ -28,7 +28,7 @@ class SendDeniedEmailNotification implements ShouldQueue
      */
     public function handle(CheckoutDenied $event)
     {
-        Mail::mailer($event->checkout->campaign()->mailer)
+        Mail::mailer($event->checkout->campaign->mailer)
             ->to($event->checkout->user)
             ->queue(new MailCheckoutDenied($event->checkout));
     }

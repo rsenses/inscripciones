@@ -71,15 +71,15 @@ class Product extends Model
      */
     public function checkouts()
     {
-        return $this->belongsToMany(Checkout::class);
+        return $this->hasManyThrough(Checkout::class, Registration::class, 'product_id', 'id', 'id', 'checkout_id');
     }
 
     /**
      * The partners that belong to the product.
      */
-    public function partners()
+    public function partner()
     {
-        return $this->belongsToMany(Partner::class);
+        return $this->hasOneThrough(Partner::class, Campaign::class, 'partner_id', 'id', 'campaign_id');
     }
 
     /**
@@ -111,7 +111,7 @@ class Product extends Model
     public function getNewRegistrationsCountAttribute($value)
     {
         return $this->registrations()
-            ->where('status', 'new')
+            ->where('registrations.status', 'new')
             ->count();
     }
 
@@ -123,9 +123,9 @@ class Product extends Model
     public function getRegistrationsAcceptedCountAttribute()
     {
         return $this->registrations()
-            ->where('status', '!=', 'new')
-            ->where('status', '!=', 'cancelled')
-            ->where('status', '!=', 'denied')
+            ->where('registrations.status', '!=', 'new')
+            ->where('registrations.status', '!=', 'cancelled')
+            ->where('registrations.status', '!=', 'denied')
             ->count();
     }
 
@@ -138,8 +138,8 @@ class Product extends Model
     {
         return $this->registrations()
             ->where(function ($q) {
-                $q->where('status', 'accepted');
-                $q->orWhere('status', 'pending');
+                $q->where('registrations.status', 'accepted');
+                $q->orWhere('registrations.status', 'pending');
             })
             ->count();
     }
@@ -153,7 +153,7 @@ class Product extends Model
     public function getRegistrationsPaidCountAttribute()
     {
         return $this->registrations()
-            ->where('status', 'paid')
+            ->where('registrations.status', 'paid')
             ->count();
     }
 
@@ -165,7 +165,7 @@ class Product extends Model
     public function getRegistrationsDeniedCountAttribute()
     {
         return $this->registrations()
-            ->where('status', 'denied')
+            ->where('registrations.status', 'denied')
             ->count();
     }
 
@@ -177,15 +177,15 @@ class Product extends Model
     public function getRegistrationsCancelledCountAttribute()
     {
         return $this->checkouts()
-            ->where('status', 'cancelled')
+            ->where('checkouts.status', 'cancelled')
             ->count();
     }
 
     public function getAmountAttribute()
     {
         $amount = $this->checkouts()
-            ->where('status', 'paid')
-            ->sum('amount');
+            ->where('checkouts.status', 'paid')
+            ->sum('checkouts.amount');
 
         return $amount;
     }

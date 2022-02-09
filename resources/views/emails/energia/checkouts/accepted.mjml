@@ -16,6 +16,14 @@
             <mj-raw>
                 <!-- Image Header -->
             </mj-raw>
+            <mj-section padding="0">
+                <mj-column>
+                    <mj-image
+                        src="{{ asset('storage/' . $checkout->campaign->image) }}"
+                        alt="{{ $checkout->campaign->name }}"
+                    ></mj-image>
+                </mj-column>
+            </mj-section>
             <mj-section padding="0 0 30px">
                 <mj-column width="500px">
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
@@ -25,9 +33,9 @@
                         ></mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Tu solicitud ha sido completada
-                        <strong>correctamente</strong>. A continuación te
-                        enviamos el resumen de tu compra:</mj-text
+                        >Solicitud <strong>completada correctamente</strong>. A
+                        continuación detallamos el resumen de la
+                        compra::</mj-text
                     >
                     <mj-table
                         line-height="22px"
@@ -77,15 +85,14 @@
                         >Atentamente,</mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Relaciones Institucionales<br /><strong
-                            >Expansión</strong
-                        ></mj-text
+                        ><strong>Telva</strong></mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         ><small
                             >Más información:
-                            <a href="mailto:foro.expansion@unidadeditorial.es"
-                                >foro.expansion@unidadeditorial.es</a
+                            <a
+                                href="mailto:inscripciones.telva@unidadeditorial.es"
+                                >inscripciones.telva@unidadeditorial.es</a
                             ></small
                         ></mj-text
                     >

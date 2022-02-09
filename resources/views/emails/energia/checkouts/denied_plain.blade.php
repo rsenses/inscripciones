@@ -1,14 +1,13 @@
 Estimad@ {{ $checkout->user->full_name }}
 
-Sentimos comunicarle que el aforo está completo y no es posible confirmar su inscripción.  
+Sentimos comunicarte que el aforo está completo y no es posible realizar tu inscripción.  
 
-Si finalmente quedara alguna plaza libre, nos pondremos en contacto con usted. 
+Si finalmente quedara alguna plaza libre, nos pondremos en contacto. 
 
-Muchas gracias por su interés. 
+Muchas gracias por tu interés. 
 
 Un cordial saludo,
 
-Relaciones Institucionales
-Expansión
+Telva
 
-Más información: foro.expansion@unidadeditorial.es
+Más información: inscripciones.telva@unidadeditorial.es

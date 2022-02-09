@@ -72,7 +72,7 @@ class Checkout extends Model
     /**
      * Get the campaing tha owns the checkout.
      */
-    public function campaign()
+    public function getCampaignAttribute()
     {
         return Campaign::findOrFail($this->products[0]->campaign_id);
     }
@@ -82,7 +82,7 @@ class Checkout extends Model
      */
     public function products()
     {
-        return $this->belongsToMany(Product::class);
+        return $this->hasManyThrough(Product::class, Registration::class, 'checkout_id', 'id', 'id', 'product_id');
     }
 
     /**
@@ -214,7 +214,7 @@ class Checkout extends Model
 
         $checkout->push();
 
-        $checkout->products()->attach($this->products);
+        // $checkout->products()->attach($this->products);
 
         foreach ($this->registrations()->get() as $registration) {
             $registration->update([
@@ -230,7 +230,7 @@ class Checkout extends Model
     public function generatePaymentForm()
     {
         try {
-            $company = $this->products[0]->partners[0];
+            $company = $this->campaign->partner;
 
             $redsys = new Tpv();
             $redsys->setAmount($this->amount);
@@ -295,5 +295,17 @@ class Checkout extends Model
         }
 
         return false;
+    }
+
+    public function mode()
+    {
+        $modes = $this->products->groupBy('mode');
+
+        $count = [];
+        foreach ($modes as $mode => $products) {
+            $count[$mode] = $products->count();
+        }
+
+        return $count;
     }
 }

@@ -35,11 +35,11 @@ class CheckoutAccepted extends Mailable
         $promo = $this->checkout->registrations()->where('status', 'accepted')->first()->promo;
         $discount = Discount::where('code', $promo)->first();
 
-        $partner = $this->checkout->campaign()->partner;
-        $folder = $this->checkout->campaign()->folder;
+        $partner = $this->checkout->campaign->partner;
+        $folder = $this->checkout->campaign->folder;
 
-        $fromAddress = $this->checkout->campaign()->from_address;
-        $fromName = $this->checkout->campaign()->from_name;
+        $fromAddress = $this->checkout->campaign->from_address;
+        $fromName = $this->checkout->campaign->from_name;
 
         return $this->subject('Solicitud de registro de ' . $partner->name .' aceptada')
             ->from($fromAddress, $fromName)

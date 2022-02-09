@@ -1,8 +1,6 @@
 Estimad@ {{ $checkout->user->full_name }}
 
-Le damos la bienvenida al {{ $checkout->products[0]->name }}.
-
-Su inscripción {{ $checkout->products[0]->mode === 'online' ? 'ON LINE' : 'PRESENCIAL' }} ha sido confirmada.
+Le damos la bienvenida al {{ $checkout->campaign->name }}. Su inscripción ha sido confirmada.
 
 A través del siguiente enlace podrá acceder a toda la información relativa al evento:
 https://foro.expansion.com

@@ -1,6 +1,6 @@
 Estimad@ {{ $checkout->user->full_name }}
 
-Su solicitud para asistir al {{ $checkout->products[0]->name }} ha sido registrada correctamente.
+Su solicitud para asistir al {{ $checkout->campaign->name }} ha sido registrada correctamente.
 
 En breve nos pondremos en contacto con usted para confirmar si su solicitud ha sido aceptada.
 

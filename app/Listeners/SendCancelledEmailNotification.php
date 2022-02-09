@@ -28,7 +28,7 @@ class SendCancelledEmailNotification implements ShouldQueue
      */
     public function handle(CheckoutCancelled $event)
     {
-        Mail::mailer($event->checkout->campaign()->mailer)
+        Mail::mailer($event->checkout->campaign->mailer)
             ->to($event->checkout->user)
             ->queue(new MailCheckoutCancelled($event->checkout));
     }

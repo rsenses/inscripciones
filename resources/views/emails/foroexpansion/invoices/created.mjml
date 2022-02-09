@@ -7,8 +7,8 @@
             <mj-column>
                 <mj-image
                     width="200px"
-                    src="{{ asset('storage/' . $invoice->checkout->product->partners[0]->image) }}"
-                    href="{{ $invoice->checkout->product->partners[0]->name }}"
+                    src="{{ asset('storage/' . $invoice->checkout->campaign->partner->image) }}"
+                    href="{{ $invoice->checkout->campaign->partner->name }}"
                 ></mj-image>
             </mj-column>
         </mj-section>
@@ -19,8 +19,8 @@
             <mj-section padding="0">
                 <mj-column>
                     <mj-image
-                        src="{{ asset('storage/' . $invoice->checkout->product->image) }}"
-                        alt="{{ $invoice->checkout->product->name }}"
+                        src="{{ asset('storage/' . $invoice->checkout->campaign->image) }}"
+                        alt="{{ $invoice->checkout->campaign->name }}"
                     ></mj-image>
                 </mj-column>
             </mj-section>

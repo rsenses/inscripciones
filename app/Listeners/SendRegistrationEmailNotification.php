@@ -28,7 +28,7 @@ class SendRegistrationEmailNotification implements ShouldQueue
      */
     public function handle(RegistrationPaid $event)
     {
-        // Mail::mailer($event->registration->campaign()->mailer)
+        // Mail::mailer($event->registration->campaign->mailer)
         //     ->to($event->registration->user)
         //     ->queue(new MailRegistrationPaid($event->registration));
     }

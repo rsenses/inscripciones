@@ -13,6 +13,17 @@
             </mj-column>
         </mj-section>
         <mj-wrapper background-color="#fff" padding="0">
+            <mj-raw>
+                <!-- Image Header -->
+            </mj-raw>
+            <mj-section padding="0">
+                <mj-column>
+                    <mj-image
+                        src="{{ asset('storage/' . $checkout->campaign->image) }}"
+                        alt="{{ $checkout->campaign->name }}"
+                    ></mj-image>
+                </mj-column>
+            </mj-section>
             <mj-section padding="0 0 30px">
                 <mj-column width="500px">
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
@@ -22,31 +33,30 @@
                         ></mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Su solicitud para asistir al
-                        <strong>{{ $checkout->products[0]->name }}</strong> ha
-                        sido registrada correctamente.</mj-text
+                        >Tu solicitud para asistir al
+                        <strong>{{ $checkout->campaign->name }}</strong> ha sido
+                        registrada correctamente.</mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >En breve nos pondremos en contacto con usted para
-                        confirmar si su solicitud ha sido aceptada.</mj-text
+                        >En breve nos pondremos en contacto para confirmar si tu
+                        solicitud ha sido aceptada.</mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Le recordamos que el aforo es limitado y por riguroso
+                        >Te recordamos que el aforo es limitado y por riguroso
                         orden de inscripción.</mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         >Atentamente,</mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Relaciones Institucionales<br /><strong
-                            >Expansión</strong
-                        ></mj-text
+                        ><strong>Telva</strong></mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         ><small
                             >Más información:
-                            <a href="mailto:foro.expansion@unidadeditorial.es"
-                                >foro.expansion@unidadeditorial.es</a
+                            <a
+                                href="mailto:inscripciones.telva@unidadeditorial.es"
+                                >inscripciones.telva@unidadeditorial.es</a
                             ></small
                         ></mj-text
                     >

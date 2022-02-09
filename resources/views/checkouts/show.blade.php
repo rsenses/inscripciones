@@ -633,7 +633,7 @@
                             generales de la compra</a>.</label>
                 </div>
                 <p class="small">
-                    {!! $checkout->products[0]->partners[0]->legal !!}
+                    {!! $checkout->campaign->partner->legal !!}
                 </p>
             </div>
             <div class="col-12">

@@ -1,23 +1,28 @@
 Estimad@ {{ $checkout->user->full_name }}
 
-Le damos la bienvenida al {{ $checkout->products[0]->name }}.
+Te damos la bienvenida al {{ $checkout->campaign()->name }}. Su inscripción ha sido confirmada.
 
-Su inscripción {{ $checkout->products[0]->mode === 'online' ? 'ON LINE' : 'PRESENCIAL' }} ha sido confirmada.
+@if(!empty($checkout->mode()['presencial']) && empty($checkout->mode()['online']))
+Aquí tienes tus entradas:
+{{ route('tickets.show.checkout', ['checkout' => $checkout, 'token' => $checkout->token]) }}
 
-A través del siguiente enlace podrá acceder a toda la información relativa al evento:
-https://foro.expansion.com
+También podrás acceder al congreso y los talleres online mediante tu email y contraseña.
+@elseif(empty($checkout->mode()['presencial']))
+Recuerda que podrás acceder al congreso y los talleres online mediante tu email y contraseña.
+@else
+Aquí tienes tus entradas presenciales:
+{{ route('tickets.show.checkout', ['checkout' => $checkout, 'token' => $checkout->token]) }}
 
-• Cómo llegar.
-• Programa y ponentes. 
-• Listado de asistentes.
-• Protocolo Covid.
-• Zona de preguntas en directo.
-• Actualizaciones de última hora.
+Para las compras online, recuerda que podrás acceder mediante tu email y contraseña.
+@endif
+
+A través del siguiente enlace podrás ver toda la información relativa al evento:
+https://energiayfelicidad.telva.com/
 
 Incluir en mi calendario: {{ route('calendar.show', ['product' => $checkout->products[0]]) }}
 
 Esperamos que disfrutes del evento,
-Relaciones Institucionales
-Expansión
 
-Más información: foro.expansion@unidadeditorial.es
+Telva
+
+Más información: inscripciones.telva@unidadeditorial.es

@@ -7,12 +7,23 @@
             <mj-column>
                 <mj-image
                     width="200px"
-                    src="{{ asset('storage/' . $checkout->products[0]->partners[0]->image) }}"
-                    href="{{ $checkout->products[0]->partners[0]->name }}"
+                    src="{{ asset('storage/' . $checkout->campaign()->partner->image) }}"
+                    href="{{ $checkout->campaign()->partner->name }}"
                 ></mj-image>
             </mj-column>
         </mj-section>
         <mj-wrapper background-color="#fff" padding="0">
+            <mj-raw>
+                <!-- Image Header -->
+            </mj-raw>
+            <mj-section padding="0">
+                <mj-column>
+                    <mj-image
+                        src="{{ asset('storage/' . $checkout->campaign()->image) }}"
+                        alt="{{ $checkout->campaign()->name }}"
+                    ></mj-image>
+                </mj-column>
+            </mj-section>
             <mj-section padding="0 0 30px">
                 <mj-column width="500px">
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"

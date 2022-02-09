@@ -1,10 +1,9 @@
 Estimad@ {{ $checkout->user->full_name }}
 
-Su inscripción ha sido cancelada correctamente.
+Tu inscripción ha sido cancelada correctamente.
 
 Atentamente,
 
-Relaciones Institucionales
-Expansión
+Telva
 
-Más información: foro.expansion@unidadeditorial.es
+Más información: inscripciones.telva@unidadeditorial.es

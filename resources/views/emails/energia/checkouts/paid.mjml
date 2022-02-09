@@ -3,7 +3,27 @@
         <mj-raw>
             <!-- Company Header -->
         </mj-raw>
+        <mj-section>
+            <mj-column>
+                <mj-image
+                    width="200px"
+                    src="{{ asset('storage/' . $checkout->campaign()->partner->image) }}"
+                    href="{{ $checkout->campaign()->partner->name }}"
+                ></mj-image>
+            </mj-column>
+        </mj-section>
         <mj-wrapper background-color="#fff" padding="0">
+            <mj-raw>
+                <!-- Image Header -->
+            </mj-raw>
+            <mj-section padding="0">
+                <mj-column>
+                    <mj-image
+                        src="{{ asset('storage/' . $checkout->campaign()->image) }}"
+                        alt="{{ $checkout->campaign()->name }}"
+                    ></mj-image>
+                </mj-column>
+            </mj-section>
             <mj-section padding="0 0 30px">
                 <mj-column width="500px">
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
@@ -15,14 +35,32 @@
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         ><strong
                             >Le damos la bienvenida al {{
-                            $checkout->products[0]->name }}</strong
-                        >.</mj-text
+                            $checkout->campaign()->name }}</strong
+                        >. Su inscripción ha sido confirmada.</mj-text
                     >
-                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Su inscripción {{ $checkout->products[0]->mode ===
-                        'online' ? 'ON LINE' : 'PRESENCIAL' }} ha sido
-                        confirmada.</mj-text
+                    <mj-text
+                        line-height="22px"
+                        font-size="14px"
+                        color="#2a3a4a"
                     >
+                        @if(!empty($checkout->mode()['presencial']) &&
+                        empty($checkout->mode()['online'])) Aquí tienes tus
+                        entradas:<br />
+                        {{ route('tickets.show.checkout', ['checkout' =>
+                        $checkout, 'token' => $checkout->token]) }}
+                        <br />
+                        También podrás acceder al congreso y los talleres online
+                        mediante tu email y contraseña.
+                        @elseif(empty($checkout->mode()['presencial'])) Recuerda
+                        que podrás acceder al congreso y los talleres online
+                        mediante tu email y contraseña. @else Aquí tienes tus
+                        entradas presenciales:<br />
+                        {{ route('tickets.show.checkout', ['checkout' =>
+                        $checkout, 'token' => $checkout->token]) }}
+                        <br />
+                        Para las compras online, recuerda que podrás acceder
+                        mediante tu email y contraseña. @endif
+                    </mj-text>
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         >A través del siguiente enlace podrá acceder a toda la
                         información relativa al evento:</mj-text
@@ -32,18 +70,6 @@
                             >https://foro.expansion.com</a
                         ></mj-text
                     >
-                    <mj-text
-                        line-height="22px"
-                        font-size="14px"
-                        color="#2a3a4a"
-                    >
-                        • Cómo llegar.<br />
-                        • Programa y ponentes. <br />
-                        • Listado de asistentes.<br />
-                        • Protocolo Covid.<br />
-                        • Zona de preguntas en directo.<br />
-                        • Actualizaciones de última hora.
-                    </mj-text>
                     <mj-button
                         href="{{ route('calendar.show', ['product' => $checkout->products[0]]) }}"
                         background-color="#f45e43"
@@ -55,15 +81,14 @@
                         >Esperamos que disfrutes del evento,</mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Relaciones Institucionales<br /><strong
-                            >Expansión</strong
-                        ></mj-text
+                        ><strong>Telva</strong></mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         ><small
                             >Más información:
-                            <a href="mailto:foro.expansion@unidadeditorial.es"
-                                >foro.expansion@unidadeditorial.es</a
+                            <a
+                                href="mailto:inscripciones.telva@unidadeditorial.es"
+                                >inscripciones.telva@unidadeditorial.es</a
                             ></small
                         ></mj-text
                     >

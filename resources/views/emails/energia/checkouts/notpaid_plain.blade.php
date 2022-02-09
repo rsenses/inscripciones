@@ -1,6 +1,6 @@
 Estimad@ {{ $checkout->user->full_name }}
 
-Ha seleccionado transferencia bancaria como método de pago. Para reservar su plaza debe realizar una transferencia con los siguientes datos:
+Has seleccionado transferencia bancaria como método de pago. Para reservar tu plaza debes realizar una transferencia con los siguientes datos:
 
 Importe: {{ $checkout->amount }}€
 Titular de la cuenta: U.E.INFOR. ECONÓM. S.L.U
@@ -13,7 +13,6 @@ BIC: SWIFT BKBKESMMXXX
 
 Atentamente,
 
-Relaciones Institucionales
-Expansión
+Telva
 
-Más información: foro.expansion@unidadeditorial.es
+Más información: inscripciones.telva@unidadeditorial.es

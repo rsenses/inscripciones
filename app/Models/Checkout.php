@@ -230,7 +230,7 @@ class Checkout extends Model
     public function generatePaymentForm()
     {
         try {
-            $company = $this->products[0]->partners[0];
+            $company = $this->campaign()->partner;
 
             $redsys = new Tpv();
             $redsys->setAmount($this->amount);
@@ -295,5 +295,17 @@ class Checkout extends Model
         }
 
         return false;
+    }
+
+    public function mode()
+    {
+        $modes = $this->products->groupBy('mode');
+
+        $count = [];
+        foreach ($modes as $mode => $products) {
+            $count[$mode] = $products->count();
+        }
+
+        return $count;
     }
 }

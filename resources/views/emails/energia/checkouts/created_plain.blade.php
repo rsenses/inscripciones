@@ -1,14 +1,13 @@
 Estimad@ {{ $checkout->user->full_name }}
 
-Su solicitud para asistir al {{ $checkout->products[0]->name }} ha sido registrada correctamente.
+Tu solicitud para asistir al {{ $checkout->campaign()->name }} ha sido registrada correctamente.
 
-En breve nos pondremos en contacto con usted para confirmar si su solicitud ha sido aceptada.
+En breve nos pondremos en contacto para confirmar si tu solicitud ha sido aceptada.
 
-Le recordamos que el aforo es limitado y por riguroso orden de inscripción.
+Te recordamos que el aforo es limitado y por riguroso orden de inscripción.
 
 Atentamente,
 
-Relaciones Institucionales
-Expansión
+Telva
 
-Más información: foro.expansion@unidadeditorial.es
+Más información: inscripciones.telva@unidadeditorial.es

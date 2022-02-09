@@ -5,7 +5,7 @@
         <div class="row justify-content-center mb-4">
             <div class="col-md-8">
                 <h2>{{ $checkout->product->name }}</h2>
-                <div class="table">
+                <div class="table-responsive">
                     <table class="table table-striped">
                         <tbody>
                             <tr>

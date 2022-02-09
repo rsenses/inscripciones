@@ -1,12 +1,12 @@
-<div class="table">
-    <table class="table table-striped table-bordered">
+<div class="table table-responsive">
+    <table class="table">
         <thead>
             <tr>
                 <th>Nombre</th>
                 <th>Fecha</th>
                 <th>Ingresos</th>
-                <th>Inscripciones</th>
-                <th></th>
+                <th colspan="2">Inscripciones</th>
+                
             </tr>
         </thead>
         <tbody>

@@ -10,8 +10,8 @@
             <div class="card bg-light">
                 <div class="card-body">
                     <h5 class="card-title">Productos</h5>
-                    <div class="table">
-                        <table class="table table-striped table-bordered">
+                    <div class="table-responsive">
+                        <table class="table ">
                             <thead>
                                 <tr>
                                     <th>Cantidad</th>

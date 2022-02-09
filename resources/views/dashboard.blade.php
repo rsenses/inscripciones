@@ -3,9 +3,9 @@
 @section('content')
     <div class="container-fluid">
 
-    <div class="card text-white bg-light mb-5">
+    <div class="card bg-light mb-5">
       <div class="card-body">
-        <h2 class="card-title text-primary">Productos activos</h2>
+        <h4 class="card-title">Productos activos</h2>
         <div class="table-responsive">
             <x-products.table :products="$products"/>
         </div>
@@ -14,9 +14,9 @@
     </div>
 
 
-<div class="card text-white bg-light">
+<div class="card bg-light">
   <div class="card-body">
-    <h2 class="card-title text-primary">Inscripciones pendientes de valorar</h2>
+    <h4 class="card-title">Inscripciones pendientes de valorar</h2>
     <div class="table-responsive">
         <x-registrations.table :registrations="$registrations"/>
     </div>

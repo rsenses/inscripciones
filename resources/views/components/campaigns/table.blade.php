@@ -1,5 +1,5 @@
-<div class="table">
-    <table class="table table-striped table-bordered">
+<div class="table-responsive">
+    <table class="table ">
         <thead>
             <tr>
                 <th>Nombre</th>

@@ -74,26 +74,32 @@
         <div class="d-flex" id="wrapper">
             @auth
                 <!-- Sidebar -->
-                <div class="bg-dark border-right" id="sidebar-wrapper">
+                <div class="bg-primary border-right" id="sidebar-wrapper">
                     <div class="sidebar-heading">
                         {{ config('app.name', 'Laravel') }}
                     </div>
                     <div class="list-group list-group-flush">
                         <a href="{{ route('dashboard') }}"
-                            class="list-group-item list-group-item-action bg-light"><i class="ion ion-speedometer"
-                                aria-hidden="true"></i>&emsp;Dashboard</a>
+                            class="list-group-item list-group-item-action bg-light"><i
+                               class="lni lni-dashboard"></i>&emsp;Dashboard</a>
                         <a href="{{ route('products.index') }}"
-                            class="list-group-item list-group-item-action bg-light"><i class="ion ion-briefcase"
-                                aria-hidden="true"></i>&emsp;Productos</a>
+                            class="list-group-item list-group-item-action bg-light"><i
+                               class="lni lni-briefcase"></i>&emsp;Productos</a>
                         @if(Auth::user()->role === 'superadmin')
                             <a href="{{ route('campaigns.index') }}" class="list-group-item list-group-item-action bg-light"><i class="ion ion-ios-analytics" aria-hidden="true"></i>&emsp;Campañas</a>
-                            <a href="{{ route('registrations.index') }}" class="list-group-item list-group-item-action bg-light"><i class="ion ion-pricetags" aria-hidden="true"></i>&emsp;Inscripciones</a>
-                            <a href="{{ route('users.index', ['role' => 'customer']) }}" class="list-group-item list-group-item-action bg-light"><i class="ion ion-person-stalker" aria-hidden="true"></i>&emsp;Usuarios</a>
-                            <a href="{{ route('partners.index') }}" class="list-group-item list-group-item-action bg-light"><i class="ion ion-filing" aria-hidden="true"></i>&emsp;Cabeceras</a>
+                            <a href="{{ route('registrations.index') }}"
+                               class="list-group-item list-group-item-action bg-light"><i
+                                   class="lni lni-pencil-alt"></i>&emsp;Inscripciones</a>
+                            <a href="{{ route('users.index', ['role' => 'customer']) }}"
+                               class="list-group-item list-group-item-action bg-light"><i
+                                   class="lni lni-users"></i>&emsp;Usuarios</a>
+                            <a href="{{ route('partners.index') }}"
+                               class="list-group-item list-group-item-action bg-light"><i
+                                  class="lni lni-bookmark-alt"></i>&emsp;Cabeceras</a>
                         @endif
                         <a href="{{ route('invoices.index') }}"
-                            class="list-group-item list-group-item-action bg-light"><i class="ion ion-cash"
-                                aria-hidden="true"></i>&emsp;Financiero</a>
+                            class="list-group-item list-group-item-action bg-light"><i
+                               class="lni lni-revenue"></i>&emsp;Financiero</a>
                     </div>
                 </div>
                 <!-- /#sidebar-wrapper -->

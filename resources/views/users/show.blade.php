@@ -11,8 +11,8 @@
 <div class="card bg-light">
 
   <div class="card-body">
-  <div class="table">
-        <table class="table table-striped table-bordered">
+  <div class="table-responsive">
+        <table class="table ">
             <tr>
                 <td>Email</td>
                 <td>{{ $user->email }}</td>
@@ -38,7 +38,7 @@
     <div class="card bg-light">
       <img class="card-img-top" src="holder.js/100px180/" alt="">
       <div class="card-body">
-        <h4 class="card-title text-primary">Inscripciones</h4>
+        <h4 class="card-title">Inscripciones</h4>
         <x-registrations.table :registrations="$user->registrations" />
       </div>
     </div>

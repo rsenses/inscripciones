@@ -1,4 +1,4 @@
-<div class="table">
+<div class="table-responsive">
     @if(!$showProduct)
     <div class="toolbar">
         <a href="#0" class="btn btn-danger" data-toggle="modal" data-target="#claim">Reclamar no pagados</a>
@@ -10,7 +10,7 @@
                 class="btn btn-success">Enviar reclamacion de pago</a></p>
     </x-modal>
     @endif
-    <table class="table table-striped table-bordered" {{ $showProduct ? '' : 'data-toggle=table' }} data-search="true"
+    <table class="table " {{ $showProduct ? '' : 'data-toggle=table' }} data-search="true"
         data-show-export="true" data-export-data-type="basic" data-export-types="['csv']" data-locale="es_ES"
         data-filter-control="true" data-toolbar=".toolbar">
         <thead>

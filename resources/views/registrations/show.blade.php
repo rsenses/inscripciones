@@ -8,10 +8,10 @@
         </a></small>
 
     </h2>
-    <div class="card text-white bg-light">
+    <div class="card text-white">
         <div class="card-body">
-            <div class="table">
-                <table class="table table-striped table-bordered">
+            <div class="table-responsive">
+                <table class="table ">
                     <tr>
                         <td>Asistente</td>
                         <td>{{ $registration->user->full_name }}

@@ -11,7 +11,7 @@
 
         <div class="card bg-light">
             <div class="card-body">
-            <h2 class="card-title text-primary">Inscripciones</h2>
+            <h4 class="card-title">Inscripciones</h2>
             <x-registrations.table :registrations="$registrations"/>
             </div>
         </div>

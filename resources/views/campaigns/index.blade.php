@@ -14,7 +14,7 @@
 
     <div class="card bg-light">
         <div class="card-body">
-        <h2 class="card-title text-primary">Campañas</h2>
+        <h4 class="card-title">Campañas</h2>
             <x-campaigns.table :campaigns="$campaigns" />
         </div>
     </div>

@@ -12,7 +12,7 @@
 
     <div class="card bg-light">
         <div class="card-body">
-            <h2 class="card-title text-primary">Cabeceras</h2>
+            <h4 class="card-title">Cabeceras</h2>
             <x-partners.table :partners="$partners" />
         </div>
     </div>

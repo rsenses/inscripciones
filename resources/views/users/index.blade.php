@@ -18,7 +18,7 @@
     <div class="card bg-light">
       <img class="card-img-top" src="holder.js/100px180/" alt="">
       <div class="card-body">
-        <h4 class="card-title text-primary"> <i class="fas fa-user-friends"></i> Usuarios</h4>
+        <h4 class="card-title"> <i class="fas fa-user-friends"></i> Usuarios</h4>
         <x-users.table :users="$users"/>
       </div>
     </div>

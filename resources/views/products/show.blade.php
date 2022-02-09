@@ -23,10 +23,10 @@
             </div>
         </div>
         <div class="col col-sm-8">
-            <div class="card text-white bg-light">
+            <div class="card text-white">
                 <div class="card-body">
-                    <div class="table">
-                        <table class="table table-striped table-bordered">
+                    <div class="table-responsive">
+                        <table class="table ">
                             <tr>
                                 <td>Precio</td>
                                 <td>{{ $product->price }} €</td>
@@ -63,7 +63,7 @@
 
     <div class="card bg-light mb-5">
         <div class="card-body">
-            <table class="table table-striped table-bordered">
+            <table class="table ">
                 <tr>
                     <td>Sin valorar</td>
                     <td>{{ $product->new_registrations_count }}</td>
@@ -90,7 +90,7 @@
 
     <div class="card bg-light">
         <div class="card-body">
-            <h2 class="card-title text-primary">Inscripciones</h2>
+            <h4 class="card-title">Inscripciones</h2>
             <x-registrations.table :registrations="$registrations" :show-product="false" />
         </div>
     </div>

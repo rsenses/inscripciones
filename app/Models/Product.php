@@ -77,9 +77,9 @@ class Product extends Model
     /**
      * The partners that belong to the product.
      */
-    public function partners()
+    public function partner()
     {
-        return $this->belongsToMany(Partner::class);
+        return $this->hasOneThrough(Partner::class, Campaign::class, 'partner_id', 'id', 'campaign_id');
     }
 
     /**

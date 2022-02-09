@@ -6,7 +6,7 @@ use App\Events\CheckoutAccepted;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use App\Mail\CheckoutAccepted as MailCheckoutAccepted;
-use App\Services\DynamicMailer;
+use Illuminate\Support\Facades\Mail;
 
 class SendCheckoutEmailNotification implements ShouldQueue
 {
@@ -29,7 +29,9 @@ class SendCheckoutEmailNotification implements ShouldQueue
     public function handle(CheckoutAccepted $event)
     {
         if ($event->checkout->amount > 0) {
-            DynamicMailer::send($event->checkout->user, new MailCheckoutAccepted($event->checkout));
+            Mail::mailer($event->checkout->campaign()->mailer)
+            ->to($event->checkout->user)
+            ->queue(new MailCheckoutAccepted($event->checkout));
         }
     }
 }

@@ -7,7 +7,6 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Checkout;
-use App\Services\DynamicMailer;
 
 class CheckoutDenied extends Mailable
 {
@@ -33,10 +32,11 @@ class CheckoutDenied extends Mailable
     public function build()
     {
         $folder = $this->checkout->campaign()->folder;
-        $from = DynamicMailer::getMailer()['from'];
+        $fromAddress = $this->checkout->campaign()->from_address;
+        $fromName = $this->checkout->campaign()->from_name;
 
         return $this->subject('Aforo completo')
-            ->from($from['address'], $from['name'])
+            ->from($fromAddress, $fromName)
             ->view('emails.' . $folder . '.checkouts.denied')
             ->text('emails.' . $folder . '.checkouts.denied_plain');
     }

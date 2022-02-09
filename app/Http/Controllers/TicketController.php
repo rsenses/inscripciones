@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\Rule;
 use Carbon\Carbon;
-use App\Services\DynamicMailer;
 use Illuminate\Support\Facades\Hash;
 
 class TicketController extends Controller
@@ -35,7 +34,7 @@ class TicketController extends Controller
 
         return view('tickets.checkout', [
             'checkout' => $checkout,
-            'brand' => $this->getBrand(),
+            'brand' => $this->getBrand($checkout),
         ]);
     }
 
@@ -133,9 +132,9 @@ class TicketController extends Controller
         ]);
     }
 
-    private function getBrand()
+    private function getBrand(Checkout $checkout)
     {
-        $domain = DynamicMailer::getDomain();
+        $domain = $checkout->campaign()->partner->slug;
 
         if ($domain === 'telva') {
             $color = [0, 0, 0];

@@ -11,9 +11,7 @@ class DynamicMailer
 {
     public static function send(User $user, Mailable $mailable)
     {
-        $mailer = self::mailer();
-
-        Mail::mailer($mailer)
+        Mail::mailer(self::mailer())
             ->to($user)
             ->queue($mailable);
     }

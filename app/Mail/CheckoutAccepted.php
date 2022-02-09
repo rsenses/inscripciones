@@ -4,7 +4,6 @@ namespace App\Mail;
 
 use App\Models\Checkout;
 use App\Models\Discount;
-use App\Services\DynamicMailer;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -39,10 +38,11 @@ class CheckoutAccepted extends Mailable
         $partner = $this->checkout->campaign()->partner;
         $folder = $this->checkout->campaign()->folder;
 
-        $from = DynamicMailer::getMailer()['from'];
+        $fromAddress = $this->checkout->campaign()->from_address;
+        $fromName = $this->checkout->campaign()->from_name;
 
         return $this->subject('Solicitud de registro de ' . $partner->name .' aceptada')
-            ->from($from['address'], $from['name'])
+            ->from($fromAddress, $fromName)
             ->with([
                 'promo' => $promo,
                 'discount' => $discount,

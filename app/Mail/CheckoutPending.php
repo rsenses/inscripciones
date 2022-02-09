@@ -7,8 +7,6 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Checkout;
-use App\Models\Registration;
-use App\Services\DynamicMailer;
 
 class CheckoutPending extends Mailable
 {
@@ -35,11 +33,12 @@ class CheckoutPending extends Mailable
     public function build()
     {
         $folder = $this->checkout->campaign()->folder;
-        $from = DynamicMailer::getMailer()['from'];
+        $fromAddress = $this->checkout->campaign()->from_address;
+        $fromName = $this->checkout->campaign()->from_name;
 
         return $this->subject('Está a un paso de confirmar su plaza')
-                ->from($from['address'], $from['name'])
-                ->view('emails.' . $folder . '.checkouts.notpaid')
-                ->text('emails.' . $folder . '.checkouts.notpaid_plain');
+            ->from($fromAddress, $fromName)
+            ->view('emails.' . $folder . '.checkouts.notpaid')
+            ->text('emails.' . $folder . '.checkouts.notpaid_plain');
     }
 }

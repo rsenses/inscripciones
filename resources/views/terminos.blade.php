@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col col-sm-8 offset-sm-2">
-            {!! $checkout->product->partners[0]->conditions !!}
+            {!! $campaign->partner->conditions !!}
         </div>
     </div>
 </div>

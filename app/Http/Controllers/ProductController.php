@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Campaign;
-use App\Models\Partner;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\Registration;
-use App\Services\DynamicMailer;
 
 class ProductController extends Controller
 {
@@ -19,13 +17,17 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $host = str_replace('.localhost', '', request()->getHost());
+        $hostNames = explode('.', $host);
+        $domain = $hostNames[count($hostNames) - 2];
+
         $products = Product::orderByRaw('(CASE WHEN `products`.`start_date` > CURDATE() THEN `products`.`start_date` end) ASC,
                 (CASE WHEN `products`.`start_date` < CURDATE() THEN `products`.`start_date` end) DESC')
             ->withCount(['registrations' => function (Builder $query) {
                 $query->where('status', '!=', 'cancelled');
             }])
-            ->whereHas('partners', function (Builder $query) {
-                $query->where('slug', DynamicMailer::getDomain());
+            ->whereHas('partners', function (Builder $query) use ($domain) {
+                $query->where('slug', $domain);
             })
             ->get();
 

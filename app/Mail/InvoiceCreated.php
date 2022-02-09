@@ -7,7 +7,6 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Invoice;
-use App\Services\DynamicMailer;
 
 class InvoiceCreated extends Mailable
 {
@@ -32,11 +31,12 @@ class InvoiceCreated extends Mailable
      */
     public function build()
     {
-        $folder = $this->checkout->campaign()->folder;
-        $from = DynamicMailer::getMailer()['from'];
+        $folder = $this->invoice->checkout->campaign()->folder;
+        $fromAddress = $this->invoice->checkout->campaign()->from_address;
+        $fromName = $this->invoice->checkout->campaign()->from_name;
 
         return $this->subject('Aquí tiene su factura')
-            ->from($from['address'], $from['name'])
+            ->from($fromAddress, $fromName)
             ->view('emails.' . $folder . '.invoices.created')
             ->text('emails.' . $folder . '.invoices.created_plain');
     }

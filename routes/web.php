@@ -35,7 +35,7 @@ Route::get('/', function () {
 Route::get('/terminos-y-condiciones', [PageController::class, 'terminos'])->name('terminos-y-condiciones');
 Route::get('/politica-de-privacidad', [PageController::class, 'politica'])->name('politica-de-privacidad');
 
-Route::get('/preusers/{user}', [PreUserController::class, 'show'])->name('preusers.show');
+Route::get('/preusers/{user}/{checkout}', [PreUserController::class, 'show'])->name('preusers.show');
 Route::post('/preusers/{user}', [PreUserController::class, 'update'])->name('preusers.update');
 
 Route::get('/checkouts/{checkout}', [CheckoutController::class, 'show'])->name('checkouts');
@@ -44,6 +44,8 @@ Route::get('/checkouts/payment/{checkout}', [CheckoutController::class, 'payment
 
 Route::get('/tickets/checkout/{checkout}/{token}', [TicketController::class, 'showCheckout'])->name('tickets.show.checkout');
 Route::get('/tickets/{registration}/{id}', [TicketController::class, 'show'])->name('tickets.show');
+Route::get('/tickets/assign/{registration}/{id}', [TicketController::class, 'assign'])->name('tickets.assign');
+Route::put('/tickets/update/{registration}/{id}', [TicketController::class, 'update'])->name('tickets.update');
 
 Route::post('/deals/{checkout_id}', [DealController::class, 'store'])->name('deals.store');
 

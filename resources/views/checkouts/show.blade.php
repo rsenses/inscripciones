@@ -619,6 +619,12 @@
                     </div>
                 </div>
             </div>
+            {{-- <div class="col-12 col-sm-12">
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="to_bill" value="0" name="to_bill">
+                    <label class="form-check-label" for="to_bill">Dividir factura</label>
+                </div>
+            </div> --}}
             <div class="col-12 col-sm-12">
                 <div class="form-group form-check">
                     <input type="checkbox" class="form-check-input" id="legal" required name="legal">

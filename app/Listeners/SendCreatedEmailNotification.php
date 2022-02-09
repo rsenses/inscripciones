@@ -6,7 +6,7 @@ use App\Events\CheckoutCreated;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use App\Mail\CheckoutCreated as MailCheckoutCreated;
-use App\Services\DynamicMailer;
+use Illuminate\Support\Facades\Mail;
 
 class SendCreatedEmailNotification implements ShouldQueue
 {
@@ -28,6 +28,8 @@ class SendCreatedEmailNotification implements ShouldQueue
      */
     public function handle(CheckoutCreated $event)
     {
-        DynamicMailer::send($event->checkout->user, new MailCheckoutCreated($event->checkout));
+        Mail::mailer($event->checkout->campaign()->mailer)
+            ->to($event->checkout->user)
+            ->queue(new MailCheckoutCreated($event->checkout));
     }
 }

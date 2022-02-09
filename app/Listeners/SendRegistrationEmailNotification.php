@@ -7,7 +7,6 @@ use App\Mail\RegistrationPaid as MailRegistrationPaid;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
-use App\Services\DynamicMailer;
 
 class SendRegistrationEmailNotification implements ShouldQueue
 {
@@ -29,6 +28,8 @@ class SendRegistrationEmailNotification implements ShouldQueue
      */
     public function handle(RegistrationPaid $event)
     {
-        // DynamicMailer::send($event->registration->user, new MailRegistrationPaid($event->registration));
+        // Mail::mailer($event->registration->campaign()->mailer)
+        //     ->to($event->registration->user)
+        //     ->queue(new MailRegistrationPaid($event->registration));
     }
 }

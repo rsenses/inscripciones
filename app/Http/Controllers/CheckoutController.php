@@ -53,7 +53,7 @@ class CheckoutController extends Controller
     public function show(Request $request, Checkout $checkout)
     {
         if (!$checkout->user->password) {
-            return redirect()->route('preusers.show', ['user' => $checkout->user, 'redirect' => url()->full()]);
+            return redirect()->route('preusers.show', ['user' => $checkout->user, 'checkout' => $checkout, 'redirect' => url()->full()]);
         }
 
         $checkout = Checkout::where('token', $request->t)
@@ -127,15 +127,21 @@ class CheckoutController extends Controller
                 'state' => 'required|string',
                 'ofcont' => 'nullable|string',
                 'gestor' => 'nullable|string',
-                'untram' => 'nullable|string'
+                'untram' => 'nullable|string',
+                'to_bill' => ['nullable', 'boolean'],
             ]);
 
             $address = $checkout->user->addresses()->create($request->all());
         }
 
-        $checkout->invoice()->create([
-            'address_id' => $address->id
+        $toBill = $request->has('to_bill') && $request->to_bill == 0 ? false : true;
+
+        $invoice = Invoice::firstOrCreate(['checkout_id' => $checkout->id], [
+            'address_id' => $address->id,
+            'to_bill' => $toBill
         ]);
+
+        $checkout->invoice()->save($invoice);
 
         return redirect(route('checkouts.payment', ['checkout' => $checkout]));
     }

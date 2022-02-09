@@ -7,8 +7,6 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Checkout;
-use App\Models\Registration;
-use App\Services\DynamicMailer;
 
 class CheckoutPaid extends Mailable
 {
@@ -36,11 +34,12 @@ class CheckoutPaid extends Mailable
     {
         $folder = $this->checkout->campaign()->folder;
         $name = $this->checkout->campaign()->partner->name;
-        $from = DynamicMailer::getMailer()['from'];
+        $fromAddress = $this->checkout->campaign()->from_address;
+        $fromName = $this->checkout->campaign()->from_name;
 
         return $this->subject($name . ' te da la Bienvenida')
-                ->from($from['address'], $from['name'])
-                ->view('emails.' . $folder . '.checkouts.paid')
-                ->text('emails.' . $folder . '.checkouts.paid_plain');
+            ->from($fromAddress, $fromName)
+            ->view('emails.' . $folder . '.checkouts.paid')
+            ->text('emails.' . $folder . '.checkouts.paid_plain');
     }
 }

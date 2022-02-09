@@ -7,6 +7,7 @@ use App\Events\CheckoutPending;
 use App\Events\CheckoutAccepted;
 use App\Events\RegistrationPaid;
 use App\Events\CheckoutDenied;
+use App\Events\CheckoutPaid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,7 +27,8 @@ class Registration extends Model
         'unique_id',
         'metadata',
         'status',
-        'promo'
+        'promo',
+        'asigned'
     ];
 
     /**
@@ -36,6 +38,7 @@ class Registration extends Model
      */
     protected $casts = [
         'metadata' => 'array',
+        'asigned' => 'boolean',
     ];
 
     /**
@@ -151,7 +154,7 @@ class Registration extends Model
                 CheckoutAccepted::dispatch($this->checkout, $invite, $sendEmail);
                 break;
             case 'paid':
-                RegistrationPaid::dispatch($this);
+                CheckoutPaid::dispatch($this->checkout);
                 break;
             case 'pending':
                 CheckoutPending::dispatch($this->checkout);

@@ -4,7 +4,6 @@ namespace App\Listeners;
 
 use App\Events\CheckoutPending;
 use App\Mail\CheckoutPending as MailCheckoutPending;
-use App\Services\DynamicMailer;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
@@ -29,6 +28,8 @@ class SendPendingEmailNotification implements ShouldQueue
      */
     public function handle(CheckoutPending $event)
     {
-        DynamicMailer::send($event->checkout->user, new MailCheckoutPending($event->checkout));
+        Mail::mailer($event->checkout->campaign()->mailer)
+            ->to($event->checkout->user)
+            ->queue(new MailCheckoutPending($event->checkout));
     }
 }

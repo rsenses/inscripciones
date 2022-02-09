@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Services\DynamicMailer;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 
@@ -25,7 +24,9 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $domain = DynamicMailer::getDomain();
+        $host = str_replace('.localhost', '', request()->getHost());
+        $hostNames = explode('.', $host);
+        $domain = $hostNames[count($hostNames) - 2];
 
         View::share('domain', $domain);
     }

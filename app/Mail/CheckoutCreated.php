@@ -7,9 +7,6 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Checkout;
-use App\Models\Discount;
-use App\Services\DynamicMailer;
-use Illuminate\Support\Facades\Log;
 
 class CheckoutCreated extends Mailable
 {
@@ -36,11 +33,11 @@ class CheckoutCreated extends Mailable
     {
         $partner = $this->checkout->campaign()->partner;
         $folder = $this->checkout->campaign()->folder;
-
-        $from = DynamicMailer::getMailer()['from'];
+        $fromAddress = $this->checkout->campaign()->from_address;
+        $fromName = $this->checkout->campaign()->from_name;
 
         return $this->subject('Solicitud registrada')
-            ->from($from['address'], $from['name'])
+            ->from($fromAddress, $fromName)
             ->with([
                 'partner' => $partner,
             ])

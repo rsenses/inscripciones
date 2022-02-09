@@ -85,7 +85,7 @@ class InvoiceController extends Controller
                 $taxId = strtoupper($address->tax_id);
                 $taxType = $address->tax_type;
                 
-                $corporation = $checkout->campaign()->partner->corporation;
+                $corporation = $checkout->campaign->partner->corporation;
 
                 if ($taxType == 'CIF') {
                     $type = 'ATIC';

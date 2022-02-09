@@ -19,8 +19,8 @@
             <mj-section padding="0">
                 <mj-column>
                     <mj-image
-                        src="{{ asset('storage/' . $checkout->campaign()->image) }}"
-                        alt="{{ $checkout->campaign()->name }}"
+                        src="{{ asset('storage/' . $checkout->campaign->image) }}"
+                        alt="{{ $checkout->campaign->name }}"
                     ></mj-image>
                 </mj-column>
             </mj-section>
@@ -34,8 +34,8 @@
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         >Su solicitud para asistir al
-                        <strong>{{ $checkout->campaign()->name }}</strong> ha
-                        sido registrada correctamente.</mj-text
+                        <strong>{{ $checkout->campaign->name }}</strong> ha sido
+                        registrada correctamente.</mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         >En breve nos pondremos en contacto con usted para

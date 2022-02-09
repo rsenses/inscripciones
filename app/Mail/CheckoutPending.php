@@ -32,9 +32,9 @@ class CheckoutPending extends Mailable
      */
     public function build()
     {
-        $folder = $this->checkout->campaign()->folder;
-        $fromAddress = $this->checkout->campaign()->from_address;
-        $fromName = $this->checkout->campaign()->from_name;
+        $folder = $this->checkout->campaign->folder;
+        $fromAddress = $this->checkout->campaign->from_address;
+        $fromName = $this->checkout->campaign->from_name;
 
         return $this->subject('Está a un paso de confirmar su plaza')
             ->from($fromAddress, $fromName)

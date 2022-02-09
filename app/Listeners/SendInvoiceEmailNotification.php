@@ -28,7 +28,7 @@ class SendInvoiceEmailNotification implements ShouldQueue
      */
     public function handle(InvoiceCreated $event)
     {
-        Mail::mailer($event->invoice->checkout->campaign()->mailer)
+        Mail::mailer($event->invoice->checkout->campaign->mailer)
             ->to($event->invoice->checkout->user)
             ->queue(new MailInvoiceCreated($event->invoice));
     }

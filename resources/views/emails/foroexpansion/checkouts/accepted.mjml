@@ -19,8 +19,8 @@
             <mj-section padding="0">
                 <mj-column>
                     <mj-image
-                        src="{{ asset('storage/' . $checkout->campaign()->image) }}"
-                        alt="{{ $checkout->campaign()->name }}"
+                        src="{{ asset('storage/' . $checkout->campaign->image) }}"
+                        alt="{{ $checkout->campaign->name }}"
                     ></mj-image>
                 </mj-column>
             </mj-section>

@@ -1,14 +1,14 @@
 <div class="table">
-    @if(!$showProduct)
-    <div class="toolbar">
-        <a href="#0" class="btn btn-danger" data-toggle="modal" data-target="#claim">Reclamar no pagados</a>
-    </div>
-    <x-modal :id="'claim'" :title="'Reclamar pendientes de pago'" :footer="''">
-        <p>¿Seguro que quieres mandar un email para reclamar el pago a TODOS los pendientes?</p>
-        <p class="text-danger"><strong>Recuerda completar las invitaciones antes de usar esta función.</strong></p>
-        <p><a href="{{ route('emails.claim', ['product' => $registrations[0]->product]) }}"
-                class="btn btn-success">Enviar reclamacion de pago</a></p>
-    </x-modal>
+    @if(!$showProduct && $product->registrations->count() > 0)
+        <div class="toolbar">
+            <a href="#0" class="btn btn-danger" data-toggle="modal" data-target="#claim">Reclamar no pagados</a>
+        </div>
+        <x-modal :id="'claim'" :title="'Reclamar pendientes de pago'" :footer="''">
+            <p>¿Seguro que quieres mandar un email para reclamar el pago a TODOS los pendientes?</p>
+            <p class="text-danger"><strong>Recuerda completar las invitaciones antes de usar esta función.</strong></p>
+            <p><a href="{{ route('emails.claim', ['product' => $registrations[0]->product]) }}"
+                    class="btn btn-success">Enviar reclamacion de pago</a></p>
+        </x-modal>
     @endif
     <table class="table table-striped table-bordered" {{ $showProduct ? '' : 'data-toggle=table' }} data-search="true"
         data-show-export="true" data-export-data-type="basic" data-export-types="['csv']" data-locale="es_ES"

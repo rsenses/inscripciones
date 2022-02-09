@@ -134,7 +134,7 @@ class TicketController extends Controller
 
     private function getBrand(Checkout $checkout)
     {
-        $domain = $checkout->campaign()->partner->slug;
+        $domain = $checkout->campaign->partner->slug;
 
         if ($domain === 'telva') {
             $color = [0, 0, 0];

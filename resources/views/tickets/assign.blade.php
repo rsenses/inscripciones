@@ -86,12 +86,12 @@
 
                         <div class="form-group row">
                             <div class="col">
-                                Al registrarse declara aceptar los <a href="{{ route('terminos-y-condiciones', ['c' => $registration->campaign()]) }}" target="_blank">términos y condiciones</a> de uso y la <a class="text-xs-center js-uecookiespolicy-preferences-show" href="http://cookies.unidadeditorial.es" target="_blank">política de cookies</a>.
+                                Al registrarse declara aceptar los <a href="{{ route('terminos-y-condiciones', ['c' => $registration->campaign]) }}" target="_blank">términos y condiciones</a> de uso y la <a class="text-xs-center js-uecookiespolicy-preferences-show" href="http://cookies.unidadeditorial.es" target="_blank">política de cookies</a>.
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col">
-                                <p>Deseo recibir información sobre eventos, promociones, sorteos y otras comunicaciones comerciales sobre productos, servicios y contenidos del <a role="button" data-toggle="collapse" href="#sociedades" aria-expanded="false" aria-controls="collapseExample">Grupo Unidad Editorial</a>, y/o de terceros de distintos sectores, incluido por medios electrónicos. Por favor, <a href="{{ route('politica-de-privacidad', ['c' => $registration->campaign()]) }}" target="_blank">consulta aquí</a> la información detallada y díganos si está de acuerdo.</p>
+                                <p>Deseo recibir información sobre eventos, promociones, sorteos y otras comunicaciones comerciales sobre productos, servicios y contenidos del <a role="button" data-toggle="collapse" href="#sociedades" aria-expanded="false" aria-controls="collapseExample">Grupo Unidad Editorial</a>, y/o de terceros de distintos sectores, incluido por medios electrónicos. Por favor, <a href="{{ route('politica-de-privacidad', ['c' => $registration->campaign]) }}" target="_blank">consulta aquí</a> la información detallada y díganos si está de acuerdo.</p>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="advertising" id="inlineRadio1" value="1" required>
                                     <label class="form-check-label" for="inlineRadio1">Sí</label>

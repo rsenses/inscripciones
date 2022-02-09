@@ -1,6 +1,6 @@
 Estimad@ {{ $checkout->user->full_name }}
 
-Le damos la bienvenida al {{ $checkout->campaign()->name }}. Su inscripción ha sido confirmada.
+Le damos la bienvenida al {{ $checkout->campaign->name }}. Su inscripción ha sido confirmada.
 
 A través del siguiente enlace podrá acceder a toda la información relativa al evento:
 https://foro.expansion.com

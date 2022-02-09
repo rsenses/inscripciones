@@ -31,9 +31,9 @@ class InvoiceCreated extends Mailable
      */
     public function build()
     {
-        $folder = $this->invoice->checkout->campaign()->folder;
-        $fromAddress = $this->invoice->checkout->campaign()->from_address;
-        $fromName = $this->invoice->checkout->campaign()->from_name;
+        $folder = $this->invoice->checkout->campaign->folder;
+        $fromAddress = $this->invoice->checkout->campaign->from_address;
+        $fromName = $this->invoice->checkout->campaign->from_name;
 
         return $this->subject('Aquí tiene su factura')
             ->from($fromAddress, $fromName)

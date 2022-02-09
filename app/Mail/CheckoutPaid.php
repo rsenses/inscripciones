@@ -32,10 +32,10 @@ class CheckoutPaid extends Mailable
      */
     public function build()
     {
-        $folder = $this->checkout->campaign()->folder;
-        $name = $this->checkout->campaign()->partner->name;
-        $fromAddress = $this->checkout->campaign()->from_address;
-        $fromName = $this->checkout->campaign()->from_name;
+        $folder = $this->checkout->campaign->folder;
+        $name = $this->checkout->campaign->partner->name;
+        $fromAddress = $this->checkout->campaign->from_address;
+        $fromName = $this->checkout->campaign->from_name;
 
         return $this->subject($name . ' te da la Bienvenida')
             ->from($fromAddress, $fromName)

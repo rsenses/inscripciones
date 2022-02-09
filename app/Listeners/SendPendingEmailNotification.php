@@ -28,7 +28,7 @@ class SendPendingEmailNotification implements ShouldQueue
      */
     public function handle(CheckoutPending $event)
     {
-        Mail::mailer($event->checkout->campaign()->mailer)
+        Mail::mailer($event->checkout->campaign->mailer)
             ->to($event->checkout->user)
             ->queue(new MailCheckoutPending($event->checkout));
     }

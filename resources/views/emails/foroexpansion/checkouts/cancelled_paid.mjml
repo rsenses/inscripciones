@@ -7,8 +7,8 @@
             <mj-column>
                 <mj-image
                     width="200px"
-                    src="{{ asset('storage/' . $checkout->campaign()->partner->image) }}"
-                    href="{{ $checkout->campaign()->partner->name }}"
+                    src="{{ asset('storage/' . $checkout->campaign->partner->image) }}"
+                    href="{{ $checkout->campaign->partner->name }}"
                 ></mj-image>
             </mj-column>
         </mj-section>
@@ -19,8 +19,8 @@
             <mj-section padding="0">
                 <mj-column>
                     <mj-image
-                        src="{{ asset('storage/' . $checkout->campaign()->image) }}"
-                        alt="{{ $checkout->campaign()->name }}"
+                        src="{{ asset('storage/' . $checkout->campaign->image) }}"
+                        alt="{{ $checkout->campaign->name }}"
                     ></mj-image>
                 </mj-column>
             </mj-section>
@@ -34,7 +34,7 @@
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         >Hemos iniciado el proceso de cancelación de asistencia
-                        al {{ $checkout->campaign()->partner->name }}. En unos
+                        al {{ $checkout->campaign->partner->name }}. En unos
                         días recibirá la factura de abono.</mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Partner;
 use App\Models\Registration;
 use Illuminate\Http\Request;

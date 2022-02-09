@@ -1,6 +1,6 @@
 Estimad@ {{ $invoice->checkout->user->full_name }}
 
-Adjunto enviamos el duplicado de su factura de inscripción al {{ $invoice->checkout->campaign()->name }}.
+Adjunto enviamos el duplicado de su factura de inscripción al {{ $invoice->checkout->campaign->name }}.
 
 https://invoice.eventosue.com/{{ $invoice->number }}.pdf
 

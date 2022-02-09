@@ -1,6 +1,6 @@
 Estimad@ {{ $checkout->user->full_name }}
 
-Tu solicitud para asistir al {{ $checkout->campaign()->name }} ha sido registrada correctamente.
+Tu solicitud para asistir al {{ $checkout->campaign->name }} ha sido registrada correctamente.
 
 En breve nos pondremos en contacto para confirmar si tu solicitud ha sido aceptada.
 

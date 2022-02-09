@@ -31,9 +31,9 @@ class RegistrationPaid extends Mailable
      */
     public function build()
     {
-        $folder = $this->registration->campaign()->folder;
-        $fromAddress = $this->registration->campaign()->from_address;
-        $fromName = $this->registration->campaign()->from_name;
+        $folder = $this->registration->campaign->folder;
+        $fromAddress = $this->registration->campaign->from_address;
+        $fromName = $this->registration->campaign->from_name;
 
         return $this->subject('Bienvenido al ' . $this->registration->product->name)
             ->from($fromAddress, $fromName)

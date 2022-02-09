@@ -28,7 +28,7 @@ class SendCreatedEmailNotification implements ShouldQueue
      */
     public function handle(CheckoutCreated $event)
     {
-        Mail::mailer($event->checkout->campaign()->mailer)
+        Mail::mailer($event->checkout->campaign->mailer)
             ->to($event->checkout->user)
             ->queue(new MailCheckoutCreated($event->checkout));
     }

@@ -1,6 +1,6 @@
 Estimad@ {{ $checkout->user->full_name }}
 
-Te damos la bienvenida al {{ $checkout->campaign()->name }}. Su inscripción ha sido confirmada.
+Te damos la bienvenida al {{ $checkout->campaign->name }}. Su inscripción ha sido confirmada.
 
 @if(!empty($checkout->mode()['presencial']) && empty($checkout->mode()['online']))
 Aquí tienes tus entradas:

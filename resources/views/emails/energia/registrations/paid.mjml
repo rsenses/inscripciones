@@ -7,8 +7,8 @@
             <mj-column>
                 <mj-image
                     width="200px"
-                    src="{{ asset('storage/' . $registration->campaign()->partner->image) }}"
-                    href="{{ $registration->campaign()->partner->name }}"
+                    src="{{ asset('storage/' . $registration->campaign->partner->image) }}"
+                    href="{{ $registration->campaign->partner->name }}"
                 ></mj-image>
             </mj-column>
         </mj-section>
@@ -19,8 +19,8 @@
             <mj-section padding="0">
                 <mj-column>
                     <mj-image
-                        src="{{ asset('storage/' . $registration->campaign()->image) }}"
-                        alt="{{ $registration->campaign()->name }}"
+                        src="{{ asset('storage/' . $registration->campaign->image) }}"
+                        alt="{{ $registration->campaign->name }}"
                     ></mj-image>
                 </mj-column>
             </mj-section>

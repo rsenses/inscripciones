@@ -31,9 +31,9 @@ class CheckoutCancelled extends Mailable
      */
     public function build()
     {
-        $folder = $this->checkout->campaign()->folder;
-        $fromAddress = $this->checkout->campaign()->from_address;
-        $fromName = $this->checkout->campaign()->from_name;
+        $folder = $this->checkout->campaign->folder;
+        $fromAddress = $this->checkout->campaign->from_address;
+        $fromName = $this->checkout->campaign->from_name;
 
         if ($this->checkout->status === 'paid') {
             return $this->subject('Cancelación de asistencia')

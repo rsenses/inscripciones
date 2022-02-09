@@ -56,7 +56,7 @@ class Registration extends Model
     /**
      * Get the campaing tha owns the registration.
      */
-    public function campaign()
+    public function getCampaignAttribute()
     {
         return Campaign::findOrFail($this->product->campaign_id);
     }

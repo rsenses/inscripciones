@@ -31,10 +31,10 @@ class CheckoutCreated extends Mailable
      */
     public function build()
     {
-        $partner = $this->checkout->campaign()->partner;
-        $folder = $this->checkout->campaign()->folder;
-        $fromAddress = $this->checkout->campaign()->from_address;
-        $fromName = $this->checkout->campaign()->from_name;
+        $partner = $this->checkout->campaign->partner;
+        $folder = $this->checkout->campaign->folder;
+        $fromAddress = $this->checkout->campaign->from_address;
+        $fromName = $this->checkout->campaign->from_name;
 
         return $this->subject('Solicitud registrada')
             ->from($fromAddress, $fromName)

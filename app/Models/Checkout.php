@@ -72,7 +72,7 @@ class Checkout extends Model
     /**
      * Get the campaing tha owns the checkout.
      */
-    public function campaign()
+    public function getCampaignAttribute()
     {
         return Campaign::findOrFail($this->products[0]->campaign_id);
     }

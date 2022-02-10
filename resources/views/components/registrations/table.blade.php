@@ -94,7 +94,7 @@
                                     <input type="hidden" name="action" value="invite">
                                     @csrf
                                     <button type="submit"
-                                        class="btn btn-warning btn-block">Invitar<br>Asistente</button>
+                                        class="btn btn-warning btn-block">Invitar Asistente</button>
                                 </form>
                             </div>
                             @endif

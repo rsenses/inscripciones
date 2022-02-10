@@ -4,7 +4,8 @@
 <div class="container-fluid">
     <h2>{{ $product->name }} <span class="badge badge-info">{{ $product->mode }}</span>
         @if(Auth::user()->role === 'superadmin')
-            <a class="pull-right btn btn-info text-light" title="editar"
+            <a class="pull-right btn btn-white text-primary border border-primary"
+               title="editar"
                 href="{{ route('products.edit', ['product' => $product]) }}"
                 data-toggle="tooltip" data-placement="bottom">
                 <i class="ion ion-edit"></i>
@@ -87,11 +88,12 @@
             </table>
         </div>
     </div>
-
+<div class="card bg-white">
         <div class="card-body">
+            <h4 class="card-title">Inscripciones</h4>
             <x-registrations.table :registrations="$registrations" :product="$product" :show-product="false" />
-            <h4 class="card-title">Inscripciones</h2>
         </div>
+    </div>
     </div>
 
 

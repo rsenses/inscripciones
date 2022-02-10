@@ -232,11 +232,15 @@
             }
         }
         @if($domain === 'telva')
-            document.getElementById('redsys_form').onsubmit = function (e) {
-                envioSC("telva energiayfelicidad | pagar con tarjeta");
+            if (document.getElementById('redsys_form')) {
+                document.getElementById('redsys_form').onsubmit = function (e) {
+                    envioSC("telva energiayfelicidad | pagar con tarjeta");
+                }
             }
-            document.getElementById('invoice-data').onsubmit = function (e) {
-                envioSC("telva energiayfelicidad | proceder al pago");
+            if (document.getElementById('invoice-data')) {
+                document.getElementById('invoice-data').onsubmit = function (e) {
+                    envioSC("telva energiayfelicidad | proceder al pago");
+                }
             }
         @endif
         window.onload =

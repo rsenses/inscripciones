@@ -47,7 +47,8 @@ class MaxRegistrations implements Rule
         }
 
         foreach ($count as $productId => $quantity) {
-            if ($quantity > Product::findOrFail($productId)->max_quantity) {
+            $product =  Product::findOrFail($productId);
+            if ($quantity > $product->max_quantity && $product->max_quantity !== 0) {
                 return false;
             }
         }

@@ -9,7 +9,7 @@ Cantidad    Producto
 
 Para proceder al pago y confirmar tu asistencia regístrate en el siguiente enlace y completa la inscripción:
           
-{{ Config::get('app.url') }}checkouts/{{ $checkout->id }}?t={{ $checkout->token }}
+http://inscripciones.telva.com/checkouts/{{ $checkout->id }}?t={{ $checkout->token }}
 
 Atentamente,
 

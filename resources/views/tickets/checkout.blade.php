@@ -21,7 +21,7 @@
     @else
         <style>
             :root {
-                --primary: #1c776b;
+                --primary: #386AB0;
             }
         </style>
     @endif

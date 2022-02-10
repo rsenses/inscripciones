@@ -20,8 +20,8 @@
                     <td class="text-right">{{ $user->phone }}</td>
                     <td>{{ $user->company }}</td>
                     <td>{{ $user->position }}</td>
-                    <td class="bg-primary text-center has-icon">
-                        <a class="text-light" href="{{ route('users.show', ['user' => $user]) }}">
+                    <td class="text-primary text-center has-icon">
+                        <a class="text-primary" href="{{ route('users.show', ['user' => $user]) }}">
                         <i class="ion ion-ios-eye-outline" aria-hidden="true"></i> Ver
                         </a>
                     </td>

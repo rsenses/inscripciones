@@ -30,7 +30,11 @@ class MaxRegistrations implements Rule
      */
     public function passes($attribute, $value)
     {
+        $count = [];
+
         foreach ($this->request->products as $productId) {
+            $count[$productId] = isset($count[$productId]) ? $count[$productId] + 1 : 1;
+
             $product = Product::findOrFail($productId);
 
             $registrationCount = Registration::where('product_id', $product->id)
@@ -38,6 +42,13 @@ class MaxRegistrations implements Rule
                 ->count();
             
             if ($registrationCount >= $product->max_quantity && $product->max_quantity > 0) {
+                return false;
+            }
+        }
+
+        foreach ($count as $productId => $quantity) {
+            $product =  Product::findOrFail($productId);
+            if ($quantity > $product->max_quantity && $product->max_quantity !== 0) {
                 return false;
             }
         }

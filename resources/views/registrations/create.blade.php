@@ -7,7 +7,7 @@
         @csrf
         <div class="row align-items-stretch mb-4">
             <div class="col">
-                <div class="card bg-light">
+                <div class="card bg-white">
                     <div class="card-body">
                         <div class="form-group">
                             <label for="product_id" class="card-title h4 text-primary">Producto</label><br>
@@ -31,9 +31,9 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card bg-light">
+                <div class="card bg-white">
                     <div class="card-body">
-                        <div class="form-group bg-light">
+                        <div class="form-group bg-white">
                             <label for="user_id" class="card-title h4 text-primary">Usuario</label><br>
                             <select id="user_id" name="user_id" required
                                 class="selectpicker {{ $errors->has('user_id') ? 'is-invalid' : '' }}"

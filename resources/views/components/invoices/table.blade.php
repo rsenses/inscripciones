@@ -1,5 +1,5 @@
-<div class="table">
-    <table class="table table-striped table-bordered" {{ $toggle ? 'data-toggle=table' : '' }} data-search="true"  data-locale="es_ES" data-pagination="true" data-page-size="50" data-page-list="[50, 100, all]">
+<div class="table-responsive">
+    <table class="table " {{ $toggle ? 'data-toggle=table' : '' }} data-search="true"  data-locale="es_ES" data-pagination="true" data-page-size="50" data-page-list="[50, 100, all]">
         <thead>
             <tr>
                 <th data-field="status" data-sortable="false" data-visible="false">Status</th>

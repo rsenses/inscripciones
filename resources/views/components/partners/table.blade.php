@@ -1,4 +1,4 @@
-<div class="table">
+<div class="table-responsive">
     <table class="table table-striped">
         <thead>
             <tr>
@@ -14,9 +14,9 @@
                     <td>
                         <img src="{{ asset('storage/' . $partner->image) }}" alt="{{ $partner->name }}" class="img-fuid" style="max-width: 200px;">
                     </td>
-                    <td  class="bg-primary text-center" style="vertical-align: middle;">
-                        <a class="text-light " href="{{ route('partners.show', ['partner' => $partner]) }}">
-                        <i class="ion ion-ios-eye" aria-hidden="true"></i> Ver
+                    <td  class="text-center" style="vertical-align: middle;">
+                        <a class="text-primary " href="{{ route('partners.show', ['partner' => $partner]) }}">
+                        <i class="ion ion-ios-eye-outline" aria-hidden="true"></i> Ver
                         </a>
                     </td>
                 </tr>

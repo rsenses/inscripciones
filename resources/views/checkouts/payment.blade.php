@@ -7,11 +7,11 @@
                 <h2>Compra número: {{ $checkout->id }}<br>
                     Importe {{ $checkout->amount }}€
                 </h2>
-                <div class="card bg-light">
+                <div class="card bg-white">
                     <div class="card-body">
                         <h5 class="card-title">Productos</h5>
-                        <div class="table">
-                            <table class="table table-striped table-bordered">
+                        <div class="table-responsive">
+                            <table class="table ">
                                 <thead>
                                     <tr>
                                         <th>Cantidad</th>
@@ -37,7 +37,7 @@
         @if(!$discount)
             <div class="row justify-content-center mb-4">
                 <div class="col-md-8">
-                    <div class="card bg-light">
+                    <div class="card bg-white">
                         <div class="card-body">
                             <form method="POST" action="{{ route('deals.store', ['checkout_id' => $checkout->id]) }}" id="discount-data">
                                 @csrf
@@ -74,7 +74,7 @@
 
         <div class="row justify-content-center">
             <div class="col-lg-6">
-                <div class="card bg-light">
+                <div class="card bg-white">
                     <div class="card-body">
                         <p class="text-center">
                         <strong>CON TARJETA DE DÉBITO/CRÉDITO</strong>
@@ -88,7 +88,7 @@
             </div>
             @if($checkout->amount > 100)
                 <div class="col-lg-6">
-                    <div class="card bg-light">
+                    <div class="card bg-white">
                         <div class="card-body">
                             <p class="text-center"><strong>CON TRANSFERENCIA desde tu banco:</strong></p>
                             <p>

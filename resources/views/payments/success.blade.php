@@ -8,12 +8,12 @@
                 Importe {{ $checkout->amount }}€
             </h2>
 
-            <div class="card bg-light">
+            <div class="card bg-white">
                 <div class="card-body">
                     <h5 class="card-title">Productos</h5>
                     <p class="card-text">
-                        <div class="table mb-4">
-                            <table class="table table-striped table-bordered">
+                        <div class="table-responsive mb-4">
+                            <table class="table ">
                                 <thead>
                                     <tr>
                                         <th>Cantidad</th>

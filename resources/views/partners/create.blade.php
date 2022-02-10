@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
         <h2>Nueva Cabecera</h2>
-        <div class="card bg-light">
+        <div class="card bg-white">
         <div class="card-body">
         <form action="{{ route('partners.store') }}" method="POST" enctype="multipart/form-data">
             @csrf

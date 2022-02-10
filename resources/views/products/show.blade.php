@@ -4,7 +4,8 @@
 <div class="container-fluid">
     <h2>{{ $product->name }} <span class="badge badge-info">{{ $product->mode }}</span>
         @if(Auth::user()->role === 'superadmin')
-            <a class="pull-right btn btn-info text-light" title="editar"
+            <a class="pull-right btn btn-white text-primary border border-primary"
+               title="editar"
                 href="{{ route('products.edit', ['product' => $product]) }}"
                 data-toggle="tooltip" data-placement="bottom">
                 <i class="ion ion-edit"></i>
@@ -16,17 +17,17 @@
     @endif
     <div class="row mb-5 align-items-stretch">
         <div class="col col-sm-4">
-            <div class="card bg-light h-100">
+            <div class="card bg-white h-100">
               <div class="card-body d-flex align-items-center">
               <p><img src="{{ asset('storage/' . $product->campaign->image) }}" alt="El producto no tiene imagen" class="img-fluid"></p>
               </div>
             </div>
         </div>
         <div class="col col-sm-8">
-            <div class="card text-white bg-light">
+            <div class="card text-white">
                 <div class="card-body">
-                    <div class="table">
-                        <table class="table table-striped table-bordered">
+                    <div class="table-responsive">
+                        <table class="table ">
                             <tr>
                                 <td>Precio</td>
                                 <td>{{ $product->price }} €</td>
@@ -61,9 +62,9 @@
         </div>
     </div>
 
-    <div class="card bg-light mb-5">
+    <div class="card bg-white mb-5">
         <div class="card-body">
-            <table class="table table-striped table-bordered">
+            <table class="table ">
                 <tr>
                     <td>Sin valorar</td>
                     <td>{{ $product->new_registrations_count }}</td>
@@ -87,12 +88,12 @@
             </table>
         </div>
     </div>
-
-    <div class="card bg-light">
+<div class="card bg-white">
         <div class="card-body">
-            <h2 class="card-title text-primary">Inscripciones</h2>
+            <h4 class="card-title">Inscripciones</h4>
             <x-registrations.table :registrations="$registrations" :product="$product" :show-product="false" />
         </div>
+    </div>
     </div>
 
 

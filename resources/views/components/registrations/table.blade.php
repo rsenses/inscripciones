@@ -1,8 +1,8 @@
-<div class="table">
+<div class="table-responsive">
     @if(!$showProduct && $product->registrations->count() > 0)
         <div class="toolbar">
-            <a href="#0" class="btn btn-danger" data-toggle="modal" data-target="#claim">Reclamar no pagados</a>
         </div>
+            <a href="#0" class="btn btn-danger" data-toggle="modal" data-target="#claim">Reclamar no pagados</a>
         <x-modal :id="'claim'" :title="'Reclamar pendientes de pago'" :footer="''">
             <p>¿Seguro que quieres mandar un email para reclamar el pago a TODOS los pendientes?</p>
             <p class="text-danger"><strong>Recuerda completar las invitaciones antes de usar esta función.</strong></p>
@@ -10,7 +10,7 @@
                     class="btn btn-success">Enviar reclamacion de pago</a></p>
         </x-modal>
     @endif
-    <table class="table table-striped table-bordered" {{ $showProduct ? '' : 'data-toggle=table' }} data-search="true"
+    <table class="table " {{ $showProduct ? '' : 'data-toggle=table' }} data-search="true"
         data-show-export="true" data-export-data-type="basic" data-export-types="['csv']" data-locale="es_ES"
         data-filter-control="true" data-toolbar=".toolbar">
         <thead>
@@ -94,7 +94,7 @@
                                     <input type="hidden" name="action" value="invite">
                                     @csrf
                                     <button type="submit"
-                                        class="btn btn-warning btn-block">Invitar<br>Asistente</button>
+                                        class="btn btn-warning btn-block">Invitar Asistente</button>
                                 </form>
                             </div>
                             @endif

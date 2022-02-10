@@ -7,11 +7,11 @@
             <h2>Compra número: {{ $checkout->id }}<br>
                 Importe {{ $checkout->amount }}€
             </h2>
-            <div class="card bg-light">
+            <div class="card bg-white">
                 <div class="card-body">
                     <h5 class="card-title">Productos</h5>
-                    <div class="table">
-                        <table class="table table-striped table-bordered">
+                    <div class="table-responsive">
+                        <table class="table ">
                             <thead>
                                 <tr>
                                     <th>Cantidad</th>
@@ -54,7 +54,7 @@
         <div class="row justify-content-center">
             @if($addresses->count())
             <div class="col-12 col-sm-6 mb-4">
-                <div class="card bg-light">
+                <div class="card bg-white">
                     <p class="card-header">Puedes usar una de estas direcciones de facturación, o si lo prefieres, crear
                         una nueva en el siguiente panel</p>
                     <div class="card-body">
@@ -77,7 +77,7 @@
             </div>
             @endif
             <div class="col-12 col-sm-6 mb-4">
-                <div class="card bg-light">
+                <div class="card bg-white">
                     <div class="card-header">{{ __('Nueva dirección de facturación') }}</div>
                     <div class="card-body">
                         <div class="form-group row">

@@ -1,6 +1,7 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css2?family=Judson:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap');
 @import url("https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css");
+@import url("https://cdn.lineicons.com/3.0/lineicons.css");
 
 // Variables
 @import "variables";
@@ -32,4 +33,4 @@ $enable-rounded:false;
  * Copyright 2013-2020 Start Bootstrap
  * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-simple-sidebar/blob/master/LICENSE)
  */
- @import "sidebar";
+ @import "overrides";

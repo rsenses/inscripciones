@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <h2>Editar Usuario</h2>
 
-    <div class="card bg-light">
+    <div class="card bg-white">
         <div class="card-body">
             <form
                 action="{{ route('users.update', ['user' => $user]) }}"

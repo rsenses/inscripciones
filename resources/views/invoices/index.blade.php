@@ -28,22 +28,22 @@
             </div>
         </div>
 
-        <div class="card bg-light">
+        <div class="card bg-white">
             <div class="card-body">
                 <div class="row">
                     <div class="col">
-                        <h3 class="card-title text-primary">Facturas pendientes de generar</h3>
+                        <h3 class="card-title">Facturas pendientes de generar</h3>
                     </div>
                     <div class="col text-right">
                         @if($invoices->count())
                             <a href="{{ route('invoices.export') }}" class="btn btn-primary" onclick="return confirm('Seguro que quieres generar el archivo de facturación?');">
-                                <i class="fa fa-cloud-download" aria-hidden="true"></i>
-                                Exportar
+
+                                Exportar <i class="lni lni-download"></i>
                             </a>
                         @endif
-                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#importModal">
-                            <i class="fa fa-cloud-upload" aria-hidden="true"></i>
-                            Importar
+                        <button type="button" class="btn btn-info mb-3" data-toggle="modal" data-target="#importModal">
+                           
+                            Importar <i class="lni lni-cloud-upload"></i>
                         </button>
                     </div>
                 </div>
@@ -59,11 +59,11 @@
             </div>
         </div>
 
-        <div class="card bg-light mt-5">
+        <div class="card bg-white mt-5">
             <div class="card-body">
                 <div class="row">
                     <div class="col">
-                        <h3 class="card-title text-primary">Facturadas</h3>
+                        <h3 class="card-title">Facturadas</h3>
                     </div>
                 </div>
                 <x-invoices.table :invoices="$billed" :toggle="true"/>

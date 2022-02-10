@@ -30,7 +30,7 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <style>
             :root {
-                --primary: #1c776b;
+                --primary: #386AB0;
             }
         </style>
     @endif
@@ -52,7 +52,7 @@
             })("178119d0-5586-4a4c-953e-04aaf9ac0994", "DC8decYU")
         })();</script>
 </head>
-<body class="{{ $domain }}">
+<body  class="{{ $domain }}">
     @if($domain === 'telva')
         <script language="JavaScript" type="text/javascript" >
         var ueDataLayer = ueDataLayer || {};
@@ -88,29 +88,38 @@
          </script>
     @endif
     <div id="app">
+            <div class="page-loader">
+                <div class="loader text-primary">Cargando...</div>
+            </div>
         <div class="d-flex" id="wrapper">
             @auth
                 <!-- Sidebar -->
-                <div class="bg-dark border-right" id="sidebar-wrapper">
+                <div class="bg-primary border-right" id="sidebar-wrapper">
                     <div class="sidebar-heading">
                         {{ config('app.name', 'Laravel') }}
                     </div>
                     <div class="list-group list-group-flush">
                         <a href="{{ route('dashboard') }}"
-                            class="list-group-item list-group-item-action bg-light"><i class="ion ion-speedometer"
-                                aria-hidden="true"></i>&emsp;Dashboard</a>
+                            class="list-group-item list-group-item-action bg-white"><i
+                               class="lni lni-dashboard"></i>&emsp;Dashboard</a>
                         <a href="{{ route('products.index') }}"
-                            class="list-group-item list-group-item-action bg-light"><i class="ion ion-briefcase"
-                                aria-hidden="true"></i>&emsp;Productos</a>
+                            class="list-group-item list-group-item-action bg-white"><i
+                               class="lni lni-briefcase"></i>&emsp;Productos</a>
                         @if(Auth::user()->role === 'superadmin')
-                            <a href="{{ route('campaigns.index') }}" class="list-group-item list-group-item-action bg-light"><i class="ion ion-ios-analytics" aria-hidden="true"></i>&emsp;Campañas</a>
-                            <a href="{{ route('registrations.index') }}" class="list-group-item list-group-item-action bg-light"><i class="ion ion-pricetags" aria-hidden="true"></i>&emsp;Inscripciones</a>
-                            <a href="{{ route('users.index', ['role' => 'customer']) }}" class="list-group-item list-group-item-action bg-light"><i class="ion ion-person-stalker" aria-hidden="true"></i>&emsp;Usuarios</a>
-                            <a href="{{ route('partners.index') }}" class="list-group-item list-group-item-action bg-light"><i class="ion ion-filing" aria-hidden="true"></i>&emsp;Cabeceras</a>
+                            <a href="{{ route('campaigns.index') }}" class="list-group-item list-group-item-action bg-white"><i class="ion ion-ios-analytics" aria-hidden="true"></i>&emsp;Campañas</a>
+                            <a href="{{ route('registrations.index') }}"
+                               class="list-group-item list-group-item-action bg-white"><i
+                                   class="lni lni-pencil-alt"></i>&emsp;Inscripciones</a>
+                            <a href="{{ route('users.index', ['role' => 'customer']) }}"
+                               class="list-group-item list-group-item-action bg-white"><i
+                                   class="lni lni-users"></i>&emsp;Usuarios</a>
+                            <a href="{{ route('partners.index') }}"
+                               class="list-group-item list-group-item-action bg-white"><i
+                                  class="lni lni-bookmark-alt"></i>&emsp;Cabeceras</a>
                         @endif
                         <a href="{{ route('invoices.index') }}"
-                            class="list-group-item list-group-item-action bg-light"><i class="ion ion-cash"
-                                aria-hidden="true"></i>&emsp;Financiero</a>
+                            class="list-group-item list-group-item-action bg-white"><i
+                               class="lni lni-revenue"></i>&emsp;Financiero</a>
                     </div>
                 </div>
                 <!-- /#sidebar-wrapper -->
@@ -136,33 +145,48 @@
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <!-- Left Side Of Navbar -->
-                            <ul class="navbar-nav mr-auto">
 
-                            </ul>
 
                             <!-- Right Side Of Navbar -->
                             <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <div class="d-flex mx-4 align-content-center">
+                                        <i class="lni lni-sun mx-1 mt-3"></i>
+                                        <label class="switch">
+                                            <input type="checkbox" id="themeSelector" name="themeSelector">
+                                            <span class="slider round"></span>
+                                        </label>
+                                        <i class="lni lni-night mx-1 mt-3"></i>
+                                    </div>
+                                </li>
                                 <!-- Authentication Links -->
                                 @auth
-                                    <li class="nav-item dropdown">
-                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            {{ Auth::user()->name }}
+                                 <li class="nav-item">
+                                     <a class="nav-link"
+                                        href="#"
+                                        role="button"
+                                        v-pre>
+                                         {{ Auth::user()->name }} {{ Auth::user()->last_name }}
+                                     </a>
+                                 </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();" 
+                                         data-toggle="tooltip"
+                                        data-placement="bottom"
+                                        title=" {{ __('Logout') }}">
+                                            <i class="lni lni-exit"></i>
                                         </a>
+                                        <form id="logout-form"
+                                            action="{{ route('logout') }}"
+                                            method="POST"
+                                            class="d-none">
+                                            @csrf
+                                        </form>
+                                </li>
+                                   
+  
 
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                                onclick="event.preventDefault();
-                                                            document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}
-                                            </a>
-
-                                            <form id="logout-form" action="{{ route('logout') }}"
-                                                method="POST" class="d-none">
-                                                @csrf
-                                            </form>
-                                        </div>
-                                    </li>
                                 @endauth
                             </ul>
                         </div>
@@ -216,9 +240,30 @@
             }
         @endif
         window.onload =
-            function () {
-                $('[data-toggle="tooltip"]').tooltip();
+        function () {
+            $('[data-toggle="tooltip"]').tooltip();
+            $(".loader").fadeOut();
+            $(".page-loader").delay(150).fadeOut("fast");
+            if(!localStorage.getItem('theme')){
+                $('body').removeClass('dark');
+                $('#themeSelector').prop('checked', false)
+            }else{
+                $('body').addClass('dark')
+                $('#themeSelector').prop('checked', true)
             }
+
+            $('#themeSelector').change(function(e){
+                if( $('body').hasClass('dark')){
+                    $('body').removeClass('dark')
+                    localStorage.removeItem('theme')
+                 }else{
+                     $('body').addClass('dark')
+                     localStorage.setItem('theme', '{dark:true}')
+                 }
+            })
+        }
+
+            
 
     </script>
     @yield('scripts')

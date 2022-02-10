@@ -88,6 +88,9 @@
          </script>
     @endif
     <div id="app">
+            <div class="page-loader">
+                <div class="loader text-primary">Cargando...</div>
+            </div>
         <div class="d-flex" id="wrapper">
             @auth
                 <!-- Sidebar -->
@@ -142,33 +145,48 @@
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <!-- Left Side Of Navbar -->
-                            <ul class="navbar-nav mr-auto">
 
-                            </ul>
 
                             <!-- Right Side Of Navbar -->
                             <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <div class="d-flex mx-4 align-content-center">
+                                        <i class="lni lni-sun mx-1 mt-3"></i>
+                                        <label class="switch">
+                                            <input type="checkbox" id="themeSelector" name="themeSelector">
+                                            <span class="slider round"></span>
+                                        </label>
+                                        <i class="lni lni-night mx-1 mt-3"></i>
+                                    </div>
+                                </li>
                                 <!-- Authentication Links -->
                                 @auth
-                                    <li class="nav-item dropdown">
-                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            {{ Auth::user()->name }}
+                                 <li class="nav-item">
+                                     <a class="nav-link"
+                                        href="#"
+                                        role="button"
+                                        v-pre>
+                                         {{ Auth::user()->name }} {{ Auth::user()->last_name }}
+                                     </a>
+                                 </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();" 
+                                         data-toggle="tooltip"
+                                        data-placement="bottom"
+                                        title=" {{ __('Logout') }}">
+                                            <i class="lni lni-exit"></i>
                                         </a>
+                                        <form id="logout-form"
+                                            action="{{ route('logout') }}"
+                                            method="POST"
+                                            class="d-none">
+                                            @csrf
+                                        </form>
+                                </li>
+                                   
+  
 
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                                onclick="event.preventDefault();
-                                                            document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}
-                                            </a>
-
-                                            <form id="logout-form" action="{{ route('logout') }}"
-                                                method="POST" class="d-none">
-                                                @csrf
-                                            </form>
-                                        </div>
-                                    </li>
                                 @endauth
                             </ul>
                         </div>
@@ -222,9 +240,30 @@
             }
         @endif
         window.onload =
-            function () {
-                $('[data-toggle="tooltip"]').tooltip();
+        function () {
+            $('[data-toggle="tooltip"]').tooltip();
+            $(".loader").fadeOut();
+            $(".page-loader").delay(150).fadeOut("fast");
+            if(!localStorage.getItem('theme')){
+                $('body').removeClass('dark');
+                $('#themeSelector').prop('checked', false)
+            }else{
+                $('body').addClass('dark')
+                $('#themeSelector').prop('checked', true)
             }
+
+            $('#themeSelector').change(function(e){
+                if( $('body').hasClass('dark')){
+                    $('body').removeClass('dark')
+                    localStorage.removeItem('theme')
+                 }else{
+                     $('body').addClass('dark')
+                     localStorage.setItem('theme', '{dark:true}')
+                 }
+            })
+        }
+
+            
 
     </script>
     @yield('scripts')

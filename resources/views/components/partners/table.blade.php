@@ -1,10 +1,10 @@
 <div class="table-responsive">
-    <table class="table table-striped">
+    <table class="table">
         <thead>
             <tr>
                 <th>Nombre</th>
-                <th>Logo</th>
-                <th></th>
+                <th colspan="2">Logo</th>
+               
             </tr>
         </thead>
         <tbody>

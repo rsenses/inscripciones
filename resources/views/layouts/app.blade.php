@@ -239,7 +239,7 @@
                 envioSC("telva energiayfelicidad | proceder al pago");
             }
         @endif
-        window.onload =
+        window.addEventListener('load',
         function () {
             $('[data-toggle="tooltip"]').tooltip();
             $(".loader").fadeOut();
@@ -261,12 +261,13 @@
                      localStorage.setItem('theme', '{dark:true}')
                  }
             })
-        }
+        })
 
             
 
     </script>
     @yield('scripts')
+    
 </body>
 
 </html>

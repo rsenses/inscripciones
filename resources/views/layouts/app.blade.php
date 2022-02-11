@@ -238,16 +238,22 @@
         }
         window.addEventListener('load',
         function () {
-          
 
+            $('[data-toggle="tooltip"]').tooltip();
+            $(".loader").fadeOut();
+            $(".page-loader").delay(150).fadeOut("fast");
+
+            //TODO: Hay que adecentar esto
+
+            const url = window.location.hostname
+            const partner = url.substring(
+                url.indexOf(".") + 1,
+                url.lastIndexOf(".")
+            );
+            const logoRoute = `/img/logos/${partner}.svg`
+            const darkLogoRoute = `/img/logos/${partner}_wht.svg`
             const checkLogo = () => {
-                const url = window.location.hostname
-                const partner = url.substring(
-                    url.indexOf(".") + 1,
-                    url.lastIndexOf(".")
-                );
-                const logoRoute = `/img/logos/${partner}.svg`
-                const darkLogoRoute = `/img/logos/${partner}_wht.svg`
+                
                 if( $('body').hasClass('dark')){
                     $('#partnerLogo').attr('src', logoRoute)
                     $('body').removeClass('dark')
@@ -258,17 +264,15 @@
                     localStorage.setItem('theme', '{dark:true}')
                 }
             }
-checkLogo()
 
-            $('[data-toggle="tooltip"]').tooltip();
-            $(".loader").fadeOut();
-            $(".page-loader").delay(150).fadeOut("fast");
             if(!localStorage.getItem('theme')){
                 $('body').removeClass('dark');
+                $('#partnerLogo').attr('src', logoRoute)
                 $('#themeSelector').prop('checked', false)
             }else{
                 $('body').addClass('dark')
                 $('#themeSelector').prop('checked', true)
+                $('#partnerLogo').attr('src', darkLogoRoute)
             }
 
             $('#themeSelector').change(function(e){

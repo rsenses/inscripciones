@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Partner;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 
@@ -29,5 +30,6 @@ class ViewServiceProvider extends ServiceProvider
         $domain = $hostNames[count($hostNames) - 2];
 
         View::share('domain', $domain);
+        View::share('partner', Partner::where('slug', $domain)->first());
     }
 }

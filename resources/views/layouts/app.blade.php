@@ -224,28 +224,18 @@
     </div>
 
     <script>
-        document.getElementById('menu-toggle').onclick = function () {
-            var element = document.getElementById('wrapper');
-            element.classList.toggle('toggled');
-            var menuIcon = $(this).children('i');
-            if (menuIcon.hasClass('ion-android-more-vertical') && !$('wrapper').hasClass('toggle')) {
-                menuIcon.removeClass('ion-android-more-vertical').addClass('ion-android-more-horizontal')
-            } else {
-                menuIcon.removeClass('ion-android-more-horizontal').addClass('ion-android-more-vertical')
+        if (document.getElementById('menu-toggle')) {
+            document.getElementById('menu-toggle').onclick = function () {
+                var element = document.getElementById('wrapper');
+                element.classList.toggle('toggled');
+                var menuIcon = $(this).children('i');
+                if (menuIcon.hasClass('ion-android-more-vertical') && !$('wrapper').hasClass('toggle')) {
+                    menuIcon.removeClass('ion-android-more-vertical').addClass('ion-android-more-horizontal')
+                } else {
+                    menuIcon.removeClass('ion-android-more-horizontal').addClass('ion-android-more-vertical')
+                }
             }
         }
-        @if($domain === 'telva')
-            if (document.getElementById('redsys_form')) {
-                document.getElementById('redsys_form').onsubmit = function (e) {
-                    envioSC("telva energiayfelicidad | pagar con tarjeta");
-                }
-            }
-            if (document.getElementById('invoice-data')) {
-                document.getElementById('invoice-data').onsubmit = function (e) {
-                    envioSC("telva energiayfelicidad | proceder al pago");
-                }
-            }
-        @endif
         window.addEventListener('load',
         function () {
           
@@ -285,9 +275,6 @@ checkLogo()
                 checkLogo()
             })
         })
-
-            
-
     </script>
     @yield('scripts')
     

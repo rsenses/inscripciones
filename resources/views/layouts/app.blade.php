@@ -145,7 +145,10 @@
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <!-- Left Side Of Navbar -->
-
+                        <img id="partnerLogo" src=""
+                            alt="{{ $partner->name }}"
+                            class="img-fuid"
+                            style="max-width: 200px;">
 
                             <!-- Right Side Of Navbar -->
                             <ul class="navbar-nav ml-auto">
@@ -235,25 +238,45 @@
         }
         window.addEventListener('load',
         function () {
+
             $('[data-toggle="tooltip"]').tooltip();
             $(".loader").fadeOut();
             $(".page-loader").delay(150).fadeOut("fast");
+
+            //TODO: Hay que adecentar esto
+
+            const url = window.location.hostname
+            const partner = url.substring(
+                url.indexOf(".") + 1,
+                url.lastIndexOf(".")
+            );
+            const logoRoute = `/img/logos/${partner}.svg`
+            const darkLogoRoute = `/img/logos/${partner}_wht.svg`
+            const checkLogo = () => {
+                
+                if( $('body').hasClass('dark')){
+                    $('#partnerLogo').attr('src', logoRoute)
+                    $('body').removeClass('dark')
+                    localStorage.removeItem('theme')
+                }else{
+                    $('body').addClass('dark')
+                    $('#partnerLogo').attr('src', darkLogoRoute)
+                    localStorage.setItem('theme', '{dark:true}')
+                }
+            }
+
             if(!localStorage.getItem('theme')){
                 $('body').removeClass('dark');
+                $('#partnerLogo').attr('src', logoRoute)
                 $('#themeSelector').prop('checked', false)
             }else{
                 $('body').addClass('dark')
                 $('#themeSelector').prop('checked', true)
+                $('#partnerLogo').attr('src', darkLogoRoute)
             }
 
             $('#themeSelector').change(function(e){
-                if( $('body').hasClass('dark')){
-                    $('body').removeClass('dark')
-                    localStorage.removeItem('theme')
-                 }else{
-                     $('body').addClass('dark')
-                     localStorage.setItem('theme', '{dark:true}')
-                 }
+                checkLogo()
             })
         })
     </script>

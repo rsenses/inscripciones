@@ -14,7 +14,7 @@ class Discounts
     {
         $products = $checkout->products->pluck('id')->toArray();
 
-        $target = [10,11];
+        $target = [10,11,12,13,14];
 
         $occurrences = array_count_values($products);
         $min = min(array_values($occurrences));

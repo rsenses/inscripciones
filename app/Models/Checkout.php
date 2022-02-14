@@ -7,6 +7,7 @@ use App\Events\CheckoutDenied;
 use App\Events\CheckoutCancelled;
 use App\Events\CheckoutPaid;
 use App\Events\CheckoutPending;
+use App\Services\Discounts;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -285,16 +286,17 @@ class Checkout extends Model
 
     public function CheckForDiscounts()
     {
-        if ($this->products->count() > 1) {
-            $discount = [
-                'concept' => 'Descuento por compra múltiple',
-                'amount' => 100,
-            ];
+        return Discounts::iiCongreso($this);
+    }
 
-            return $discount;
+    public function applyAutomaticDiscount()
+    {
+        $discount = $this->CheckForDiscounts();
+
+        if ($discount) {
+            $this->amount = $this->amount - $discount['amount'];
+            $this->save();
         }
-
-        return false;
     }
 
     public function mode()

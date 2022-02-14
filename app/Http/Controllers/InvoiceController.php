@@ -74,7 +74,7 @@ class InvoiceController extends Controller
 
         if ($invoices) {
             $counter = 1;
-            $fileName = 'bills-' . strftime('%Y%m%d%H%M', time()) . '.txt';
+            $fileName = 'bills-' . date('YmdHM', time()) . '.txt';
             Storage::put('invoices/' . $fileName, "\xEF\xBB\xBF");
 
             foreach ($invoices as $invoice) {
@@ -147,7 +147,7 @@ class InvoiceController extends Controller
                         ' ',
                         ' ',
                         ' ',
-                        strftime('%d.%m.%Y', strtotime(date('Y-m-d H:i:s'))),
+                        date('d.m.Y', strtotime(date('Y-m-d H:i:s'))),
                         $vat > 0 ? 'SDPATROCPUB' : 'SDPATROCPUB0',
                         $checkout->id,
                         $checkout->amount > 0 ? 'L2N' : 'G2N',
@@ -241,7 +241,7 @@ class InvoiceController extends Controller
                         ' ',
                         ' ',
                         ' ',
-                        strftime('%d.%m.%Y', strtotime(date('Y-m-d H:i:s'))),
+                        date('d.m.Y', strtotime(date('Y-m-d H:i:s'))),
                         $vat > 0 ? 'SDPATROCPUB' : 'SDPATROCPUB0',
                         $checkout->id,
                         'G2N',

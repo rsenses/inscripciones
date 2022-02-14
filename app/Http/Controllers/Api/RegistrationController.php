@@ -53,8 +53,6 @@ class RegistrationController extends Controller
 
             $amount = $amount + $product->price;
 
-            // $checkout->products()->attach($productId);
-
             $registration = $user->registrations()->create([
                 'product_id' => $productId,
                 'checkout_id' => $checkout->id,
@@ -72,6 +70,8 @@ class RegistrationController extends Controller
         $checkout->update([
             'amount' => $amount
         ]);
+
+        $checkout->applyAutomaticDiscount();
 
         if ($firstAction) {
             $checkout->$firstAction();

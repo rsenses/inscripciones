@@ -1,5 +1,9 @@
 @extends('layouts.public')
 
+@section('scripts_before')
+<x-analytics :campaign="$checkout->campaign" />
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center mb-4">
@@ -56,6 +60,5 @@
 
         </div>
     </div>
-
 </div>
 @endsection

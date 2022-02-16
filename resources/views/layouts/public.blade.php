@@ -19,23 +19,24 @@
 
     <!-- Styles -->
     @if($domain === 'telva')
-        <link href="{{ asset('css/telva.css') }}" rel="stylesheet">
-        <style>
-            :root {
-                --primary: #D70065;
-            }
-        </style>
-        <script src="https://tags.tiqcdn.com/utag/unidadeditorial/telva/prod/utag.sync.js"></script>
+    <link href="{{ asset('css/telva.css') }}" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #D70065;
+        }
+    </style>
     @else
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <style>
-            :root {
-                --primary: #386AB0;
-            }
-        </style>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #386AB0;
+        }
+    </style>
     @endif
+    <script src="https://tags.tiqcdn.com/utag/unidadeditorial/{{ $domain }}/prod/utag.sync.js"></script>
     <script type="text/javascript" language="javascript" src="https://e00-ue.uecdn.es/cookies/js/policy_v4.js"></script>
-    <script type="text/javascript">window.gdprAppliesGlobally = true; (function () {
+    <script type="text/javascript">
+        window.gdprAppliesGlobally = true; (function () {
             function a(e) {
                 if (!window.frames[e]) {
                     if (document.body && document.body.firstChild) { var t = document.body; var n = document.createElement("iframe"); n.style.display = "none"; n.name = e; n.title = e; t.insertBefore(n, t.firstChild) }
@@ -50,12 +51,50 @@
             } e("__tcfapi", "__tcfapiBuffer", "__tcfapiCall", "__tcfapiReturn"); a("__tcfapiLocator"); (function (e, tgt) {
                 var t = document.createElement("script"); t.id = "spcloader"; t.type = "text/javascript"; t.async = true; t.src = "https://sdk.privacy-center.org/" + e + "/loader.js?target_type=notice&target=" + tgt; t.charset = "utf-8"; var n = document.getElementsByTagName("script")[0]; n.parentNode.insertBefore(t, n)
             })("178119d0-5586-4a4c-953e-04aaf9ac0994", "DC8decYU")
-        })();</script>
+        })();
+    </script>
 </head>
-<body  class="{{ $domain }}">
-    @if($domain === 'telva')
-        <script language="JavaScript" type="text/javascript" >
-        var ueDataLayer = ueDataLayer || {};
+
+<body class="{{ $domain }}">
+    @yield('scripts_before')
+
+    <div id="app">
+        <div class="d-flex" id="wrapper">
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <main class="py-4">
+                    @yield('content')
+                </main>
+
+                @guest
+                <footer class="mt-5 mb-5">
+                    <div class="container">
+                        <div class="row align-self-end">
+                            <div class="col-12 col-md-6 text-center text-md-left">
+                                &copy;{{ date('Y') }} Unidad Editorial Información Económica S.L.
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <ul class="list-inline text-center text-sm-right">
+                                    @if(isset($checkout))
+                                    <li class="list-inline-item"><a class="text-xs-center" target="_blank" href="{{ route('terminos-y-condiciones') }}?c={{ $checkout->id }}">Términos y condiciones</a></li>
+                                    @endif
+                                    <li class="list-inline-item"><a class="text-xs-center" href="javascript:Didomi.preferences.show()">Politica de cookies</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                @endguest
+            </div>
+        </div>
+    </div>
+
+    @yield('scripts')
+</body>
+
+</html>
+<script language="JavaScript" type="text/javascript">
+    var ueDataLayer = ueDataLayer || {};
         ueDataLayer.be_page_url= document.location.href.split("?")[0];
         ueDataLayer.be_page_url_qs= document.location.href;
         ueDataLayer.be_page_article_title= document.title;
@@ -78,60 +117,11 @@
         ueDataLayer.be_content_premium="0";
         ueDataLayer.be_content_signwall_detail="abierto";
         ueDataLayer.be_content_signwall="0";
-        </script>
-        <script type="text/javascript">
-          (function(a,b,c,d){
-          a='https://tags.tiqcdn.com/utag/unidadeditorial/telva/prod/utag.js';
+</script>
+<script type="text/javascript">
+    (function(a,b,c,d){
+          a='https://tags.tiqcdn.com/utag/unidadeditorial/{{ $domain }}/prod/utag.js';
           b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
           a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
           })();
-         </script>
-    @endif
-    <div id="app">
-        <div class="d-flex" id="wrapper">
-            <!-- Page Content -->
-            <div id="page-content-wrapper">
-                <main class="py-4">
-                    @yield('content')
-                </main>
-
-                @guest
-                    <footer class="mt-5 mb-5">
-                        <div class="container">
-                            <div class="row align-self-end">
-                                <div class="col-12 col-md-6 text-center text-md-left">
-                                    &copy;{{ date('Y') }} Unidad Editorial Información Económica S.L.
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <ul class="list-inline text-center text-sm-right">
-                                        @if(isset($checkout))
-                                            <li class="list-inline-item"><a class="text-xs-center" target="_blank" href="{{ route('terminos-y-condiciones') }}?c={{ $checkout->id }}">Términos y condiciones</a></li>
-                                        @endif
-                                        <li class="list-inline-item"><a class="text-xs-center" href="javascript:Didomi.preferences.show()">Politica de cookies</a></li>
-                                     </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </footer>
-                @endguest
-            </div>
-        </div>
-    </div>
-
-    <script>
-        @if($domain === 'telva')
-            if (document.getElementById('redsys_form')) {
-                document.getElementById('redsys_form').onsubmit = function (e) {
-                    envioSC("telva energiayfelicidad | pagar con tarjeta");
-                }
-            }
-            if (document.getElementById('invoice-data')) {
-                document.getElementById('invoice-data').onsubmit = function (e) {
-                    envioSC("telva energiayfelicidad | proceder al pago");
-                }
-            }
-        @endif
-    </script>
-    @yield('scripts')
-</body>
-</html>
+</script>

@@ -1,5 +1,9 @@
 @extends('layouts.public')
 
+@section('scripts_before')
+<x-analytics :campaign="$checkout->campaign" />
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center mb-4">
@@ -20,10 +24,10 @@
                             </thead>
                             <tbody>
                                 @foreach ($checkout->products->groupBy('id') as $product)
-                                    <tr>
-                                        <td>{{ $product->count() }}</td>
-                                        <td>{{ $product[0]->name }} <span class="text-uppercase">{{ $product[0]->mode }}</span></td>
-                                    </tr>
+                                <tr>
+                                    <td>{{ $product->count() }}</td>
+                                    <td>{{ $product[0]->name }} <span class="text-uppercase">{{ $product[0]->mode }}</span></td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -62,8 +66,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="address_id"
-                                        id="address{{ $index }}" value="{{ $address->id }}">
+                                    <input class="form-check-input" type="radio" name="address_id" id="address{{ $index }}" value="{{ $address->id }}">
                                     <label class="form-check-label" for="address{{ $index }}">
                                         {{ $address->name }} <small class="text-info">{{ $address->tax_id }}, {{
                                             $address->street }} {{ $address->zip }} ({{ $address->city }})</small>
@@ -84,9 +87,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Pagador') }}</label>
 
                             <div class="col-md-8">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                                    name="name" value="{{ old('name') ?: $checkout->user->full_name }}"
-                                    autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?: $checkout->user->full_name }}" autocomplete="name" autofocus>
 
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -100,8 +101,7 @@
                             <label for="tax_id" class="col-md-4 col-form-label text-md-right">{{ __('DNI') }}</label>
 
                             <div class="col-md-3">
-                                <select class="custom-select @error('tax_type') is-invalid @enderror" id="tax_type"
-                                    name="tax_type">
+                                <select class="custom-select @error('tax_type') is-invalid @enderror" id="tax_type" name="tax_type">
                                     <option disabled selected value> -- Tipo de documento -- </option>
                                     <option value="NIF" {{ old('tax_type')==='NIF' ? 'selected' : '' }}>NIF</option>
                                     <option value="NIE" {{ old('tax_type')==='NIE' ? 'selected' : '' }}>NIE</option>
@@ -118,10 +118,7 @@
                             </div>
 
                             <div class="col-md-5">
-                                <input id="tax_id" type="text"
-                                    class="form-control @error('tax_id') is-invalid @enderror" name="tax_id"
-                                    value="{{ old('tax_id') ?: $checkout->user->tax_id }}" autocomplete="tax_id"
-                                    maxlength="32" placeholder="Sin guiones: A12345678">
+                                <input id="tax_id" type="text" class="form-control @error('tax_id') is-invalid @enderror" name="tax_id" value="{{ old('tax_id') ?: $checkout->user->tax_id }}" autocomplete="tax_id" maxlength="32" placeholder="Sin guiones: A12345678">
 
                                 @error('tax_id')
                                 <span class="invalid-feedback" role="alert">
@@ -136,9 +133,7 @@
                                 }}</label>
 
                             <div class="col-md-8">
-                                <input id="street" type="text"
-                                    class="form-control @error('street') is-invalid @enderror" name="street"
-                                    value="{{ old('street') }}" autocomplete="street">
+                                <input id="street" type="text" class="form-control @error('street') is-invalid @enderror" name="street" value="{{ old('street') }}" autocomplete="street">
 
                                 @error('street')
                                 <span class="invalid-feedback" role="alert">
@@ -153,10 +148,7 @@
                                 }}</label>
 
                             <div class="col-md-8">
-                                <input id="street_number" type="text"
-                                    class="form-control @error('street_number') is-invalid @enderror"
-                                    name="street_number" value="{{ old('street_number') }}" autocomplete="street_number"
-                                    maxlength="100">
+                                <input id="street_number" type="text" class="form-control @error('street_number') is-invalid @enderror" name="street_number" value="{{ old('street_number') }}" autocomplete="street_number" maxlength="100">
 
                                 @error('street_number')
                                 <span class="invalid-feedback" role="alert">
@@ -171,8 +163,7 @@
                                 }}</label>
 
                             <div class="col-md-4">
-                                <input id="zip" type="text" class="form-control @error('zip') is-invalid @enderror"
-                                    name="zip" value="{{ old('zip') }}" autocomplete="zip" maxlength="100">
+                                <input id="zip" type="text" class="form-control @error('zip') is-invalid @enderror" name="zip" value="{{ old('zip') }}" autocomplete="zip" maxlength="100">
 
                                 @error('zip')
                                 <span class="invalid-feedback" role="alert">
@@ -186,8 +177,7 @@
                             <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('Ciudad') }}</label>
 
                             <div class="col-md-8">
-                                <input id="city" type="text" class="form-control @error('city') is-invalid @enderror"
-                                    name="city" value="{{ old('city') }}" autocomplete="city" maxlength="100">
+                                <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" autocomplete="city" maxlength="100">
 
                                 @error('city')
                                 <span class="invalid-feedback" role="alert">
@@ -202,8 +192,7 @@
                                 }}</label>
 
                             <div class="col-md-8">
-                                <select class="custom-select @error('state') is-invalid @enderror" name="state"
-                                    id="state">
+                                <select class="custom-select @error('state') is-invalid @enderror" name="state" id="state">
                                     <option value="" selected disabled>-- Selecciona provincia --</option>
                                     <optgroup label="Extranjero">
                                         <option value="Extranjero" {{ old('state')==='Extranjero' ? 'selected' : '' }}>
@@ -282,8 +271,7 @@
                             <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Pais') }}</label>
 
                             <div class="col-md-8">
-                                <select class="custom-select @error('country') is-invalid @enderror" id="country"
-                                    name="country">
+                                <select class="custom-select @error('country') is-invalid @enderror" id="country" name="country">
                                     <option value="AF" {{ old('country')==='AF' ? 'selected' : '' }}>Afganistán</option>
                                     <option value="AL" {{ old('country')==='AL' ? 'selected' : '' }}>Albania</option>
                                     <option value="DE" {{ old('country')==='DE' ? 'selected' : '' }}>Alemania</option>
@@ -359,8 +347,7 @@
                                     <option value="ER" {{ old('country')==='ER' ? 'selected' : '' }}>Eritrea</option>
                                     <option value="SK" {{ old('country')==='SK' ? 'selected' : '' }}>Eslovaquia</option>
                                     <option value="SI" {{ old('country')==='SI' ? 'selected' : '' }}>Eslovenia</option>
-                                    <option value="ES" {{ old('country')==='ES' ? 'selected' : (!old('country')
-                                        ? 'selected' : '' ) }}>España</option>
+                                    <option value="ES" {{ old('country')==='ES' ? 'selected' : (!old('country') ? 'selected' : '' ) }}>España</option>
                                     <option value="US" {{ old('country')==='US' ? 'selected' : '' }}>Estados Unidos
                                     </option>
                                     <option value="EE" {{ old('country')==='EE' ? 'selected' : '' }}>Estonia</option>
@@ -599,20 +586,15 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-8 offset-sm-4">
-                                <a class="btn btn-secondary btn-block mb-3 text-center" role="button"
-                                    data-toggle="collapse" href="#publicCompanyFields" aria-expanded="true"
-                                    aria-controls="publicCompanyFields"><i class="ion-md-android-clipboard"></i>
+                                <a class="btn btn-secondary btn-block mb-3 text-center" role="button" data-toggle="collapse" href="#publicCompanyFields" aria-expanded="true" aria-controls="publicCompanyFields"><i class="ion-md-android-clipboard"></i>
                                     Pertenezco a Empresa Pública</a>
                                 <div class="collapse in" id="publicCompanyFields" aria-expanded="true" style="">
                                     <label for="ofcont" class="control-label">Oficina Contable</label>
-                                    <input class="form-control mb-3" id="ofcont" title="Introduzca la oficina contable"
-                                        name="ofcont" type="text">
+                                    <input class="form-control mb-3" id="ofcont" title="Introduzca la oficina contable" name="ofcont" type="text">
                                     <label for="gestor" class="control-label">Órgano Gestor</label>
-                                    <input class="form-control mb-3" id="gestor" title="Introduzca el órgano gestor"
-                                        name="gestor" type="text">
+                                    <input class="form-control mb-3" id="gestor" title="Introduzca el órgano gestor" name="gestor" type="text">
                                     <label for="untram" class="control-label">Unidad Tramitadora</label>
-                                    <input class="form-control mb-3" id="untram"
-                                        title="Introduzca la Unidad Tramitadora" name="untram" type="text">
+                                    <input class="form-control mb-3" id="untram" title="Introduzca la Unidad Tramitadora" name="untram" type="text">
                                 </div>
                             </div>
                         </div>
@@ -628,8 +610,7 @@
             <div class="col-12 col-sm-12">
                 <div class="form-group form-check">
                     <input type="checkbox" class="form-check-input" id="legal" required name="legal">
-                    <label class="form-check-label" for="legal">He leído y acepto los <a
-                            href="{{ route('terminos-y-condiciones') }}?c={{ $checkout->id }}">términos y condiciones
+                    <label class="form-check-label" for="legal">He leído y acepto los <a href="{{ route('terminos-y-condiciones') }}?c={{ $checkout->id }}">términos y condiciones
                             generales de la compra</a>.</label>
                 </div>
                 <p class="small">
@@ -689,6 +670,16 @@
     });
 
     document.getElementById('invoice-data').addEventListener("input", function (e) {
+        if (e.target.getAttribute("type") != "radio" && e.target.getAttribute('type') != 'checkbox') {
+            var radios = document.getElementsByTagName('input');
+            for (i = 0; i < radios.length; i++) {
+                if (radios[i].getAttribute("type") == "radio") {
+                    radios[i].checked = false;
+                }
+            }
+        }
+    });
+    document.getElementById('invoice-data').addEventListener("submit", function (e) {
         if (e.target.getAttribute("type") != "radio" && e.target.getAttribute('type') != 'checkbox') {
             var radios = document.getElementsByTagName('input');
             for (i = 0; i < radios.length; i++) {

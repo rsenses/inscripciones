@@ -1,5 +1,9 @@
 @extends('layouts.public')
 
+@section('scripts_before')
+<x-analytics :campaign="$checkout->campaign" />
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -19,9 +23,9 @@
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $registration->user->name }}" required autocomplete="name" autofocus>
 
                                 @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -33,9 +37,9 @@
                                 <input id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ $registration->user->last_name }}" required autocomplete="last_name">
 
                                 @error('last_name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -47,9 +51,9 @@
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $registration->user->email }}" required autocomplete="email">
 
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -63,9 +67,9 @@
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -78,10 +82,10 @@
                             </div>
 
                             @error('password_confirmation')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
 
                         <div class="form-group row">
@@ -126,7 +130,8 @@
                                                     </td>
                                                     <td>
                                                         <p><a href="http://www.elmundo.es/">www.elmundo.es</a>
-                                                        <br /><a href="http://www.elmundo.es/metropoli.html">metropoli.elmundo.es</a></p>
+                                                            <br /><a href="http://www.elmundo.es/metropoli.html">metropoli.elmundo.es</a>
+                                                        </p>
                                                     </td>
                                                     <td>
                                                         <p>Unidad Editorial Información General, S.L.U.</p>
@@ -149,9 +154,10 @@
                                                     </td>
                                                     <td>
                                                         <p><a href="http://www.expansion.com/actualidadeconomica.html">www.expansion.com/actualidadeconomica.html</a>
-                                                        <br /><a href="http://www.expansion.com/">www.expansion.com</a>
-                                                        <br /><a href="http://www.fueradeserie.com/">www.fueradeserie.com</a>
-                                                        <br /><a href="http://nauta360.expansion.com/">nauta360.expansion.com</a></p>
+                                                            <br /><a href="http://www.expansion.com/">www.expansion.com</a>
+                                                            <br /><a href="http://www.fueradeserie.com/">www.fueradeserie.com</a>
+                                                            <br /><a href="http://nauta360.expansion.com/">nauta360.expansion.com</a>
+                                                        </p>
                                                     </td>
                                                     <td>
                                                         <p>Unidad Editorial Información Económica, S.L.U.</p>
@@ -163,9 +169,10 @@
                                                     </td>
                                                     <td>
                                                         <p><a href="http://www.marca.com/">www.marca.com</a>
-                                                        <br /><a href="http://www.marca.com/radio.html">www.marca.com/radio.html</a>
-                                                        <br /><a href="http://www.supercodigo.marca.com/">www.supercodigo.marca.com</a>
-                                                        <br /><a href="http://www.marca.com/tiramillas.html">www.marca.com/tiramillas.html</a></p>
+                                                            <br /><a href="http://www.marca.com/radio.html">www.marca.com/radio.html</a>
+                                                            <br /><a href="http://www.supercodigo.marca.com/">www.supercodigo.marca.com</a>
+                                                            <br /><a href="http://www.marca.com/tiramillas.html">www.marca.com/tiramillas.html</a>
+                                                        </p>
                                                     </td>
                                                     <td>
                                                         <p>Unidad Editorial Información Deportiva, S.L.U.</p>
@@ -177,9 +184,10 @@
                                                     </td>
                                                     <td>
                                                         <p><a href="http://www.elmundo.es/historia.html">www.elmundo.es/historia.html</a>
-                                                        <br /><a href="http://www.dmedicina.com/">www.dmedicina.com</a>
-                                                        <br /><a href="http://www.correofarmaceutico.com/">www.correofarmaceutico.com</a>
-                                                        <br /><a href="http://www.diariomedico.com/">www.diariomedico.com</a></p>
+                                                            <br /><a href="http://www.dmedicina.com/">www.dmedicina.com</a>
+                                                            <br /><a href="http://www.correofarmaceutico.com/">www.correofarmaceutico.com</a>
+                                                            <br /><a href="http://www.diariomedico.com/">www.diariomedico.com</a>
+                                                        </p>
                                                     </td>
                                                     <td>
                                                         <p>Unidad Editorial Revistas, S.L.U.</p>
@@ -235,11 +243,12 @@
                                                     </td>
                                                     <td>
                                                         <p><a href="http://www.esferalibros.com/">www.esferalibros.com</a>
-                                                        <br /><a href="http://www.uesyndication.com/">www.uesyndication.com</a>
-                                                        <br /><a href="http://www.elcultural.es/">www.elcultural.es</a>
-                                                        <br /><a href="http://www.unidadeditorial.com/">www.unidadeditorial.com</a>
-                                                        <br /><a href="http://www.unidadeditorial.es/">www.unidadeditorial.es</a>
-                                                        <br /><a href="http://www.veo.es/">www.veo.es</a></p>
+                                                            <br /><a href="http://www.uesyndication.com/">www.uesyndication.com</a>
+                                                            <br /><a href="http://www.elcultural.es/">www.elcultural.es</a>
+                                                            <br /><a href="http://www.unidadeditorial.com/">www.unidadeditorial.com</a>
+                                                            <br /><a href="http://www.unidadeditorial.es/">www.unidadeditorial.es</a>
+                                                            <br /><a href="http://www.veo.es/">www.veo.es</a>
+                                                        </p>
                                                     </td>
                                                 </tr>
                                             </tbody>

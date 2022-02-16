@@ -8,6 +8,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\URL;
 
 class CheckoutAccepted extends Mailable
 {
@@ -32,10 +33,15 @@ class CheckoutAccepted extends Mailable
      */
     public function build()
     {
+        $partner = $this->checkout->campaign->partner;
+
+        $protocol = config('app.env') === 'production' ? 'https' : 'http';
+        $local = config('app.env') === 'production' ? '' : '.localhost';
+        URL::forceRootUrl("$protocol://inscripciones.{$partner->url}$local");
+
         $promo = $this->checkout->registrations()->where('status', 'accepted')->first()->promo;
         $discount = Discount::where('code', $promo)->first();
 
-        $partner = $this->checkout->campaign->partner;
         $folder = $this->checkout->campaign->folder;
 
         $fromAddress = $this->checkout->campaign->from_address;

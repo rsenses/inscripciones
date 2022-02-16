@@ -3,10 +3,10 @@ Estimad@ {{ $registration->user->full_name }}
 Le damos la bienvenida al {{ $registration->product->name }}. Su inscripción ha sido confirmada.
 
 A través del siguiente enlace podrá acceder a toda la información relativa al evento:
-https://foro.expansion.com
+https://energiayfelicidad.telva.com
 
 • Cómo llegar.
-• Programa y ponentes. 
+• Programa y ponentes.
 • Listado de asistentes.
 • Protocolo Covid.
 • Zona de preguntas en directo.

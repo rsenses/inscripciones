@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ModifyCampaignTable2 extends Migration
+class ModifyCampaignTable3 extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class ModifyCampaignTable2 extends Migration
      */
     public function up()
     {
-        Schema::table('campaigns', function (Blueprint $table) {
+        Schema::table('partners', function (Blueprint $table) {
             $table->string('url');
         });
     }
@@ -25,7 +25,7 @@ class ModifyCampaignTable2 extends Migration
      */
     public function down()
     {
-        Schema::table('campaigns', function (Blueprint $table) {
+        Schema::table('partners', function (Blueprint $table) {
             $table->dropColumn(['url']);
         });
     }

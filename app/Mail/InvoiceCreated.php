@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Invoice;
+use Illuminate\Support\Facades\URL;
 
 class InvoiceCreated extends Mailable
 {
@@ -31,6 +32,10 @@ class InvoiceCreated extends Mailable
      */
     public function build()
     {
+        $protocol = config('app.env') === 'production' ? 'https' : 'http';
+        $local = config('app.env') === 'production' ? '' : '.localhost';
+        URL::forceRootUrl("$protocol://inscripciones.{$this->invoice->checkout->campaign->partner->url}$local");
+
         $folder = $this->invoice->checkout->campaign->folder;
         $fromAddress = $this->invoice->checkout->campaign->from_address;
         $fromName = $this->invoice->checkout->campaign->from_name;

@@ -16,6 +16,7 @@ use App\Http\Controllers\DealController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\CampaignController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------

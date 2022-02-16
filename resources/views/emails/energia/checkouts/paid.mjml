@@ -44,13 +44,23 @@
                         color="#2a3a4a"
                     >
                         @if(empty($checkout->mode()['online'])) Aquí tienes tus
-                        entradas: {{ route('tickets.show.checkout', ['checkout'
-                        => $checkout, 'token' => $checkout->token]) }}
+                        entradas:
+                        <a
+                            href="{{ route('tickets.show.checkout', ['checkout'
+                        => $checkout, 'token' => $checkout->token]) }}"
+                            >{{ route('tickets.show.checkout', ['checkout' =>
+                            $checkout, 'token' => $checkout->token]) }}</a
+                        >
                         @elseif(empty($checkout->mode()['presencial'])) Podrás
                         acceder al streaming mediante tu email y contraseña.
-                        @else Aquí tienes tus entradas: {{
+                        @else Aquí tienes tus entradas:
+                        <a
+                            href="{{
                         route('tickets.show.checkout', ['checkout' => $checkout,
-                        'token' => $checkout->token]) }}<br />
+                        'token' => $checkout->token]) }}"
+                            >{{ route('tickets.show.checkout', ['checkout' =>
+                            $checkout, 'token' => $checkout->token]) }}</a
+                        ><br />
                         Podrás acceder al streaming mediante tu email y
                         contraseña. @endif
                     </mj-text>
@@ -59,8 +69,8 @@
                         información relativa al evento:</mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        ><a href="https://foro.expansion.com"
-                            >https://foro.expansion.com</a
+                        ><a href="https://energiayfelicidad.telva.com"
+                            >https://energiayfelicidad.telva.com</a
                         ></mj-text
                     >
                     <mj-button

@@ -19,7 +19,7 @@
 
 .cardWrap {
     width: 42em;
-    margin: 1em auto;
+    margin: 0 auto;
     color: #fff;
     font-family: sans-serif;
 }
@@ -36,7 +36,7 @@
     float: left;
     position: relative;
     padding: 1em;
-    margin-top: 100px;
+    margin-top: 5vh;
 }
 
 .cardLeft {
@@ -168,4 +168,16 @@ ul li a {
 
 ul li a:hover {
     color: #000;
+}
+@media print {
+    .no-print,
+    .no-print * {
+        display: none !important;
+    }
+    .cardWrap {
+        page-break-after: always;
+    }
+    .card {
+        margin-top: 0;
+    }
 }

@@ -9,7 +9,7 @@ Solicitud completada correctamente. A continuación detallamos el resumen de la 
 
 Para proceder al pago y confirmar tu asistencia regístrate en el siguiente enlace y completa la inscripción:
 
-https://inscripciones.telva.com/checkouts/{{ $checkout->id }}?t={{ $checkout->token }}
+{{ route('checkouts', ['checkout' => $checkout, 't' => $checkout->token]) }}
 
 Atentamente,
 

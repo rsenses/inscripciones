@@ -1,7 +1,9 @@
 .clearfix:before,
 .clearfix:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */
 }
 
 .clearfix:after {
@@ -25,13 +27,11 @@
 }
 
 .card {
-    background: linear-gradient(
-        to bottom,
-        var(--primary) 0%,
-        var(--primary) 26%,
-        #ecedef 26%,
-        #ecedef 100%
-    );
+    background: linear-gradient(to bottom,
+            var(--primary) 0%,
+            var(--primary) 26%,
+            #ecedef 26%,
+            #ecedef 100%);
     height: 17.5em;
     float: left;
     position: relative;
@@ -156,6 +156,7 @@ ul {
     width: 44em;
     margin: 0 auto;
 }
+
 ul li {
     display: inline-block;
     margin: 0.5em 0;
@@ -169,14 +170,19 @@ ul li a {
 ul li a:hover {
     color: #000;
 }
+
 @media print {
+
     .no-print,
     .no-print * {
         display: none !important;
     }
+
     .cardWrap {
-        page-break-after: always;
+        margin: 1.5rem auto;
+        break-inside: avoid;
     }
+
     .card {
         margin-top: 0;
     }

@@ -187,7 +187,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                                                                    <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:22px;text-align:left;color:#2a3a4a;">Solicitud <strong>completada correctamente</strong>. A continuación detallamos el resumen de la compra::</div>
+                                                                    <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:22px;text-align:left;color:#2a3a4a;">Solicitud <strong>completada correctamente</strong>. A continuación detallamos el resumen de la compra:</div>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -212,7 +212,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                                                                    <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:22px;text-align:left;color:#2a3a4a;"><a href="http://inscripciones.telva.com/checkouts/{{ $checkout->id }}?t={{ $checkout->token }}">http://inscripciones.telva.com/checkouts/{{ $checkout->id }}?t={{ $checkout->token }}</a></div>
+                                                                    <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:22px;text-align:left;color:#2a3a4a;"><a href="https://inscripciones.telva.com/checkouts/{{ $checkout->id }}?t={{ $checkout->token }}">https://inscripciones.telva.com/checkouts/{{ $checkout->id }}?t={{ $checkout->token }}</a></div>
                                                                 </td>
                                                             </tr>
                                                             <tr>

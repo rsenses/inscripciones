@@ -310,4 +310,35 @@ class Checkout extends Model
 
         return $count;
     }
+
+    public function resendLastEmail()
+    {
+        $this->sendEventByStatus();
+
+        return $this;
+    }
+
+    private function sendEventByStatus()
+    {
+        switch ($this->status) {
+            case 'accepted':
+                $invite = false;
+                $sendEmail = true;
+
+                CheckoutAccepted::dispatch($this, $invite, $sendEmail);
+                break;
+            case 'paid':
+                CheckoutPaid::dispatch($this);
+                break;
+            case 'pending':
+                CheckoutPending::dispatch($this);
+                break;
+            case 'denied':
+                CheckoutDenied::dispatch($this);
+                break;
+            case 'cancelled':
+                CheckoutCancelled::dispatch($this);
+                break;
+        }
+    }
 }

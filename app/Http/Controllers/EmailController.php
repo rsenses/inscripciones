@@ -8,13 +8,16 @@ class EmailController extends Controller
 {
     public function claim(Product $product)
     {
-        $registrations = $product->registrations()
-            ->where('status', 'accepted')
-            ->orWhere('status', 'pending')
+        $checkouts = $product->checkouts()
+            ->where(function ($q) {
+                $q->where('checkouts.status', 'accepted');
+                $q->orWhere('checkouts.status', 'pending');
+            })
+            ->distinct()
             ->get();
 
-        foreach ($registrations as $registration) {
-            $registration->resendLastEmail();
+        foreach ($checkouts as $checkout) {
+            $checkout->resendLastEmail();
         }
 
         return redirect()->route('products.show', [

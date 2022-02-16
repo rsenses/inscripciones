@@ -174,9 +174,9 @@ class RegistrationController extends Controller
      * @param  \App\Models\Registration  $registration
      * @return \Illuminate\Http\Response
      */
-    public function resend(Request $request, Registration $registration)
+    public function resend(Registration $registration)
     {
-        $registration->resendLastEmail();
+        $registration->checkout->resendLastEmail();
 
         return redirect()->route('products.show', [
             'product' => $registration->product

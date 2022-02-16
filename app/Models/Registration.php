@@ -136,38 +136,4 @@ class Registration extends Model
 
         return $registration;
     }
-
-    public function resendLastEmail()
-    {
-        $this->sendEventByStatus($this->status);
-
-        return $this;
-    }
-
-    private function sendEventByStatus(string $status)
-    {
-        switch ($status) {
-            case 'accepted':
-                $invite = false;
-                $sendEmail = true;
-
-                CheckoutAccepted::dispatch($this->checkout, $invite, $sendEmail);
-                break;
-            case 'paid':
-                CheckoutPaid::dispatch($this->checkout);
-                break;
-            case 'pending':
-                CheckoutPending::dispatch($this->checkout);
-                break;
-            case 'denied':
-                CheckoutDenied::dispatch($this->checkout);
-                break;
-            case 'cancelled':
-                CheckoutCancelled::dispatch($this->checkout);
-                break;
-            default:
-                RegistrationPaid::dispatch($this);
-                break;
-        }
-    }
 }

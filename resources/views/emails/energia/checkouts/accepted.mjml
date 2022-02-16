@@ -35,7 +35,7 @@
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         >Solicitud <strong>completada correctamente</strong>. A
                         continuación detallamos el resumen de la
-                        compra::</mj-text
+                        compra:</mj-text
                     >
                     <mj-table
                         line-height="22px"
@@ -76,8 +76,8 @@
                         color="#2a3a4a"
                     >
                         <a
-                            href="http://inscripciones.telva.com/checkouts/{{ $checkout->id }}?t={{ $checkout->token }}"
-                            >http://inscripciones.telva.com/checkouts/{{
+                            href="https://inscripciones.telva.com/checkouts/{{ $checkout->id }}?t={{ $checkout->token }}"
+                            >https://inscripciones.telva.com/checkouts/{{
                             $checkout->id }}?t={{ $checkout->token }}</a
                         >
                     </mj-text>

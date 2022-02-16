@@ -4,23 +4,18 @@
 <div class="container-fluid">
     <h2>{{ $product->name }} <span class="badge badge-info">{{ $product->mode }}</span>
         @if(Auth::user()->role === 'superadmin')
-            <a class="pull-right btn btn-white text-primary border border-primary"
-               title="editar"
-                href="{{ route('products.edit', ['product' => $product]) }}"
-                data-toggle="tooltip" data-placement="bottom">
-                <i class="ion ion-edit"></i>
-            </a>
+        <a class="pull-right btn btn-white text-primary border border-primary" title="editar" href="{{ route('products.edit', ['product' => $product]) }}" data-toggle="tooltip" data-placement="bottom">
+            <i class="ion ion-edit"></i>
+        </a>
         @endif
     </h2>
-    @if($product->description)
-        <p>{{ $product->description }}</p>
-    @endif
+
     <div class="row mb-5 align-items-stretch">
         <div class="col col-sm-4">
             <div class="card bg-white h-100">
-              <div class="card-body d-flex align-items-center">
-              <p><img src="{{ asset('storage/' . $product->campaign->image) }}" alt="El producto no tiene imagen" class="img-fluid"></p>
-              </div>
+                <div class="card-body d-flex align-items-center">
+                    <p><img src="{{ asset('storage/' . $product->campaign->image) }}" alt="El producto no tiene imagen" class="img-fluid"></p>
+                </div>
             </div>
         </div>
         <div class="col col-sm-8">
@@ -33,10 +28,10 @@
                                 <td>{{ $product->price }} €</td>
                             </tr>
                             @if($product->mode === 'presencial')
-                                <tr>
-                                    <td>Lugar de Celebración</td>
-                                    <td>{{ $product->place }}</td>
-                                </tr>
+                            <tr>
+                                <td>Lugar de Celebración</td>
+                                <td>{{ $product->place }}</td>
+                            </tr>
                             @endif
                             <tr>
                                 <td>Fecha de inicio</td>
@@ -88,13 +83,13 @@
             </table>
         </div>
     </div>
-<div class="card bg-white">
+    <div class="card bg-white">
         <div class="card-body">
             <h4 class="card-title">Inscripciones</h4>
             <x-registrations.table :registrations="$registrations" :product="$product" :show-product="false" />
         </div>
     </div>
-    </div>
+</div>
 
 
 </div>

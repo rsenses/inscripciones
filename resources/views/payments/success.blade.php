@@ -16,7 +16,7 @@
                         <table class="table ">
                             <thead>
                                 <tr>
-                                    <th>Cantidad</th>
+                                    <th>#</th>
                                     <th>Evento</th>
                                 </tr>
                             </thead>

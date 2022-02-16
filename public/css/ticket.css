@@ -1,3 +1,6 @@
+body{
+    background-color: #fdfdfd
+}
 .clearfix:before,
 .clearfix:after {
     content: " ";
@@ -10,6 +13,7 @@
     clear: both;
 }
 
+
 /*
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
@@ -18,7 +22,27 @@
 .clearfix {
     *zoom: 1;
 }
-
+.advice-container{
+    background: #ecedef;
+    color: #004085;
+    background-color: #cce5ff;
+    border: 1px solid;
+    border-color: #b8daff;
+    max-width: 600px;
+    padding: 1rem 1rem;
+    margin: 0 auto .5rem;
+    font-family: sans-serif;
+}
+.advice-container p{
+    
+}
+.advice-container_online{
+    background: #ecedef;
+    color: #004085;
+    border: 1px solid;
+    border-color: #dbdbdb;
+    margin-bottom: 1rem;
+}
 .cardWrap {
     width: 42em;
     margin: 0 auto;
@@ -35,18 +59,18 @@
     height: 17.5em;
     float: left;
     position: relative;
-    padding: 1em;
     margin-top: 5vh;
 }
 
 .cardLeft {
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
-    width: 26.5em;
+    width: 30.5em;
 }
 
 .cardRight {
     width: 8em;
+    padding: 0 1rem;
     border-left: 0.18em dashed #fff;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
@@ -73,8 +97,8 @@
 }
 
 h1 {
-    font-size: 1.25em;
-    margin: 17.5px 0 2em;
+    font-size: 1.15em;
+    margin: 17.5px 0;
 }
 
 h1 span {
@@ -110,12 +134,15 @@ h1 span {
 }
 
 .title {
-    margin: 2em 0 0 0;
+    padding: .5rem .5rem .5rem 1rem;
+    background: var(--primary);
+    border-top-left-radius: 20px
 }
 
 .name,
 .place,
 .time {
+    padding: .25rem 1rem 0;
     margin: 0.7em 0 0 0;
 }
 
@@ -169,6 +196,12 @@ ul li a {
 
 ul li a:hover {
     color: #000;
+}
+.online-tag{
+    position: absolute;
+    right: 1rem;
+    bottom: .5rem;
+    color: #a2aeae;
 }
 
 @media print {

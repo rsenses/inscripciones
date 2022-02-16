@@ -12,44 +12,44 @@
                 <div class="card-body">
                     <h5 class="card-title">Productos</h5>
                     <p class="card-text">
-                        <div class="table-responsive mb-4">
-                            <table class="table ">
-                                <thead>
-                                    <tr>
-                                        <th>Cantidad</th>
-                                        <th>Evento</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($checkout->products->groupBy('id') as $product)
-                                        <tr>
-                                            <td>{{ $product->count() }}</td>
-                                            <td>{{ $product[0]->name }} <span class="text-uppercase">{{ $product[0]->mode }}</span></td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="justify-content-center">
-                            <div class="col-12">
-                                @if($checkout->method != 'card' && $checkout->amount > 0)
-                                    <div class="alert alert-success">
-                                        Registro realizada correctamente.<br>
-                                        En breve le llegará un email con las indicaciones para poder completar el pago mediante transferencia bancaria.
-                                    </div>
-                                @else
-                                    <div class="alert alert-success">
-                                        Compra realizada correctamente.<br>
-                                        En unos instantes recibirá un email con los detalles de la misma.<br>
-                                    </div>
-                                @endif
-                                <p class="text-center">
-                                    <a href="{{ $checkout->products[0]->url }}" class="btn btn-info">
+                    <div class="table-responsive mb-4">
+                        <table class="table ">
+                            <thead>
+                                <tr>
+                                    <th>Cantidad</th>
+                                    <th>Evento</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($checkout->products->groupBy('id') as $product)
+                                <tr>
+                                    <td>{{ $product->count() }}</td>
+                                    <td>{{ $product[0]->name }} <span class="text-uppercase">{{ $product[0]->mode }}</span></td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="justify-content-center">
+                        <div class="col-12">
+                            @if($checkout->method != 'card' && $checkout->amount > 0)
+                            <div class="alert alert-success">
+                                Registro realizada correctamente.<br>
+                                En breve le llegará un email con las indicaciones para poder completar el pago mediante transferencia bancaria.
+                            </div>
+                            @else
+                            <div class="alert alert-success">
+                                Compra realizada correctamente.<br>
+                                En unos instantes recibirá un email con los detalles de la misma.<br>
+                            </div>
+                            @endif
+                            <p class="text-center">
+                                <a href="{{ $checkout->campaign->url }}" class="btn btn-info">
                                     <i class="ion ion-arrow-return-left" aria-hidden="true"></i>
                                     Volver a la web del evento</a>
-                                </p>
-                            </div>
+                            </p>
                         </div>
+                    </div>
                     </p>
                 </div>
             </div>

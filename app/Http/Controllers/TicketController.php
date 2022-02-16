@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\RegistrationAsigned;
 use App\Models\Checkout;
-use App\Models\Product;
 use App\Models\Registration;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Validation\Rule;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
+use App\Mail\RegistrationPaid;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class TicketController extends Controller
 {
@@ -32,9 +33,13 @@ class TicketController extends Controller
             abort(403, 'Unauthorized action.');
         }
 
+        $user = $checkout->user;
+
         return view('tickets.checkout', [
             'checkout' => $checkout,
+            'registrations' => $checkout->registrations->where('user_id', $user->id),
             'brand' => $this->getBrand($checkout),
+            'user' => $user
         ]);
     }
 
@@ -44,7 +49,7 @@ class TicketController extends Controller
      * @param  \App\Models\Registration  $registration
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, Registration $registration, $id)
+    public function show(Registration $registration, $id)
     {
         if ($registration->unique_id != $id) {
             abort(403, 'Unauthorized action.');
@@ -56,7 +61,7 @@ class TicketController extends Controller
 
         return view('tickets.show', [
             'registration' => $registration,
-            'brand' => $this->getBrand(),
+            'brand' => $this->getBrand($registration->checkout),
         ]);
     }
 
@@ -125,6 +130,10 @@ class TicketController extends Controller
             'user_id' => $user->id,
             'asigned' => true,
         ]);
+
+        $registration = $registration->fresh();
+
+        RegistrationAsigned::dispatch($registration);
 
         return redirect()->route('tickets.show', [
             'registration' => $registration,

@@ -2,18 +2,16 @@ Estimad@ {{ $checkout->user->full_name }}
 
 Te damos la bienvenida al {{ $checkout->campaign->name }}. Su inscripción ha sido confirmada.
 
-@if(!empty($checkout->mode()['presencial']) && empty($checkout->mode()['online']))
+@if(empty($checkout->mode()['online']))
+Aquí tienes tus entradas:
+{{ route('tickets.show.checkout', ['checkout' => $checkout, 'token' => $checkout->token]) }}
+@elseif(empty($checkout->mode()['presencial']))
+Podrás acceder al streaming mediante tu email y contraseña.
+@else
 Aquí tienes tus entradas:
 {{ route('tickets.show.checkout', ['checkout' => $checkout, 'token' => $checkout->token]) }}
 
-También podrás acceder al congreso y los talleres online mediante tu email y contraseña.
-@elseif(empty($checkout->mode()['presencial']))
-Recuerda que podrás acceder al congreso y los talleres online mediante tu email y contraseña.
-@else
-Aquí tienes tus entradas presenciales:
-{{ route('tickets.show.checkout', ['checkout' => $checkout, 'token' => $checkout->token]) }}
-
-Para las compras online, recuerda que podrás acceder mediante tu email y contraseña.
+Podrás acceder al streaming mediante tu email y contraseña.
 @endif
 
 A través del siguiente enlace podrás ver toda la información relativa al evento:

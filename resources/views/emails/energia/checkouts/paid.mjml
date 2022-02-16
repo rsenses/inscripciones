@@ -43,23 +43,16 @@
                         font-size="14px"
                         color="#2a3a4a"
                     >
-                        @if(!empty($checkout->mode()['presencial']) &&
-                        empty($checkout->mode()['online'])) Aquí tienes tus
-                        entradas:<br />
-                        {{ route('tickets.show.checkout', ['checkout' =>
-                        $checkout, 'token' => $checkout->token]) }}
-                        <br />
-                        También podrás acceder al congreso y los talleres online
-                        mediante tu email y contraseña.
-                        @elseif(empty($checkout->mode()['presencial'])) Recuerda
-                        que podrás acceder al congreso y los talleres online
-                        mediante tu email y contraseña. @else Aquí tienes tus
-                        entradas presenciales:<br />
-                        {{ route('tickets.show.checkout', ['checkout' =>
-                        $checkout, 'token' => $checkout->token]) }}
-                        <br />
-                        Para las compras online, recuerda que podrás acceder
-                        mediante tu email y contraseña. @endif
+                        @if(empty($checkout->mode()['online'])) Aquí tienes tus
+                        entradas: {{ route('tickets.show.checkout', ['checkout'
+                        => $checkout, 'token' => $checkout->token]) }}
+                        @elseif(empty($checkout->mode()['presencial'])) Podrás
+                        acceder al streaming mediante tu email y contraseña.
+                        @else Aquí tienes tus entradas: {{
+                        route('tickets.show.checkout', ['checkout' => $checkout,
+                        'token' => $checkout->token]) }}<br />
+                        Podrás acceder al streaming mediante tu email y
+                        contraseña. @endif
                     </mj-text>
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         >A través del siguiente enlace podrá acceder a toda la

@@ -33,7 +33,7 @@
                         ></mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Adjunto enviamos el duplicado de su factura de
+                        >Adjunto enviamos el duplicado de tu factura de
                         inscripción al {{ $invoice->checkout->campaign->name
                         }}.</mj-text
                     >
@@ -49,13 +49,13 @@
                         font-size="14px"
                         color="#2a3a4a"
                     >
-                        @if($invoice->checkout->status != 'paid') Rogamos haga
+                        @if($invoice->checkout->status != 'paid') Rogamos hagas
                         efectivo el pago de la factura a la mayor brevedad
                         posible dentro de las próximas 48 horas.<br />
-                        Por favor, envíenos el justificante de la transferencia
+                        Por favor, envíanos el justificante de la transferencia
                         a
-                        <a href="mailto:foro.expansion@unidadeditorial.es"
-                            >foro.expansion@unidadeditorial.es</a
+                        <a href="mailto:inscripciones.telva@unidadeditorial.es"
+                            >inscripciones.telva@unidadeditorial.es</a
                         >. @endif
                     </mj-text>
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
@@ -87,9 +87,9 @@
                 <mj-text font-size="14px" color="#4a5a6a" align="center"
                     >Para cualquier consulta contacta con
                     <a
-                        href="mailto:foro.expansion@unidadeditorial.es"
+                        href="mailto:inscripciones.telva@unidadeditorial.es"
                         style="color: blue"
-                        >foro.expansion@unidadeditorial.es</a
+                        >inscripciones.telva@unidadeditorial.es</a
                     ></mj-text
                 >
             </mj-column>

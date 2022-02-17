@@ -41,7 +41,7 @@ class CheckoutPending extends Mailable
         $fromAddress = $this->checkout->campaign->from_address;
         $fromName = $this->checkout->campaign->from_name;
 
-        return $this->subject('Está a un paso de confirmar su plaza')
+        return $this->subject('A solo un paso de confirmar la inscripción')
             ->from($fromAddress, $fromName)
             ->view('emails.' . $folder . '.checkouts.notpaid')
             ->text('emails.' . $folder . '.checkouts.notpaid_plain');

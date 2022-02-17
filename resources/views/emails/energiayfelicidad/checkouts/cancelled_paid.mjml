@@ -34,7 +34,7 @@
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         >Hemos iniciado el proceso de cancelación de asistencia
-                        al {{ $checkout->products[0]->name }}. En unos días
+                        al {{ $checkout->campaign->name }}. En unos días
                         recibirás la factura de abono.</mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
@@ -72,9 +72,9 @@
                 <mj-text font-size="14px" color="#4a5a6a" align="center"
                     >Para cualquier consulta contacta con
                     <a
-                        href="mailto:foro.expansion@unidadeditorial.es"
+                        href="mailto:inscripciones.telva@unidadeditorial.es"
                         style="color: blue"
-                        >foro.expansion@unidadeditorial.es</a
+                        >inscripciones.telva@unidadeditorial.es</a
                     ></mj-text
                 >
             </mj-column>

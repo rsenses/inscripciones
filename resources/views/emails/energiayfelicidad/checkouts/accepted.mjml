@@ -66,9 +66,8 @@
                         @endforeach
                     </mj-table>
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Para proceder al pago y confirmar su asistencia
-                        regístrese en el siguiente enlace y complete su
-                        inscripción:</mj-text
+                        >Para proceder al pago y confirmar tu asistencia
+                        completa tu inscripción en el siguiente enlace:</mj-text
                     >
                     <mj-text
                         line-height="22px"
@@ -110,9 +109,9 @@
                 <mj-text font-size="14px" color="#4a5a6a" align="center"
                     >Para cualquier consulta contacta con
                     <a
-                        href="mailto:foro.expansion@unidadeditorial.es"
+                        href="mailto:inscripciones.telva@unidadeditorial.es"
                         style="color: blue"
-                        >foro.expansion@unidadeditorial.es</a
+                        >inscripciones.telva@unidadeditorial.es</a
                     ></mj-text
                 >
             </mj-column>

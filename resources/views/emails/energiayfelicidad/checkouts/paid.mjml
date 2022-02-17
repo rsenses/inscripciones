@@ -34,9 +34,9 @@
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         ><strong
-                            >Le damos la bienvenida al {{
+                            >Te damos la bienvenida al {{
                             $checkout->campaign->name }}</strong
-                        >. Su inscripción ha sido confirmada.</mj-text
+                        >.</mj-text
                     >
                     <mj-text
                         line-height="22px"
@@ -65,7 +65,7 @@
                         contraseña. @endif
                     </mj-text>
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >A través del siguiente enlace podrá acceder a toda la
+                        >A través del siguiente enlace podrás ver toda la
                         información relativa al evento:</mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
@@ -109,9 +109,9 @@
                 <mj-text font-size="14px" color="#4a5a6a" align="center"
                     >Para cualquier consulta contacta con
                     <a
-                        href="mailto:foro.expansion@unidadeditorial.es"
+                        href="mailto:inscripciones.telva@unidadeditorial.es"
                         style="color: blue"
-                        >foro.expansion@unidadeditorial.es</a
+                        >inscripciones.telva@unidadeditorial.es</a
                     ></mj-text
                 >
             </mj-column>

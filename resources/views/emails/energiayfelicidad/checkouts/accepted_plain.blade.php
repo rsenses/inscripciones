@@ -7,8 +7,7 @@ Solicitud completada correctamente. A continuación detallamos el resumen de la 
 {{ $product->count() }}x {{ $product[0]->name }} {{ $product[0]->mode }}
 @endforeach
 
-Para proceder al pago y confirmar tu asistencia regístrate en el siguiente enlace y completa la inscripción:
-
+Para proceder al pago y confirmar tu asistencia completa tu inscripción en el siguiente enlace:
 {{ route('checkouts', ['checkout' => $checkout, 't' => $checkout->token]) }}
 
 Atentamente,

@@ -37,7 +37,7 @@ class TicketController extends Controller
 
         return view('tickets.checkout', [
             'checkout' => $checkout,
-            'registrations' => $checkout->registrations->where('user_id', $user->id),
+            'registrations' => $checkout->registrations,
             'brand' => $this->getBrand($checkout),
             'user' => $user
         ]);

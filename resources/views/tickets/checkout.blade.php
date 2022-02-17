@@ -36,10 +36,10 @@
     @if($registrations->count())
     <div class="no-print advice-container">
         <p>
-            Cada entrada puede ser compartida, la persona que abra el enlace, podrá rellenar sus datos personales y así tener esa entrada asignada y enviada por email.
+            Cada entrada puede ser compartida, la persona que abra el enlace, tendrá que rellenar sus datos personales para <strong>asignar esa entrada y enviar por email</strong>.
         </p>
         <p>
-            <strong>Solo aparecerán las entradas no asignadas</strong>. Si has compartido la entrada con alguien y esa persona ha rellenado los datos, no verás aquí esa entrada.
+            <strong>Solo aparecerán las entradas NO asignadas</strong>. Si has compartido la entrada con alguien y esa persona ha rellenado los datos, no la verás aquí.
         </p>
 
     </div>
@@ -53,7 +53,7 @@
     @endif
 
     @forelse($registrations as $registration)
-    <div class="cardWrap">
+    <div class="cardWrap {{ $registration->product->mode === 'online' ? 'no-print' : '' }}">
         <div class="card cardLeft">
             <div class="title">
                 <h1>{{ $registration->product->name }}</h1>
@@ -66,10 +66,10 @@
                 <span>Nombre</span>
             </div>
             <div class="place" style="float: none">
-            @if($registration->product->mode === 'presencial')
-            <h2>{{ $registration->product->place }}</h2>
-            <span>Lugar</span>
-            @else
+                @if($registration->product->mode === 'presencial')
+                <h2>{{ $registration->product->place }}</h2>
+                <span>Lugar</span>
+                @else
                 <h2> <a href="{{ $checkout->campaign->url }}" target="_blank">{{ $checkout->campaign->url }}</a></h2>
                 <span>URL</span>
                 @endif
@@ -154,7 +154,6 @@
         <div class="clearfix"></div>
     </div>
     <ul class="no-print">
-        @if($registration->product->mode === 'presencial')
         <li><a href="https://wa.me/?text=Entrada para {{ $registration->product->name }} {{ route('tickets.show', [$registration, $registration->unique_id]) }}" onclick="envioEventoRedSocial('mail');" class="mail" target="_blank" title="Compártelo por email" rel="nofollow">
                 <svg xmlns="http://www.w3.org/2000/svg" style="height:30px;max-height:30px" viewBox="0 0 24 24" fill="currentColor" stroke="none">
                     <path d="M 12.011719 2 C 6.5057187 2 2.0234844 6.478375 2.0214844 11.984375 C 2.0204844 13.744375 2.4814687 15.462563 3.3554688 16.976562 L 2 22 L 7.2324219 20.763672 C 8.6914219 21.559672 10.333859 21.977516 12.005859 21.978516 L 12.009766 21.978516 C 17.514766 21.978516 21.995047 17.499141 21.998047 11.994141 C 22.000047 9.3251406 20.962172 6.8157344 19.076172 4.9277344 C 17.190172 3.0407344 14.683719 2.001 12.011719 2 z M 12.009766 4 C 14.145766 4.001 16.153109 4.8337969 17.662109 6.3417969 C 19.171109 7.8517969 20.000047 9.8581875 19.998047 11.992188 C 19.996047 16.396187 16.413812 19.978516 12.007812 19.978516 C 10.674812 19.977516 9.3544062 19.642812 8.1914062 19.007812 L 7.5175781 18.640625 L 6.7734375 18.816406 L 4.8046875 19.28125 L 5.2851562 17.496094 L 5.5019531 16.695312 L 5.0878906 15.976562 C 4.3898906 14.768562 4.0204844 13.387375 4.0214844 11.984375 C 4.0234844 7.582375 7.6067656 4 12.009766 4 z M 8.4765625 7.375 C 8.3095625 7.375 8.0395469 7.4375 7.8105469 7.6875 C 7.5815469 7.9365 6.9355469 8.5395781 6.9355469 9.7675781 C 6.9355469 10.995578 7.8300781 12.182609 7.9550781 12.349609 C 8.0790781 12.515609 9.68175 15.115234 12.21875 16.115234 C 14.32675 16.946234 14.754891 16.782234 15.212891 16.740234 C 15.670891 16.699234 16.690438 16.137687 16.898438 15.554688 C 17.106437 14.971687 17.106922 14.470187 17.044922 14.367188 C 16.982922 14.263188 16.816406 14.201172 16.566406 14.076172 C 16.317406 13.951172 15.090328 13.348625 14.861328 13.265625 C 14.632328 13.182625 14.464828 13.140625 14.298828 13.390625 C 14.132828 13.640625 13.655766 14.201187 13.509766 14.367188 C 13.363766 14.534188 13.21875 14.556641 12.96875 14.431641 C 12.71875 14.305641 11.914938 14.041406 10.960938 13.191406 C 10.218937 12.530406 9.7182656 11.714844 9.5722656 11.464844 C 9.4272656 11.215844 9.5585938 11.079078 9.6835938 10.955078 C 9.7955938 10.843078 9.9316406 10.663578 10.056641 10.517578 C 10.180641 10.371578 10.223641 10.267562 10.306641 10.101562 C 10.389641 9.9355625 10.347156 9.7890625 10.285156 9.6640625 C 10.223156 9.5390625 9.737625 8.3065 9.515625 7.8125 C 9.328625 7.3975 9.131125 7.3878594 8.953125 7.3808594 C 8.808125 7.3748594 8.6425625 7.375 8.4765625 7.375 z"></path>
@@ -170,15 +169,6 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg></a>
         </li>
-        @else
-        <li>
-            <a href="{{ route('tickets.show', [$registration, $registration->unique_id]) }}">
-               <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-width="30" height="30" style="height:30px;max-height:30px"
-viewBox="0 0 30 30"
-fill="currentColor" stroke="none"><path d="M 23 3 A 4 4 0 0 0 19 7 A 4 4 0 0 0 19.09375 7.8359375 L 10.011719 12.376953 A 4 4 0 0 0 7 11 A 4 4 0 0 0 3 15 A 4 4 0 0 0 7 19 A 4 4 0 0 0 10.013672 17.625 L 19.089844 22.164062 A 4 4 0 0 0 19 23 A 4 4 0 0 0 23 27 A 4 4 0 0 0 27 23 A 4 4 0 0 0 23 19 A 4 4 0 0 0 19.986328 20.375 L 10.910156 15.835938 A 4 4 0 0 0 11 15 A 4 4 0 0 0 10.90625 14.166016 L 19.988281 9.625 A 4 4 0 0 0 23 11 A 4 4 0 0 0 27 7 A 4 4 0 0 0 23 3 z"></path></svg></a>
-        </li>
-        @endif
     </ul>
     @empty
     <p>Todas las entradas de esta compra han sido asignadas a otros usuarios</p>

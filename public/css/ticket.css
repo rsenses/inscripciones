@@ -1,5 +1,5 @@
-body{
-    background-color: #fdfdfd
+body {
+    background-color: #fdfdfd;
 }
 .clearfix:before,
 .clearfix:after {
@@ -13,7 +13,6 @@ body{
     clear: both;
 }
 
-
 /*
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
@@ -22,21 +21,20 @@ body{
 .clearfix {
     *zoom: 1;
 }
-.advice-container{
+.advice-container {
     background: #ecedef;
     color: #004085;
     background-color: #cce5ff;
     border: 1px solid;
     border-color: #b8daff;
-    max-width: 600px;
+    max-width: 620px;
     padding: 1rem 1rem;
-    margin: 0 auto .5rem;
+    margin: 0 auto 0.5rem;
     font-family: sans-serif;
 }
-.advice-container p{
-    
+.advice-container p {
 }
-.advice-container_online{
+.advice-container_online {
     background: #ecedef;
     color: #004085;
     border: 1px solid;
@@ -53,11 +51,13 @@ body{
 }
 
 .card {
-    background: linear-gradient(to bottom,
-            var(--primary) 0%,
-            var(--primary) 26%,
-            #ecedef 26%,
-            #ecedef 100%);
+    background: linear-gradient(
+        to bottom,
+        var(--primary) 0%,
+        var(--primary) 26%,
+        #ecedef 26%,
+        #ecedef 100%
+    );
     height: 17.5em;
     position: relative;
     margin-top: 5vh;
@@ -135,15 +135,15 @@ h1 span {
 }
 
 .title {
-    padding: .5rem .5rem .5rem 1rem;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
     background: var(--primary);
-    border-top-left-radius: 20px
+    border-top-left-radius: 20px;
 }
 
 .name,
 .place,
 .time {
-    padding: .25rem 1rem 0;
+    padding: 0.25rem 1rem 0;
     margin: 0.7em 0 0 0;
 }
 
@@ -198,15 +198,14 @@ ul li a {
 ul li a:hover {
     color: #000;
 }
-.online-tag{
+.online-tag {
     position: absolute;
     right: 1rem;
-    bottom: .5rem;
+    bottom: 0.5rem;
     color: #a2aeae;
 }
 
 @media print {
-
     .no-print,
     .no-print * {
         display: none !important;

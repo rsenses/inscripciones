@@ -668,18 +668,7 @@
             country.value = 'ES';
         }
     });
-
     document.getElementById('invoice-data').addEventListener("input", function (e) {
-        if (e.target.getAttribute("type") != "radio" && e.target.getAttribute('type') != 'checkbox') {
-            var radios = document.getElementsByTagName('input');
-            for (i = 0; i < radios.length; i++) {
-                if (radios[i].getAttribute("type") == "radio") {
-                    radios[i].checked = false;
-                }
-            }
-        }
-    });
-    document.getElementById('invoice-data').addEventListener("submit", function (e) {
         if (e.target.getAttribute("type") != "radio" && e.target.getAttribute('type') != 'checkbox') {
             var radios = document.getElementsByTagName('input');
             for (i = 0; i < radios.length; i++) {

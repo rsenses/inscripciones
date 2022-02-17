@@ -73,7 +73,7 @@ class TicketController extends Controller
      * @param  string $id
      * @return \Illuminate\Http\Response
      */
-    public function assign(Request $request, Registration $registration, $id)
+    public function assign(Registration $registration, $id)
     {
         if ($registration->unique_id != $id) {
             abort(403, 'Unauthorized action.');

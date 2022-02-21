@@ -36,14 +36,13 @@
                     </div>
                     <div class="col text-right">
                         @if($invoices->count())
-                            <a href="{{ route('invoices.export') }}" class="btn btn-primary" onclick="return confirm('Seguro que quieres generar el archivo de facturación?');">
+                            <a href="{{ route('invoices.export') }}" class="btn btn-primary mb-3" onclick="return confirm('Seguro que quieres generar el archivo de facturación?');">
 
                                 Exportar <i class="lni lni-download"></i>
                             </a>
                         @endif
                         <button type="button" class="btn btn-info mb-3" data-toggle="modal" data-target="#importModal">
-                           
-                            Importar <i class="lni lni-cloud-upload"></i>
+                            Importar <i class="lni lni-upload"></i>
                         </button>
                     </div>
                 </div>

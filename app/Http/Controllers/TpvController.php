@@ -13,7 +13,6 @@ class TpvController extends Controller
 {
     public function notify(Request $request, Checkout $checkout)
     {
-        Log::debug($request->all);
         try {
             $company = $checkout->campaign->partner;
             $key = $company->merchant_key;
@@ -26,16 +25,19 @@ class TpvController extends Controller
 
             if ($redsys->check($key, $request->all()) && $DsResponse <= 99) {
                 $checkout->method = 'card';
-                $checkout->save();
-
+                
                 $checkout->pay();
             } else {
                 $checkout->new();
             }
         } catch (TpvException $e) {
             Log::debug($e->getMessage());
+            $checkout->tpv = $e->getMessage();
+            $checkout->save();
         } catch (Throwable $e) {
             Log::debug($e->getMessage());
+            $checkout->tpv = $e->getMessage();
+            $checkout->save();
         }
     }
 

@@ -43,7 +43,7 @@
         <div class="col-md-8">
             <div class="card bg-white">
                 <div class="card-body">
-                    <form method="POST" action="{{ route('deals.store', ['checkout_id' => $checkout->id]) }}" id="discount-data">
+                    <form method="POST" action="{{ route('deals.store', ['checkout_id' => $checkout->id]) }}" id="discount_data">
                         @csrf
                         <p>Si tienes un código de descuento, introdúcelo aquí</p>
                         <div class="form-group row">
@@ -126,6 +126,19 @@
         "prod_totalamount_evento": "{{ $checkout->amount }}"
     });
 
+    if (document.getElementById('discount_data')) {
+        document.getElementById('discount_data').addEventListener("submit", function (e) {
+            utag.link({
+                "event_category": "{{ transliterator_transliterate('Any-Latin; Latin-ASCII; Lower()', $checkout->campaign->name) }}",
+                "event_action": "{{ $checkout->campaign->short_name }}:codigo promocional" ,
+                "be_onclick": "{{ $checkout->campaign->short_name }}:usar codigo" ,
+                "prod_name_evento": "{{ transliterator_transliterate('Any-Latin; Latin-ASCII; Lower()', implode('|', $productNames)) }}",
+                "prod_quantity_evento": "{{ implode('|', $productCounts) }}",
+                "prod_unitprice_evento": "{{ implode('|', $productPrices) }}",
+                "prod_totalamount_evento": "{{ $checkout->amount }}"
+            });
+        });
+    }
     if (document.getElementById('redsys_form')) {
         document.getElementById('redsys_form').addEventListener("submit", function (e) {
             utag.link({

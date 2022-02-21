@@ -41,7 +41,7 @@ class Discount implements Rule
             $deal = Deal::where('checkout_id', $this->checkout->id)->first();
 
             return $discount && !$deal;
-        } 
+        }
     }
 
     /**
@@ -51,16 +51,6 @@ class Discount implements Rule
      */
     public function message()
     {
-        return 'Código de descuento no$discount = ModelsDiscount::where('code', $value)
-            ->where('product_id', $this->product_id)
-            ->where(function ($q) {
-                $q->whereNull('due_at');
-                $q->orWhere('due_at', '>=', Carbon::now());
-            })
-            ->count();
-
-        $deal = Deal::where('checkout_id', $this->checkout_id)->first();
-
-        return $discount && !$deal; válido';
+        return 'Código de descuento no válido';
     }
 }

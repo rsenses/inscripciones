@@ -66,7 +66,7 @@ class CheckoutController extends Controller
 
         return view('checkouts.show', [
             'checkout' => $checkout,
-            'addresses' => $checkout->user->addresses
+            'addresses' => $checkout->user->addresses,
         ]);
     }
 
@@ -156,11 +156,23 @@ class CheckoutController extends Controller
     {
         $form = $checkout->generatePaymentForm();
 
+        $productNames = [];
+        $productCounts = [];
+        $productPrices = [];
+        foreach ($checkout->products->groupBy('id') as $key => $product) {
+            $productNames[$key] = $product[0]->name;
+            $productCounts[$key] = $product->count();
+            $productPrices[$key] = intval($product[0]->price);
+        }
+
         return view('checkouts.payment', [
             'checkout' => $checkout,
             'form' => $form,
             'message' => null,
-            'discount' => false
+            'discount' => false,
+            'productNames' => $productNames,
+            'productCounts' => $productCounts,
+            'productPrices' => $productPrices,
         ]);
     }
 }

@@ -49,8 +49,20 @@ class TpvController extends Controller
             $checkout->pay();
         }
 
+        $productNames = [];
+        $productCounts = [];
+        $productPrices = [];
+        foreach ($checkout->products->groupBy('id') as $key => $product) {
+            $productNames[$key] = $product[0]->name;
+            $productCounts[$key] = $product->count();
+            $productPrices[$key] = intval($product[0]->price);
+        }
+
         return view('payments.success', [
-            'checkout' => $checkout
+            'checkout' => $checkout,
+            'productNames' => $productNames,
+            'productCounts' => $productCounts,
+            'productPrices' => $productPrices,
         ]);
     }
 
@@ -65,8 +77,20 @@ class TpvController extends Controller
             $checkout = $checkout->new();
         }
 
+        $productNames = [];
+        $productCounts = [];
+        $productPrices = [];
+        foreach ($checkout->products->groupBy('id') as $key => $product) {
+            $productNames[$key] = $product[0]->name;
+            $productCounts[$key] = $product->count();
+            $productPrices[$key] = intval($product[0]->price);
+        }
+
         return view('payments.error', [
-            'checkout' => $checkout
+            'checkout' => $checkout,
+            'productNames' => $productNames,
+            'productCounts' => $productCounts,
+            'productPrices' => $productPrices,
         ]);
     }
 }

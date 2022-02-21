@@ -57,11 +57,23 @@ class DealController extends Controller
         } else {
             $form = $checkout->generatePaymentForm();
 
+            $productNames = [];
+            $productCounts = [];
+            $productPrices = [];
+            foreach ($checkout->products->groupBy('id') as $key => $product) {
+                $productNames[$key] = $product[0]->name;
+                $productCounts[$key] = $product->count();
+                $productPrices[$key] = intval($product[0]->price);
+            }
+
             return view('checkouts.payment', [
                 'checkout' => $checkout,
                 'form' => $form,
                 'message' => "Descuento del $discount->quantity% aplicado correctamente",
-                'discount' => true
+                'discount' => true,
+                'productNames' => $productNames,
+                'productCounts' => $productCounts,
+                'productPrices' => $productPrices,
             ]);
         }
     }

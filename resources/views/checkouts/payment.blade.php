@@ -1,8 +1,8 @@
 @extends('layouts.public')
 
-{{-- @section('scripts_before')
+@section('scripts_before')
 <x-analytics :campaign="$checkout->campaign" />
-@endsection --}}
+@endsection
 
 @section('content')
 <div class="container">
@@ -105,7 +105,7 @@
                     </p>
                 </div>
                 <div class="card-footer">
-                    <a href="{{ route('tpv.success', ['checkout' => $checkout, 'method' => 'transfer']) }}" class="btn btn-success btn-block btn-lg"> Pagar por transferencia</a>
+                    <a id="transfer_payment" href="{{ route('tpv.success', ['checkout' => $checkout, 'method' => 'transfer']) }}" class="btn btn-success btn-block btn-lg"> Pagar por transferencia</a>
                 </div>
             </div>
         </div>
@@ -116,9 +116,44 @@
 
 @section('scripts')
 <script>
+    utag.link({
+        "event_category": "{{ transliterator_transliterate('Any-Latin; Latin-ASCII; Lower()', $checkout->campaign->name) }}",
+        "event_action": "{{ $checkout->campaign->short_name }}:datos facturacion" ,
+        "be_onclick": "{{ $checkout->campaign->short_name }}:proceder al pago" ,
+        "prod_name_evento": "{{ transliterator_transliterate('Any-Latin; Latin-ASCII; Lower()', implode('|', $productNames)) }}",
+        "prod_quantity_evento": "{{ implode('|', $productCounts) }}",
+        "prod_unitprice_evento": "{{ implode('|', $productPrices) }}",
+        "prod_totalamount_evento": "{{ $checkout->amount }}"
+    });
+
     if (document.getElementById('redsys_form')) {
         document.getElementById('redsys_form').addEventListener("submit", function (e) {
-            envioSC("telva energiayfelicidad | pagar con tarjeta");
+            utag.link({
+                "event_category": "{{ transliterator_transliterate('Any-Latin; Latin-ASCII; Lower()', $checkout->campaign->name) }}",
+                "event_action": "{{ $checkout->campaign->short_name }}:datos bancarios" ,
+                "be_onclick": "{{ $checkout->campaign->short_name }}:pago" ,
+                "payment_method_evento" : "tarjeta",
+                "prod_name_evento": "{{ transliterator_transliterate('Any-Latin; Latin-ASCII; Lower()', implode('|', $productNames)) }}",
+                "prod_quantity_evento": "{{ implode('|', $productCounts) }}",
+                "prod_unitprice_evento": "{{ implode('|', $productPrices) }}",
+                "prod_totalamount_evento": "{{ $checkout->amount }}"
+                "prod_promo_evento": "{{ $discount ? 1 : 0 }}"
+            });
+        });
+    }
+    if (document.getElementById('transfer_payment')) {
+        document.getElementById('transfer_payment').addEventListener("click", function (e) {
+            utag.link({
+                "event_category": "{{ transliterator_transliterate('Any-Latin; Latin-ASCII; Lower()', $checkout->campaign->name) }}",
+                "event_action": "{{ $checkout->campaign->short_name }}:datos bancarios" ,
+                "be_onclick": "{{ $checkout->campaign->short_name }}:pago" ,
+                "payment_method_evento" : "transferencia",
+                "prod_name_evento": "{{ transliterator_transliterate('Any-Latin; Latin-ASCII; Lower()', implode('|', $productNames)) }}",
+                "prod_quantity_evento": "{{ implode('|', $productCounts) }}",
+                "prod_unitprice_evento": "{{ implode('|', $productPrices) }}",
+                "prod_totalamount_evento": "{{ $checkout->amount }}"
+                "prod_promo_evento": "{{ $discount ? 1 : 0 }}"
+            });
         });
     }
 </script>

@@ -36,7 +36,7 @@
     @if($registrations->count())
     <div class="no-print advice-container">
         <p>
-            Cada entrada puede ser compartida por whatsapp o email (iconos debajo de la entrada), la persona que abra el enlace tendrá que rellenar sus datos personales para <strong>asignar esa entrada y recibirla por email</strong>.
+            Si es otra persona diferente a ti la que va a asistir, puedes compartir la entrada con ella por whatsapp o email (iconos debajo de la entrada). Tendrá que rellenar sus datos personales para <strong>asignarle la entrada y recibirla por email</strong>.
         </p>
     </div>
     <div class="no-print advice-container advice-container_online">

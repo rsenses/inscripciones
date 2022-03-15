@@ -45,7 +45,7 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('deals.store', ['checkout_id' => $checkout->id]) }}" id="discount_data">
                         @csrf
-                        <p>Si tienes un código de descuento, introdúcelo aquí</p>
+                        <p>Introducir código de descuento</p>
                         <div class="form-group row">
                             <label for="code" class="col-md-4 col-form-label text-md-right">{{ __('Código') }}</label>
 
@@ -81,7 +81,7 @@
             <div class="card bg-white">
                 <div class="card-body">
                     <p class="text-center">
-                        <strong>CON TARJETA DE DÉBITO/CRÉDITO</strong>
+                        <strong>MEDIANTE TARJETA DE DÉBITO/CRÉDITO</strong>
                     </p>
                     <p><img src="{{asset('img/tarjetas.png')}}" class="img-fluid"></p>
                 </div>
@@ -94,7 +94,7 @@
         <div class="col-lg-6">
             <div class="card bg-white">
                 <div class="card-body">
-                    <p class="text-center"><strong>CON TRANSFERENCIA desde tu banco:</strong></p>
+                    <p class="text-center"><strong>MEDIANTE TRANSFERENCIA:</strong></p>
                     <p>
                         <strong>Beneficiario</strong>: U.E.INFOR. ECONÓM. S.L.U<br>
                         <strong>Nombre del Banco</strong>: Bankinter<br>
@@ -105,7 +105,7 @@
                     </p>
                 </div>
                 <div class="card-footer">
-                    <a id="transfer_payment" href="{{ route('tpv.success', ['checkout' => $checkout, 'method' => 'transfer']) }}" class="btn btn-success btn-block btn-lg"> Pagar por transferencia</a>
+                    <a id="transfer_payment" href="{{ route('tpv.success', ['checkout' => $checkout, 'method' => 'transfer']) }}" class="btn btn-success btn-block btn-lg">Pagar por transferencia</a>
                 </div>
             </div>
         </div>

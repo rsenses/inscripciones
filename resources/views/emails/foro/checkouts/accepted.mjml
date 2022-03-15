@@ -109,7 +109,7 @@
                     >© Unidad Editorial {{ now()->year }}</mj-text
                 >
                 <mj-text font-size="14px" color="#4a5a6a" align="center"
-                    >Para cualquier consulta contacta con
+                    >Para cualquier consulta contacte con
                     <a
                         href="mailto:foro.expansion@unidadeditorial.es"
                         style="color: blue"

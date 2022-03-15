@@ -6,7 +6,7 @@ A través del siguiente enlace podrá acceder a toda la información relativa al
 https://foro.expansion.com
 
 • Cómo llegar.
-• Programa y ponentes. 
+• Programa y ponentes.
 • Listado de asistentes.
 • Protocolo Covid.
 • Zona de preguntas en directo.
@@ -14,7 +14,7 @@ https://foro.expansion.com
 
 Incluir en mi calendario: {{ route('calendar.show', ['product' => $registration->product]) }}
 
-Esperamos que disfrutes del evento,
+Esperamos que disfrute del evento,
 Relaciones Institucionales
 Expansión
 

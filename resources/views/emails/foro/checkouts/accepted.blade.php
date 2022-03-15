@@ -264,7 +264,7 @@
                                         </tr>
                                         <tr>
                                             <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                                                <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:1;text-align:center;color:#4a5a6a;">Para cualquier consulta contacta con <a href="mailto:foro.expansion@unidadeditorial.es" style="color: blue">foro.expansion@unidadeditorial.es</a></div>
+                                                <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:1;text-align:center;color:#4a5a6a;">Para cualquier consulta contacte con <a href="mailto:foro.expansion@unidadeditorial.es" style="color: blue">foro.expansion@unidadeditorial.es</a></div>
                                             </td>
                                         </tr>
                                     </tbody>

@@ -67,7 +67,7 @@
                         Incluir en mi calendario
                     </mj-button>
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Esperamos que disfrutes del evento,</mj-text
+                        >Esperamos que disfrute del evento,</mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         >Relaciones Institucionales<br /><strong
@@ -94,7 +94,7 @@
                     >© Unidad Editorial {{ now()->year }}</mj-text
                 >
                 <mj-text font-size="14px" color="#4a5a6a" align="center"
-                    >Para cualquier consulta contacta con
+                    >Para cualquier consulta contacte con
                     <a
                         href="mailto:foro.expansion@unidadeditorial.es"
                         style="color: blue"

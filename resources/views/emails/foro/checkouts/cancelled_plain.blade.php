@@ -1,10 +1,10 @@
 Estimad@ {{ $checkout->user->full_name }}
 
-Su inscripción ha sido cancelada correctamente.
+Su solicitud de inscripción ha sido cancelada.
 
+Gracias por su interés.
 Atentamente,
 
-Relaciones Institucionales
 Expansión
 
 Más información: foro.expansion@unidadeditorial.es

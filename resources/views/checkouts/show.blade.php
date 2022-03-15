@@ -619,7 +619,7 @@
             </div>
             <div class="col-12">
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary text-white">
+                    <button type="submit" class="btn btn-primary btn-lg text-white">
                         {{ __('Proceder al pago') }}
                     </button>
                 </div>

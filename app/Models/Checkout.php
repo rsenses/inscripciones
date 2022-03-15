@@ -152,7 +152,7 @@ class Checkout extends Model
     {
         $checkout = $this->changeStatus('paid');
 
-        $checkout->update(['paid_at' => Carbon::now()]);
+        $checkout->update(['paid_at' => Carbon::now(), 'amount' => 0]);
 
         $this->registrationsStatus('pay');
 

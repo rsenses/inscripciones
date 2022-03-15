@@ -42,7 +42,7 @@ class CheckoutPaid extends Mailable
         $fromAddress = $this->checkout->campaign->from_address;
         $fromName = $this->checkout->campaign->from_name;
 
-        return $this->subject($name . ' te da la Bienvenida')
+        return $this->subject($name . ' ' . ($name === 'Expansión' ? 'le' : 'te') . ' da la Bienvenida')
             ->from($fromAddress, $fromName)
             ->view('emails.' . $folder . '.checkouts.paid')
             ->text('emails.' . $folder . '.checkouts.paid_plain');

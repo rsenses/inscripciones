@@ -34,13 +34,15 @@
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         >Adjunto enviamos el duplicado de su factura de
-                        inscripción al {{ $invoice->checkout->product->name
+                        inscripción al {{ $invoice->checkout->campaign->name
                         }}.</mj-text
                     >
                     <mj-button
                         href="https://invoice.eventosue.com/{{ $invoice->number }}.pdf"
-                        background-color="#f45e43"
-                        color="white"
+                        border="1px solid #285DB2"
+                        background-color="#fff"
+                        color="#285DB2"
+                        align="left"
                     >
                         Descargar factura
                     </mj-button>
@@ -61,19 +63,12 @@
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         >Atentamente,</mj-text
                     >
-                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Relaciones Institucionales<br /><strong
-                            >Expansión</strong
-                        ></mj-text
-                    >
-                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        ><small
-                            >Más información:
-                            <a href="mailto:foro.expansion@unidadeditorial.es"
-                                >foro.expansion@unidadeditorial.es</a
-                            ></small
-                        ></mj-text
-                    >
+                    <mj-image
+                        width="200px"
+                        align="left"
+                        src="{{ asset('storage/' . $invoice->checkout->campaign->partner->image) }}"
+                        href="{{ $invoice->checkout->campaign->partner->name }}"
+                    ></mj-image>
                 </mj-column>
             </mj-section>
         </mj-wrapper>

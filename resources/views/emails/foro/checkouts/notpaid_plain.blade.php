@@ -13,7 +13,6 @@ BIC: SWIFT BKBKESMMXXX
 
 Atentamente,
 
-Relaciones Institucionales
 Expansión
 
 Más información: foro.expansion@unidadeditorial.es

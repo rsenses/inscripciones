@@ -1,17 +1,5 @@
 <mjml>
     <mj-body background-color="#f9f9f9">
-        <mj-raw>
-            <!-- Company Header -->
-        </mj-raw>
-        <mj-section>
-            <mj-column>
-                <mj-image
-                    width="200px"
-                    src="{{ asset('storage/' . $checkout->campaign->partner->image) }}"
-                    href="{{ $checkout->campaign->partner->name }}"
-                ></mj-image>
-            </mj-column>
-        </mj-section>
         <mj-wrapper background-color="#fff" padding="0">
             <mj-raw>
                 <!-- Image Header -->
@@ -36,13 +24,14 @@
                         ><strong
                             >Le damos la bienvenida al {{
                             $checkout->campaign->name }}</strong
-                        >. Su inscripción ha sido confirmada.</mj-text
+                        >.</mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         >A través del siguiente enlace podrá acceder a toda la
                         información relativa al evento:</mj-text
                     >
-                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
+
+                    <mj-text line-height="22px" font-size="16px" color="#2a3a4a"
                         ><a href="https://foro.expansion.com"
                             >https://foro.expansion.com</a
                         ></mj-text
@@ -55,33 +44,27 @@
                         • Cómo llegar.<br />
                         • Programa y ponentes. <br />
                         • Listado de asistentes.<br />
-                        • Protocolo Covid.<br />
                         • Zona de preguntas en directo.<br />
                         • Actualizaciones de última hora.
                     </mj-text>
                     <mj-button
                         href="{{ route('calendar.show', ['product' => $checkout->products[0]]) }}"
-                        background-color="#f45e43"
-                        color="white"
+                        border="1px solid #285DB2"
+                        background-color="#fff"
+                        color="#285DB2"
+                        align="left"
                     >
                         Incluir en mi calendario
                     </mj-button>
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Esperamos que disfrute del evento,</mj-text
+                        >Atentamente,</mj-text
                     >
-                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Relaciones Institucionales<br /><strong
-                            >Expansión</strong
-                        ></mj-text
-                    >
-                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        ><small
-                            >Más información:
-                            <a href="mailto:foro.expansion@unidadeditorial.es"
-                                >foro.expansion@unidadeditorial.es</a
-                            ></small
-                        ></mj-text
-                    >
+                    <mj-image
+                        width="200px"
+                        align="left"
+                        src="{{ asset('storage/' . $checkout->campaign->partner->image) }}"
+                        href="{{ $checkout->campaign->partner->name }}"
+                    ></mj-image>
                 </mj-column>
             </mj-section>
         </mj-wrapper>

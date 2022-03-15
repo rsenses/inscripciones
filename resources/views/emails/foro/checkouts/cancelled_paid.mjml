@@ -1,17 +1,5 @@
 <mjml>
     <mj-body background-color="#f9f9f9">
-        <mj-raw>
-            <!-- Company Header -->
-        </mj-raw>
-        <mj-section>
-            <mj-column>
-                <mj-image
-                    width="200px"
-                    src="{{ asset('storage/' . $checkout->campaign->partner->image) }}"
-                    href="{{ $checkout->campaign->partner->name }}"
-                ></mj-image>
-            </mj-column>
-        </mj-section>
         <mj-wrapper background-color="#fff" padding="0">
             <mj-raw>
                 <!-- Image Header -->
@@ -34,31 +22,24 @@
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         >Hemos iniciado el proceso de cancelación de asistencia
-                        al {{ $checkout->campaign->partner->name }}. En unos
-                        días recibirá la factura de abono.</mj-text
+                        al {{ $checkout->campaign->name }}. En unos días
+                        recibirá la factura de abono.</mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         >Una vez recibida dicha factura, procederemos a realizar
                         la devolución del importe por el mismo método de pago
-                        con el que se realizó la inscripción en el plazo máximo
-                        de 15 días.</mj-text
+                        con el que se realizó la compra en el plazo máximo de 15
+                        días.</mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         >Atentamente,</mj-text
                     >
-                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Relaciones Institucionales<br /><strong
-                            >Expansión</strong
-                        ></mj-text
-                    >
-                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        ><small
-                            >Más información:
-                            <a href="mailto:foro.expansion@unidadeditorial.es"
-                                >foro.expansion@unidadeditorial.es</a
-                            ></small
-                        ></mj-text
-                    >
+                    <mj-image
+                        width="200px"
+                        align="left"
+                        src="{{ asset('storage/' . $checkout->campaign->partner->image) }}"
+                        href="{{ $checkout->campaign->partner->name }}"
+                    ></mj-image>
                 </mj-column>
             </mj-section>
         </mj-wrapper>

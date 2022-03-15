@@ -1,17 +1,5 @@
 <mjml>
     <mj-body background-color="#f9f9f9">
-        <mj-raw>
-            <!-- Company Header -->
-        </mj-raw>
-        <mj-section>
-            <mj-column>
-                <mj-image
-                    width="200px"
-                    src="{{ asset('storage/' . $partner->image) }}"
-                    href="{{ $partner->name }}"
-                ></mj-image>
-            </mj-column>
-        </mj-section>
         <mj-wrapper background-color="#fff" padding="0">
             <mj-raw>
                 <!-- Image Header -->
@@ -48,19 +36,12 @@
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         >Atentamente,</mj-text
                     >
-                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Relaciones Institucionales<br /><strong
-                            >Expansión</strong
-                        ></mj-text
-                    >
-                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        ><small
-                            >Más información:
-                            <a href="mailto:foro.expansion@unidadeditorial.es"
-                                >foro.expansion@unidadeditorial.es</a
-                            ></small
-                        ></mj-text
-                    >
+                    <mj-image
+                        width="200px"
+                        align="left"
+                        src="{{ asset('storage/' . $checkout->campaign->partner->image) }}"
+                        href="{{ $checkout->campaign->partner->name }}"
+                    ></mj-image>
                 </mj-column>
             </mj-section>
         </mj-wrapper>

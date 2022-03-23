@@ -67,6 +67,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('campaigns', CampaignController::class);
     Route::resource('registrations', RegistrationController::class);
     Route::post('registrations/status/{registration}', [RegistrationController::class, 'status'])->name('registrations.update-status');
+    Route::post('registrations/reassign/{registration}', [RegistrationController::class, 'reassign'])->name('registrations.reassign');
     Route::get('registrations/resend/{registration}', [RegistrationController::class, 'resend'])->name('registrations.resend-email');
     Route::resource('users', UserController::class);
     Route::resource('partners', PartnerController::class);

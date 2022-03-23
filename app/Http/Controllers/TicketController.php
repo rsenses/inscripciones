@@ -101,27 +101,33 @@ class TicketController extends Controller
         $user = User::where('email', $request->email)->first();
 
         if (!$user) {
-            $request->validate([
-                'name' => ['required', 'string', 'max:255'],
-                'last_name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'password' => ['required', 'string', 'min:8', 'confirmed'],
-                'tax_id' => ['nullable', 'string', 'max:255'],
-                'phone' => ['nullable', 'string', 'max:255'],
-                'company' => ['nullable', 'string', 'max:255'],
-                'position' => ['nullable', 'string', 'max:255'],
-                'advertising' => ['nullable', 'boolean']
-            ]);
+            $unique = 'unique:users';
+        } else {
+            $unique = null;
+        }
 
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', $unique],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'advertising' => ['nullable', 'boolean']
+        ]);
+
+        if (!$user) {
             $user = User::create([
                 'name' => $request->name,
                 'last_name' => $request->last_name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-                'tax_id' => $request->tax_id,
-                'phone' => $request->phone,
-                'company' => $request->company,
-                'position' => $request->position,
+                'advertising' => $request->advertising ?: 0,
+            ]);
+        } else {
+            $user->update([
+                'name' => $request->name,
+                'last_name' => $request->last_name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
                 'advertising' => $request->advertising ?: 0,
             ]);
         }

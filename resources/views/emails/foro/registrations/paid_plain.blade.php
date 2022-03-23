@@ -2,7 +2,10 @@ Estimad@ {{ $registration->user->full_name }}
 
 Le damos la bienvenida al {{ $registration->product->name }}.
 
-A través del siguiente enlace podrá acceder a toda la información relativa al evento:
+Puede descargar su entrada desde el siguiente enlace:
+{{ route('tickets.show', [$registration, $registration->unique_id]) }}
+
+Acceda a toda la información relativa al evento en:
 https://foro.expansion.com
 
 • Cómo llegar.

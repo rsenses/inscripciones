@@ -7,6 +7,7 @@ use App\Models\Registration;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use App\Events\RegistrationAsigned;
 
 class RegistrationController extends Controller
 {
@@ -140,6 +141,45 @@ class RegistrationController extends Controller
         return redirect()->route('registrations.show', [
             'registration' => $registration
         ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Registration  $registration
+     * @return \Illuminate\Http\Response
+     */
+    public function reassign(Request $request, Registration $registration)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'company' => ['nullable', 'string', 'max:255'],
+            'position' => ['nullable', 'string', 'max:255'],
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            $user = User::create([
+                'name' => $request->name,
+                'last_name' => $request->last_name,
+                'email' => $request->email,
+                'company' => $request->company,
+                'position' => $request->position,
+                'advertising' => 0,
+            ]);
+        }
+
+        $registration->update([
+            'user_id' => $user->id,
+        ]);
+
+        RegistrationAsigned::dispatch($registration);
+
+        return redirect()->back();
     }
 
     /**

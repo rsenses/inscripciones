@@ -19,13 +19,15 @@ Route::prefix('v1')->group(function () {
     Route::post('/register', 'App\Http\Controllers\Api\AuthController@register');
     Route::post('/registration', 'App\Http\Controllers\Api\RegistrationController@store');
 
+    Route::get('/products/{product}', 'App\Http\Controllers\Api\ProductController@show');
+
     Route::get('/ii-foro/streaming-noauth', 'App\Http\Controllers\Api\IIForoController@streamingNoAuth');
     Route::get('/ii-foro/registrations-noauth', 'App\Http\Controllers\Api\IIForoController@registrationsNoAuth');
     Route::get('/i-congreso/registrations-noauth', 'App\Http\Controllers\Api\ICongresoController@registrationsNoAuth');
 
     Route::middleware(['auth:sanctum'])->group(function () {
         Route::post('/logout', 'App\Http\Controllers\Api\AuthController@logout');
-        Route::get('/products/{product}', 'App\Http\Controllers\Api\ProductController@show');
+        Route::get('/registrations/{product}', 'App\Http\Controllers\Api\RegistrationController@show');
 
         // Específico del Foro
         Route::get('/ii-foro/streaming', 'App\Http\Controllers\Api\IIForoController@streaming');

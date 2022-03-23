@@ -16,11 +16,6 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $product = Product::with(['registrations' => function($query) {
-            $query->where('status', 'paid');
-        }, 'registrations.user'])
-            ->find($product->id);
-
         return $product;
     }
 }

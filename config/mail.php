@@ -63,6 +63,21 @@ return [
             ]
         ],
 
+        'smtp_prjur' => [
+            'transport' => 'smtp',
+            'host' => env('MAIL_PRJUR_HOST', 'smtp.mailgun.org'),
+            'port' => env('MAIL_PRJUR_PORT', 587),
+            'encryption' => env('MAIL_PRJUR_ENCRYPTION', 'tls'),
+            'username' => env('MAIL_PRJUR_USERNAME'),
+            'password' => env('MAIL_PRJUR_PASSWORD'),
+            'timeout' => null,
+            'auth_mode' => null,
+            'from' => [
+                'address' => env('MAIL_PRJUR_FROM_ADDRESS'),
+                'name' => env('MAIL_PRJUR_FROM_NAME'),
+            ]
+        ],
+
         'ses' => [
             'transport' => 'ses',
         ],

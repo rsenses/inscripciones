@@ -1,0 +1,79 @@
+<mjml>
+    <mj-body background-color="#f9f9f9">
+        <mj-wrapper background-color="#fff" padding="0">
+            <mj-raw>
+                <!-- Image Header -->
+            </mj-raw>
+            <mj-section padding="0">
+                <mj-column>
+                    <mj-image
+                        src="{{ asset('storage/' . $checkout->campaign->image) }}"
+                        alt="{{ $checkout->campaign->name }}"
+                    ></mj-image>
+                </mj-column>
+            </mj-section>
+            <mj-section padding="0 0 30px">
+                <mj-column width="500px">
+                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
+                        >Estimad@
+                        <strong
+                            >{{ $checkout->user->full_name }}</strong
+                        ></mj-text
+                    >
+                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
+                        >Ha seleccionado
+                        <strong>transferencia bancaria</strong> como método de
+                        pago. Para reservar su plaza debe realizar una
+                        transferencia con los siguientes datos:</mj-text
+                    >
+                    <mj-text
+                        line-height="22px"
+                        font-size="14px"
+                        color="#2a3a4a"
+                    >
+                        Importe: {{ $checkout->amount }}€<br />
+                        Titular de la cuenta: U.E.INFOR. ECONÓM. S.L.U<br />
+                        Concepto de transferencia: Asistencia {{
+                        $checkout->user->full_name }} {{ $checkout->id }}<br />
+                        Nombre del Banco: Bankinter<br />
+                        Cuenta 42 0128 6035 77 0100000587<br />
+                        ******<br />
+                        IBAN: ES 42 0128 6035 77 0100000587<br />
+                        BIC: SWIFT BKBKESMMXXX
+                    </mj-text>
+                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
+                        >Por favor, envíenos el justificante de la transferencia
+                        respondiendo a este email.</mj-text
+                    >
+                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
+                        >Atentamente,</mj-text
+                    >
+                    <mj-image
+                        width="200px"
+                        align="left"
+                        src="{{ asset('storage/' . $checkout->campaign->partner->image) }}"
+                        href="{{ $checkout->campaign->partner->name }}"
+                    ></mj-image>
+                </mj-column>
+            </mj-section>
+        </mj-wrapper>
+        <mj-raw>
+            <!-- Footer text -->
+        </mj-raw>
+        <mj-section>
+            <mj-column>
+                <mj-text font-size="14px" color="#4a5a6a" align="center"
+                    >© Unidad Editorial {{ now()->year }}</mj-text
+                >
+                <mj-text font-size="14px" color="#4a5a6a" align="center"
+                    >Para cualquier consulta contacte con
+                    <a
+                        href="mailto:premios.juridico@unidadeditorial.es"
+                        style="color: blue"
+                        >premios.juridico@unidadeditorial.es</a
+                    ></mj-text
+                >
+            </mj-column>
+        </mj-section>
+    </mj-body>
+</mjml>

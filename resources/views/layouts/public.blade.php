@@ -50,7 +50,7 @@
                 if (typeof window[n] !== "function") { window[n] = e; if (window.addEventListener) { window.addEventListener("message", t, false) } else { window.attachEvent("onmessage", t) } }
             } e("__tcfapi", "__tcfapiBuffer", "__tcfapiCall", "__tcfapiReturn"); a("__tcfapiLocator"); (function (e, tgt) {
                 var t = document.createElement("script"); t.id = "spcloader"; t.type = "text/javascript"; t.async = true; t.src = "https://sdk.privacy-center.org/" + e + "/loader.js?target_type=notice&target=" + tgt; t.charset = "utf-8"; var n = document.getElementsByTagName("script")[0]; n.parentNode.insertBefore(t, n)
-            })("178119d0-5586-4a4c-953e-04aaf9ac0994", "{{ $domain === 'expansion' ? 'JZLiMbKx' : 'DC8decYU' ")
+            })("178119d0-5586-4a4c-953e-04aaf9ac0994", "{{ $domain === 'expansion' ? 'JZLiMbKx' : 'DC8decYU' }}")
         })();
     </script>
 </head>

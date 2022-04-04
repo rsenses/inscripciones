@@ -12,6 +12,8 @@ class Discounts
 {
     public static function iiCongreso(Checkout $checkout)
     {
+        $discount = [];
+
         $products = $checkout->products->pluck('id')->toArray();
 
         $target = [10,11,12,13,14];
@@ -25,7 +27,35 @@ class Discounts
                 'concept' => 'Descuento por compra de múltiples talleres',
                 'amount' => 30 * $min,
             ];
+        }
 
+        $congressCount = $checkout->products()->where('id', 7)->count();
+
+        if ($congressCount > 1 && $congressCount < 25) {
+            $amount = 20 * $congressCount;
+
+            if (!empty($discount)) {
+                $amount = $amount + $discount['amount'];
+            }
+
+            $discount = [
+                'concept' => 'Descuento por compra múltiple de Congreso',
+                'amount' => $amount,
+            ];
+        } elseif ($congressCount >= 25) {
+            $amount = 40 * $congressCount;
+
+            if (!empty($discount)) {
+                $amount = $amount + $discount['amount'];
+            }
+
+            $discount = [
+                'concept' => 'Descuento por compra múltiple de Congreso',
+                'amount' => $amount,
+            ];
+        }
+
+        if (!empty($discount)) {
             return $discount;
         }
 

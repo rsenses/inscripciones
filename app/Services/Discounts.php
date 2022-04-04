@@ -29,7 +29,7 @@ class Discounts
             ];
         }
 
-        $congressCount = $checkout->products()->where('id', 7)->count();
+        $congressCount = $checkout->products()->where('products.id', 7)->count();
 
         if ($congressCount > 1 && $congressCount < 25) {
             $amount = 20 * $congressCount;

@@ -51,17 +51,6 @@
                             >https://premios.juridico.com</a
                         ></mj-text
                     >
-                    <mj-text
-                        line-height="22px"
-                        font-size="14px"
-                        color="#2a3a4a"
-                    >
-                        • Cómo llegar.<br />
-                        • Programa y ponentes. <br />
-                        • Listado de asistentes.<br />
-                        • Zona de preguntas en directo.<br />
-                        • Actualizaciones de última hora.
-                    </mj-text>
                     <mj-button
                         href="{{ route('calendar.show', ['product' => $checkout->products[0]]) }}"
                         border="1px solid #285DB2"

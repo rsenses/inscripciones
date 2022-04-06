@@ -25,14 +25,29 @@
             --primary: #D70065;
         }
     </style>
-    @else
+    @elseif($domain === 'marca')
+    <link href="{{ asset('css/marca.css') }}" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #c00;
+        }
+    </style>
+    @elseif($domain === 'expansion')
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
         :root {
             --primary: #386AB0;
         }
     </style>
+    @else
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2FC7DD;
+        }
+    </style>
     @endif
+
     <script src="https://tags.tiqcdn.com/utag/unidadeditorial/{{ $domain }}/prod/utag.sync.js"></script>
     <script type="text/javascript" language="javascript" src="https://e00-ue.uecdn.es/cookies/js/policy_v4.js"></script>
     <script type="text/javascript">

@@ -23,6 +23,11 @@ class DashboardController extends Controller
             ->get();
 
         $latestRegistrations = Registration::latest()
+            ->whereHas('product', function ($query) use ($partner) {
+                $query->whereHas('campaign', function ($query) use ($partner) {
+                    $query->where('campaigns.partner_id', $partner->id);
+                });
+            })
             ->where('status', 'new')
             ->get();
 

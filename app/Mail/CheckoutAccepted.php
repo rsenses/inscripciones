@@ -47,7 +47,7 @@ class CheckoutAccepted extends Mailable
         $fromAddress = $this->checkout->campaign->from_address;
         $fromName = $this->checkout->campaign->from_name;
 
-        return $this->subject('Rserva confirmada')
+        return $this->subject('Reserva confirmada')
             ->from($fromAddress, $fromName)
             ->with([
                 'promo' => $promo,

@@ -18,21 +18,21 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    @if($checkout->campaign->partner->slug === 'telva')
+    @if((isset($checkout) && $checkout->campaign->partner->slug === 'telva') || $domain === 'telva')
     <link href="{{ asset('css/telva.css') }}" rel="stylesheet">
     <style>
         :root {
             --primary: #D70065;
         }
     </style>
-    @elseif($checkout->campaign->partner->slug === 'marca')
+    @elseif((isset($checkout) && $checkout->campaign->partner->slug === 'marca') || $domain === 'marca')
     <link href="{{ asset('css/marca.css') }}" rel="stylesheet">
     <style>
         :root {
             --primary: #c00;
         }
     </style>
-    @elseif($checkout->campaign->partner->slug === 'expansion')
+    @elseif((isset($checkout) && $checkout->campaign->partner->slug === 'expansion') || $domain === 'expansion')
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
         :root {

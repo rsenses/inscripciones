@@ -47,7 +47,7 @@ class CheckoutAccepted extends Mailable
         $fromAddress = $this->checkout->campaign->from_address;
         $fromName = $this->checkout->campaign->from_name;
 
-        return $this->subject('Solicitud de registro de ' . $partner->name .' aceptada')
+        return $this->subject('Rserva confirmada')
             ->from($fromAddress, $fromName)
             ->with([
                 'promo' => $promo,

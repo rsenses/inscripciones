@@ -26,31 +26,6 @@
                             $checkout->campaign->name }}</strong
                         >.</mj-text
                     >
-                    <mj-text
-                        line-height="22px"
-                        font-size="14px"
-                        color="#2a3a4a"
-                    >
-                        Aquí tiene @if($checkout->quantity > 1)sus entradas
-                        @else su entrada @endif:
-                        <a
-                            href="{{
-                        route('tickets.show.checkout', ['checkout' => $checkout,
-                        'token' => $checkout->token]) }}"
-                            >{{ route('tickets.show.checkout', ['checkout' =>
-                            $checkout, 'token' => $checkout->token]) }}</a
-                        >
-                    </mj-text>
-                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >A través del siguiente enlace podrá acceder a toda la
-                        información relativa al evento:</mj-text
-                    >
-
-                    <mj-text line-height="22px" font-size="16px" color="#2a3a4a"
-                        ><a href="https://premios.juridico.com"
-                            >https://premios.juridico.com</a
-                        ></mj-text
-                    >
                     <mj-button
                         href="{{ route('calendar.show', ['product' => $checkout->products[0]]) }}"
                         border="1px solid #285DB2"

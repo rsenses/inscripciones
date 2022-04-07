@@ -21,13 +21,12 @@
                         ></mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Su solicitud ha sido completada
-                        <strong>correctamente</strong>.</mj-text
+                        >Su reserva ha sido
+                        <strong>confirmada</strong>.</mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Para proceder al pago y
-                        <strong>confirmar su asistencia</strong> haga click en
-                        el siguiente enlace:</mj-text
+                        >Para proceder al pago haga click en el siguiente
+                        enlace:</mj-text
                     >
                     <mj-text
                         line-height="22px"

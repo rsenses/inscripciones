@@ -209,7 +209,7 @@
                                         </tr>
                                         <tr>
                                             <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                                                <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:1;text-align:center;color:#4a5a6a;">Para cualquier consulta contacte con <a href="mailto:premios.juridico@unidadeditorial.es" style="color: blue">premios.juridico@unidadeditorial.es</a></div>
+                                                <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:1;text-align:center;color:#4a5a6a;">Para cualquier consulta contacte con <a href="mailto:premiosjuridico@expansion.com" style="color: blue">premiosjuridico@expansion.com</a></div>
                                             </td>
                                         </tr>
                                     </tbody>

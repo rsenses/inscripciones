@@ -203,7 +203,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                                                                    <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:22px;text-align:left;color:#2a3a4a;">@if($invoice->checkout->status != 'paid') Rogamos haga efectivo el pago de la factura a la mayor brevedad posible dentro de las próximas 48 horas.<br>Por favor, envíenos el justificante de la transferencia a <a href="mailto:premios.juridico@unidadeditorial.es">premios.juridico@unidadeditorial.es</a>. @endif</div>
+                                                                    <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:22px;text-align:left;color:#2a3a4a;">@if($invoice->checkout->status != 'paid') Rogamos haga efectivo el pago de la factura a la mayor brevedad posible dentro de las próximas 48 horas.<br>Por favor, envíenos el justificante de la transferencia a <a href="mailto:premiosjuridico@expansion.com">premiosjuridico@expansion.com</a>. @endif</div>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -256,7 +256,7 @@
                                         </tr>
                                         <tr>
                                             <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                                                <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:1;text-align:center;color:#4a5a6a;">Para cualquier consulta contacte con <a href="mailto:premios.juridico@unidadeditorial.es" style="color: blue">premios.juridico@unidadeditorial.es</a></div>
+                                                <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:1;text-align:center;color:#4a5a6a;">Para cualquier consulta contacte con <a href="mailto:premiosjuridico@expansion.com" style="color: blue">premiosjuridico@expansion.com</a></div>
                                             </td>
                                         </tr>
                                     </tbody>

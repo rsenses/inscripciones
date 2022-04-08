@@ -19,4 +19,4 @@ Incluir en mi calendario: {{ route('calendar.show', ['product' => $registration-
 Esperamos que disfrute del evento,
 Expansión
 
-Más información: premios.juridico@unidadeditorial.es
+Más información: premiosjuridico@expansion.com

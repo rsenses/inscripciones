@@ -1,6 +1,6 @@
 Estimad@ {{ $checkout->user->full_name }}
 
-Su solicitud para asistir al {{ $checkout->campaign->name }} ha sido registrada correctamente.
+Su solicitud para asistir a la {{ $checkout->campaign->name }} ha sido registrada correctamente.
 
 En breve nos pondremos en contacto con usted para confirmar si su solicitud ha sido aceptada.
 
@@ -10,4 +10,4 @@ Atentamente,
 
 Expansión
 
-Más información: premios.juridico@unidadeditorial.es
+Más información: premiosjuridico@expansion.com

@@ -7,4 +7,4 @@ Incluir en mi calendario: {{ route('calendar.show', ['product' => $checkout->pro
 Atentamente,
 Expansión
 
-Más información: premios.juridico@unidadeditorial.es
+Más información: premiosjuridico@expansion.com

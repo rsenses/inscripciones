@@ -22,12 +22,12 @@
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         ><strong
-                            >Le damos la bienvenida al {{
+                            >Te damos la bienvenida al {{
                             $registration->product->name }}</strong
                         >.</mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Puede descargar su entrada desde el siguiente enlace:</mj-text
+                        >Puedes descargar tu entrada desde el siguiente enlace:</mj-text
                     >
                     <mj-button
                         href="{{ route('tickets.show', [$registration, $registration->unique_id]) }}"
@@ -36,24 +36,14 @@
                     >Descargar entrada</a
                         ></mj-button>
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Acceda a toda la información relativa al evento en:</mj-text
+                        >A través del siguiente enlace podrá acceder a toda la
+                        información relativa al evento:</mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        ><a href="https://premios.juridico.com"
-                            >https://premios.juridico.com</a
+                        ><a href="https://energiayfelicidad.telva.com"
+                            >https://energiayfelicidad.telva.com</a
                         ></mj-text
                     >
-                    <mj-text
-                        line-height="22px"
-                        font-size="14px"
-                        color="#2a3a4a"
-                    >
-                        • Cómo llegar.<br />
-                        • Programa y ponentes. <br />
-                        • Listado de asistentes.<br />
-                        • Zona de preguntas en directo.<br />
-                        • Actualizaciones de última hora.
-                    </mj-text>
                     <mj-button
                         href="{{ route('calendar.show', ['product' => $registration->product]) }}"
                         background-color="#f45e43"
@@ -62,7 +52,7 @@
                         Incluir en mi calendario
                     </mj-button>
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Esperamos que disfrute del evento,</mj-text
+                        >Esperamos que disfrutes del evento,</mj-text
                     >
                     <mj-image
                         width="200px"
@@ -84,9 +74,9 @@
                 <mj-text font-size="14px" color="#4a5a6a" align="center"
                     >Para cualquier consulta contacte con
                     <a
-                        href="mailto:premiosjuridico@expansion.com"
+                        href="mailto:inscripciones.telva@unidadeditorial.es"
                         style="color: blue"
-                        >premiosjuridico@expansion.com</a
+                        >inscripciones.telva@unidadeditorial.es</a
                     ></mj-text
                 >
             </mj-column>

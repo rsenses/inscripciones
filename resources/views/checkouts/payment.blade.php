@@ -101,7 +101,7 @@
                         <strong>Cuenta</strong>: 42 0128 6035 77 0100000587<br>
                         <strong>IBAN</strong>: ES 42 0128 6035 77 0100000587<br>
                         <strong>BIC</strong>: SWIFT BKBKESMMXXX<br>
-                        <strong>Concepto de transferencia</strong>: Asistencia {{ $checkout->user->full_name }} {{ $checkout->id }}<br>
+                        <strong>Concepto de transferencia</strong>: Asistencia {{ $checkout->campaign->from_name }} {{ $checkout->id }}<br>
                     </p>
                 </div>
                 <div class="card-footer">

@@ -10,4 +10,4 @@ Un cordial saludo,
 
 Expansión
 
-Más información: premios.juridico@unidadeditorial.es
+Más información: premiosjuridico@expansion.com

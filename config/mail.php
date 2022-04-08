@@ -93,6 +93,21 @@ return [
             ]
         ],
 
+        'smtp_marca' => [
+            'transport' => 'smtp',
+            'host' => env('MAIL_CF_HOST', 'smtp.mailgun.org'),
+            'port' => env('MAIL_CF_PORT', 587),
+            'encryption' => env('MAIL_CF_ENCRYPTION', 'tls'),
+            'username' => env('MAIL_CF_USERNAME'),
+            'password' => env('MAIL_CF_PASSWORD'),
+            'timeout' => null,
+            'auth_mode' => null,
+            'from' => [
+                'address' => env('MAIL_CF_FROM_ADDRESS'),
+                'name' => env('MAIL_CF_FROM_NAME'),
+            ]
+        ],
+
         'ses' => [
             'transport' => 'ses',
         ],

@@ -1,9 +1,10 @@
 Estimad@ {{ $checkout->user->full_name }}
 
-Tu inscripción ha sido cancelada correctamente.
+Su solicitud de inscripción ha sido cancelada.
 
+Gracias por su interés.
 Atentamente,
 
-Telva
+Marca
 
-Más información: inscripciones.telva@unidadeditorial.es
+Más información: eventos@marca.com

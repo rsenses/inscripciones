@@ -1,13 +1,13 @@
 Estimad@ {{ $checkout->user->full_name }}
 
-Tu solicitud para asistir al {{ $checkout->campaign->name }} ha sido registrada correctamente.
+Su solicitud para asistir al {{ $checkout->campaign->name }} ha sido registrada correctamente.
 
-En breve nos pondremos en contacto para confirmar si tu solicitud ha sido aceptada.
+En breve nos pondremos en contacto con usted para confirmar si su solicitud ha sido aceptada.
 
-Te recordamos que el aforo es limitado y por riguroso orden de inscripción.
+Le recordamos que el aforo es limitado y por riguroso orden de inscripción.
 
 Atentamente,
 
-Telva
+Marca
 
-Más información: inscripciones.telva@unidadeditorial.es
+Más información: eventos@marca.com

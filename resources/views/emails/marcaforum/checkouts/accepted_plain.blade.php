@@ -1,18 +1,13 @@
 Estimad@ {{ $checkout->user->full_name }}
 
-Ya estás registrada en el {{ $checkout->campaign->name
-}}. A continuación detallamos el resumen de la compra:
+Su solicitud ha sido completada correctamente.
 
-# Producto
-@foreach ($checkout->products->groupBy('id') as $product)
-{{ $product->count() }}x {{ $product[0]->name }} {{ $product[0]->mode }}
-@endforeach
+Para proceder al pago y confirmar su asistencia haga click en el siguiente enlace:
 
-Si no has completado tu compra, recuerda que puedes hacerlo en cualquier momento desde el siguiente enlace.:
-{{ route('checkouts', ['checkout' => $checkout, 't' => $checkout->token]) }}
+{{ Config::get('app.url') }}checkouts/{{ $checkout->id }}?t={{ $checkout->token }}
 
 Atentamente,
 
-Telva
+Marca
 
-Más información: inscripciones.telva@unidadeditorial.es
+Más información: eventos@marca.com

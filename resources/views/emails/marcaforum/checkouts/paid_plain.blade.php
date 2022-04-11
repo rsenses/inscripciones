@@ -1,26 +1,19 @@
 Estimad@ {{ $checkout->user->full_name }}
 
-Te damos la bienvenida al {{ $checkout->campaign->name }}.
+Le damos la bienvenida al {{ $checkout->campaign->name }}.
 
-@if(empty($checkout->mode()['online']))
-Aquí tienes tus entradas:
-{{ route('tickets.show.checkout', ['checkout' => $checkout, 'token' => $checkout->token]) }}
-@elseif(empty($checkout->mode()['presencial']))
-Podrás acceder al streaming mediante tu email y contraseña.
-@else
-Aquí tienes tus entradas:
-{{ route('tickets.show.checkout', ['checkout' => $checkout, 'token' => $checkout->token]) }}
+A través del siguiente enlace podrá acceder a toda la información relativa al evento:
+https://foro.expansion.com
 
-Podrás acceder al streaming mediante tu email y contraseña.
-@endif
-
-A través del siguiente enlace podrás ver toda la información relativa al evento:
-https://energiayfelicidad.telva.com/
+• Cómo llegar.
+• Programa y ponentes.
+• Listado de asistentes.
+• Zona de preguntas en directo.
+• Actualizaciones de última hora.
 
 Incluir en mi calendario: {{ route('calendar.show', ['product' => $checkout->products[0]]) }}
 
-Esperamos que disfrutes del evento,
+Atentamente,
+Marca
 
-Telva
-
-Más información: inscripciones.telva@unidadeditorial.es
+Más información: eventos@marca.com

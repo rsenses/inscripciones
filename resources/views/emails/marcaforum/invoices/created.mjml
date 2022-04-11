@@ -33,14 +33,16 @@
                         ></mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Adjunto enviamos el duplicado de tu factura de
+                        >Adjunto enviamos el duplicado de su factura de
                         inscripción al {{ $invoice->checkout->campaign->name
                         }}.</mj-text
                     >
                     <mj-button
                         href="https://invoice.eventosue.com/{{ $invoice->number }}.pdf"
-                        background-color="#f45e43"
-                        color="white"
+                        border="1px solid #285DB2"
+                        background-color="#fff"
+                        color="#285DB2"
+                        align="left"
                     >
                         Descargar factura
                     </mj-button>
@@ -49,30 +51,23 @@
                         font-size="14px"
                         color="#2a3a4a"
                     >
-                        @if($invoice->checkout->status != 'paid') Rogamos hagas
+                        @if($invoice->checkout->status != 'paid') Rogamos haga
                         efectivo el pago de la factura a la mayor brevedad
                         posible dentro de las próximas 48 horas.<br />
-                        Por favor, envíanos el justificante de la transferencia
+                        Por favor, envíenos el justificante de la transferencia
                         a
-                        <a href="mailto:inscripciones.telva@unidadeditorial.es"
-                            >inscripciones.telva@unidadeditorial.es</a
+                        <a href="mailto:eventos@marca.com">eventos@marca.com</a
                         >. @endif
                     </mj-text>
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         >Atentamente,</mj-text
                     >
-                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        ><strong>Telva</strong></mj-text
-                    >
-                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        ><small
-                            >Más información:
-                            <a
-                                href="mailto:inscripciones.telva@unidadeditorial.es"
-                                >inscripciones.telva@unidadeditorial.es</a
-                            ></small
-                        ></mj-text
-                    >
+                    <mj-image
+                        width="200px"
+                        align="left"
+                        src="{{ asset('storage/' . $invoice->checkout->campaign->partner->image) }}"
+                        href="{{ $invoice->checkout->campaign->partner->name }}"
+                    ></mj-image>
                 </mj-column>
             </mj-section>
         </mj-wrapper>
@@ -85,11 +80,9 @@
                     >© Unidad Editorial {{ now()->year }}</mj-text
                 >
                 <mj-text font-size="14px" color="#4a5a6a" align="center"
-                    >Para cualquier consulta contacta con
-                    <a
-                        href="mailto:inscripciones.telva@unidadeditorial.es"
-                        style="color: blue"
-                        >inscripciones.telva@unidadeditorial.es</a
+                    >Para cualquier consulta contacte con
+                    <a href="mailto:eventos@marca.com" style="color: blue"
+                        >eventos@marca.com</a
                     ></mj-text
                 >
             </mj-column>

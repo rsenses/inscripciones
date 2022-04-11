@@ -1,17 +1,5 @@
 <mjml>
     <mj-body background-color="#f9f9f9">
-        <mj-raw>
-            <!-- Company Header -->
-        </mj-raw>
-        <mj-section>
-            <mj-column>
-                <mj-image
-                    width="200px"
-                    src="{{ asset('storage/' . $partner->image) }}"
-                    href="{{ $partner->name }}"
-                ></mj-image>
-            </mj-column>
-        </mj-section>
         <mj-wrapper background-color="#fff" padding="0">
             <mj-raw>
                 <!-- Image Header -->
@@ -33,42 +21,13 @@
                         ></mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Ya estás registrada en el {{ $checkout->campaign->name
-                        }}. A continuación detallamos el resumen de la
-                        compra:</mj-text
+                        >Su solicitud ha sido completada
+                        <strong>correctamente</strong>.</mj-text
                     >
-                    <mj-table
-                        line-height="22px"
-                        font-size="14px"
-                        color="#2a3a4a"
-                    >
-                        <tr
-                            style="
-                                border-bottom: 1px solid #ecedee;
-                                text-align: left;
-                                padding: 15px 0;
-                            "
-                        >
-                            <th style="padding: 0 15px 0 0">#</th>
-                            <th style="padding: 0 15px 0 0">Evento</th>
-                        </tr>
-                        @foreach ($checkout->products->groupBy('id') as
-                        $product)
-                        <tr>
-                            <td>{{ $product->count() }}</td>
-                            <td>
-                                {{ $product[0]->name }}
-                                <span style="text-transform: uppercase"
-                                    >{{ $product[0]->mode }}</span
-                                >
-                            </td>
-                        </tr>
-                        @endforeach
-                    </mj-table>
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Si no has completado tu compra, recuerda que puedes
-                        hacerlo en cualquier momento desde el siguiente
-                        enlace.:</mj-text
+                        >Para proceder al pago y
+                        <strong>confirmar su asistencia</strong> haga click en
+                        el siguiente enlace:</mj-text
                     >
                     <mj-text
                         line-height="22px"
@@ -76,26 +35,20 @@
                         color="#2a3a4a"
                     >
                         <a
-                            href="{{ route('checkouts', ['checkout' => $checkout, 't' => $checkout->token]) }}"
-                            >{{ route('checkouts', ['checkout' => $checkout, 't'
-                            => $checkout->token]) }}</a
+                            href="{{ Config::get('app.url') }}checkouts/{{ $checkout->id }}?t={{ $checkout->token }}"
+                            >{{ Config::get('app.url') }}checkouts/{{
+                            $checkout->id }}?t={{ $checkout->token }}</a
                         >
                     </mj-text>
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         >Atentamente,</mj-text
                     >
-                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        ><strong>Telva</strong></mj-text
-                    >
-                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        ><small
-                            >Más información:
-                            <a
-                                href="mailto:inscripciones.telva@unidadeditorial.es"
-                                >inscripciones.telva@unidadeditorial.es</a
-                            ></small
-                        ></mj-text
-                    >
+                    <mj-image
+                        width="200px"
+                        align="left"
+                        src="{{ asset('storage/' . $checkout->campaign->partner->image) }}"
+                        href="{{ $checkout->campaign->partner->name }}"
+                    ></mj-image>
                 </mj-column>
             </mj-section>
         </mj-wrapper>
@@ -108,11 +61,9 @@
                     >© Unidad Editorial {{ now()->year }}</mj-text
                 >
                 <mj-text font-size="14px" color="#4a5a6a" align="center"
-                    >Para cualquier consulta contacta con
-                    <a
-                        href="mailto:inscripciones.telva@unidadeditorial.es"
-                        style="color: blue"
-                        >inscripciones.telva@unidadeditorial.es</a
+                    >Para cualquier consulta contacte con
+                    <a href="mailto:eventos@marca.com" style="color: blue"
+                        >eventos@marca.com</a
                     ></mj-text
                 >
             </mj-column>

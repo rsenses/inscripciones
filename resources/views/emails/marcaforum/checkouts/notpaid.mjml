@@ -1,17 +1,5 @@
 <mjml>
     <mj-body background-color="#f9f9f9">
-        <mj-raw>
-            <!-- Company Header -->
-        </mj-raw>
-        <mj-section>
-            <mj-column>
-                <mj-image
-                    width="200px"
-                    src="{{ asset('storage/' . $checkout->campaign->partner->image) }}"
-                    href="{{ $checkout->campaign->partner->name }}"
-                ></mj-image>
-            </mj-column>
-        </mj-section>
         <mj-wrapper background-color="#fff" padding="0">
             <mj-raw>
                 <!-- Image Header -->
@@ -33,9 +21,9 @@
                         ></mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Has seleccionado
+                        >Ha seleccionado
                         <strong>transferencia bancaria</strong> como método de
-                        pago. Para reservar tu plaza debes realizar una
+                        pago. Para reservar su plaza debe realizar una
                         transferencia con los siguientes datos:</mj-text
                     >
                     <mj-text
@@ -60,18 +48,12 @@
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         >Atentamente,</mj-text
                     >
-                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        ><strong>Telva</strong></mj-text
-                    >
-                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        ><small
-                            >Más información:
-                            <a
-                                href="mailto:inscripciones.telva@unidadeditorial.es"
-                                >inscripciones.telva@unidadeditorial.es</a
-                            ></small
-                        ></mj-text
-                    >
+                    <mj-image
+                        width="200px"
+                        align="left"
+                        src="{{ asset('storage/' . $checkout->campaign->partner->image) }}"
+                        href="{{ $checkout->campaign->partner->name }}"
+                    ></mj-image>
                 </mj-column>
             </mj-section>
         </mj-wrapper>
@@ -84,11 +66,9 @@
                     >© Unidad Editorial {{ now()->year }}</mj-text
                 >
                 <mj-text font-size="14px" color="#4a5a6a" align="center"
-                    >Para cualquier consulta contacta con
-                    <a
-                        href="mailto:inscripciones.telva@unidadeditorial.es"
-                        style="color: blue"
-                        >inscripciones.telva@unidadeditorial.es</a
+                    >Para cualquier consulta contacte con
+                    <a href="mailto:eventos@marca.com" style="color: blue"
+                        >eventos@marca.com</a
                     ></mj-text
                 >
             </mj-column>

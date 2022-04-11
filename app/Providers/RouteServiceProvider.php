@@ -20,7 +20,6 @@ class RouteServiceProvider extends ServiceProvider
     public const HOME = '/dashboard';
     public const EXPANSION = 'https://inscripciones.expansion.com';
     public const TELVA = 'https://inscripciones.telva.com';
-    public const MARCA = 'https://inscripciones.marca.com';
     public const UE = 'https://inscripciones.unidadeditorial.es';
 
     /**
@@ -71,8 +70,6 @@ class RouteServiceProvider extends ServiceProvider
             return self::EXPANSION;
         } elseif (request()->getHost() === 'inscripciones.telva.com') {
             return self::TELVA;
-        } elseif (request()->getHost() === 'inscripciones.marca.com') {
-            return self::MARCA;
         } else {
             return self::UE;
         }

@@ -35,9 +35,9 @@
                         color="#2a3a4a"
                     >
                         <a
-                            href="{{ Config::get('app.url') }}checkouts/{{ $checkout->id }}?t={{ $checkout->token }}"
-                            >{{ Config::get('app.url') }}checkouts/{{
-                            $checkout->id }}?t={{ $checkout->token }}</a
+                            href="{{ route('checkouts', ['checkout' => $checkout, 't' => $checkout->token]) }}"
+                            >{{ route('checkouts', ['checkout' => $checkout, 't'
+                            => $checkout->token]) }}</a
                         >
                     </mj-text>
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"

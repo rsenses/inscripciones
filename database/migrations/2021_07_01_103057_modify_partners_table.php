@@ -14,7 +14,6 @@ class ModifyPartnersTable extends Migration
     public function up()
     {
         Schema::table('partners', function (Blueprint $table) {
-            $table->text('conditions');
             $table->text('legal');
         });
     }
@@ -27,7 +26,6 @@ class ModifyPartnersTable extends Migration
     public function down()
     {
         Schema::table('partners', function (Blueprint $table) {
-            $table->dropColumn(['conditions']);
             $table->dropColumn(['legal']);
         });
     }

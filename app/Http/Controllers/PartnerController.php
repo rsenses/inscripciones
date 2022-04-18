@@ -47,7 +47,6 @@ class PartnerController extends Controller
             'merchant_code' => ['required', 'string', 'max:255'],
             'merchant_key' => ['required', 'string', 'max:255'],
             'corporation' => ['required', 'string', 'max:255'],
-            'conditions' => ['required', 'string'],
             'legal' => ['required', 'string'],
         ]);
 
@@ -58,7 +57,6 @@ class PartnerController extends Controller
             'merchant_code' => $request->merchant_code,
             'merchant_key' => $request->merchant_key,
             'corporation' => $request->corporation,
-            'conditions' => $request->conditions,
             'legal' => $request->legal,
             'image' => $path
         ]);
@@ -115,7 +113,6 @@ class PartnerController extends Controller
             'merchant_code' => ['required', 'string', 'max:255'],
             'merchant_key' => ['required', 'string', 'max:255'],
             'corporation' => ['required', 'string', 'max:255'],
-            'conditions' => ['required', 'string'],
             'legal' => ['required', 'string'],
         ]);
 
@@ -128,7 +125,6 @@ class PartnerController extends Controller
             'merchant_code' => $request->merchant_code,
             'merchant_key' => $request->merchant_key,
             'corporation' => $request->corporation,
-            'conditions' => $request->conditions,
             'legal' => $request->legal
         ];
 

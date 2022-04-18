@@ -15,6 +15,7 @@ class ModifyCampaignTable4 extends Migration
     {
         Schema::table('campaigns', function (Blueprint $table) {
             $table->string('short_name');
+            $table->text('conditions');
         });
     }
 
@@ -26,7 +27,7 @@ class ModifyCampaignTable4 extends Migration
     public function down()
     {
         Schema::table('campaigns', function (Blueprint $table) {
-            $table->dropColumn(['short_name']);
+            $table->dropColumn(['short_name', 'conditions']);
         });
     }
 }

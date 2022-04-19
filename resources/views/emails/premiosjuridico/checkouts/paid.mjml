@@ -22,7 +22,7 @@
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         ><strong
-                            >Le damos la bienvenida al {{
+                            >Le damos la bienvenida a la {{
                             $checkout->campaign->name }}</strong
                         >.</mj-text
                     >

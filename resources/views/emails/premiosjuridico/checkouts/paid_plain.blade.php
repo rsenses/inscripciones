@@ -1,6 +1,6 @@
 Estimad@ {{ $checkout->user->full_name }}
 
-Le damos la bienvenida al {{ $checkout->campaign->name }}.
+Le damos la bienvenida a la {{ $checkout->campaign->name }}.
 
 Incluir en mi calendario: {{ route('calendar.show', ['product' => $checkout->products[0]]) }}
 

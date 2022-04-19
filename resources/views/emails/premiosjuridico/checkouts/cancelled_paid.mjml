@@ -22,7 +22,7 @@
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         >Hemos iniciado el proceso de cancelación de asistencia
-                        al {{ $checkout->campaign->name }}. En unos días
+                        a la {{ $checkout->campaign->name }}. En unos días
                         recibirá la factura de abono.</mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"

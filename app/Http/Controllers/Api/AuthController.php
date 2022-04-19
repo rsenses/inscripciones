@@ -35,10 +35,12 @@ class AuthController extends Controller
                 'phone' => $request->phone,
                 'company' => $request->company,
                 'position' => $request->position,
-                'password' => $request->password ? Hash::make($request->password) : null,
                 'advertising' => $request->advertising ?: 0,
             ]
         );
+
+        $user->password = $request->password ? Hash::make($request->password) : $user->password;
+        $user->save();
 
         return response()->json($user);
     }

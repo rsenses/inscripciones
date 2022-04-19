@@ -57,15 +57,6 @@
                         @endif
                     </div>
                 </div>
-                <div class="form-row align-items-end mb-4">
-                    <div class="col">
-                        <label for="legal">Texto Legal</label>
-                        <textarea name="legal" id="legal" cols="30" rows="10" class="form-control form-control-lg{{ $errors->has('legal') ? 'is-invalid' : '' }}">{{ $partner->legal }}</textarea>
-                        @if ($errors->has('legal'))
-                        <div class="invalid-feedback">{{ $errors->first('legal') }}</div>
-                        @endif
-                    </div>
-                </div>
 
                 <button type="submit" class="btn btn-primary pull-right">Guardar</button>
                 @if(!$partner->products->count())

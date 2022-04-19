@@ -47,7 +47,6 @@ class PartnerController extends Controller
             'merchant_code' => ['required', 'string', 'max:255'],
             'merchant_key' => ['required', 'string', 'max:255'],
             'corporation' => ['required', 'string', 'max:255'],
-            'legal' => ['required', 'string'],
         ]);
 
         $path = $request->file('image')->store('partners', 'public');
@@ -57,7 +56,6 @@ class PartnerController extends Controller
             'merchant_code' => $request->merchant_code,
             'merchant_key' => $request->merchant_key,
             'corporation' => $request->corporation,
-            'legal' => $request->legal,
             'image' => $path
         ]);
 
@@ -113,7 +111,6 @@ class PartnerController extends Controller
             'merchant_code' => ['required', 'string', 'max:255'],
             'merchant_key' => ['required', 'string', 'max:255'],
             'corporation' => ['required', 'string', 'max:255'],
-            'legal' => ['required', 'string'],
         ]);
 
         if ($request->image) {
@@ -125,7 +122,6 @@ class PartnerController extends Controller
             'merchant_code' => $request->merchant_code,
             'merchant_key' => $request->merchant_key,
             'corporation' => $request->corporation,
-            'legal' => $request->legal
         ];
 
         if (isset($path)) {

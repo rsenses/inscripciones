@@ -13,16 +13,10 @@ class AuthController extends Controller
 {
     public function register(Request $request)
     {
-        $user = User::where('email', $request->email)->first();
-
-        if ($user) {
-            return response()->json($user);
-        }
-
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'unique:users'],
+            'email' => ['required', 'email'],
             'tax_id' => ['nullable', 'string', 'max:255'],
             'phone' => ['nullable', 'string', 'max:255'],
             'company' => ['nullable', 'string', 'max:255'],
@@ -31,17 +25,20 @@ class AuthController extends Controller
             'advertising' => ['nullable', 'boolean']
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-            'tax_id' => $request->tax_id,
-            'phone' => $request->phone,
-            'company' => $request->company,
-            'position' => $request->position,
-            'password' => $request->password ? Hash::make($request->password) : null,
-            'advertising' => $request->advertising ?: 0,
-        ]);
+        $user = User::updateOrCreate(
+            ['email' => $request->email],
+            [
+                'name' => $request->name,
+                'last_name' => $request->last_name,
+                'email' => $request->email,
+                'tax_id' => $request->tax_id,
+                'phone' => $request->phone,
+                'company' => $request->company,
+                'position' => $request->position,
+                'password' => $request->password ? Hash::make($request->password) : null,
+                'advertising' => $request->advertising ?: 0,
+            ]
+        );
 
         return response()->json($user);
     }

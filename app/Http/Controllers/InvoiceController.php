@@ -25,11 +25,13 @@ class InvoiceController extends Controller
             ->where('to_bill', true)
             ->whereHas('checkout', function ($q) use ($campaignId) {
                 $q->where('status', 'paid');
-                $q->where(function ($q) use ($campaignId) {
-                    $q->whereHas('products', function ($q) use ($campaignId) {
-                        $q->where('campaign_id', $campaignId);
+                if ($campaignId) {
+                    $q->where(function ($q) use ($campaignId) {
+                        $q->whereHas('products', function ($q) use ($campaignId) {
+                            $q->where('campaign_id', $campaignId);
+                        });
                     });
-                });
+                }
             })
             ->get();
 

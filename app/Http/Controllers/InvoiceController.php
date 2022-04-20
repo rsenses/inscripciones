@@ -24,13 +24,15 @@ class InvoiceController extends Controller
             ->whereNull('number')
             ->where('to_bill', true)
             ->whereHas('checkout', function ($q) use ($campaignId) {
-                $q->where('status', 'pending')
-                ->orWhere('status', 'paid');
-                if ($campaignId) {
+                $q->where(function ($q) {
+                    $q->where('status', 'pending');
+                    $q->orWhere('status', 'paid');
+                });
+                $q->where(function ($q) use ($campaignId) {
                     $q->whereHas('products', function ($q) use ($campaignId) {
                         $q->where('campaign_id', $campaignId);
                     });
-                }
+                });
             })
             ->get();
 

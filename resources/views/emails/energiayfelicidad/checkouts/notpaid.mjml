@@ -44,14 +44,17 @@
                         color="#2a3a4a"
                     >
                         Importe: {{ $checkout->amount }}€<br />
-                        Titular de la cuenta: U.E.INFOR. ECONÓM. S.L.U<br />
+                        Titular de la cuenta: {{
+                        $checkout->campaign->partner->legal_name }}<br />
                         Concepto de transferencia: Asistencia {{
                         $checkout->user->full_name }} {{ $checkout->id }}<br />
-                        Nombre del Banco: Bankinter<br />
-                        Cuenta 42 0128 6035 77 0100000587<br />
+                        Nombre del Banco: {{
+                        $checkout->campaign->partner->bank_name }}<br />
+                        Cuenta {{ $checkout->campaign->partner->bank_account
+                        }}<br />
                         ******<br />
-                        IBAN: ES 42 0128 6035 77 0100000587<br />
-                        BIC: SWIFT BKBKESMMXXX
+                        IBAN: {{ $checkout->campaign->partner->iban }}<br />
+                        BIC: {{ $checkout->campaign->partner->bic }}
                     </mj-text>
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         >Por favor, envíenos el justificante de la transferencia

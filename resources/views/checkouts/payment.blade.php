@@ -96,11 +96,11 @@
                 <div class="card-body">
                     <p class="text-center"><strong>MEDIANTE TRANSFERENCIA:</strong></p>
                     <p>
-                        <strong>Beneficiario</strong>: U.E.INFOR. ECONÓM. S.L.U<br>
-                        <strong>Nombre del Banco</strong>: Bankinter<br>
-                        <strong>Cuenta</strong>: 42 0128 6035 77 0100000587<br>
-                        <strong>IBAN</strong>: ES 42 0128 6035 77 0100000587<br>
-                        <strong>BIC</strong>: SWIFT BKBKESMMXXX<br>
+                        <strong>Beneficiario</strong>: {{ $checkout->campaign->partner->legal_name }}<br>
+                        <strong>Nombre del Banco</strong>: {{ $checkout->campaign->partner->bank_name }}<br>
+                        <strong>Cuenta</strong>: {{ $checkout->campaign->partner->bank_account }}<br>
+                        <strong>IBAN</strong>: {{ $checkout->campaign->partner->iban }}<br>
+                        <strong>BIC</strong>: {{ $checkout->campaign->partner->bic }}<br>
                         <strong>Concepto de transferencia</strong>: Asistencia {{ $checkout->campaign->from_name }} {{ $checkout->id }}<br>
                     </p>
                 </div>

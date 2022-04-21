@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 
 class InvoiceController extends Controller
 {
+    const PARTNERS_UE = [1, 2, 3, 4, 5];
     /**
      * Display a listing of the resource.
      *
@@ -30,7 +31,7 @@ class InvoiceController extends Controller
                         $q->whereHas('products', function ($q) use ($campaignId) {
                             $q->where('campaign_id', $campaignId);
                             $q->whereHas('campaign', function ($q) {
-                                $q->whereIn('partner_id', [1, 2, 3, 4, 5]);
+                                $q->whereIn('partner_id', self::PARTNERS_UE);
                             });
                         });
                     });
@@ -45,7 +46,7 @@ class InvoiceController extends Controller
                     $q->whereHas('products', function ($q) use ($campaignId) {
                         $q->where('campaign_id', $campaignId);
                         $q->whereHas('campaign', function ($q) {
-                            $q->whereIn('partner_id', [1, 2, 3, 4, 5]);
+                            $q->whereIn('partner_id', self::PARTNERS_UE);
                         });
                     });
                 }
@@ -53,7 +54,7 @@ class InvoiceController extends Controller
             ->orderBy('billed_at', 'DESC')
             ->get();
 
-        $campaigns = Campaign::whereIn('partner_id', [1, 2, 3, 4, 5])
+        $campaigns = Campaign::whereIn('partner_id', self::PARTNERS_UE)
             ->orderBy('created_at', 'DESC')
             ->get();
 
@@ -79,7 +80,7 @@ class InvoiceController extends Controller
                 $q->where('status', 'paid');
                 $q->whereHas('products', function ($q) {
                     $q->whereHas('campaign', function ($q) {
-                        $q->whereIn('partner_id', [1, 2, 3, 4, 5]);
+                        $q->whereIn('partner_id', self::PARTNERS_UE);
                     });
                 });
             })

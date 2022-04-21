@@ -32,6 +32,13 @@
             --primary: #c00;
         }
     </style>
+    @elseif($domain === 'diariomedico')
+    <link href="{{ asset('css/diariomedico.css') }}" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1172B8;
+        }
+    </style>
     @elseif($domain === 'expansion')
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>

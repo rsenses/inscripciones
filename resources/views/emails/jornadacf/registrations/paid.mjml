@@ -1,0 +1,85 @@
+<mjml>
+    <mj-body background-color="#f9f9f9">
+        <mj-wrapper background-color="#fff" padding="0">
+            <mj-raw>
+                <!-- Image Header -->
+            </mj-raw>
+            <mj-section padding="0">
+                <mj-column>
+                    <mj-image
+                        src="{{ asset('storage/' . $registration->campaign->image) }}"
+                        alt="{{ $registration->campaign->name }}"
+                    ></mj-image>
+                </mj-column>
+            </mj-section>
+            <mj-section padding="0 0 30px">
+                <mj-column width="500px">
+                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
+                        >Estimad@
+                        <strong
+                            >{{ $registration->user->full_name }}</strong
+                        ></mj-text
+                    >
+                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
+                        ><strong
+                            >Te damos la bienvenida al {{
+                            $registration->product->name }}</strong
+                        >.</mj-text
+                    >
+                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
+                        >Puedes descargar tu entrada desde el siguiente enlace:</mj-text
+                    >
+                    <mj-button
+                        href="{{ route('tickets.show', [$registration, $registration->unique_id]) }}"
+                        background-color="#f45e43"
+                        color="white"
+                    >Descargar entrada</a
+                        ></mj-button>
+                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
+                        >A través del siguiente enlace podrá acceder a toda la
+                        información relativa al evento:</mj-text
+                    >
+                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
+                        ><a href="https://energiayfelicidad.telva.com"
+                            >https://energiayfelicidad.telva.com</a
+                        ></mj-text
+                    >
+                    <mj-button
+                        href="{{ route('calendar.show', ['product' => $registration->product]) }}"
+                        background-color="#f45e43"
+                        color="white"
+                    >
+                        Incluir en mi calendario
+                    </mj-button>
+                    <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
+                        >Esperamos que disfrutes del evento,</mj-text
+                    >
+                    <mj-image
+                        width="200px"
+                        align="left"
+                        src="{{ asset('storage/' . $registration->campaign->partner->image) }}"
+                        href="{{ $registration->campaign->partner->name }}"
+                    ></mj-image>
+                </mj-column>
+            </mj-section>
+        </mj-wrapper>
+        <mj-raw>
+            <!-- Footer text -->
+        </mj-raw>
+        <mj-section>
+            <mj-column>
+                <mj-text font-size="14px" color="#4a5a6a" align="center"
+                    >© Unidad Editorial {{ now()->year }}</mj-text
+                >
+                <mj-text font-size="14px" color="#4a5a6a" align="center"
+                    >Para cualquier consulta contacte con
+                    <a
+                        href="mailto:inscripciones.telva@unidadeditorial.es"
+                        style="color: blue"
+                        >inscripciones.telva@unidadeditorial.es</a
+                    ></mj-text
+                >
+            </mj-column>
+        </mj-section>
+    </mj-body>
+</mjml>

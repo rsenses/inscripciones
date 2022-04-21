@@ -25,6 +25,13 @@
             --primary: #D70065;
         }
     </style>
+    @elseif((isset($checkout) && $checkout->campaign->partner->slug === 'diariomedico') || $domain === 'diariomedico')
+    <link href="{{ asset('css/marca.css') }}" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1172B8;
+        }
+    </style>
     @elseif((isset($checkout) && $checkout->campaign->partner->slug === 'marca') || $domain === 'marca')
     <link href="{{ asset('css/marca.css') }}" rel="stylesheet">
     <style>

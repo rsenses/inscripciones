@@ -9,6 +9,8 @@
 /public/css/telva.css.*
 /public/css/marca.css
 /public/css/marca.css.*
+/public/css/diariomedico.css
+/public/css/diariomedico.css.*
 /storage/*.key
 /vendor
 .env

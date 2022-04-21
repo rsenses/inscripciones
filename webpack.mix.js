@@ -15,4 +15,5 @@ mix.js("resources/js/app.js", "public/js")
     .sass("resources/sass/app.scss", "public/css")
     .sass("resources/sass/telva.scss", "public/css")
     .sass("resources/sass/marca.scss", "public/css")
+    .sass("resources/sass/diariomedico.scss", "public/css")
     .sourceMaps();

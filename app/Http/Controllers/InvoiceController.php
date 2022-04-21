@@ -29,6 +29,9 @@ class InvoiceController extends Controller
                     $q->where(function ($q) use ($campaignId) {
                         $q->whereHas('products', function ($q) use ($campaignId) {
                             $q->where('campaign_id', $campaignId);
+                            $q->whereHas('campaign', function ($q) {
+                                $q->whereIn('partner_id', [1, 2, 3, 4, 5]);
+                            });
                         });
                     });
                 }
@@ -41,13 +44,18 @@ class InvoiceController extends Controller
                 if ($campaignId) {
                     $q->whereHas('products', function ($q) use ($campaignId) {
                         $q->where('campaign_id', $campaignId);
+                        $q->whereHas('campaign', function ($q) {
+                            $q->whereIn('partner_id', [1, 2, 3, 4, 5]);
+                        });
                     });
                 }
             })
             ->orderBy('billed_at', 'DESC')
             ->get();
 
-        $campaigns = Campaign::orderBy('created_at', 'DESC')->get();
+        $campaigns = Campaign::whereIn('partner_id', [1, 2, 3, 4, 5])
+            ->orderBy('created_at', 'DESC')
+            ->get();
 
         return view('invoices.index', [
             'invoices' => $invoices,
@@ -69,6 +77,11 @@ class InvoiceController extends Controller
             ->where('to_bill', true)
             ->whereHas('checkout', function ($q) {
                 $q->where('status', 'paid');
+                $q->whereHas('products', function ($q) {
+                    $q->whereHas('campaign', function ($q) {
+                        $q->whereIn('partner_id', [1, 2, 3, 4, 5]);
+                    });
+                });
             })
             ->get();
 

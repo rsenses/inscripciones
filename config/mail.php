@@ -108,6 +108,21 @@ return [
             ]
         ],
 
+        'smtp_gmp' => [
+            'transport' => 'smtp',
+            'host' => env('MAIL_GMP_HOST', 'smtp.mailgun.org'),
+            'port' => env('MAIL_GMP_PORT', 587),
+            'encryption' => env('MAIL_GMP_ENCRYPTION', 'tls'),
+            'username' => env('MAIL_GMP_USERNAME'),
+            'password' => env('MAIL_GMP_PASSWORD'),
+            'timeout' => null,
+            'auth_mode' => null,
+            'from' => [
+                'address' => env('MAIL_GMP_FROM_ADDRESS'),
+                'name' => env('MAIL_GMP_FROM_NAME'),
+            ]
+        ],
+
         'ses' => [
             'transport' => 'ses',
         ],

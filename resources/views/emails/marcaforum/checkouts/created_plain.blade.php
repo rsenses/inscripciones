@@ -8,6 +8,6 @@ Le recordamos que el aforo es limitado y por riguroso orden de inscripción.
 
 Atentamente,
 
-Marca
+MARCA
 
 Más información: eventos@marca.com

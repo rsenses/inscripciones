@@ -17,6 +17,6 @@ https://foro.expansion.com
 Incluir en mi calendario: {{ route('calendar.show', ['product' => $registration->product]) }}
 
 Esperamos que disfrute del evento,
-Marca
+MARCA
 
 Más información: eventos@marca.com

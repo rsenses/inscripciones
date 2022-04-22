@@ -6,6 +6,6 @@ Una vez recibida dicha factura, procederemos a realizar la devolución del impor
 
 Atentamente,
 
-Marca
+MARCA
 
 Más información: eventos@marca.com

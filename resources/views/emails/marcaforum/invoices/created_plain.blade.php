@@ -10,6 +10,6 @@ Rogamos haga efectivo el pago de la factura a treinta días fecha factura y cóm
 
 Atentamente,
 
-Marca
+MARCA
 
 Más información: eventos@marca.com

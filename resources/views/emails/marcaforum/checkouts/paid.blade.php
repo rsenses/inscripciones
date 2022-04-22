@@ -223,7 +223,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                                                                    <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:22px;text-align:left;color:#2a3a4a;"><strong>Marca</strong></div>
+                                                                    <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:22px;text-align:left;color:#2a3a4a;"><strong>MARCA</strong></div>
                                                                 </td>
                                                             </tr>
                                                             <tr>

@@ -13,6 +13,6 @@ BIC: {{ $checkout->campaign->partner->bic }}
 
 Atentamente,
 
-Marca
+MARCA
 
 Más información: eventos@marca.com

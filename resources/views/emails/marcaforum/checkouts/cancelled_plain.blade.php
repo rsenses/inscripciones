@@ -5,6 +5,6 @@ Su solicitud de inscripción ha sido cancelada.
 Gracias por su interés.
 Atentamente,
 
-Marca
+MARCA
 
 Más información: eventos@marca.com

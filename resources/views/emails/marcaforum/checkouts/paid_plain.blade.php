@@ -14,6 +14,6 @@ https://foro.expansion.com
 Incluir en mi calendario: {{ route('calendar.show', ['product' => $checkout->products[0]]) }}
 
 Atentamente,
-Marca
+MARCA
 
 Más información: eventos@marca.com

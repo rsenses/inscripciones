@@ -8,6 +8,6 @@ Muchas gracias por su interés.
 
 Un cordial saludo,
 
-Marca
+MARCA
 
 Más información: eventos@marca.com

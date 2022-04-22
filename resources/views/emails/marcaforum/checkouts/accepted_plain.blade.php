@@ -8,6 +8,6 @@ Para proceder al pago y confirmar su asistencia haga click en el siguiente enlac
 
 Atentamente,
 
-Marca
+MARCA
 
 Más información: eventos@marca.com

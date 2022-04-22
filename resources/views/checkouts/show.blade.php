@@ -610,7 +610,7 @@
             <div class="col-12 col-sm-12">
                 <div class="form-group form-check">
                     <input type="checkbox" class="form-check-input" id="legal" required name="legal">
-                    <label class="form-check-label" for="legal">He leído y acepto los <a href="{{ route('terminos-y-condiciones') }}?c={{ $checkout->id }}">términos y condiciones
+                    <label class="form-check-label" for="legal">He leído y acepto los <a href="{{ route('terminos-y-condiciones', ['c' => $checkout->campaign]) }}">términos y condiciones
                             generales de la compra</a>.</label>
                 </div>
                 <p class="small">

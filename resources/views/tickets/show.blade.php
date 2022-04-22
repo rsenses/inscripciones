@@ -11,17 +11,34 @@
     <title>Entrada {{ $registration->product->name }}</title>
     <meta name="description" content="Descripción del encuentro para el que es la entrada">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    @if($domain === 'telva')
+    @if((isset($checkout) && $checkout->campaign->partner->slug === 'telva') || $domain === 'telva')
     <style>
         :root {
-            /* --primary: #D70065; */
             --primary: #000;
+        }
+    </style>
+    @elseif((isset($checkout) && $checkout->campaign->partner->slug === 'diariomedico') || $domain === 'diariomedico')
+    <style>
+        :root {
+            --primary: #1172B8;
+        }
+    </style>
+    @elseif((isset($checkout) && $checkout->campaign->partner->slug === 'marca') || $domain === 'marca')
+    <style>
+        :root {
+            --primary: #c00;
+        }
+    </style>
+    @elseif((isset($checkout) && $checkout->campaign->partner->slug === 'expansion') || $domain === 'expansion')
+    <style>
+        :root {
+            --primary: #386AB0;
         }
     </style>
     @else
     <style>
         :root {
-            --primary: #386AB0;
+            --primary: #2FC7DD;
         }
     </style>
     @endif

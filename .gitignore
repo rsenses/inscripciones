@@ -11,6 +11,7 @@
 /public/css/marca.css.*
 /public/css/diariomedico.css
 /public/css/diariomedico.css.*
+/public/mix-manifest.json
 /storage/*.key
 /vendor
 .env

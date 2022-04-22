@@ -15,7 +15,7 @@ class CalendarController extends Controller
         $calendar = Calendar::create($product->campaign->name)
             ->event(
                 Event::create($product->campaign->name)
-                ->description($product->description)
+                ->description($product->description ?: '')
                 ->address($product->place)
                 ->startsAt($product->start_date)
                 ->endsAt($product->end_date)

@@ -125,15 +125,17 @@
 
 @section('scripts')
 <script>
-    utag.link({
-        "event_category": "{{ transliterator_transliterate('Any-Latin; Latin-ASCII; Lower()', $checkout->campaign->name) }}",
-        "event_action": "{{ $checkout->campaign->short_name }}:datos facturacion" ,
-        "be_onclick": "{{ $checkout->campaign->short_name }}:proceder al pago" ,
-        "prod_name_evento": "{{ transliterator_transliterate('Any-Latin; Latin-ASCII; Lower()', implode('|', $productNames)) }}",
-        "prod_quantity_evento": "{{ implode('|', $productCounts) }}",
-        "prod_unitprice_evento": "{{ implode('|', $productPrices) }}",
-        "prod_totalamount_evento": "{{ $checkout->amount }}"
-    });
+    window.onload = function() {
+        utag.link({
+            "event_category": "{{ transliterator_transliterate('Any-Latin; Latin-ASCII; Lower()', $checkout->campaign->name) }}",
+            "event_action": "{{ $checkout->campaign->short_name }}:datos facturacion" ,
+            "be_onclick": "{{ $checkout->campaign->short_name }}:proceder al pago" ,
+            "prod_name_evento": "{{ transliterator_transliterate('Any-Latin; Latin-ASCII; Lower()', implode('|', $productNames)) }}",
+            "prod_quantity_evento": "{{ implode('|', $productCounts) }}",
+            "prod_unitprice_evento": "{{ implode('|', $productPrices) }}",
+            "prod_totalamount_evento": "{{ $checkout->amount }}"
+        });
+    };
 
     if (document.getElementById('discount_data')) {
         document.getElementById('discount_data').addEventListener("submit", function (e) {

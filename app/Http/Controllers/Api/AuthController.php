@@ -31,7 +31,7 @@ class AuthController extends Controller
                 'name' => $request->name,
                 'last_name' => $request->last_name,
                 'email' => $request->email,
-                'tax_id' => $request->tax_id,
+                'tax_id' => strtoupper($request->tax_id),
                 'phone' => $request->phone,
                 'company' => $request->company,
                 'position' => $request->position,

@@ -8,7 +8,7 @@ Ya estás registrada en el {{ $checkout->campaign->name
 {{ $product->count() }}x {{ $product[0]->name }} {{ $product[0]->mode }}
 @endforeach
 
-Si no has completado tu compra, recuerda que puedes hacerlo en cualquier momento desde el siguiente enlace.:
+Si no has completado tu compra, recuerda que puedes hacerlo en cualquier momento desde el siguiente enlace:
 {{ route('checkouts', ['checkout' => $checkout, 't' => $checkout->token]) }}
 
 Atentamente,

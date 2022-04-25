@@ -90,7 +90,8 @@
                 </div>
             </div>
         </div>
-        @if($checkout->amount > 99 && $checkout->campaign->partner->slug !== 'marca')
+        @if($checkout->campaign->partner->slug !== 'marca')
+        @if(($checkout->amount > 99 && $checkout->campaign->partner->slug !== 'telva') || $checkout->amount > 999)
         <div class="col-lg-6">
             <div class="card bg-white">
                 <div class="card-body">
@@ -109,6 +110,7 @@
                 </div>
             </div>
         </div>
+        @endif
         @endif
     </div>
 </div>

@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('scripts_before')
-<x-analytics :campaign="$checkout->campaign" />
+<x-analytics :campaign="$checkout->campaign" :checkout="$checkout" />
 @endsection
 
 @section('content')

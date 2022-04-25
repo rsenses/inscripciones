@@ -149,7 +149,7 @@
                 "prod_name_evento": "{{ transliterator_transliterate('Any-Latin; Latin-ASCII; Lower()', implode('|', $productNames)) }}",
                 "prod_quantity_evento": "{{ implode('|', $productCounts) }}",
                 "prod_unitprice_evento": "{{ implode('|', $productPrices) }}",
-                "prod_totalamount_evento": "{{ $checkout->amount }}"
+                "prod_totalamount_evento": "{{ $checkout->amount }}",
                 "prod_promo_evento": "{{ $discount ? 1 : 0 }}"
             });
         });
@@ -164,7 +164,7 @@
                 "prod_name_evento": "{{ transliterator_transliterate('Any-Latin; Latin-ASCII; Lower()', implode('|', $productNames)) }}",
                 "prod_quantity_evento": "{{ implode('|', $productCounts) }}",
                 "prod_unitprice_evento": "{{ implode('|', $productPrices) }}",
-                "prod_totalamount_evento": "{{ $checkout->amount }}"
+                "prod_totalamount_evento": "{{ $checkout->amount }}",
                 "prod_promo_evento": "{{ $discount ? 1 : 0 }}"
             });
         });

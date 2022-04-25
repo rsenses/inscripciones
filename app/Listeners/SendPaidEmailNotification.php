@@ -28,10 +28,8 @@ class SendPaidEmailNotification implements ShouldQueue
      */
     public function handle(CheckoutPaid $event)
     {
-        if ($event->checkout->amount > 0) {
-            Mail::mailer($event->checkout->campaign->mailer)
+        Mail::mailer($event->checkout->campaign->mailer)
                 ->to($event->checkout->user)
                 ->queue(new MailCheckoutPaid($event->checkout));
-        }
     }
 }

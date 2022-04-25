@@ -64,9 +64,21 @@ class CheckoutController extends Controller
             $checkout = $checkout->new();
         }
 
+        $productNames = [];
+        $productCounts = [];
+        $productPrices = [];
+        foreach ($checkout->products->groupBy('id') as $key => $product) {
+            $productNames[$key] = $product[0]->name;
+            $productCounts[$key] = $product->count();
+            $productPrices[$key] = intval($product[0]->price);
+        }
+
         return view('checkouts.show', [
             'checkout' => $checkout,
             'addresses' => $checkout->user->addresses,
+            'productNames' => $productNames,
+            'productCounts' => $productCounts,
+            'productPrices' => $productPrices,
         ]);
     }
 

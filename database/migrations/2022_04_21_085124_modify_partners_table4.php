@@ -19,6 +19,7 @@ class ModifyPartnersTable4 extends Migration
             $table->string('bank_account');
             $table->string('iban');
             $table->string('bic');
+            $table->string('cookies')->nullable();
         });
     }
 
@@ -30,7 +31,7 @@ class ModifyPartnersTable4 extends Migration
     public function down()
     {
         Schema::table('partners', function (Blueprint $table) {
-            $table->dropColumn(['legal_name', 'bank_name', 'bank_account', 'iban', 'bic']);
+            $table->dropColumn(['legal_name', 'bank_name', 'bank_account', 'iban', 'bic', 'cookies']);
         });
     }
 }

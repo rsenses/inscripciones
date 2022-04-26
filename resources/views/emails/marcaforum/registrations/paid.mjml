@@ -27,16 +27,18 @@
                         >.</mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Puede descargar su entrada desde el siguiente enlace:</mj-text
+                        >Puede descargar su entrada desde el siguiente
+                        enlace:</mj-text
                     >
                     <mj-button
                         href="{{ route('tickets.show', [$registration, $registration->unique_id]) }}"
                         background-color="#f45e43"
                         color="white"
-                    >Descargar entrada</a
-                        ></mj-button>
+                        >Descargar entrada</mj-button
+                    >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Acceda a toda la información relativa al evento en:</mj-text
+                        >Acceda a toda la información relativa al evento
+                        en:</mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         ><a href="https://foro.expansion.com"
@@ -48,10 +50,8 @@
                         font-size="14px"
                         color="#2a3a4a"
                     >
-                        • Cómo llegar.<br />
+                        • Lugar de celebración.<br />
                         • Programa y ponentes. <br />
-                        • Listado de asistentes.<br />
-                        • Zona de preguntas en directo.<br />
                         • Actualizaciones de última hora.
                     </mj-text>
                     <mj-button
@@ -83,9 +83,7 @@
                 >
                 <mj-text font-size="14px" color="#4a5a6a" align="center"
                     >Para cualquier consulta contacte con
-                    <a
-                        href="mailto:eventos@marca.com"
-                        style="color: blue"
+                    <a href="mailto:eventos@marca.com" style="color: blue"
                         >eventos@marca.com</a
                     ></mj-text
                 >

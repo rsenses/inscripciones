@@ -8,10 +8,8 @@ Puede descargar su entrada desde el siguiente enlace:
 Acceda a toda la información relativa al evento en:
 https://foro.expansion.com
 
-• Cómo llegar.
+• Lugar de celebración.
 • Programa y ponentes.
-• Listado de asistentes.
-• Zona de preguntas en directo.
 • Actualizaciones de última hora.
 
 Incluir en mi calendario: {{ route('calendar.show', ['product' => $registration->product]) }}

@@ -26,11 +26,36 @@
                             $checkout->campaign->name }}</strong
                         >.</mj-text
                     >
+                    <mj-text
+                        line-height="22px"
+                        font-size="14px"
+                        color="#2a3a4a"
+                    >
+                        @if(empty($checkout->mode()['online'])) Aquí tiene sus
+                        entradas:
+                        <a
+                            href="{{ route('tickets.show.checkout', ['checkout'
+                        => $checkout, 'token' => $checkout->token]) }}"
+                            >{{ route('tickets.show.checkout', ['checkout' =>
+                            $checkout, 'token' => $checkout->token]) }}</a
+                        >
+                        @elseif(empty($checkout->mode()['presencial'])) Podrá
+                        acceder al streaming mediante su email y contraseña.
+                        @else Aquí tienes sus entradas:
+                        <a
+                            href="{{
+                        route('tickets.show.checkout', ['checkout' => $checkout,
+                        'token' => $checkout->token]) }}"
+                            >{{ route('tickets.show.checkout', ['checkout' =>
+                            $checkout, 'token' => $checkout->token]) }}</a
+                        ><br />
+                        Podrá acceder al streaming mediante su email y
+                        contraseña. @endif
+                    </mj-text>
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         >A través del siguiente enlace podrá acceder a toda la
                         información relativa al evento:</mj-text
                     >
-
                     <mj-text line-height="22px" font-size="16px" color="#2a3a4a"
                         ><a href="https://foro.expansion.com"
                             >https://foro.expansion.com</a
@@ -41,10 +66,8 @@
                         font-size="14px"
                         color="#2a3a4a"
                     >
-                        • Cómo llegar.<br />
+                        • Lugar de celebración.<br />
                         • Programa y ponentes. <br />
-                        • Listado de asistentes.<br />
-                        • Zona de preguntas en directo.<br />
                         • Actualizaciones de última hora.
                     </mj-text>
                     <mj-button

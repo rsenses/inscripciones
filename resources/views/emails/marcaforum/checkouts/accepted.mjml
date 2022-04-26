@@ -21,13 +21,42 @@
                         ></mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Su solicitud ha sido completada
-                        <strong>correctamente</strong>.</mj-text
+                        >Su registro ha sido completado
+                        <strong>correctamente</strong>. A continuación
+                        detallamos el resumen de la compra:</mj-text
                     >
+                    <mj-table
+                        line-height="22px"
+                        font-size="14px"
+                        color="#2a3a4a"
+                    >
+                        <tr
+                            style="
+                                border-bottom: 1px solid #ecedee;
+                                text-align: left;
+                                padding: 15px 0;
+                            "
+                        >
+                            <th style="padding: 0 15px 0 0">#</th>
+                            <th style="padding: 0 15px 0 0">Evento</th>
+                        </tr>
+                        @foreach ($checkout->products->groupBy('id') as
+                        $product)
+                        <tr>
+                            <td>{{ $product->count() }}</td>
+                            <td>
+                                {{ $product[0]->name }}
+                                <span style="text-transform: uppercase"
+                                    >{{ $product[0]->mode }}</span
+                                >
+                            </td>
+                        </tr>
+                        @endforeach
+                    </mj-table>
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Para proceder al pago y
-                        <strong>confirmar su asistencia</strong> haga click en
-                        el siguiente enlace:</mj-text
+                        >Si no ha completado el pago, le recordamos que puede
+                        hacerlo en cualquier momento desde el siguiente
+                        enlace:</mj-text
                     >
                     <mj-text
                         line-height="22px"

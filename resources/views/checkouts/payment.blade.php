@@ -73,7 +73,7 @@
     </div>
     @endif
 
-    @if(!empty($message))
+    @if($message = Session::get('message'))
     <div class="row justify-content-center mb-4">
         <div class="col-md-8">
             <div class="alert alert-success">

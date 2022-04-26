@@ -55,26 +55,30 @@ class DealController extends Controller
         if ($discount->quantity === 100) {
             return redirect(route('tpv.success', ['checkout' => $checkout]));
         } else {
-            $form = $checkout->generatePaymentForm();
+            return redirect()->back()
+            ->with('message', "Descuento del $discount->quantity% aplicado correctamente")
+            ->with('discount', true);
 
-            $productNames = [];
-            $productCounts = [];
-            $productPrices = [];
-            foreach ($checkout->products->groupBy('id') as $key => $product) {
-                $productNames[$key] = $product[0]->name;
-                $productCounts[$key] = $product->count();
-                $productPrices[$key] = intval($product[0]->price);
-            }
+            // $form = $checkout->generatePaymentForm();
 
-            return view('checkouts.payment', [
-                'checkout' => $checkout,
-                'form' => $form,
-                'message' => "Descuento del $discount->quantity% aplicado correctamente",
-                'discount' => true,
-                'productNames' => $productNames,
-                'productCounts' => $productCounts,
-                'productPrices' => $productPrices,
-            ]);
+            // $productNames = [];
+            // $productCounts = [];
+            // $productPrices = [];
+            // foreach ($checkout->products->groupBy('id') as $key => $product) {
+            //     $productNames[$key] = $product[0]->name;
+            //     $productCounts[$key] = $product->count();
+            //     $productPrices[$key] = intval($product[0]->price);
+            // }
+
+            // return view('checkouts.payment', [
+            //     'checkout' => $checkout,
+            //     'form' => $form,
+            //     'message' => "Descuento del $discount->quantity% aplicado correctamente",
+            //     'discount' => true,
+            //     'productNames' => $productNames,
+            //     'productCounts' => $productCounts,
+            //     'productPrices' => $productPrices,
+            // ]);
         }
     }
 

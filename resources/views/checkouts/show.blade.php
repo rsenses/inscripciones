@@ -52,6 +52,44 @@
         </div>
     </div>
     @else
+    @if(!$discount)
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-8">
+            <div class="card bg-white">
+                <div class="card-body">
+                    <form method="POST" action="{{ route('deals.store', ['checkout_id' => $checkout->id]) }}" id="discount_data">
+                        @csrf
+                        <p>Introducir código de descuento</p>
+                        <div class="form-group row">
+                            <label for="code" class="col-md-4 col-form-label text-md-right">{{ __('Código') }}</label>
+
+                            <div class="col-md-8">
+                                <input id="code" type="text" class="form-control @error('code') is-invalid @enderror" name="code" value="{{ old('code') }}" autocomplete="code" autofocus>
+                                @error('code')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary float-right">Usar código</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
+
+    @if ($message = Session::get('message'))
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-8">
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+        </div>
+    </div>
+    @endif
+
     <form method="POST" action="{{ route('checkouts.update', ['checkout' => $checkout]) }}" id="invoice-data">
         @csrf
         <div class="row justify-content-center">

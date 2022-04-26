@@ -27,6 +27,7 @@ class Discount extends Model
         'code',
         'product_id',
         'due_at',
-        'quantity'
+        'quantity',
+        'uses'
     ];
 }

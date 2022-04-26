@@ -17,6 +17,7 @@ class CreateDiscountsTable extends Migration
             $table->id();
             $table->string('code');
             $table->tinyInteger('quantity')->unsigned();
+            $table->tinyInteger('uses')->unsigned()->default(0);
             $table->foreignId('product_id')
               ->constrained()
               ->onUpdate('cascade')

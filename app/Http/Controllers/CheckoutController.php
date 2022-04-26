@@ -10,6 +10,7 @@ use App\Rules\Nif;
 use App\Rules\Cif;
 use Illuminate\Http\Request;
 use Sermepa\Tpv\Tpv;
+use Illuminate\Support\Facades\Session;
 
 class CheckoutController extends Controller
 {
@@ -74,6 +75,7 @@ class CheckoutController extends Controller
         }
 
         return view('checkouts.show', [
+            'discount' => Session::has('discount') ? true : false,
             'checkout' => $checkout,
             'addresses' => $checkout->user->addresses,
             'productNames' => $productNames,
@@ -180,8 +182,7 @@ class CheckoutController extends Controller
         return view('checkouts.payment', [
             'checkout' => $checkout,
             'form' => $form,
-            'message' => null,
-            'discount' => false,
+            'discount' => Session::has('discount') ? true : false,
             'productNames' => $productNames,
             'productCounts' => $productCounts,
             'productPrices' => $productPrices,

@@ -37,7 +37,7 @@ class CheckoutAccepted extends Mailable
 
         $protocol = config('app.env') === 'production' ? 'https' : 'http';
         $local = config('app.env') === 'production' ? '' : '.localhost';
-        URL::forceRootUrl("$protocol://inscripciones.{$partner->url}$local");
+        URL::forceRootUrl("$protocol://{$partner->url}$local");
 
         $promo = $this->checkout->registrations()->where('status', 'accepted')->first()->promo;
         $discount = Discount::where('code', $promo)->first();

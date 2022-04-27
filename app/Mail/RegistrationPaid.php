@@ -34,7 +34,7 @@ class RegistrationPaid extends Mailable
     {
         $protocol = config('app.env') === 'production' ? 'https' : 'http';
         $local = config('app.env') === 'production' ? '' : '.localhost';
-        URL::forceRootUrl("$protocol://inscripciones.{$this->registration->campaign->partner->url}$local");
+        URL::forceRootUrl("$protocol://{$this->registration->campaign->partner->url}$local");
 
         $folder = $this->registration->campaign->folder;
         $fromAddress = $this->registration->campaign->from_address;

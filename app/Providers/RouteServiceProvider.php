@@ -22,6 +22,7 @@ class RouteServiceProvider extends ServiceProvider
     public const TELVA = 'https://inscripciones.telva.com';
     public const MARCA = 'https://inscripciones.marca.com';
     public const UE = 'https://inscripciones.unidadeditorial.es';
+    public const GMP = 'https://payments.grupogmp.com';
 
     /**
      * The controller namespace for the application.
@@ -73,6 +74,8 @@ class RouteServiceProvider extends ServiceProvider
             return self::TELVA;
         } elseif (request()->getHost() === 'inscripciones.marca.com') {
             return self::MARCA;
+        } elseif (request()->getHost() === 'payments.grupogmp.com') {
+            return self::GMP;
         } else {
             return self::UE;
         }

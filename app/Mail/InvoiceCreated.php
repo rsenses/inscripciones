@@ -34,7 +34,7 @@ class InvoiceCreated extends Mailable
     {
         $protocol = config('app.env') === 'production' ? 'https' : 'http';
         $local = config('app.env') === 'production' ? '' : '.localhost';
-        URL::forceRootUrl("$protocol://inscripciones.{$this->invoice->checkout->campaign->partner->url}$local");
+        URL::forceRootUrl("$protocol://{$this->invoice->checkout->campaign->partner->url}$local");
 
         $folder = $this->invoice->checkout->campaign->folder;
         $fromAddress = $this->invoice->checkout->campaign->from_address;

@@ -35,7 +35,7 @@ class CheckoutPaid extends Mailable
     {
         $protocol = config('app.env') === 'production' ? 'https' : 'http';
         $local = config('app.env') === 'production' ? '' : '.localhost';
-        URL::forceRootUrl("$protocol://inscripciones.{$this->checkout->campaign->partner->url}$local");
+        URL::forceRootUrl("$protocol://{$this->checkout->campaign->partner->url}$local");
 
         $folder = $this->checkout->campaign->folder;
         $name = $this->checkout->campaign->partner->name;

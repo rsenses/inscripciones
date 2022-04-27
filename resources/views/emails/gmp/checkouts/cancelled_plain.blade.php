@@ -4,6 +4,6 @@ Tu inscripción ha sido cancelada correctamente.
 
 Atentamente,
 
-Telva
+GrupoGMP
 
-Más información: inscripciones.telva@unidadeditorial.es
+Más información: gmpexperience@grupogmp.com

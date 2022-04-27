@@ -21,6 +21,6 @@ Incluir en mi calendario: {{ route('calendar.show', ['product' => $checkout->pro
 
 Esperamos que disfrutes del evento,
 
-Telva
+GrupoGMP
 
-Más información: inscripciones.telva@unidadeditorial.es
+Más información: gmpexperience@grupogmp.com

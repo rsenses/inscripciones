@@ -197,12 +197,12 @@
                                                             </tr>
                                                             <tr>
                                                                 <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                                                                    <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:22px;text-align:left;color:#2a3a4a;"><strong>Telva</strong></div>
+                                                                    <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:22px;text-align:left;color:#2a3a4a;"><strong>GrupoGMP</strong></div>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                                                                    <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:22px;text-align:left;color:#2a3a4a;"><small>Más información: <a href="mailto:inscripciones.telva@unidadeditorial.es">inscripciones.telva@unidadeditorial.es</a></small></div>
+                                                                    <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:22px;text-align:left;color:#2a3a4a;"><small>Más información: <a href="mailto:gmpexperience@grupogmp.com">gmpexperience@grupogmp.com</a></small></div>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -239,7 +239,7 @@
                                         </tr>
                                         <tr>
                                             <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                                                <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:1;text-align:center;color:#4a5a6a;">Para cualquier consulta contacta con <a href="mailto:inscripciones.telva@unidadeditorial.es" style="color: blue">inscripciones.telva@unidadeditorial.es</a></div>
+                                                <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:1;text-align:center;color:#4a5a6a;">Para cualquier consulta contacta con <a href="mailto:gmpexperience@grupogmp.com" style="color: blue">gmpexperience@grupogmp.com</a></div>
                                             </td>
                                         </tr>
                                     </tbody>

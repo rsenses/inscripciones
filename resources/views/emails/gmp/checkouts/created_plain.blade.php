@@ -8,6 +8,6 @@ Te recordamos que el aforo es limitado y por riguroso orden de inscripción.
 
 Atentamente,
 
-Telva
+GrupoGMP
 
-Más información: inscripciones.telva@unidadeditorial.es
+Más información: gmpexperience@grupogmp.com

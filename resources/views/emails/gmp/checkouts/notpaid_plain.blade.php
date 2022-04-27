@@ -13,6 +13,6 @@ BIC: {{ $checkout->campaign->partner->bic }}
 
 Atentamente,
 
-Telva
+GrupoGMP
 
-Más información: inscripciones.telva@unidadeditorial.es
+Más información: gmpexperience@grupogmp.com

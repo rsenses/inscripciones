@@ -23,6 +23,14 @@ class Partner extends Model
     ];
 
     /**
+     * Get the partner that owns the campaign.
+     */
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
+    }
+
+    /**
      * Get the campaigns for the partner.
      */
     public function campaign()

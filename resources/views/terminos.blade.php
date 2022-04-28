@@ -1,9 +1,5 @@
 @extends('layouts.public')
 
-@section('scripts_before')
-<x-analytics :campaign="$campaign" />
-@endsection
-
 @section('content')
 <div class="container">
     <div class="row">

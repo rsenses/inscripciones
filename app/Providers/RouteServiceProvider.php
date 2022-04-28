@@ -18,11 +18,6 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     public const HOME = '/dashboard';
-    public const EXPANSION = 'https://inscripciones.expansion.com';
-    public const TELVA = 'https://inscripciones.telva.com';
-    public const MARCA = 'https://inscripciones.marca.com';
-    public const UE = 'https://inscripciones.unidadeditorial.es';
-    public const GMP = 'https://payments.grupogmp.com';
 
     /**
      * The controller namespace for the application.
@@ -64,20 +59,5 @@ class RouteServiceProvider extends ServiceProvider
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
         });
-    }
-
-    public static function resetRedirect()
-    {
-        if (request()->getHost() === 'inscripciones.expansion.com') {
-            return self::EXPANSION;
-        } elseif (request()->getHost() === 'inscripciones.telva.com') {
-            return self::TELVA;
-        } elseif (request()->getHost() === 'inscripciones.marca.com') {
-            return self::MARCA;
-        } elseif (request()->getHost() === 'payments.grupogmp.com') {
-            return self::GMP;
-        } else {
-            return self::UE;
-        }
     }
 }

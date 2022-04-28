@@ -17,6 +17,8 @@ use Sermepa\Tpv\TpvException;
 
 class Checkout extends Model
 {
+    const PREMIOSMESA_ID = 16;
+
     use HasFactory;
 
     /**
@@ -348,5 +350,14 @@ class Checkout extends Model
                 CheckoutCancelled::dispatch($this);
                 break;
         }
+    }
+
+    public function productQuantity($id)
+    {
+        if ($this->products()->where('products.id', self::PREMIOSMESA_ID)->count()) {
+            return 1;
+        }
+
+        return $this->products->where('id', $id)->count();
     }
 }

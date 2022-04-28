@@ -1,9 +1,5 @@
 @extends('layouts.public')
 
-@section('scripts_before')
-<x-analytics :campaign="$registration->checkout->campaign" />
-@endsection
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

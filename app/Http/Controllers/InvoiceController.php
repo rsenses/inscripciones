@@ -148,7 +148,7 @@ class InvoiceController extends Controller
                 foreach ($products as $product) {
                     // TODO
                     $concept = substr(strip_tags(trim(preg_replace('/\t+/', '', $product->name))), 0, 132);
-                    $quantity = $checkout->products->where('id', $product->id)->count();
+                    $quantity = $checkout->productQuantity($product->id);
 
                     $input = [
                         $counter,

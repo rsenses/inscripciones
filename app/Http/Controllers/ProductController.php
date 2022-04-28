@@ -79,6 +79,9 @@ class ProductController extends Controller
     {
         $registrations = Registration::where('product_id', $product->id)
             ->latest()
+            ->whereHas('checkout', function (Builder $query) {
+                $query->where('amount', '>=', 0);
+            })
             ->get();
 
         return view('products.show', [

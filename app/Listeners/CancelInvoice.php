@@ -33,11 +33,13 @@ class CancelInvoice
             if ($invoice->billed_at) {
                 $negativeCheckout = $checkout->replicate();
                 $negativeCheckout->amount = $checkout->amount * -1;
-                $negativeCheckout->status = 'pending';
+                $negativeCheckout->status = 'paid';
 
                 $negativeCheckout->push();
 
-                // $negativeCheckout->products()->attach($checkout->products);
+                foreach ($checkout->registrations()->get() as $registration) {
+                    $negativeCheckout->registrations()->create($registration->toArray());
+                }
 
                 $negativeCheckout->invoice()->create([
                     'address_id' => $invoice->address_id

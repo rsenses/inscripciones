@@ -35,7 +35,13 @@
 @endif
 
 @if(isset($checkout))
-<script src="https://tags.tiqcdn.com/utag/unidadeditorial/{{ $checkout->campaign->partner->slug }}/prod/utag.sync.js"></script>
+@if($checkout->campaign->partner->slug === " marca")
+<script src="https://tags.tiqcdn.com/utag/unidadeditorial/eventosue/prod/utag.sync.js">
+</script>
+@else
+<script src="https://tags.tiqcdn.com/utag/unidadeditorial/{{ $checkout->campaign->partner->slug }}/prod/utag.sync.js">
+</script>
+@endif
 @endif
 <script type="text/javascript" language="javascript" src="https://e00-ue.uecdn.es/cookies/js/policy_v4.js"></script>
 <script type="text/javascript">

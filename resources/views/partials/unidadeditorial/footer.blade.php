@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row align-self-end">
             <div class="col-12 col-md-6 text-center text-md-left">
-                &copy;{{ date('Y') }} Gmp Property SOCIMI S.A.
+                &copy;{{ date('Y') }} Unidad Editorial S.A.
             </div>
             <div class="col-12 col-md-6">
                 <ul class="list-inline text-center text-sm-right">

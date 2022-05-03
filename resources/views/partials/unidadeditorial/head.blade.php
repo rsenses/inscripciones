@@ -35,8 +35,11 @@
 @endif
 
 @if(isset($checkout))
-@if($checkout->campaign->partner->slug === " marca")
+@if($checkout->campaign->partner->slug === "marca")
 <script src="https://tags.tiqcdn.com/utag/unidadeditorial/eventosue/prod/utag.sync.js">
+</script>
+@elseif($checkout->campaign->partner->slug === "diariomedico")
+<script src="https://tags.tiqcdn.com/utag/unidadeditorial/profsanitarios/prod/utag.sync.js">
 </script>
 @else
 <script src="https://tags.tiqcdn.com/utag/unidadeditorial/{{ $checkout->campaign->partner->slug }}/prod/utag.sync.js">

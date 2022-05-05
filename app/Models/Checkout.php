@@ -296,7 +296,18 @@ class Checkout extends Model
 
     public function CheckForDiscounts()
     {
-        return Discounts::iiCongreso($this);
+        $iiCongreso = Discounts::iiCongreso($this);
+        $jornadaCF = Discounts::jornadaCF($this);
+        
+        if ($iiCongreso) {
+            return $iiCongreso;
+        }
+
+        if ($jornadaCF) {
+            return $jornadaCF;
+        }
+
+        return false;
     }
 
     public function applyAutomaticDiscount()

@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\Config;
+use Carbon\Carbon;
 
 class Discounts
 {
@@ -56,6 +57,34 @@ class Discounts
         }
 
         if (!empty($discount)) {
+            return $discount;
+        }
+
+        return false;
+    }
+
+    public static function jornadaCF(Checkout $checkout)
+    {
+        $products = $checkout->products()->whereIn('products.id', [19, 21])->count();
+
+        $preSale = Carbon::createFromFormat('m/d/Y H:i:s', '05/13/2022 23:59:59');
+        $today = Carbon::now();
+
+        if ($products > 1) {
+            $discount = [
+                'concept' => 'Descuento por compra múltiple',
+                'amount' => (35 / 100) * $checkout->amount,
+            ];
+
+            return $discount;
+        }
+
+        if ($today <= $preSale) {
+            $discount = [
+                'concept' => 'Descuento por compra anticipada',
+                'amount' => (35 / 100) * $checkout->amount,
+            ];
+
             return $discount;
         }
 

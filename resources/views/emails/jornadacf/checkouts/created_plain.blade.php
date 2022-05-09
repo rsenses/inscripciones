@@ -8,6 +8,6 @@ Te recordamos que el aforo es limitado y por riguroso orden de inscripción.
 
 Atentamente,
 
-Telva
+Correo Farmacéutico
 
-Más información: inscripciones.telva@unidadeditorial.es
+Más información: jornadacf@unidadeditorial.es

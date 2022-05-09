@@ -6,6 +6,6 @@ Una vez recibida dicha factura, procederemos a realizar la devolución del impor
 
 Atentamente,
 
-Telva
+Correo Farmacéutico
 
-Más información: inscripciones.telva@unidadeditorial.es
+Más información: jornadacf@unidadeditorial.es

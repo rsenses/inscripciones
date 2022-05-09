@@ -1,13 +1,13 @@
 Estimad@ {{ $checkout->user->full_name }}
 
-Sentimos comunicarte que el aforo está completo y no es posible realizar tu inscripción.  
+Sentimos comunicarte que el aforo está completo y no es posible realizar tu inscripción.
 
-Si finalmente quedara alguna plaza libre, nos pondremos en contacto. 
+Si finalmente quedara alguna plaza libre, nos pondremos en contacto.
 
-Muchas gracias por tu interés. 
+Muchas gracias por tu interés.
 
 Un cordial saludo,
 
-Telva
+Correo Farmacéutico
 
-Más información: inscripciones.telva@unidadeditorial.es
+Más información: jornadacf@unidadeditorial.es

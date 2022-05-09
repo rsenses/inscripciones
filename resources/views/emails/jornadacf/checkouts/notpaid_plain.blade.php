@@ -13,6 +13,6 @@ BIC: {{ $checkout->campaign->partner->bic }}
 
 Atentamente,
 
-Telva
+Correo Farmacéutico
 
-Más información: inscripciones.telva@unidadeditorial.es
+Más información: jornadacf@unidadeditorial.es

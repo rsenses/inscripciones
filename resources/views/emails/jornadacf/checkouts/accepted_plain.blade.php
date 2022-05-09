@@ -13,6 +13,6 @@ Si no has completado tu compra, recuerda que puedes hacerlo en cualquier momento
 
 Atentamente,
 
-Telva
+Correo Farmacéutico
 
-Más información: inscripciones.telva@unidadeditorial.es
+Más información: jornadacf@unidadeditorial.es

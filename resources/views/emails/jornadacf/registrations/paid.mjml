@@ -40,8 +40,8 @@
                         información relativa al evento:</mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        ><a href="https://energiayfelicidad.telva.com"
-                            >https://energiayfelicidad.telva.com</a
+                        ><a href="https://energiayfelicidad.Correo Farmacéutico.com"
+                            >https://energiayfelicidad.Correo Farmacéutico.com</a
                         ></mj-text
                     >
                     <mj-button
@@ -74,9 +74,9 @@
                 <mj-text font-size="14px" color="#4a5a6a" align="center"
                     >Para cualquier consulta contacte con
                     <a
-                        href="mailto:inscripciones.telva@unidadeditorial.es"
+                        href="mailto:jornadacf@unidadeditorial.es"
                         style="color: blue"
-                        >inscripciones.telva@unidadeditorial.es</a
+                        >jornadacf@unidadeditorial.es</a
                     ></mj-text
                 >
             </mj-column>

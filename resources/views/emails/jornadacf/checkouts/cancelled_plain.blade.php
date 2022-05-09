@@ -4,6 +4,6 @@ Tu inscripción ha sido cancelada correctamente.
 
 Atentamente,
 
-Telva
+Correo Farmacéutico
 
-Más información: inscripciones.telva@unidadeditorial.es
+Más información: jornadacf@unidadeditorial.es

@@ -15,12 +15,12 @@ Podrás acceder al streaming mediante tu email y contraseña.
 @endif
 
 A través del siguiente enlace podrás ver toda la información relativa al evento:
-https://energiayfelicidad.telva.com/
+https://energiayfelicidad.Correo Farmacéutico.com/
 
 Incluir en mi calendario: {{ route('calendar.show', ['product' => $checkout->products[0]]) }}
 
 Esperamos que disfrutes del evento,
 
-Telva
+Correo Farmacéutico
 
-Más información: inscripciones.telva@unidadeditorial.es
+Más información: jornadacf@unidadeditorial.es

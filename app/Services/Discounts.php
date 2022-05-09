@@ -79,7 +79,7 @@ class Discounts
             return $discount;
         }
 
-        if ($today <= $preSale) {
+        if ($products >= 1 && $today <= $preSale) {
             $discount = [
                 'concept' => 'Descuento por compra anticipada',
                 'amount' => (35 / 100) * $checkout->amount,

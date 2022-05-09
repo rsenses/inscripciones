@@ -184,9 +184,11 @@ class Product extends Model
     public function getAmountAttribute()
     {
         $amount = $this->checkouts()
+            ->groupBy('checkouts.id', 'checkouts.amount', 'registrations.product_id')
             ->where('checkouts.status', 'paid')
-            ->sum('checkouts.amount');
-
-        return $amount;
+            ->selectRaw('checkouts.amount, checkouts.id')
+            ->get();
+        
+        return $amount->sum('amount');
     }
 }

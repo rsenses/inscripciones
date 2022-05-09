@@ -70,10 +70,10 @@ class Discounts
         $preSale = Carbon::createFromFormat('m/d/Y H:i:s', '05/13/2022 23:59:59');
         $today = Carbon::now();
 
-        if ($products > 1) {
+        if ($products >= 3) {
             $discount = [
                 'concept' => 'Descuento por compra múltiple',
-                'amount' => (35 / 100) * $checkout->amount,
+                'amount' => (10 / 100) * $checkout->amount,
             ];
 
             return $discount;

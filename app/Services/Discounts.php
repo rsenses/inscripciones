@@ -65,6 +65,8 @@ class Discounts
 
     public static function jornadaCF(Checkout $checkout)
     {
+        $discount = false;
+
         $products = $checkout->products()->whereIn('products.id', [19, 21])->count();
 
         $preSale = Carbon::createFromFormat('m/d/Y H:i:s', '05/13/2022 23:59:59');
@@ -75,8 +77,6 @@ class Discounts
                 'concept' => 'Descuento por compra múltiple',
                 'amount' => (10 / 100) * $checkout->amount,
             ];
-
-            return $discount;
         }
 
         if ($products >= 1 && $today <= $preSale) {
@@ -84,10 +84,15 @@ class Discounts
                 'concept' => 'Descuento por compra anticipada',
                 'amount' => (35 / 100) * $checkout->amount,
             ];
-
-            return $discount;
         }
 
-        return false;
+        if ($products >= 3 && $today <= $preSale) {
+            $discount = [
+                'concept' => 'Descuento por compra anticipada',
+                'amount' => (45 / 100) * $checkout->amount,
+            ];
+        }
+
+        return $discount;
     }
 }

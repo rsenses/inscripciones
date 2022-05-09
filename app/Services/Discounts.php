@@ -69,28 +69,30 @@ class Discounts
 
         $products = $checkout->products()->whereIn('products.id', [19, 21])->count();
 
-        $preSale = Carbon::createFromFormat('m/d/Y H:i:s', '05/13/2022 23:59:59');
-        $today = Carbon::now();
+        if ($products >= 1) {
+            $preSale = Carbon::createFromFormat('m/d/Y H:i:s', '05/13/2022 23:59:59');
+            $today = Carbon::now();
 
-        if ($products >= 3) {
-            $discount = [
-                'concept' => 'Descuento por compra múltiple',
-                'amount' => (10 / 100) * $checkout->amount,
-            ];
-        }
+            if ($products >= 3) {
+                $discount = [
+                    'concept' => 'Descuento por compra múltiple',
+                    'amount' => (10 / 100) * $checkout->amount,
+                ];
+            }
 
-        if ($products >= 1 && $today <= $preSale) {
-            $discount = [
-                'concept' => 'Descuento por compra anticipada',
-                'amount' => (35 / 100) * $checkout->amount,
-            ];
-        }
+            if ($today <= $preSale) {
+                $discount = [
+                    'concept' => 'Descuento por compra anticipada',
+                    'amount' => (35 / 100) * $checkout->amount,
+                ];
+            }
 
-        if ($products >= 3 && $today <= $preSale) {
-            $discount = [
-                'concept' => 'Descuento por compra anticipada',
-                'amount' => (45 / 100) * $checkout->amount,
-            ];
+            if ($products >= 3 && $today <= $preSale) {
+                $discount = [
+                    'concept' => 'Descuento por compra anticipada',
+                    'amount' => (45 / 100) * $checkout->amount,
+                ];
+            }
         }
 
         return $discount;

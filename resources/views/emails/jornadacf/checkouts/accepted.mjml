@@ -33,7 +33,7 @@
                         ></mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Ya estás registrada en el {{ $checkout->campaign->name
+                        >Ya estás registrad@ en el {{ $checkout->campaign->name
                         }}. A continuación detallamos el resumen de la
                         compra:</mj-text
                     >
@@ -68,7 +68,7 @@
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         >Si no has completado tu compra, recuerda que puedes
                         hacerlo en cualquier momento desde el siguiente
-                        enlace.:</mj-text
+                        enlace:</mj-text
                     >
                     <mj-text
                         line-height="22px"

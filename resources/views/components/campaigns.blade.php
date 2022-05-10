@@ -14,7 +14,7 @@
                     {{ $campaign->name }}
                 </td>
                 <td>{{ $campaign->checkouts_count }}</td>
-                <td>{{ number_format($campaign->amount, 2, '.', ',') }}€</td>
+                <td>{{ number_format($campaign->amount, 2, ',', '.') }}€</td>
             </tr>
             @endforeach
         </tbody>

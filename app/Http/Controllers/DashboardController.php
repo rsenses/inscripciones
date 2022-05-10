@@ -26,6 +26,7 @@ class DashboardController extends Controller
             ->get();
         
         $invoices = Invoice::whereHas('checkout', function ($q) use ($partner, $activeCampaigns) {
+            $q->where('status', 'paid');
             $q->whereHas('products', function ($q) use ($partner, $activeCampaigns) {
                 $q->whereHas('campaign', function ($q) use ($partner, $activeCampaigns) {
                     $activeCampaignsArray = $activeCampaigns->pluck('id')->toArray();

@@ -4,8 +4,8 @@
             <tr>
                 <th width="60%">Nombre</th>
                 {{-- <th>Fecha</th> --}}
-                <th colspan="2">Inscripciones</th>
-
+                <th style="text-align: right">Inscripciones</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>

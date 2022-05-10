@@ -77,7 +77,9 @@
                     <a href="{{ route('users.index', ['role' => 'customer']) }}" class="list-group-item list-group-item-action bg-white"><i class="lni lni-users"></i>&emsp;Usuarios</a>
                     <a href="{{ route('partners.index') }}" class="list-group-item list-group-item-action bg-white"><i class="lni lni-bookmark-alt"></i>&emsp;Cabeceras</a>
                     @endif
+                    @if(Auth::user()->role === 'financial')
                     <a href="{{ route('invoices.index') }}" class="list-group-item list-group-item-action bg-white"><i class="lni lni-revenue"></i>&emsp;Financiero</a>
+                    @endif
                 </div>
             </div>
             <!-- /#sidebar-wrapper -->

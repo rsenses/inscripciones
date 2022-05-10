@@ -34,7 +34,7 @@
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         ><strong
-                            >Te damos la bienvenida al {{
+                            >Te damos la bienvenida a la {{
                             $checkout->campaign->name }}</strong
                         >.</mj-text
                     >
@@ -51,18 +51,17 @@
                             >{{ route('tickets.show.checkout', ['checkout' =>
                             $checkout, 'token' => $checkout->token]) }}</a
                         >
-                        @elseif(empty($checkout->mode()['presencial'])) Podrás
-                        acceder al streaming mediante tu email y contraseña.
-                        @else Aquí tienes tus entradas:
-                        <a
-                            href="{{
-                        route('tickets.show.checkout', ['checkout' => $checkout,
-                        'token' => $checkout->token]) }}"
-                            >{{ route('tickets.show.checkout', ['checkout' =>
-                            $checkout, 'token' => $checkout->token]) }}</a
-                        ><br />
-                        Podrás acceder al streaming mediante tu email y
-                        contraseña. @endif
+                        @endif
+                    </mj-text>
+                    <mj-text
+                        line-height="22px"
+                        font-size="14px"
+                        color="#2a3a4a"
+                    >
+                        @if(empty($checkout->mode()['online'])) Te esperamos el
+                        próximo 13 de junio a las 8.45 en el Salón Círculo
+                        Palace del Hotel Westin Palace de Madrid. Entrada por
+                        Plaza de Neptuno, 28014 Madrid. @endif
                     </mj-text>
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
                         >A través del siguiente enlace podrás ver toda la

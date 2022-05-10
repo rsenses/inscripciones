@@ -22,6 +22,10 @@ class DashboardController extends Controller
             ->active()
             ->get();
 
+        $activeCampaigns = $partner->campaigns()
+            ->active()
+            ->get();
+
         $latestRegistrations = Registration::latest()
             ->whereHas('product', function ($query) use ($partner) {
                 $query->whereHas('campaign', function ($query) use ($partner) {
@@ -33,6 +37,7 @@ class DashboardController extends Controller
 
         return view('dashboard', [
             'products' => $activeProducts,
+            'campaigns' => $activeCampaigns,
             'registrations' => $latestRegistrations
         ]);
     }

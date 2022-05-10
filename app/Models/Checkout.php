@@ -270,7 +270,6 @@ class Checkout extends Model
 
         $newPrice = $originalPrice * ((100 - $discount->quantity) / 100);
 
-
         if ($discount->quantity === 100) {
             $this->update(['paid_at' => Carbon::now(), 'amount' => 0]);
             $this->changeStatus('paid');

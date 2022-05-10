@@ -36,4 +36,35 @@ class Campaign extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    /**
+    * Scope a query to only include active products.
+    *
+    * @param  \Illuminate\Database\Eloquent\Builder  $query
+    * @return \Illuminate\Database\Eloquent\Builder
+    */
+    public function scopeActive($query)
+    {
+        return $query->whereHas('products', function ($query) {
+            $query->active();
+        });
+    }
+
+    public function getCheckoutsCountAttribute()
+    {
+        return Checkout::whereHas('products', function ($query) {
+            $query->where('campaign_id', $this->id);
+        })
+            ->where('status', 'paid')
+            ->count();
+    }
+
+    public function getAmountAttribute()
+    {
+        return Checkout::whereHas('products', function ($query) {
+            $query->where('campaign_id', $this->id);
+        })
+            ->where('status', 'paid')
+            ->sum('amount');
+    }
 }

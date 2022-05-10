@@ -180,15 +180,4 @@ class Product extends Model
             ->where('checkouts.status', 'cancelled')
             ->count();
     }
-
-    public function getAmountAttribute()
-    {
-        $amount = $this->checkouts()
-            ->groupBy('checkouts.id', 'checkouts.amount', 'registrations.product_id')
-            ->where('checkouts.status', 'paid')
-            ->selectRaw('checkouts.amount, checkouts.id')
-            ->get();
-        
-        return $amount->sum('amount');
-    }
 }

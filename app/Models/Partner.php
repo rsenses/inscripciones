@@ -33,7 +33,7 @@ class Partner extends Model
     /**
      * Get the campaigns for the partner.
      */
-    public function campaign()
+    public function campaigns()
     {
         return $this->hasMany(Campaign::class);
     }

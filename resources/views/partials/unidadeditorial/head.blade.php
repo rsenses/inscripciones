@@ -7,7 +7,7 @@
     }
 </style>
 @elseif((isset($checkout) && $checkout->campaign->partner->slug === 'diariomedico') || $domain === 'diariomedico')
-<link href="{{ asset('css/marca.css') }}" rel="stylesheet">
+<link href="{{ asset('css/diariomedico.css') }}" rel="stylesheet">
 <style>
     :root {
         --primary: #1172B8;

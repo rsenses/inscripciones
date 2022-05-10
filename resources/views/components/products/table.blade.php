@@ -3,7 +3,7 @@
         <thead>
             <tr>
                 <th width="60%">Nombre</th>
-                <th>Fecha</th>
+                {{-- <th>Fecha</th> --}}
                 <th colspan="2">Inscripciones</th>
 
             </tr>
@@ -15,7 +15,7 @@
                     {{ $product->name }}<br>
                     <span class="badge badge-info">{{ $product->mode }}</span>
                 </td>
-                <td>{{ $product->start_date->format('d-m-Y / H:i' ) }}</td>
+                {{-- <td>{{ $product->start_date->format('d-m-Y / H:i' ) }}</td> --}}
                 <td class="text-right">
                     Sin valorar: {{ $product->new_registrations_count }}<br>
                     Aceptadas: {{ $product->registrations_accepted_count }}<br>

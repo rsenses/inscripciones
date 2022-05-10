@@ -20,12 +20,14 @@
         </div>
     </div>
 
-    <div class="card bg-white">
+    <div class="card bg-white mt-5">
         <div class="card-body">
-            <h4 class="card-title">Inscripciones pendientes de valorar</h4>
-            <div class="table-responsive">
-                <x-registrations.table :registrations="$registrations" />
+            <div class="row">
+                <div class="col">
+                    <h3 class="card-title">Facturadas</h3>
+                </div>
             </div>
+            <x-invoices.table :invoices="$invoices" :toggle="true" />
         </div>
     </div>
 </div>

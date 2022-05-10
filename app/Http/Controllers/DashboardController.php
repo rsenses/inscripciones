@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use App\Models\Partner;
-use App\Models\Registration;
+use App\Models\Invoice;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -25,20 +24,23 @@ class DashboardController extends Controller
         $activeCampaigns = $partner->campaigns()
             ->active()
             ->get();
-
-        $latestRegistrations = Registration::latest()
-            ->whereHas('product', function ($query) use ($partner) {
-                $query->whereHas('campaign', function ($query) use ($partner) {
-                    $query->where('campaigns.partner_id', $partner->id);
+        
+        $invoices = Invoice::whereHas('checkout', function ($q) use ($partner, $activeCampaigns) {
+            $q->whereHas('products', function ($q) use ($partner, $activeCampaigns) {
+                $q->whereHas('campaign', function ($q) use ($partner, $activeCampaigns) {
+                    $activeCampaignsArray = $activeCampaigns->pluck('id')->toArray();
+                    $q->whereIn('campaign_id', $activeCampaignsArray);
+                    $q->where('partner_id', $partner->id);
                 });
-            })
-            ->where('status', 'new')
+            });
+        })
+            ->orderBy('created_at', 'DESC')
             ->get();
 
         return view('dashboard', [
             'products' => $activeProducts,
             'campaigns' => $activeCampaigns,
-            'registrations' => $latestRegistrations
+            'invoices' => $invoices
         ]);
     }
 }

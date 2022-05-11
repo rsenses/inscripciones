@@ -202,9 +202,7 @@ class RegistrationController extends Controller
 
         $registration->checkout->$action();
 
-        return redirect()->route('products.show', [
-            'product' => $registration->product
-        ]);
+        return redirect()->back();
     }
 
     /**
@@ -218,9 +216,7 @@ class RegistrationController extends Controller
     {
         $registration->checkout->resendLastEmail();
 
-        return redirect()->route('products.show', [
-            'product' => $registration->product
-        ]);
+        return redirect()->back();
     }
 
     /**

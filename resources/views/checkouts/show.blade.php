@@ -37,7 +37,7 @@
     <div class="row justify-content-center">
         <div class="alert alert-danger">
             Proceso de compra realizado anteriormente, disculpe las molestias.<br>Si tiene alguna duda contacte con
-            nosotros en <a href="mailto:foro.expansion@unidadeditorial.es">foro.expansion@unidadeditorial.es</a>
+            nosotros en <a href="mailto:{{ $checkout->campaign->from_address}}">{{ $checkout->campaign->from_address}}</a>
         </div>
     </div>
     @else

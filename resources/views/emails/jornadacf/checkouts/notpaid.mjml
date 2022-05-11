@@ -57,7 +57,7 @@
                         BIC: {{ $checkout->campaign->partner->bic }}
                     </mj-text>
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"
-                        >Por favor, envíenos el justificante de la transferencia
+                        >Por favor, envíanos el justificante de la transferencia
                         respondiendo a este email.</mj-text
                     >
                     <mj-text line-height="22px" font-size="14px" color="#2a3a4a"

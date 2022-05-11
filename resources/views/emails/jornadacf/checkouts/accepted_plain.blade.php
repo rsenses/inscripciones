@@ -1,6 +1,6 @@
 Estimad@ {{ $checkout->user->full_name }}
 
-Ya estás registrad@ en el {{ $checkout->campaign->name
+Ya estás registrad@ en la {{ $checkout->campaign->name
 }}. A continuación detallamos el resumen de la compra:
 
 # Producto

@@ -11,6 +11,8 @@ Cuenta {{ $checkout->campaign->partner->bank_account }}
 IBAN: {{ $checkout->campaign->partner->iban }}
 BIC: {{ $checkout->campaign->partner->bic }}
 
+Por favor, envíanos el justificante de la transferencia respondiendo a este email.
+
 Atentamente,
 
 Correo Farmacéutico

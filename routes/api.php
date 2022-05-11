@@ -33,5 +33,6 @@ Route::prefix('v1')->group(function () {
         Route::get('/ii-foro/streaming', 'App\Http\Controllers\Api\IIForoController@streaming');
         Route::get('/ii-foro/registrations', 'App\Http\Controllers\Api\IIForoController@registrations');
         Route::get('/i-congreso/streaming', 'App\Http\Controllers\Api\ICongresoController@streaming');
+        Route::get('/i-mbf/streaming', 'App\Http\Controllers\Api\ImbfController@streaming');
     });
 });

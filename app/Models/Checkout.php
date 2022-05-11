@@ -225,6 +225,10 @@ class Checkout extends Model
             ]);
         }
 
+        $this->invoice()->update([
+            'checkout_id' => $checkout->id,
+        ]);
+
         $this->disable();
 
         return $checkout;

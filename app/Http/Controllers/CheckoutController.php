@@ -8,6 +8,8 @@ use App\Models\Invoice;
 use App\Rules\Nie;
 use App\Rules\Nif;
 use App\Rules\Cif;
+use ErrorException;
+use Exception;
 use Illuminate\Http\Request;
 use Sermepa\Tpv\Tpv;
 use Illuminate\Support\Facades\Session;
@@ -59,7 +61,7 @@ class CheckoutController extends Controller
 
         $checkout = Checkout::where('token', $request->t)
             ->where('status', '!=', 'disabled')
-            ->first();
+            ->firstOrFail();
 
         if ($checkout->status === 'processing') {
             $checkout = $checkout->new();
@@ -168,6 +170,10 @@ class CheckoutController extends Controller
      */
     public function payment(Checkout $checkout)
     {
+        if (empty($checkout->products)) {
+            abort(404);
+        }
+
         $form = $checkout->generatePaymentForm();
 
         $productNames = [];

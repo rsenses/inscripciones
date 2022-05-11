@@ -24,7 +24,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col">
-                    <h3 class="card-title">Facturadas</h3>
+                    <h3 class="card-title">Últimas compras</h3>
                 </div>
             </div>
             <x-invoices.table :invoices="$invoices" :toggle="true" />

@@ -56,6 +56,7 @@ class Campaign extends Model
             $query->where('campaign_id', $this->id);
         })
             ->where('status', 'paid')
+            ->where('amount', '>', 0)
             ->count();
     }
 

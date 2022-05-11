@@ -27,7 +27,7 @@ class RegistrationController extends Controller
         $product = Product::with(['registrations' => function ($query) {
             $query->where('status', 'paid');
         }, 'registrations.user'])
-            ->find($product->id);
+            ->findOrFail($product->id);
 
         return $product;
     }

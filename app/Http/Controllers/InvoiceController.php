@@ -378,7 +378,7 @@ class InvoiceController extends Controller
                 ->first();
 
             if ($invoice) {
-                if (!$invoice->number && !$invoice->billed_at) {
+                if (!$invoice->number && !$invoice->billed_at && $import[1]) {
                     $invoice->number = $import[1];
                     $invoice->billed_at = date('Y-m-d H:i:s', strtotime($import[2]));
 

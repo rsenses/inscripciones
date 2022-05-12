@@ -374,29 +374,20 @@ class InvoiceController extends Controller
                 continue;
             }
 
-            $price = str_replace(' ', '', $import[3]);
-            $price = floatval(str_replace(',', '.', str_replace('.', '', $price)));
-            $vat = floatval(str_replace(',', '.', str_replace('.', '', $import[5])));
-            $finalPrice = $price + $vat;
-
-            if (round($finalPrice - floor($finalPrice), 2) === 0.99) {
-                $finalPrice = number_format(floor($finalPrice) + 1, 2, '.', '');
-            } else {
-                $finalPrice = number_format($finalPrice, 2, '.', '');
-            }
-
-            $invoice = Invoice::where('checkout_id', $import[0])->first();
+            $invoice = Invoice::where('checkout_id', $import[0])
+                ->first();
 
             if ($invoice) {
-                $invoice->number = $import[1];
-                $invoice->billed_at = date('Y-m-d H:i:s', strtotime($import[2]));
+                if (!$invoice->number && !$invoice->billed_at) {
+                    $invoice->number = $import[1];
+                    $invoice->billed_at = date('Y-m-d H:i:s', strtotime($import[2]));
 
-                $invoice->save();
+                    $invoice->save();
 
-                InvoiceCreated::dispatch($invoice);
+                    InvoiceCreated::dispatch($invoice);
+                }
             } else {
                 $errors[$index]['id'] = $import[0];
-                $errors[$index]['price'] = $finalPrice;
             }
         }
 

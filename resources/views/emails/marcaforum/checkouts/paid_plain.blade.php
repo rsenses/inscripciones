@@ -15,7 +15,7 @@ Podrá acceder al streaming mediante su email y contraseña.
 @endif
 
 A través del siguiente enlace podrá acceder a toda la información relativa al evento:
-https://foro.expansion.com
+https://www.marcabusinessforum.com
 
 • Lugar de celebración.
 • Programa y ponentes.

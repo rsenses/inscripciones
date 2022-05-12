@@ -6,7 +6,7 @@ Puede descargar su entrada desde el siguiente enlace:
 {{ route('tickets.show', [$registration, $registration->unique_id]) }}
 
 Acceda a toda la información relativa al evento en:
-https://foro.expansion.com
+https://www.marcabusinessforum.com
 
 • Lugar de celebración.
 • Programa y ponentes.

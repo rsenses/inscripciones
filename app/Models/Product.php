@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\CheckoutPaid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
@@ -51,11 +52,11 @@ class Product extends Model
     }
 
     /**
-     * Get the discounts for the product
+     * Get the product discounts
      */
     public function discounts()
     {
-        return $this->hasMany(Discount::class);
+        return $this->morphMany(Discount::class, 'discountable');
     }
 
     /**

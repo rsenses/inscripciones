@@ -7,7 +7,6 @@ use App\Events\CheckoutDenied;
 use App\Events\CheckoutCancelled;
 use App\Events\CheckoutPaid;
 use App\Events\CheckoutPending;
-use App\Services\Discounts;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -67,9 +66,9 @@ class Checkout extends Model
     /**
      * Get the deal associated with the checkout.
      */
-    public function deal()
+    public function deals()
     {
-        return $this->hasOne(Deal::class);
+        return $this->hasMany(Deal::class);
     }
 
     /**
@@ -272,18 +271,23 @@ class Checkout extends Model
     {
         $originalPrice = $this->amount;
 
-        $newPrice = $originalPrice * ((100 - $discount->quantity) / 100);
+        $newPrice = $originalPrice - $discount->amount($this);
 
-        if ($discount->quantity === 100) {
-            $this->update(['paid_at' => Carbon::now(), 'amount' => 0]);
+        $this->amount = $newPrice;
+        $this->save();
+
+        if ($newPrice === 0) {
+            $this->update(['paid_at' => Carbon::now()]);
             $this->changeStatus('paid');
             $this->registrationsStatus('pay');
 
             CheckoutPaid::dispatch($this);
-        } else {
-            $this->amount = $newPrice;
-            $this->save();
         }
+
+        $this->deals()->create([
+            'discount_id' => $discount->id,
+            'amount' => $originalPrice - $newPrice,
+        ]);
 
         return $this;
     }
@@ -297,30 +301,43 @@ class Checkout extends Model
         return $this;
     }
 
-    public function CheckForDiscounts()
-    {
-        $iiCongreso = Discounts::iiCongreso($this);
-        $jornadaCF = Discounts::jornadaCF($this);
-        
-        if ($iiCongreso) {
-            return $iiCongreso;
-        }
-
-        if ($jornadaCF) {
-            return $jornadaCF;
-        }
-
-        return false;
-    }
-
     public function applyAutomaticDiscount()
     {
-        $discount = $this->CheckForDiscounts();
+        $discounts = $this->campaign->discounts()->where('automatic', true)->get();
 
-        if ($discount) {
-            $this->amount = $this->amount - $discount['amount'];
-            $this->save();
+        foreach ($this->products as $product) {
+            $collection = $product->discounts()->where('automatic', true)->get();
+
+            $discounts = $discounts->merge($collection);
         }
+ 
+        // Sobre la colección, primero aplicar los cumulable TRUE, luego el de mayor amount calculado de los NO cumulables
+        $cumulables = $discounts->where('cumulable', true);
+        $noCumulables = $discounts->where('cumulable', false);
+    
+        foreach ($cumulables as $discount) {
+            if ($discount->applicable($this)) {
+                $this->applyDiscount($discount);
+            }
+        }
+
+        $noCumulableDiscountToApply = null;
+        foreach ($noCumulables as $discount) {
+            if ($discount->applicable($this)) {
+                if ($noCumulableDiscountToApply) {
+                    if ($discount->amount($this) > $noCumulableDiscountToApply->amount($this)) {
+                        $noCumulableDiscountToApply = $discount;
+                    }
+                } else {
+                    $noCumulableDiscountToApply = $discount;
+                }
+            }
+        }
+        if ($noCumulableDiscountToApply) {
+            $this->applyDiscount($noCumulableDiscountToApply);
+        }
+
+        return $this;
     }
 
     public function mode()

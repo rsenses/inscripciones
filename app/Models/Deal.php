@@ -14,7 +14,7 @@ class Deal extends Model
      *
      * @var array
      */
-    protected $fillable = ['checkout_id', 'discount_id'];
+    protected $fillable = ['checkout_id', 'discount_id', 'amount'];
 
     /**
      * Get the checkout associated with the deal.
@@ -22,5 +22,13 @@ class Deal extends Model
     public function checkout()
     {
         return $this->hasOne(Checkout::class);
+    }
+
+    /**
+     * Get the discount associated with the deal.
+     */
+    public function discount()
+    {
+        return $this->hasOne(Discount::class);
     }
 }

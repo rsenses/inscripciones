@@ -22,7 +22,8 @@ class AuthController extends Controller
             'company' => ['nullable', 'string', 'max:255'],
             'position' => ['nullable', 'string', 'max:255'],
             'password' => ['nullable', 'string', 'min:8'],
-            'advertising' => ['nullable', 'boolean']
+            'advertising' => ['nullable', 'boolean'],
+            'data' => ['nullable', 'array'],
         ]);
 
         $user = User::updateOrCreate(
@@ -40,6 +41,9 @@ class AuthController extends Controller
         );
 
         $user->password = $request->password ? Hash::make($request->password) : $user->password;
+        if ($request->data) {
+            $user->data = array_unique(array_merge($user->data, $request->data), SORT_REGULAR);
+        }
         $user->save();
 
         return response()->json($user);

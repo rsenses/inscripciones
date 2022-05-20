@@ -24,7 +24,7 @@ class TpvController extends Controller
             $DsResponse += 0;
 
             if ($redsys->check($key, $request->all()) && $DsResponse <= 99) {
-                $checkout->method = 'card';
+                $checkout->update(['method' => 'card']);
                 
                 $checkout->pay();
             } else {

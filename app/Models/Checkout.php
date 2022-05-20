@@ -114,60 +114,56 @@ class Checkout extends Model
 
     public function cancel()
     {
-        CheckoutCancelled::dispatch($this);
-
-        $checkout = $this->changeStatus('cancelled');
-
+        $this->changeStatus('cancelled');
         $this->registrationsStatus('cancel');
 
-        return $checkout;
+        CheckoutCancelled::dispatch($this);
+
+        return $this;
     }
 
     public function disable()
     {
-        $checkout = $this->changeStatus('disabled');
+        $this->changeStatus('disabled');
 
-        return $checkout;
+        return $this;
     }
 
     public function processing()
     {
-        $checkout = $this->changeStatus('processing');
+        $this->changeStatus('processing');
 
-        return $checkout;
+        return $this;
     }
 
     public function pay()
     {
-        $checkout = $this->changeStatus('paid');
-
-        $checkout->update(['paid_at' => Carbon::now()]);
+        $this->changeStatus('paid');
+        $this->update(['paid_at' => Carbon::now()]);
 
         $this->registrationsStatus('pay');
 
-        CheckoutPaid::dispatch($checkout);
+        CheckoutPaid::dispatch($this);
 
-        return $checkout;
+        return $this;
     }
 
     public function invite()
     {
-        $checkout = $this->changeStatus('paid');
+        $this->update(['paid_at' => Carbon::now(), 'amount' => 0]);
 
-        $checkout->update(['paid_at' => Carbon::now(), 'amount' => 0]);
-
+        $this->changeStatus('paid');
         $this->registrationsStatus('pay');
 
-        CheckoutPaid::dispatch($checkout);
+        CheckoutPaid::dispatch($this);
 
-        return $checkout;
+        return $this;
     }
 
     public function accept()
     {
         if ($this->amount > 0) {
-            $checkout = $this->changeStatus('accepted');
-
+            $this->changeStatus('accepted');
             $this->registrationsStatus('accept');
 
             CheckoutAccepted::dispatch($this);
@@ -175,38 +171,29 @@ class Checkout extends Model
             $this->pay();
         }
 
-        return $checkout;
+        return $this;
     }
 
     public function pending()
     {
-        $checkout = $this->changeStatus('pending');
-
-        $checkout->update(['method' => 'transfer']);
-
+        $this->changeStatus('pending');
         $this->registrationsStatus('pending');
 
-        CheckoutPending::dispatch($checkout);
+        $this->update(['method' => 'transfer']);
 
-        return $checkout;
+        CheckoutPending::dispatch($this);
+
+        return $this;
     }
 
     public function deny()
     {
-        $checkout = $this->changeStatus('denied');
-
-        CheckoutDenied::dispatch($checkout);
-
+        $this->changeStatus('denied');
         $this->registrationsStatus('deny');
 
-        return $checkout;
-    }
+        CheckoutDenied::dispatch($this);
 
-    public function setInvoice()
-    {
-        $checkout = $this->changeStatus('billed');
-
-        return $checkout;
+        return $this;
     }
 
     public function new()
@@ -216,8 +203,6 @@ class Checkout extends Model
         $checkout->status = 'accepted';
 
         $checkout->push();
-
-        // $checkout->products()->attach($this->products);
 
         foreach ($this->registrations()->get() as $registration) {
             $registration->update([

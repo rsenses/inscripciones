@@ -21,8 +21,7 @@
                 <th data-field="amount" data-sortable="true">Precio</th>
                 <th data-field="full_name" data-sortable="true">Nombre</th>
                 <th data-field="company" data-sortable="true">Empresa</th>
-                <th data-field="email" data-sortable="true">Email</th>
-                <th data-field="phone" data-sortable="true">Tlf</th>
+                <th data-field="email" data-sortable="true">Contacto</th>
                 <th data-field="promo" data-sortable="true">Promo</th>
                 @if(!$showProduct)
                 <th></th>
@@ -49,8 +48,7 @@
                 <td>{{ !empty($registration->checkout->amount) ? $registration->checkout->amount . '€' : '' }}</td>
                 <td>{{ $registration->user->full_name }}</td>
                 <td>{{ $registration->user->company }}<br><small>{{ $registration->user->position }}</small></td>
-                <td>{{ $registration->user->email }}</td>
-                <td>{{ $registration->user->phone }}</td>
+                <td>{{ $registration->user->email }}<br>{{ $registration->user->phone }}</td>
                 <td>{{ $registration->promo }}</td>
                 @if(!$showProduct)
                 <td>

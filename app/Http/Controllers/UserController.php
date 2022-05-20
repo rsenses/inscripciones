@@ -55,6 +55,7 @@ class UserController extends Controller
             'phone' => ['nullable', 'string', 'max:255'],
             'company' => ['nullable', 'string', 'max:255'],
             'position' => ['nullable', 'string', 'max:255'],
+            'data' => ['nullable', 'array'],
         ]);
 
         $user = User::create([
@@ -67,6 +68,7 @@ class UserController extends Controller
             'company' => $request->company,
             'position' => $request->position,
             'role' => $request->role,
+            'data' => $request->data
         ]);
 
         return redirect()->route('users.show', ['user' => $user]);
@@ -124,6 +126,7 @@ class UserController extends Controller
             'phone' => ['nullable', 'string', 'max:255'],
             'company' => ['nullable', 'string', 'max:255'],
             'position' => ['nullable', 'string', 'max:255'],
+            'data' => ['nullable', 'array'],
         ]);
 
         $user->update([
@@ -135,6 +138,11 @@ class UserController extends Controller
             'company' => $request->company,
             'position' => $request->position,
         ]);
+
+        if ($request->data) {
+            $user->data = array_unique(array_merge($user->data, $request->data), SORT_REGULAR);
+            $user->save;
+        }
 
         return redirect()->route('users.show', ['user' => $user]);
     }

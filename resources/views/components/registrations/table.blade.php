@@ -9,7 +9,7 @@
         <p><a href="{{ route('emails.claim', ['product' => $registrations[0]->product]) }}" class="btn btn-success">Enviar reclamacion de pago</a></p>
     </x-modal>
     @endif
-    <table class="table " {{ $showProduct ? '' : 'data-toggle=table' }} data-search="true" data-show-export="true" data-export-data-type="basic" data-export-types="['csv']" data-locale="es_ES" data-filter-control="true" data-toolbar=".toolbar">
+    <table class="table" {{ $showProduct ? '' : 'data-toggle=table' }} data-search="true" data-show-export="true" data-export-data-type="basic" data-export-types="['csv']" data-locale="es_ES" data-filter-control="true" data-toolbar=".toolbar">
         <thead>
             <tr>
                 @if($showProduct)

@@ -82,6 +82,7 @@
                     <p><img src="{{asset('img/tarjetas.png')}}" class="img-fluid"></p>
                 </div>
                 <div class="card-footer">
+                    <a href="{{ route('checkouts.purchase', ['checkout' => $checkout]) }}" class="btn btn-primary float-right">Pagar</a>
                     {!! $form !!}
                 </div>
             </div>

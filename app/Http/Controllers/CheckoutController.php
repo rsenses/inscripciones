@@ -13,6 +13,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Sermepa\Tpv\Tpv;
 use Illuminate\Support\Facades\Session;
+use Omnipay\Omnipay;
 
 class CheckoutController extends Controller
 {
@@ -193,5 +194,22 @@ class CheckoutController extends Controller
             'productCounts' => $productCounts,
             'productPrices' => $productPrices,
         ]);
+    }
+
+    public function purchase(Checkout $checkout)
+    {
+        $company = $checkout->campaign->partner;
+
+        $gateway = Omnipay::create('Redsys');
+        $gateway->setMerchantKey($company->merchant_key);
+        $gateway->setMerchantCode($company->merchant_code);
+        $gateway->setCurrencyMerchant('978');
+        $gateway->initialize([
+            'titular' => $checkout->user->full_name,
+            'currency' => '978',
+            'testMode' => true,
+        ]);
+        
+        dd($gateway->getDefaultParameters());
     }
 }

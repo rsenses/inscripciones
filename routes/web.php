@@ -42,6 +42,7 @@ Route::post('/preusers/{user}', [PreUserController::class, 'update'])->name('pre
 Route::get('/checkouts/{checkout}', [CheckoutController::class, 'show'])->name('checkouts');
 Route::post('/checkouts/{checkout}', [CheckoutController::class, 'update'])->name('checkouts.update');
 Route::get('/checkouts/payment/{checkout}', [CheckoutController::class, 'payment'])->name('checkouts.payment');
+Route::get('/checkouts/purchase/{checkout}', [CheckoutController::class, 'purchase'])->name('checkouts.purchase');
 
 Route::get('/tickets/checkout/{checkout}/{token}', [TicketController::class, 'showCheckout'])->name('tickets.show.checkout');
 Route::get('/tickets/{registration}/{id}', [TicketController::class, 'show'])->name('tickets.show');

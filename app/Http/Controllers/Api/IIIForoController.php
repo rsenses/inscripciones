@@ -38,7 +38,7 @@ class IIIForoController extends Controller
 
     private function getStream($lang = 'es')
     {
-        $url = 'https://api.jsonbin.io/b/628dd569402a5b38020c8fdf/latest';
+        $url = 'https://api.npoint.io/82b420f5e56939140d21';
         $response = Http::get($url);
         $json = json_decode($response->body(), true);
 

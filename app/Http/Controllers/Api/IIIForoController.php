@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
-class IIForoController extends Controller
+class IIIForoController extends Controller
 {
     public function streaming(Request $request)
     {
@@ -37,13 +38,11 @@ class IIForoController extends Controller
 
     private function getStream($lang = 'es')
     {
-        $url = 'https://foro.expansion.com/live.json';
+        $url = 'https://api.jsonbin.io/b/628dd569402a5b38020c8fdf';
+        $response = Http::get($url);
+        $json = json_decode($response->body(), true);
 
-        $json = json_decode(file_get_contents($url), true);
-
-        if ($json['stream'] === 'stream-1-1') {
-            // Cuando tentamos el streaming, hacer wrap con
-            //     <div class="embed-responsive embed-responsive-16by9">
+        if ($json['stream'] == 1) {
             if ($lang === 'en') {
                 return [
                     'streaming' => '<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%;"><iframe style="position: absolute; width: 100%; height: 100%;" src="https://ikuna.s3.amazonaws.com/sync01/event_660_ccf98b/streaming.html" frameborder="0" allowtransparency="true" allowfullscreen></iframe></div></div>'
@@ -53,9 +52,7 @@ class IIForoController extends Controller
                     'streaming' => '<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%;"><iframe style="position: absolute; width: 100%; height: 100%;" src="https://ikuna.s3.amazonaws.com/sync01/event_659_20286a/streaming.html" frameborder="0" allowtransparency="true" allowfullscreen></iframe></div></div>'
                 ];
             }
-        } elseif ($json['stream'] === 'stream-2-1') {
-            // Cuando tentamos el streaming, hacer wrap con
-            //     <div class="embed-responsive embed-responsive-16by9">
+        } elseif ($json['stream'] == 2) {
             if ($lang === 'en') {
                 return [
                     'streaming' => '<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%;"><iframe style="position: absolute; width: 100%; height: 100%;" src="https://ikuna.s3.amazonaws.com/sync01/event_662_ddeb88/streaming.html" frameborder="0" allowtransparency="true" allowfullscreen></iframe></div></div>'

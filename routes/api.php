@@ -21,17 +21,17 @@ Route::prefix('v1')->group(function () {
 
     Route::get('/products/{product}', 'App\Http\Controllers\Api\ProductController@show');
 
-    Route::get('/ii-foro/streaming-noauth', 'App\Http\Controllers\Api\IIForoController@streamingNoAuth');
-    Route::get('/ii-foro/registrations-noauth', 'App\Http\Controllers\Api\IIForoController@registrationsNoAuth');
-    Route::get('/i-congreso/registrations-noauth', 'App\Http\Controllers\Api\ICongresoController@registrationsNoAuth');
+    Route::get('/iii-foro/streaming-noauth', 'App\Http\Controllers\Api\IIIForoController@streamingNoAuth');
+    // Route::get('/iii-foro/registrations-noauth', 'App\Http\Controllers\Api\IIIForoController@registrationsNoAuth');
+    // Route::get('/i-congreso/registrations-noauth', 'App\Http\Controllers\Api\ICongresoController@registrationsNoAuth');
 
     Route::middleware(['auth:sanctum'])->group(function () {
         Route::post('/logout', 'App\Http\Controllers\Api\AuthController@logout');
         Route::get('/registrations/{product}', 'App\Http\Controllers\Api\RegistrationController@show');
 
         // Específico del Foro
-        Route::get('/ii-foro/streaming', 'App\Http\Controllers\Api\IIForoController@streaming');
-        Route::get('/ii-foro/registrations', 'App\Http\Controllers\Api\IIForoController@registrations');
+        Route::get('/iii-foro/streaming', 'App\Http\Controllers\Api\IIIForoController@streaming');
+        // Route::get('/iii-foro/registrations', 'App\Http\Controllers\Api\IIIForoController@registrations');
         Route::get('/i-congreso/streaming', 'App\Http\Controllers\Api\ICongresoController@streaming');
         Route::get('/i-mbf/streaming', 'App\Http\Controllers\Api\ImbfController@streaming');
     });

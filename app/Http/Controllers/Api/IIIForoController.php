@@ -38,7 +38,7 @@ class IIIForoController extends Controller
 
     private function getStream($lang = 'es')
     {
-        $url = 'https://api.jsonbin.io/b/628dd569402a5b38020c8fdf';
+        $url = 'https://api.jsonbin.io/b/628dd569402a5b38020c8fdf/latest';
         $response = Http::get($url);
         $json = json_decode($response->body(), true);
 

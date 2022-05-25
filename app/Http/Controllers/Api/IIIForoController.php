@@ -39,40 +39,33 @@ class IIIForoController extends Controller
     private function getStream($lang = 'es')
     {
         $url = 'https://metechdevelopment.github.io/json-api/iiiforo.json';
-        $response = Http::get($url);
-        $json = json_decode($response->body(), true);
+        $stream = Http::get($url)['stream'];
 
-        if ($json['stream'] == 1) {
+        if ($stream == 1) {
             if ($lang === 'en') {
-                return [
-                    'streaming' => '<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%;"><iframe style="position: absolute; width: 100%; height: 100%;" src="https://ikuna.s3.amazonaws.com/sync01/event_660_ccf98b/streaming.html" frameborder="0" allowtransparency="true" allowfullscreen></iframe></div></div>'
-                ];
+                $streaming = '<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%;"><iframe style="position: absolute; width: 100%; height: 100%;" src="https://ikuna.s3.amazonaws.com/sync01/event_660_ccf98b/streaming.html" frameborder="0" allowtransparency="true" allowfullscreen></iframe></div></div>';
             } else {
-                return [
-                    'streaming' => '<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%;"><iframe style="position: absolute; width: 100%; height: 100%;" src="https://ikuna.s3.amazonaws.com/sync01/event_659_20286a/streaming.html" frameborder="0" allowtransparency="true" allowfullscreen></iframe></div></div>'
-                ];
+                $streaming = '<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%;"><iframe style="position: absolute; width: 100%; height: 100%;" src="https://ikuna.s3.amazonaws.com/sync01/event_659_20286a/streaming.html" frameborder="0" allowtransparency="true" allowfullscreen></iframe></div></div>';
             }
-        } elseif ($json['stream'] == 2) {
+        } elseif ($stream == 2) {
             if ($lang === 'en') {
-                return [
-                    'streaming' => '<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%;"><iframe style="position: absolute; width: 100%; height: 100%;" src="https://ikuna.s3.amazonaws.com/sync01/event_662_ddeb88/streaming.html" frameborder="0" allowtransparency="true" allowfullscreen></iframe></div></div>'
-                ];
+                $streaming = '<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%;"><iframe style="position: absolute; width: 100%; height: 100%;" src="https://ikuna.s3.amazonaws.com/sync01/event_662_ddeb88/streaming.html" frameborder="0" allowtransparency="true" allowfullscreen></iframe></div></div>';
             } else {
-                return [
-                    'streaming' => '<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%;"><iframe style="position: absolute; width: 100%; height: 100%;" src="https://ikuna.s3.amazonaws.com/sync01/event_661_10b763/streaming.html" frameborder="0" allowtransparency="true" allowfullscreen></iframe></div></div>'
-                ];
+                $streaming = '<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%;"><iframe style="position: absolute; width: 100%; height: 100%;" src="https://ikuna.s3.amazonaws.com/sync01/event_661_10b763/streaming.html" frameborder="0" allowtransparency="true" allowfullscreen></iframe></div></div>';
             }
         } else {
             if ($lang === 'en') {
-                return [
-                    'streaming' => '<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%;"><iframe style="position: absolute; width: 100%; height: 100%;" src="https://ikuna.s3.amazonaws.com/sync01/event_658_40b7d6/streaming.html" frameborder="0" allowtransparency="true" allowfullscreen></iframe></div></div>'
-                ];
+                $streaming = '<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%;"><iframe style="position: absolute; width: 100%; height: 100%;" src="https://ikuna.s3.amazonaws.com/sync01/event_658_40b7d6/streaming.html" frameborder="0" allowtransparency="true" allowfullscreen></iframe></div></div>';
             } else {
-                return [
-                    'streaming' => '<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%;"><iframe style="position: absolute; width: 100%; height: 100%;" src="https://ikuna.s3.amazonaws.com/sync01/event_657_993572/streaming.html" frameborder="0" allowtransparency="true" allowfullscreen></iframe></div></div>'
-                ];
+                $streaming = '<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%;"><iframe style="position: absolute; width: 100%; height: 100%;" src="https://ikuna.s3.amazonaws.com/sync01/event_657_993572/streaming.html" frameborder="0" allowtransparency="true" allowfullscreen></iframe></div></div>';
             }
         }
+
+        return [
+            'stream' => $stream,
+            'lang' => $lang,
+            'streaming' => $streaming
+        ];
     }
 
     public function registrations()

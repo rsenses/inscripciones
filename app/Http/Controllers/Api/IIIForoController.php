@@ -28,15 +28,15 @@ class IIIForoController extends Controller
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
 
-        return $this->getStream($request->lang);
+        return $this->getStream($request->lang ?: 'es');
     }
 
     public function streamingNoAuth(Request $request)
     {
-        return $this->getStream($request->lang);
+        return $this->getStream($request->lang ?: 'es');
     }
 
-    private function getStream($lang = 'es')
+    private function getStream($lang)
     {
         $url = 'https://metechdevelopment.github.io/json-api/iiiforo.json';
         $stream = Http::get($url)['stream'];

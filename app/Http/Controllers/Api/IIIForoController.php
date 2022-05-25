@@ -13,7 +13,7 @@ class IIIForoController extends Controller
     {
         $user = auth()->user();
 
-        $products = [1, 2];
+        $products = [5, 6];
         $paid = false;
 
         foreach ($user->registrations as $registration) {

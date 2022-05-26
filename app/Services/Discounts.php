@@ -70,7 +70,7 @@ class Discounts
         $products = $checkout->products()->whereIn('products.id', [19, 21])->count();
 
         if ($products >= 1) {
-            $preSale = Carbon::createFromFormat('m/d/Y H:i:s', '05/26/2022 23:59:59');
+            $preSale = Carbon::createFromFormat('m/d/Y H:i:s', '06/01/2022 23:59:59');
             $today = Carbon::now();
 
             if ($products >= 3) {

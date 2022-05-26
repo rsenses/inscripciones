@@ -9,11 +9,9 @@ use App\Events\CheckoutPaid;
 use App\Events\CheckoutPending;
 use App\Services\Discounts;
 use Carbon\Carbon;
-use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Sermepa\Tpv\Tpv;
-use Sermepa\Tpv\TpvException;
+use Omnipay\Omnipay;
 
 class Checkout extends Model
 {
@@ -219,38 +217,60 @@ class Checkout extends Model
         return $checkout;
     }
 
-    public function generatePaymentForm()
+    // public function generatePaymentForm()
+    // {
+    //     try {
+    //         $company = $this->campaign->partner;
+
+    //         $redsys = new Tpv();
+    //         $redsys->setAmount($this->amount);
+    //         $redsys->setOrder(sprintf('%012d', $this->id));
+    //         $redsys->setMerchantcode($company->merchant_code); //Reemplazar por el código que proporciona el banco
+    //         $redsys->setCurrency('978');
+    //         $redsys->setTransactiontype('0');
+    //         $redsys->setTerminal('1');
+    //         $redsys->setMethod('C'); //Solo pago con tarjeta, no mostramos iupay
+    //         $redsys->setNotification(route('tpv.notify', ['checkout' => $this])); //Url de notificacion
+    //         $redsys->setUrlOk(route('tpv.success', ['checkout' => $this])); //Url OK
+    //         $redsys->setUrlKo(route('tpv.error', ['checkout' => $this])); //Url KO
+    //         $redsys->setVersion('HMAC_SHA256_V1');
+    //         $redsys->setTradeName($company->name);
+    //         $redsys->setTitular($this->user->full_name);
+    //         $redsys->setProductDescription("Evento {$company->name} " . now()->year);
+    //         $redsys->setEnvironment(config('app.env') === 'local' ? 'test' : 'live'); //Entorno test
+    //         $redsys->setAttributesSubmit('submit', 'submit', 'Pagar con tarjeta', '', 'btn btn-primary btn-block btn-lg');
+
+    //         $signature = $redsys->generateMerchantSignature($company->merchant_key);
+    //         $redsys->setMerchantSignature($signature);
+
+    //         $this->processing();
+
+    //         return $redsys->createForm();
+    //     } catch (TpvException $e) {
+    //         throw new Exception($e->getMessage());
+    //     }
+    // }
+
+    public function gateway()
     {
-        try {
-            $company = $this->campaign->partner;
+        $company = $this->campaign->partner;
 
-            $redsys = new Tpv();
-            $redsys->setAmount($this->amount);
-            $redsys->setOrder(sprintf('%012d', $this->id));
-            $redsys->setMerchantcode($company->merchant_code); //Reemplazar por el código que proporciona el banco
-            $redsys->setCurrency('978');
-            $redsys->setTransactiontype('0');
-            $redsys->setTerminal('1');
-            $redsys->setMethod('C'); //Solo pago con tarjeta, no mostramos iupay
-            $redsys->setNotification(route('tpv.notify', ['checkout' => $this])); //Url de notificacion
-            $redsys->setUrlOk(route('tpv.success', ['checkout' => $this])); //Url OK
-            $redsys->setUrlKo(route('tpv.error', ['checkout' => $this])); //Url KO
-            $redsys->setVersion('HMAC_SHA256_V1');
-            $redsys->setTradeName($company->name);
-            $redsys->setTitular($this->user->full_name);
-            $redsys->setProductDescription("Evento {$company->name} " . now()->year);
-            $redsys->setEnvironment(config('app.env') === 'local' ? 'test' : 'live'); //Entorno test
-            $redsys->setAttributesSubmit('submit', 'submit', 'Pagar con tarjeta', '', 'btn btn-primary btn-block btn-lg');
+        $gateway = Omnipay::create('Redsys_Redirect');
 
-            $signature = $redsys->generateMerchantSignature($company->merchant_key);
-            $redsys->setMerchantSignature($signature);
-
-            $this->processing();
-
-            return $redsys->createForm();
-        } catch (TpvException $e) {
-            throw new Exception($e->getMessage());
-        }
+        return $gateway->purchase([
+            'amount' => $this->amount,
+            'currency' => 'EUR',
+            'merchantId' => $company->merchant_code,
+            'merchantName' => $company->name,
+            'terminalId' => '1',
+            'hmacKey' => $company->merchant_key,
+            'transactionId' => sprintf('%012d', $this->id),
+            'notifyUrl' => route('tpv.notify', ['checkout' => $this]),
+            'returnUrl' => route('tpv.return', ['checkout' => $this]),
+            'consumerLanguage' => 'es',
+            'description' => "Evento {$company->name} " . now()->year,
+            'testMode' => config('app.env') === 'local' ? true : false,
+        ])->send();
     }
 
     public function applyDiscount(Discount $discount)

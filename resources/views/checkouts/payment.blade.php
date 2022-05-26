@@ -82,8 +82,7 @@
                     <p><img src="{{asset('img/tarjetas.png')}}" class="img-fluid"></p>
                 </div>
                 <div class="card-footer">
-                    <a href="{{ route('checkouts.purchase', ['checkout' => $checkout]) }}" class="btn btn-primary float-right">Pagar</a>
-                    {!! $form !!}
+                    <a href="{{ route('checkouts.purchase', ['checkout' => $checkout]) }}" class="btn btn-primary btn-block btn-lg">Pagar con Tarjeta</a>
                 </div>
             </div>
         </div>
@@ -103,7 +102,7 @@
                     </p>
                 </div>
                 <div class="card-footer">
-                    <a id="transfer_payment" href="{{ route('tpv.success', ['checkout' => $checkout, 'method' => 'transfer']) }}" class="btn btn-success btn-block btn-lg">Pagar por transferencia</a>
+                    <a id="transfer_payment" href="{{ route('tpv.return', ['checkout' => $checkout, 'method' => 'transfer']) }}" class="btn btn-success btn-block btn-lg">Pagar por transferencia</a>
                 </div>
             </div>
         </div>

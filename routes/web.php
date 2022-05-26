@@ -53,8 +53,8 @@ Route::post('/deals/{checkout_id}', [DealController::class, 'store'])->name('dea
 
 // TPV
 Route::post('tpv/notify/{checkout}', [TpvController::class, 'notify'])->name('tpv.notify');
-Route::get('tpv/success/{checkout}', [TpvController::class, 'success'])->name('tpv.success');
-Route::get('tpv/error/{checkout}', [TpvController::class, 'error'])->name('tpv.error');
+Route::get('tpv/return/{checkout}', [TpvController::class, 'return'])->name('tpv.return');
+// Route::get('tpv/error/{checkout}', [TpvController::class, 'error'])->name('tpv.error');
 
 // Calendar
 Route::get('/calendar/{product}', [CalendarController::class, 'show'])->name('calendar.show');

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "81c87aa1ebfa09563fb4e83214703085",
+    "content-hash": "e2465845e9a03f469fc674508f772019",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -61,6 +61,140 @@
                 "source": "https://github.com/asm89/stack-cors/tree/v2.1.1"
             },
             "time": "2022-01-18T09:12:03+00:00"
+        },
+        {
+            "name": "avaibooksports/omnipay-redsys",
+            "version": "v3.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AvaiBookSports/omnipay-redsys.git",
+                "reference": "669a46ef238ab3e60f6849d07e26992059c6a7cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AvaiBookSports/omnipay-redsys/zipball/669a46ef238ab3e60f6849d07e26992059c6a7cb",
+                "reference": "669a46ef238ab3e60f6849d07e26992059c6a7cb",
+                "shasum": ""
+            },
+            "require": {
+                "avaibooksports/redsys-messages": "^0.2",
+                "omnipay/common": "~3.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.17",
+                "omnipay/tests": "~3.0",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "suggest": {
+                "ext-openssl": "Required for hashing functions to check message signatures"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Omnipay\\Redsys\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Leith Caldwell",
+                    "email": "leith@codedruids.com"
+                }
+            ],
+            "description": "Redsys driver for the Omnipay payment processing library",
+            "homepage": "https://github.com/PatronBase/omnipay-redsys",
+            "keywords": [
+                "gateway",
+                "merchant",
+                "omnipay",
+                "pay",
+                "payment",
+                "redirect",
+                "redsys",
+                "sermepa",
+                "servired",
+                "soap",
+                "web service",
+                "webservice"
+            ],
+            "support": {
+                "source": "https://github.com/AvaiBookSports/omnipay-redsys/tree/v3.1.1"
+            },
+            "time": "2021-01-21T09:53:03+00:00"
+        },
+        {
+            "name": "avaibooksports/redsys-messages",
+            "version": "0.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AvaiBookSports/redsys-messages.git",
+                "reference": "3cd544fafea750465683ead9f544cc93def4c530"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AvaiBookSports/redsys-messages/zipball/3cd544fafea750465683ead9f544cc93def4c530",
+                "reference": "3cd544fafea750465683ead9f544cc93def4c530",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.16",
+                "symfony/phpunit-bridge": "^5.1"
+            },
+            "suggest": {
+                "avaibooksports/omnipay-redsys": "An Omnipay driver for Redsys",
+                "league/omnipay": "A payment processing library compatible with multiple payment gateways",
+                "vimeo/psalm": "If you are going to contribute to this package"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AvaiBookSports\\Component\\RedsysMessages\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "AvaiBook Sports",
+                    "email": "desarrollo@avaibooksports.com",
+                    "homepage": "https://www.avaibooksports.com"
+                },
+                {
+                    "name": "Pablo Largo",
+                    "email": "devnix.code@gmail.com"
+                },
+                {
+                    "name": "Lito",
+                    "email": "lito@eordes.com"
+                }
+            ],
+            "description": "Redsys/Sermepa/Servired gateway message lists",
+            "keywords": [
+                "gateway",
+                "messages",
+                "redsys",
+                "sermepa",
+                "servired",
+                "tpv"
+            ],
+            "support": {
+                "issues": "https://github.com/AvaiBookSports/redsys-messages/issues",
+                "source": "https://github.com/AvaiBookSports/redsys-messages/tree/0.2.1"
+            },
+            "time": "2021-01-08T13:40:19+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
@@ -3756,164 +3890,6 @@
                 }
             ],
             "time": "2022-03-27T21:42:02+00:00"
-        },
-        {
-            "name": "redsys/messages",
-            "version": "v1.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/eusonlito/redsys-Messages.git",
-                "reference": "ee1707651e7dd6f1517c5af377ac5613d3ef6490"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/eusonlito/redsys-Messages/zipball/ee1707651e7dd6f1517c5af377ac5613d3ef6490",
-                "reference": "ee1707651e7dd6f1517c5af377ac5613d3ef6490",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Redsys\\Messages\\": "./"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Lito",
-                    "email": "lito@eordes.com"
-                }
-            ],
-            "description": "Redsys/Sermepa/Servired TPV Messages lists",
-            "keywords": [
-                "messages",
-                "redsys",
-                "sermepa",
-                "servired",
-                "tpv"
-            ],
-            "support": {
-                "issues": "https://github.com/eusonlito/redsys-Messages/issues",
-                "source": "https://github.com/eusonlito/redsys-Messages/tree/v1.1.2"
-            },
-            "time": "2021-12-30T22:41:40+00:00"
-        },
-        {
-            "name": "rsenses/sermepa-omnipay",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/rsenses/sermepa-omnipay.git",
-                "reference": "49ca431f38a53966821cd62d7f0ec3ee2ecf6d5a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/rsenses/sermepa-omnipay/zipball/49ca431f38a53966821cd62d7f0ec3ee2ecf6d5a",
-                "reference": "49ca431f38a53966821cd62d7f0ec3ee2ecf6d5a",
-                "shasum": ""
-            },
-            "require": {
-                "omnipay/common": "3.*",
-                "php": ">=7.2",
-                "php-http/message": "^1.13",
-                "redsys/messages": "*"
-            },
-            "default-branch": true,
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Omnipay\\Redsys\\": "src/"
-                }
-            },
-            "license": [
-                "GPLv2"
-            ],
-            "authors": [
-                {
-                    "name": "Rubén Silva",
-                    "email": "me@rsilva.es",
-                    "homepage": "http://github.com/rsenses"
-                },
-                {
-                    "name": "Javier Sampedro",
-                    "email": "jsampedro77@gmail.com",
-                    "homepage": "http://github.com/jsampedro77"
-                },
-                {
-                    "name": "NitsNets Studio",
-                    "email": "github@nitsnets.com",
-                    "homepage": "http://www.nitsnets.com"
-                }
-            ],
-            "description": "Sermepa (now Redsys) payment gateway implementation with omnipay",
-            "support": {
-                "source": "https://github.com/rsenses/sermepa-omnipay/tree/master"
-            },
-            "time": "2022-05-25T14:35:20+00:00"
-        },
-        {
-            "name": "sermepa/sermepa",
-            "version": "1.4.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ssheduardo/sermepa.git",
-                "reference": "7585d58b113cefd99aa0392f9cb2c850961c5c8f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ssheduardo/sermepa/zipball/7585d58b113cefd99aa0392f9cb2c850961c5c8f",
-                "reference": "7585d58b113cefd99aa0392f9cb2c850961c5c8f",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.1.3|^7.2.5|^8.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^7.0|^8.5.8|^9.3.3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Sermepa\\Tpv\\": "src/Sermepa/Tpv/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Eduardo D",
-                    "email": "ssh.eduardo@gmail.com",
-                    "homepage": "http://ubublog.com/"
-                }
-            ],
-            "description": "Pasarela de pago Redsys, Sermepa",
-            "homepage": "https://github.com/ssheduardo/sermepa",
-            "keywords": [
-                "lacaixa",
-                "pasarela",
-                "payment",
-                "redsys",
-                "sabadell",
-                "sermepa"
-            ],
-            "support": {
-                "issues": "https://github.com/ssheduardo/sermepa/issues",
-                "source": "https://github.com/ssheduardo/sermepa/tree/1.4.1"
-            },
-            "time": "2022-03-07T10:53:06+00:00"
         },
         {
             "name": "simplesoftwareio/simple-qrcode",

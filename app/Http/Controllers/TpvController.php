@@ -13,70 +13,46 @@ class TpvController extends Controller
 {
     public function notify(Request $request, Checkout $checkout)
     {
-        try {
-            $company = $checkout->campaign->partner;
-            $key = $company->merchant_key;
+        $response = $checkout->gateway();
 
-            $redsys = new Tpv();
-
-            $parameters = $redsys->getMerchantParameters($request->Ds_MerchantParameters);
-            $DsResponse = $parameters['Ds_Response'];
-            $DsResponse += 0;
-
-            if ($redsys->check($key, $request->all()) && $DsResponse <= 99) {
-                $checkout->update(['method' => 'card']);
+        if ($response->isSuccessful()) {
+            $checkout->update(['method' => 'card']);
                 
-                $checkout->pay();
-            } else {
-                $checkout->new();
-            }
-        } catch (TpvException $e) {
-            Log::debug($e->getMessage());
-            $checkout->tpv = $e->getMessage();
+            $checkout->pay();
+        } else {
+            Log::debug($response->getMessage());
+            $checkout->tpv = $response->getMessage();
             $checkout->save();
-        } catch (Throwable $e) {
-            Log::debug($e->getMessage());
-            $checkout->tpv = $e->getMessage();
-            $checkout->save();
+
+            $checkout->new();
         }
     }
 
-    public function success(Request $request, Checkout $checkout)
+    public function return(Request $request, Checkout $checkout)
     {
+        $template = 'payments.success';
+
         if ($request->method && $request->method === 'transfer') {
             $checkout->pending();
-        }
-
-        if ($checkout->status === 'processing') {
-            $checkout->pay();
-        }
-
-        $productNames = [];
-        $productCounts = [];
-        $productPrices = [];
-        foreach ($checkout->products->groupBy('id') as $key => $product) {
-            $productNames[$key] = $product[0]->name;
-            $productCounts[$key] = $product->count();
-            $productPrices[$key] = intval($product[0]->price);
-        }
-
-        return view('payments.success', [
-            'checkout' => $checkout,
-            'productNames' => $productNames,
-            'productCounts' => $productCounts,
-            'productPrices' => $productPrices,
-        ]);
-    }
-
-    public function error(Request $request, Checkout $checkout)
-    {
-        if ($checkout->status === 'disabled') {
-            $checkout = Checkout::where('user_id', $checkout->user_id)
-                ->where('status', '!=', 'disabled')
-                ->where('token', $checkout->token)
-                ->first();
         } else {
-            $checkout = $checkout->new();
+            $response = $checkout->gateway();
+
+            if ($response->isSuccessful()) {
+                if ($checkout->status === 'processing') {
+                    $checkout->pay();
+                }
+            } else {
+                if ($checkout->status === 'disabled') {
+                    $checkout = Checkout::where('user_id', $checkout->user_id)
+                    ->where('status', '!=', 'disabled')
+                    ->where('token', $checkout->token)
+                    ->first();
+                } else {
+                    $checkout = $checkout->new();
+                }
+
+                $template = 'payments.error';
+            }
         }
 
         $productNames = [];
@@ -88,7 +64,7 @@ class TpvController extends Controller
             $productPrices[$key] = intval($product[0]->price);
         }
 
-        return view('payments.error', [
+        return view($template, [
             'checkout' => $checkout,
             'productNames' => $productNames,
             'productCounts' => $productCounts,

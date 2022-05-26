@@ -8,12 +8,8 @@ use App\Models\Invoice;
 use App\Rules\Nie;
 use App\Rules\Nif;
 use App\Rules\Cif;
-use ErrorException;
-use Exception;
 use Illuminate\Http\Request;
-use Sermepa\Tpv\Tpv;
 use Illuminate\Support\Facades\Session;
-use Omnipay\Omnipay;
 
 class CheckoutController extends Controller
 {
@@ -175,7 +171,7 @@ class CheckoutController extends Controller
             abort(404);
         }
 
-        $form = $checkout->generatePaymentForm();
+        // $form = $checkout->generatePaymentForm();
 
         $productNames = [];
         $productCounts = [];
@@ -188,7 +184,7 @@ class CheckoutController extends Controller
 
         return view('checkouts.payment', [
             'checkout' => $checkout,
-            'form' => $form,
+            // 'form' => $form,
             'discount' => Session::has('discount') ? true : false,
             'productNames' => $productNames,
             'productCounts' => $productCounts,
@@ -198,18 +194,8 @@ class CheckoutController extends Controller
 
     public function purchase(Checkout $checkout)
     {
-        $company = $checkout->campaign->partner;
+        $response = $checkout->gateway();
 
-        $gateway = Omnipay::create('Redsys');
-        $gateway->setMerchantKey($company->merchant_key);
-        $gateway->setMerchantCode($company->merchant_code);
-        $gateway->setCurrencyMerchant('978');
-        $gateway->initialize([
-            'titular' => $checkout->user->full_name,
-            'currency' => '978',
-            'testMode' => true,
-        ]);
-        
-        dd($gateway->getDefaultParameters());
+        $response->redirect();
     }
 }

@@ -255,7 +255,11 @@ class Checkout extends Model
 
     public function applyDiscount(Discount $discount)
     {
-        $originalPrice = $this->amount;
+        $originalPrice = 0;
+
+        foreach ($this->products as $product) {
+            $originalPrice = $originalPrice + $product->price;
+        }
 
         $newPrice = $originalPrice * ((100 - $discount->quantity) / 100);
 

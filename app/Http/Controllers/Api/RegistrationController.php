@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Events\CheckoutAccepted;
 use App\Events\CheckoutCreated;
 use App\Models\Product;
-use App\Models\Registration;
 use App\Models\Checkout;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Validation\Rule;
 use App\Rules\MaxRegistrations;
 use App\Http\Controllers\Controller;
+use Sebdesign\SM\StateMachine\StateMachine;
+use SM\SMException;
+use SM\StateMachine\StateMachine as StateMachineStateMachine;
 
 class RegistrationController extends Controller
 {
@@ -61,8 +60,6 @@ class RegistrationController extends Controller
             'token' => uniqid()
         ]);
 
-        $response['checkout'] = $checkout;
-
         foreach ($request->products as $productId) {
             $product = Product::find($productId);
             $user = User::find($request->user_id);
@@ -89,11 +86,16 @@ class RegistrationController extends Controller
 
         $checkout->applyAutomaticDiscount();
 
+        $checkout = $checkout->fresh();
+
         if ($firstAction) {
-            $checkout->$firstAction();
+            $checkout->apply($firstAction);
+            $checkout->save();
         } else {
             CheckoutCreated::dispatch($checkout);
         }
+
+        $response['checkout'] = $checkout;
 
         return response()->json($response);
     }

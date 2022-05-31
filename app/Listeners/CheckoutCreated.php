@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Log;
 
 class CheckoutCreated implements ShouldQueue
 {
+    const PREMIOSMESA_ID = 16;
+
     /**
      * Create the event listener.
      *
@@ -27,7 +29,7 @@ class CheckoutCreated implements ShouldQueue
      */
     public function handle(CheckoutCreatedEvent $event)
     {
-        if ($event->checkout->products()->where('products.id', 16)->count()) {
+        if ($event->checkout->products()->where('products.id', self::PREMIOSMESA_ID)->count()) {
             $this->mesaJuridicoTenInscriptions($event->checkout);
         }
     }

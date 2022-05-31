@@ -14,12 +14,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Sermepa\Tpv\Tpv;
 use Sermepa\Tpv\TpvException;
+use \Iben\Statable\Statable;
 
 class Checkout extends Model
 {
     const PREMIOSMESA_ID = 16;
 
-    use HasFactory;
+    use HasFactory, Statable;
 
     /**
      * The attributes that are mass assignable.
@@ -32,7 +33,10 @@ class Checkout extends Model
         'amount',
         'paid_at',
         'token',
-        'method'
+        'method',
+        'status',
+        'quantity',
+        'tpv'
     ];
 
     /**
@@ -43,18 +47,6 @@ class Checkout extends Model
     protected $casts = [
         'paid_at' => 'datetime:Y-m-d H:i:s',
     ];
-
-    /**
-     * The "booted" method of the model.
-     *
-     * @return void
-     */
-    protected static function booted()
-    {
-        // static::creating(function ($model) {
-        //     $model->token = uniqid();
-        // });
-    }
 
     /**
      * Get the invoice associated with the checkout.
@@ -70,6 +62,11 @@ class Checkout extends Model
     public function deal()
     {
         return $this->hasOne(Deal::class);
+    }
+
+    protected function getGraph()
+    {
+        return 'checkout'; // the SM config to use
     }
 
     /**
@@ -104,103 +101,9 @@ class Checkout extends Model
         return $this->hasMany(Registration::class);
     }
 
-    private function changeStatus($status)
-    {
-        $this->status = $status;
-        $this->save();
-
-        return $this;
-    }
-
-    public function cancel()
-    {
-        $this->changeStatus('cancelled');
-        $this->registrationsStatus('cancel');
-
-        CheckoutCancelled::dispatch($this);
-
-        return $this;
-    }
-
-    public function disable()
-    {
-        $this->changeStatus('disabled');
-
-        return $this;
-    }
-
-    public function processing()
-    {
-        $this->changeStatus('processing');
-
-        return $this;
-    }
-
-    public function pay()
-    {
-        $this->changeStatus('paid');
-        $this->update(['paid_at' => Carbon::now()]);
-
-        $this->registrationsStatus('pay');
-
-        CheckoutPaid::dispatch($this);
-
-        return $this;
-    }
-
-    public function invite()
-    {
-        $this->update(['paid_at' => Carbon::now(), 'amount' => 0]);
-
-        $this->changeStatus('paid');
-        $this->registrationsStatus('pay');
-
-        CheckoutPaid::dispatch($this);
-
-        return $this;
-    }
-
-    public function accept()
-    {
-        if ($this->amount > 0) {
-            $this->changeStatus('accepted');
-            $this->registrationsStatus('accept');
-
-            CheckoutAccepted::dispatch($this);
-        } else {
-            $this->pay();
-        }
-
-        return $this;
-    }
-
-    public function pending()
-    {
-        $this->changeStatus('pending');
-        $this->registrationsStatus('pending');
-
-        $this->update(['method' => 'transfer']);
-
-        CheckoutPending::dispatch($this);
-
-        return $this;
-    }
-
-    public function deny()
-    {
-        $this->changeStatus('denied');
-        $this->registrationsStatus('deny');
-
-        CheckoutDenied::dispatch($this);
-
-        return $this;
-    }
-
-    public function new()
+    public function regenerateId()
     {
         $checkout = $this->replicate();
-
-        $checkout->status = 'accepted';
 
         $checkout->push();
 
@@ -214,7 +117,8 @@ class Checkout extends Model
             'checkout_id' => $checkout->id,
         ]);
 
-        $this->disable();
+        $this->apply('disable');
+        $this->save();
 
         return $checkout;
     }
@@ -245,8 +149,6 @@ class Checkout extends Model
             $signature = $redsys->generateMerchantSignature($company->merchant_key);
             $redsys->setMerchantSignature($signature);
 
-            $this->processing();
-
             return $redsys->createForm();
         } catch (TpvException $e) {
             throw new Exception($e->getMessage());
@@ -264,20 +166,17 @@ class Checkout extends Model
         $newPrice = $originalPrice * ((100 - $discount->quantity) / 100);
 
         if ($discount->quantity === 100) {
-            $this->update(['paid_at' => Carbon::now(), 'amount' => 0]);
-            $this->changeStatus('paid');
-            $this->registrationsStatus('pay');
-
-            CheckoutPaid::dispatch($this);
+            $this->apply('pay');
         } else {
             $this->amount = $newPrice;
-            $this->save();
         }
+        
+        $this->save();
 
         return $this;
     }
 
-    private function registrationsStatus(string $status)
+    public function registrationsStatus(string $status)
     {
         foreach ($this->registrations()->get() as $registration) {
             $registration->$status();
@@ -335,10 +234,7 @@ class Checkout extends Model
     {
         switch ($this->status) {
             case 'accepted':
-                $invite = false;
-                $sendEmail = true;
-
-                CheckoutAccepted::dispatch($this, $invite, $sendEmail);
+                CheckoutAccepted::dispatch($this);
                 break;
             case 'paid':
                 CheckoutPaid::dispatch($this);

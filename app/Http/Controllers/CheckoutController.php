@@ -60,11 +60,14 @@ class CheckoutController extends Controller
         }
 
         $checkout = Checkout::where('token', $request->t)
-            ->where('status', '!=', 'disabled')
+            ->where(function ($q) {
+                $q->where('status', 'accepted');
+                $q->orWhere('status', 'processing');
+            })
             ->firstOrFail();
 
         if ($checkout->status === 'processing') {
-            $checkout = $checkout->new();
+            $checkout = $checkout->regenerateId();
         }
 
         $productNames = [];
@@ -175,6 +178,11 @@ class CheckoutController extends Controller
         }
 
         $form = $checkout->generatePaymentForm();
+
+        if ($checkout->status === 'accepted') {
+            $checkout->apply('process');
+            $checkout->save();
+        }
 
         $productNames = [];
         $productCounts = [];

@@ -70,8 +70,6 @@ class RegistrationController extends Controller
 
         $registration = Registration::create($request->except('_token'));
 
-        $registration->accept();
-
         return redirect()->route('registrations.show', [
             'registration' => $registration
         ]);
@@ -135,9 +133,6 @@ class RegistrationController extends Controller
 
         $registration->update($request->except('_token'));
 
-        $registration->status = 'accepted';
-        $registration->save();
-
         return redirect()->route('registrations.show', [
             'registration' => $registration
         ]);
@@ -200,7 +195,8 @@ class RegistrationController extends Controller
 
         $action = $request->action;
 
-        $registration->checkout->$action();
+        $registration->checkout->apply($action);
+        $registration->checkout->save();
 
         return redirect()->back();
     }

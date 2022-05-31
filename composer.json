@@ -12,10 +12,12 @@
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.2",
+        "iben12/laravel-statable": "^1.5",
         "laravel/framework": "^8.12",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
+        "sebdesign/laravel-state-machine": "^3.3",
         "sermepa/sermepa": "^1.3",
         "simplesoftwareio/simple-qrcode": "~4",
         "spatie/icalendar-generator": "^2.1"

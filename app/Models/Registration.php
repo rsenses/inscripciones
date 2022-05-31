@@ -95,45 +95,45 @@ class Registration extends Model
 
     public function accept()
     {
-        $registration = $this->changeStatus('accepted');
+        $this->changeStatus('accepted');
 
-        return $registration;
+        return $this;
     }
 
     public function invite()
     {
-        $registration = $this->changeStatus('paid');
+        $this->changeStatus('paid');
 
-        return $registration;
+        return $this;
     }
 
     public function cancel()
     {
-        $registration = $this->changeStatus('cancelled');
+        $this->changeStatus('cancelled');
 
-        return $registration;
+        return $this;
     }
 
     public function pay()
     {
-        $registration = $this->changeStatus('paid');
+        $this->changeStatus('paid');
 
         RegistrationPaid::dispatch($this);
 
-        return $registration;
+        return $this;
     }
 
-    public function pending()
+    public function hang()
     {
-        $registration = $this->changeStatus('pending');
+        $this->changeStatus('pending');
 
-        return $registration;
+        return $this;
     }
 
     public function deny()
     {
-        $registration = $this->changeStatus('denied');
+        $this->changeStatus('denied');
 
-        return $registration;
+        return $this;
     }
 }

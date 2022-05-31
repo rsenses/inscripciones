@@ -26,9 +26,10 @@ class TpvController extends Controller
             if ($redsys->check($key, $request->all()) && $DsResponse <= 99) {
                 $checkout->update(['method' => 'card']);
                 
-                $checkout->pay();
+                $checkout->apply('pay');
+                $checkout->save();
             } else {
-                $checkout->new();
+                $checkout->regenerateId();
             }
         } catch (TpvException $e) {
             Log::debug($e->getMessage());
@@ -44,12 +45,14 @@ class TpvController extends Controller
     public function success(Request $request, Checkout $checkout)
     {
         if ($request->method && $request->method === 'transfer') {
-            $checkout->pending();
+            $checkout->apply('hang');
         }
 
         if ($checkout->status === 'processing') {
-            $checkout->pay();
+            $checkout->apply('pay');
         }
+        
+        $checkout->save();
 
         $productNames = [];
         $productCounts = [];
@@ -68,7 +71,7 @@ class TpvController extends Controller
         ]);
     }
 
-    public function error(Request $request, Checkout $checkout)
+    public function error(Checkout $checkout)
     {
         if ($checkout->status === 'disabled') {
             $checkout = Checkout::where('user_id', $checkout->user_id)
@@ -76,7 +79,7 @@ class TpvController extends Controller
                 ->where('token', $checkout->token)
                 ->first();
         } else {
-            $checkout = $checkout->new();
+            $checkout = $checkout->regenerateId();
         }
 
         $productNames = [];

@@ -16,19 +16,15 @@ class CheckoutAccepted
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $checkout;
-    public $invite;
-    public $sendEmail;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(Checkout $checkout, bool $invite = false, bool $sendEmail = true)
+    public function __construct(Checkout $checkout)
     {
         $this->checkout = $checkout;
-        $this->invite = $invite;
-        $this->sendEmail = $sendEmail;
     }
 
     /**

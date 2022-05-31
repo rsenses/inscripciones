@@ -22,6 +22,14 @@ class Campaign extends Model
     ];
 
     /**
+     * Get the campaign discount
+     */
+    public function discounts()
+    {
+        return $this->morphMany(Discount::class, 'discountable');
+    }
+
+    /**
      * Get the partner that owns the campaign.
      */
     public function partner()

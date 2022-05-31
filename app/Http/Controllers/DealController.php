@@ -48,16 +48,19 @@ class DealController extends Controller
 
         $checkout->applyDiscount($discount);
 
-        $checkout->deal()->create([
-            'discount_id' => $discount->id
-        ]);
+        $checkout = $checkout->fresh();
 
-        if ($discount->quantity === 100) {
+        if ($checkout->amount === 0) {
             return redirect(route('tpv.success', ['checkout' => $checkout]));
         } else {
+            if ($discount->type === 'fixed') {
+                $value = 'de '.$discount->value.'€';
+            } else {
+                $value = 'del '.$discount->value.'%';
+            }
             return redirect()->back()
-            ->with('message', "Descuento del $discount->quantity% aplicado correctamente")
-            ->with('discount', true);
+                ->with('message', "Descuento $value aplicado correctamente")
+                ->with('discount', true);
         }
     }
 

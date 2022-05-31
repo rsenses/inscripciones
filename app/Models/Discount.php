@@ -99,7 +99,11 @@ class Discount extends Model
 
         if ($this->type === 'percentage') {
             if ($this->discountable_type === 'App\Models\Campaign') {
-                $originalAmount = $checkout->amount;
+                $originalAmount = 0;
+
+                foreach ($checkout->products as $product) {
+                    $originalAmount = $originalAmount + $product->price;
+                }
             }
     
             if ($this->discountable_type === 'App\Models\Product') {

@@ -61,6 +61,7 @@ class CheckoutController extends Controller
 
         $checkout = Checkout::where('token', $request->t)
             ->where('status', '!=', 'disabled')
+            ->where('status', '!=', 'cancelled')
             ->firstOrFail();
 
         if ($checkout->status === 'processing') {
@@ -152,9 +153,10 @@ class CheckoutController extends Controller
 
         $toBill = $request->has('to_bill') && $request->to_bill == 0 ? false : true;
 
-        $invoice = Invoice::firstOrCreate(['checkout_id' => $checkout->id], [
+        $invoice = Invoice::updateOrCreate(['checkout_id' => $checkout->id], [
             'address_id' => $address->id,
-            'to_bill' => $toBill
+            'to_bill' => $toBill,
+            'checkout_id' => $checkout->id
         ]);
 
         $checkout->invoice()->save($invoice);

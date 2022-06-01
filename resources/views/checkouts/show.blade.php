@@ -33,7 +33,7 @@
 
         </div>
     </div>
-    @if($checkout->status != 'new' && $checkout->invoice)
+    @if($checkout->status === 'pending' || $checkout->status === 'paid')
     <div class="row justify-content-center">
         <div class="alert alert-danger">
             Proceso de compra realizado anteriormente, disculpe las molestias.<br>Si tiene alguna duda contacte con

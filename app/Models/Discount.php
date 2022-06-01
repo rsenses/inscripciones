@@ -99,19 +99,15 @@ class Discount extends Model
 
         if ($this->type === 'percentage') {
             if ($this->discountable_type === 'App\Models\Campaign') {
-                $originalAmount = 0;
-
-                foreach ($checkout->products as $product) {
-                    $originalAmount = $originalAmount + $product->price;
-                }
+                $initialAmount = $checkout->initialAmount();
             }
     
             if ($this->discountable_type === 'App\Models\Product') {
-                $originalAmount = $this->discountable->price;
-                $originalAmount = $originalAmount * $checkout->products()->where('products.id', $this->discountable_id)->count();
+                $initialAmount = $this->discountable->price;
+                $initialAmount = $initialAmount * $checkout->productQuantity($this->discountable_id);
             }
 
-            $amount = ($this->value / 100) * $originalAmount;
+            $amount = ($this->value / 100) * $initialAmount;
         }
 
         if ($this->type === 'fixed') {
@@ -119,5 +115,29 @@ class Discount extends Model
         }
 
         return $amount;
+    }
+
+    public function apply(Checkout $checkout)
+    {
+        $discountAmount = $this->amount($checkout);
+
+        if ($this->quantity === 100 && $this->type = 'percentage') {
+            $checkout->apply('pay');
+
+            $checkout->amount = 0;
+        } else {
+            $initialAmount = $checkout->initialAmount();
+        
+            $checkout->amount = $initialAmount - $discountAmount;
+        }
+        
+        $checkout->save();
+
+        $checkout->deals()->create([
+            'discount_id' => $this->id,
+            'amount' => $discountAmount,
+        ]);
+
+        return $checkout;
     }
 }

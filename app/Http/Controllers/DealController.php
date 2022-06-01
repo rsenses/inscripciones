@@ -46,7 +46,7 @@ class DealController extends Controller
 
         $discount = ModelsDiscount::where('code', $request->code)->firstOrFail();
 
-        $checkout->applyDiscount($discount);
+        $discount->apply($checkout);
 
         $checkout = $checkout->fresh();
 

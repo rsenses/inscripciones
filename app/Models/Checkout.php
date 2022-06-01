@@ -7,7 +7,6 @@ use App\Events\CheckoutDenied;
 use App\Events\CheckoutCancelled;
 use App\Events\CheckoutPaid;
 use App\Events\CheckoutPending;
-use Carbon\Carbon;
 use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -100,6 +99,11 @@ class Checkout extends Model
         return $this->hasMany(Registration::class);
     }
 
+    public function initialAmount()
+    {
+        return $this->products->sum('price');
+    }
+
     public function regenerateId()
     {
         $checkout = $this->replicate();
@@ -154,32 +158,6 @@ class Checkout extends Model
         }
     }
 
-    public function applyDiscount(Discount $discount)
-    {
-        $originalPrice = 0;
-
-        foreach ($this->products as $product) {
-            $originalPrice = $originalPrice + $product->price;
-        }
-
-        $newPrice = $originalPrice - $discount->amount($this);
-
-        if ($discount->quantity === 100) {
-            $this->apply('pay');
-        } else {
-            $this->amount = $newPrice;
-        }
-        
-        $this->save();
-
-        $this->deals()->create([
-            'discount_id' => $discount->id,
-            'amount' => $originalPrice - $newPrice,
-        ]);
-
-        return $this;
-    }
-
     public function registrationsStatus(string $status)
     {
         foreach ($this->registrations()->get() as $registration) {
@@ -205,7 +183,7 @@ class Checkout extends Model
     
         foreach ($cumulables as $discount) {
             if ($discount->applicable($this)) {
-                $this->applyDiscount($discount);
+                $discount->apply($this);
             }
         }
 
@@ -221,8 +199,9 @@ class Checkout extends Model
                 }
             }
         }
+
         if ($noCumulableDiscountToApply) {
-            $this->applyDiscount($noCumulableDiscountToApply);
+            $noCumulableDiscountToApply->apply($this);
         }
 
         return $this;
@@ -270,7 +249,7 @@ class Checkout extends Model
 
     public function productQuantity($id)
     {
-        if ($this->products()->where('products.id', self::PREMIOSMESA_ID)->count()) {
+        if ($id === self::PREMIOSMESA_ID) {
             return 1;
         }
 

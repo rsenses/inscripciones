@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
-use App\Events\CheckoutAccepted;
-use App\Events\CheckoutDenied;
-use App\Events\CheckoutCancelled;
-use App\Events\CheckoutPaid;
-use App\Events\CheckoutPending;
+use App\Notifications\CheckoutAccepted as CheckoutAcceptedNotification;
+use App\Notifications\CheckoutCancelled as CheckoutCancelledNotification;
+use App\Notifications\CheckoutDenied as CheckoutDeniedNotification;
+use App\Notifications\CheckoutPending as CheckoutPendingNotification;
+use App\Notifications\CheckoutPaid as CheckoutPaidNotification;
+use App\Notifications\CheckoutCreated as CheckoutCreatedNotification;
 use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -221,30 +222,35 @@ class Checkout extends Model
 
     public function resendLastEmail()
     {
-        $this->sendEventByStatus();
+        $this->notifyUserByStatus();
 
         return $this;
     }
 
-    private function sendEventByStatus()
+    private function notifyUserByStatus()
     {
         switch ($this->status) {
             case 'accepted':
-                CheckoutAccepted::dispatch($this);
+                $notification = new CheckoutAcceptedNotification($this);
                 break;
             case 'paid':
-                CheckoutPaid::dispatch($this);
+                $notification = new CheckoutPaidNotification($this);
                 break;
             case 'pending':
-                CheckoutPending::dispatch($this);
+                $notification = new CheckoutPendingNotification($this);
                 break;
             case 'denied':
-                CheckoutDenied::dispatch($this);
+                $notification = new CheckoutDeniedNotification($this);
                 break;
             case 'cancelled':
-                CheckoutCancelled::dispatch($this);
+                $notification = new CheckoutCancelledNotification($this);
+                break;
+            default:
+                $notification = new CheckoutCreatedNotification($this);
                 break;
         }
+
+        $this->user->notify($notification);
     }
 
     public function productQuantity($id)

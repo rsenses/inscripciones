@@ -2,7 +2,7 @@
 
 namespace App\Actions;
 
-use App\Events\CheckoutPaid;
+use App\Notifications\CheckoutPaid as CheckoutPaidNotification;
 use App\Models\Checkout;
 use Sebdesign\SM\Event\TransitionEvent;
 use Carbon\Carbon;
@@ -17,6 +17,6 @@ class PayCheckoutAction
 
     public static function after(Checkout $checkout, TransitionEvent $event)
     {
-        CheckoutPaid::dispatch($checkout);
+        $checkout->user->notify(new CheckoutPaidNotification($checkout));
     }
 }

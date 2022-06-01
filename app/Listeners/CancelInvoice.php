@@ -29,7 +29,7 @@ class CancelInvoice
         $checkout = $event->checkout;
         $invoice = $checkout->invoice;
 
-        if ($invoice && $checkout->status !== 'cancelled') {
+        if ($invoice && $checkout->status === 'cancelled') {
             if ($invoice->billed_at) {
                 $negativeCheckout = $checkout->replicate();
                 $negativeCheckout->amount = $checkout->amount * -1;

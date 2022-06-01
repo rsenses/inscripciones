@@ -10,7 +10,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\URL;
 
-class CheckoutAccepted extends Mailable
+class CheckoutAccepted extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\InvoiceCreated;
+use App\Notifications\InvoiceCreated as InvoiceCreatedNotification;
 use App\Models\Campaign;
 use App\Models\Invoice;
 use Carbon\Carbon;
@@ -386,7 +386,7 @@ class InvoiceController extends Controller
 
                     $invoice->save();
 
-                    InvoiceCreated::dispatch($invoice);
+                    $invoice->checkout->user->notify(new InvoiceCreatedNotification($invoice));
                 }
             } else {
                 $errors[$index]['id'] = $import[0];

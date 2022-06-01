@@ -2,12 +2,7 @@
 
 namespace App\Models;
 
-use App\Events\CheckoutCancelled;
-use App\Events\CheckoutPending;
-use App\Events\CheckoutAccepted;
 use App\Events\RegistrationPaid;
-use App\Events\CheckoutDenied;
-use App\Events\CheckoutPaid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -117,8 +112,6 @@ class Registration extends Model
     public function pay()
     {
         $this->changeStatus('paid');
-
-        RegistrationPaid::dispatch($this);
 
         return $this;
     }

@@ -2,7 +2,7 @@
 
 namespace App\Actions;
 
-use App\Events\CheckoutDenied;
+use App\Notifications\CheckoutDenied as CheckoutDeniedNotification;
 use App\Models\Checkout;
 use Sebdesign\SM\Event\TransitionEvent;
 
@@ -15,6 +15,6 @@ class DenyCheckoutAction
 
     public static function after(Checkout $checkout, TransitionEvent $event)
     {
-        CheckoutDenied::dispatch($checkout);
+        $checkout->user->notify(new CheckoutDeniedNotification($checkout));
     }
 }

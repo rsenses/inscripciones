@@ -2,16 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\RegistrationAsigned;
+use App\Notifications\RegistrationAsigned as RegistrationAsignedNotification;
 use App\Models\Checkout;
 use App\Models\Registration;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
-use App\Mail\RegistrationPaid;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
 
 class TicketController extends Controller
 {
@@ -139,7 +136,7 @@ class TicketController extends Controller
 
         $registration = $registration->fresh();
 
-        RegistrationAsigned::dispatch($registration);
+        $registration->user->notify(new RegistrationAsignedNotification($registration));
 
         return redirect()->route('tickets.show', [
             'registration' => $registration,

@@ -7,7 +7,7 @@ use App\Models\Registration;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use App\Events\RegistrationAsigned;
+use App\Notifications\RegistrationAsigned as RegistrationAsignedNotification;
 
 class RegistrationController extends Controller
 {
@@ -172,7 +172,7 @@ class RegistrationController extends Controller
             'user_id' => $user->id,
         ]);
 
-        RegistrationAsigned::dispatch($registration);
+        $registration->user->notify(new RegistrationAsignedNotification($registration));
 
         return redirect()->back();
     }

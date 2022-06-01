@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Events\CheckoutCreated;
+use App\Notifications\CheckoutCreated;
+use App\Events\CheckoutCreated as CheckoutCreatedEvent;
 use App\Models\Product;
 use App\Models\Checkout;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Rules\MaxRegistrations;
 use App\Http\Controllers\Controller;
-use Sebdesign\SM\StateMachine\StateMachine;
-use SM\SMException;
-use SM\StateMachine\StateMachine as StateMachineStateMachine;
 
 class RegistrationController extends Controller
 {
@@ -92,7 +90,9 @@ class RegistrationController extends Controller
             $checkout->apply($firstAction);
             $checkout->save();
         } else {
-            CheckoutCreated::dispatch($checkout);
+            CheckoutCreatedEvent::dispatch($checkout);
+            
+            $checkout->user->notify(new CheckoutCreated($checkout));
         }
 
         $response['checkout'] = $checkout;

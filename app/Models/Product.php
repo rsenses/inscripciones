@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Events\CheckoutPaid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;

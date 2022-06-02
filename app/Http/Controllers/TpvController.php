@@ -54,20 +54,9 @@ class TpvController extends Controller
         
         $checkout->save();
 
-        $productNames = [];
-        $productCounts = [];
-        $productPrices = [];
-        foreach ($checkout->products->groupBy('id') as $key => $product) {
-            $productNames[$key] = $product[0]->name;
-            $productCounts[$key] = $product->count();
-            $productPrices[$key] = intval($product[0]->price);
-        }
-
         return view('payments.success', [
             'checkout' => $checkout,
-            'productNames' => $productNames,
-            'productCounts' => $productCounts,
-            'productPrices' => $productPrices,
+            'products' => $checkout->productsArray(),
         ]);
     }
 

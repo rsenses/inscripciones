@@ -8,10 +8,7 @@ use App\Models\Invoice;
 use App\Rules\Nie;
 use App\Rules\Nif;
 use App\Rules\Cif;
-use ErrorException;
-use Exception;
 use Illuminate\Http\Request;
-use Sermepa\Tpv\Tpv;
 use Illuminate\Support\Facades\Session;
 
 class CheckoutController extends Controller
@@ -56,7 +53,11 @@ class CheckoutController extends Controller
     public function show(Request $request, Checkout $checkout)
     {
         if (!$checkout->user->password) {
-            return redirect()->route('preusers.show', ['user' => $checkout->user, 'checkout' => $checkout, 'redirect' => url()->full()]);
+            return redirect()->route('preusers.show', [
+                'user' => $checkout->user,
+                'checkout' => $checkout,
+                'redirect' => url()->full()
+            ]);
         }
 
         $checkout = Checkout::where('token', $request->t)
@@ -70,22 +71,11 @@ class CheckoutController extends Controller
             $checkout = $checkout->regenerateId();
         }
 
-        $productNames = [];
-        $productCounts = [];
-        $productPrices = [];
-        foreach ($checkout->products->groupBy('id') as $key => $product) {
-            $productNames[$key] = $product[0]->name;
-            $productCounts[$key] = $product->count();
-            $productPrices[$key] = intval($product[0]->price);
-        }
-
         return view('checkouts.show', [
             'discount' => Session::has('discount') ? true : false,
             'checkout' => $checkout,
             'addresses' => $checkout->user->addresses,
-            'productNames' => $productNames,
-            'productCounts' => $productCounts,
-            'productPrices' => $productPrices,
+            'products' => $checkout->productsArray(),
         ]);
     }
 
@@ -184,23 +174,12 @@ class CheckoutController extends Controller
             $checkout->apply('process');
             $checkout->save();
         }
-
-        $productNames = [];
-        $productCounts = [];
-        $productPrices = [];
-        foreach ($checkout->products->groupBy('id') as $key => $product) {
-            $productNames[$key] = $product[0]->name;
-            $productCounts[$key] = $product->count();
-            $productPrices[$key] = intval($product[0]->price);
-        }
-
+        
         return view('checkouts.payment', [
             'checkout' => $checkout,
             'form' => $form,
             'discount' => Session::has('discount') ? true : false,
-            'productNames' => $productNames,
-            'productCounts' => $productCounts,
-            'productPrices' => $productPrices,
+            'products' => $checkout->productsArray(),
         ]);
     }
 }

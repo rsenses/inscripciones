@@ -253,6 +253,25 @@ class Checkout extends Model
         $this->user->notify($notification);
     }
 
+    public function productsArray()
+    {
+        $names = [];
+        $counts = [];
+        $prices = [];
+
+        foreach ($this->products->groupBy('id') as $key => $product) {
+            $names[$key] = $product[0]->name;
+            $counts[$key] = $product->count();
+            $prices[$key] = intval($product[0]->price);
+        }
+
+        return [
+            'names' => $names,
+            'counts' => $counts,
+            'prices' => $prices
+        ];
+    }
+
     public function productQuantity($id)
     {
         if ($id === self::PREMIOSMESA_ID) {

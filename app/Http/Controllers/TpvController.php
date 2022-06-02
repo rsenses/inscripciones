@@ -73,29 +73,18 @@ class TpvController extends Controller
 
     public function error(Checkout $checkout)
     {
-        if ($checkout->status === 'disabled') {
-            $checkout = Checkout::where('user_id', $checkout->user_id)
-                ->where('status', '!=', 'disabled')
-                ->where('token', $checkout->token)
-                ->first();
-        } else {
-            $checkout = $checkout->regenerateId();
-        }
+        $checkout = Checkout::where('user_id', $checkout->user_id)
+            ->where('status', '!=', 'disabled')
+            ->where('token', $checkout->token)
+            ->first();
 
-        $productNames = [];
-        $productCounts = [];
-        $productPrices = [];
-        foreach ($checkout->products->groupBy('id') as $key => $product) {
-            $productNames[$key] = $product[0]->name;
-            $productCounts[$key] = $product->count();
-            $productPrices[$key] = intval($product[0]->price);
+        if (!$checkout) {
+            $checkout = $checkout->regenerateId();
         }
 
         return view('payments.error', [
             'checkout' => $checkout,
-            'productNames' => $productNames,
-            'productCounts' => $productCounts,
-            'productPrices' => $productPrices,
+            'products' => $checkout->productsArray(),
         ]);
     }
 }

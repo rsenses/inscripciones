@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
@@ -26,9 +25,11 @@ class AuthController extends Controller
             'data' => ['nullable', 'array'],
         ]);
 
-        $user = User::updateOrCreate(
-            ['email' => $request->email],
-            [
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            $user = User::create(
+                [
                 'name' => $request->name,
                 'last_name' => $request->last_name,
                 'email' => $request->email,
@@ -36,15 +37,17 @@ class AuthController extends Controller
                 'phone' => $request->phone,
                 'company' => $request->company,
                 'position' => $request->position,
+                'data' => $request->data,
                 'advertising' => $request->advertising ?: 0,
+                'password' => Hash::make($request->password),
             ]
-        );
-
-        $user->password = $request->password ? Hash::make($request->password) : $user->password;
-        if ($request->data) {
-            $user->data = array_unique(array_merge($user->data, $request->data), SORT_REGULAR);
+            );
+        } else {
+            if ($request->data) {
+                $user->data = array_unique(array_merge($user->data, $request->data), SORT_REGULAR);
+            }
+            $user->save();
         }
-        $user->save();
 
         return response()->json($user);
     }

@@ -25,29 +25,45 @@ class AuthController extends Controller
             'data' => ['nullable', 'array'],
         ]);
 
-        $user = User::where('email', $request->email)->first();
+        $user = User::firstOrCreate(
+            ['email' => $request->email],
+            [
+            'name' => $request->name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'tax_id' => strtoupper($request->tax_id),
+            'phone' => $request->phone,
+            'company' => $request->company,
+            'position' => $request->position,
+            'data' => $request->data,
+            'advertising' => $request->advertising ?: 0,
+            'password' => Hash::make($request->password),
+        ]
+        );
 
-        if (!$user) {
-            $user = User::create(
-                [
-                'name' => $request->name,
-                'last_name' => $request->last_name,
-                'email' => $request->email,
-                'tax_id' => strtoupper($request->tax_id),
-                'phone' => $request->phone,
-                'company' => $request->company,
-                'position' => $request->position,
-                'data' => $request->data,
-                'advertising' => $request->advertising ?: 0,
-                'password' => Hash::make($request->password),
-            ]
-            );
-        } else {
-            if ($request->data) {
-                $user->data = array_unique(array_merge($user->data, $request->data), SORT_REGULAR);
-            }
-            $user->save();
+
+        // Actualiza datos no existentes o permitidos
+        if (!$user->tax_id && $request->tax_id) {
+            $user->tax_id = strtoupper($request->tax_id);
         }
+        if (!$user->phone && $request->phone) {
+            $user->phone = $request->phone;
+        }
+        if (!$user->company && $request->company) {
+            $user->company = $request->company;
+        }
+        if (!$user->position && $request->position) {
+            $user->position = $request->position;
+        }
+        $user->advertising = $request->advertising ?: 0;
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
+        }
+        if (!empty($request->data)) {
+            $user->data = $user->data ?: [];
+            $user->data = array_unique(array_merge($user->data, $request->data), SORT_REGULAR);
+        }
+        $user->save();
 
         return response()->json($user);
     }

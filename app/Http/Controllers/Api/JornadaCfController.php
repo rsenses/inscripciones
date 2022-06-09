@@ -7,7 +7,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
-class IIIForoController extends Controller
+class JornadaCfController extends Controller
 {
     public function streaming(Request $request)
     {

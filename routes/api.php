@@ -22,6 +22,7 @@ Route::prefix('v1')->group(function () {
     Route::get('/products/{product}', 'App\Http\Controllers\Api\ProductController@show');
 
     Route::get('/iii-foro/streaming-noauth', 'App\Http\Controllers\Api\IIIForoController@streamingNoAuth');
+    Route::get('/jornadacf/streaming', 'App\Http\Controllers\Api\JornadaCf@streaming');
     // Route::get('/iii-foro/registrations-noauth', 'App\Http\Controllers\Api\IIIForoController@registrationsNoAuth');
     // Route::get('/i-congreso/registrations-noauth', 'App\Http\Controllers\Api\ICongresoController@registrationsNoAuth');
 

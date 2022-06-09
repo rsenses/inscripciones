@@ -40,14 +40,14 @@ class IIIForoController extends Controller
     {
         $now = gmdate("Y-m-d H:i:s", time());
 
-        if ($now >= gmdate("Y-m-d H:i:s", mktime(6, 0, 0, 6, 9, 2022)) && $now < gmdate("Y-m-d H:i:s", mktime(15, 0, 0, 6, 9, 2022))) {
+        if ($now >= gmdate("Y-m-d H:i:s", mktime(6, 0, 0, 6, 9, 2022)) && $now < gmdate("Y-m-d H:i:s", mktime(14, 0, 0, 6, 9, 2022))) {
             $stream = 2;
             if ($lang === 'en') {
                 $streaming = '<iframe src="https://vimeo.com/event/2175507/embed" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>';
             } else {
                 $streaming = '<iframe src="https://vimeo.com/event/2175476/embed" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>';
             }
-        } elseif ($now >= gmdate("Y-m-d H:i:s", mktime(15, 0, 0, 6, 9, 2022))) {
+        } elseif ($now >= gmdate("Y-m-d H:i:s", mktime(14, 0, 0, 6, 9, 2022))) {
             $stream = 3;
             if ($lang === 'en') {
                 $streaming = '<iframe src="https://vimeo.com/event/2175526/embed" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>';

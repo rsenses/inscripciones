@@ -6,13 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
-class ICongresoController extends Controller
+class IICongresoController extends Controller
 {
     public function streaming(Request $request)
     {
         $user = auth()->user();
 
-        $products = [3, 4];
+        $products = [7, 9];
         $paid = false;
 
         foreach ($user->registrations as $registration) {
@@ -48,31 +48,5 @@ class ICongresoController extends Controller
             'test_gratis' => 'r3TK1xEeNW4',
             'gratis' => 'EPPSYwAsDY4'
         ];
-    }
-
-    public function registrationsNoAuth()
-    {
-        $productId = 3;
-
-        return $this->getRegistrations($productId);
-    }
-
-    private function getRegistrations(int $productId)
-    {
-        $product = Product::findOrFail($productId);
-
-        $registrations = [];
-
-        foreach ($product->registrations as $registration) {
-            if ($registration->status === 'paid') {
-                $registrations[] = [
-                    'id' => $registration->user->id,
-                    'name' => $registration->user->full_name,
-                    'dni' => strtoupper($registration->user->tax_id),
-                ];
-            }
-        }
-
-        return $registrations;
     }
 }

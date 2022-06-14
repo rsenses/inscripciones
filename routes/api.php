@@ -33,7 +33,7 @@ Route::prefix('v1')->group(function () {
         Route::get('/iii-foro/streaming', 'App\Http\Controllers\Api\IIIForoController@streaming');
         Route::get('/jornadacf/streaming', 'App\Http\Controllers\Api\JornadaCfController@streaming');
         // Route::get('/iii-foro/registrations', 'App\Http\Controllers\Api\IIIForoController@registrations');
-        Route::get('/i-congreso/streaming', 'App\Http\Controllers\Api\ICongresoController@streaming');
+        Route::get('/ii-congreso/streaming', 'App\Http\Controllers\Api\IICongresoController@streaming');
         Route::get('/i-mbf/streaming', 'App\Http\Controllers\Api\ImbfController@streaming');
     });
 });

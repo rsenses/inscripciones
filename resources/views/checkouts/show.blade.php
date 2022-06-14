@@ -528,7 +528,7 @@
                                     <option value="PR" {{ old('country')==='PR' ? 'selected' : '' }}>Puerto Rico
                                     </option>
                                     <option value="QA" {{ old('country')==='QA' ? 'selected' : '' }}>Qatar</option>
-                                    <option value="UK" {{ old('country')==='UK' ? 'selected' : '' }}>Reino Unido
+                                    <option value="GB" {{ old('country')==='GB' ? 'selected' : '' }}>Reino Unido
                                     </option>
                                     <option value="CF" {{ old('country')==='CF' ? 'selected' : '' }}>República
                                         Centroafricana</option>

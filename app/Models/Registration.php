@@ -8,6 +8,7 @@ use App\Events\CheckoutAccepted;
 use App\Events\RegistrationPaid;
 use App\Events\CheckoutDenied;
 use App\Events\CheckoutPaid;
+use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -135,5 +136,17 @@ class Registration extends Model
         $registration = $this->changeStatus('denied');
 
         return $registration;
+    }
+
+    /**
+     * Check if the registration has benn verified recently, we gave it a 60 seconds margin in case of accidental double validation
+     *
+     * @return mixed
+     */
+    public function guardAgainstAlreadyVerifiedRegistration()
+    {
+        if ($this->status === 'verified') {
+            throw new Exception('Acceso realizado anteriormente');
+        }
     }
 }

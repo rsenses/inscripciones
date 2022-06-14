@@ -19,6 +19,8 @@ Route::prefix('v1')->group(function () {
     Route::post('/register', 'App\Http\Controllers\Api\AuthController@register');
     Route::post('/registration', 'App\Http\Controllers\Api\RegistrationController@store');
 
+    Route::get('/verify/{product}', 'App\Http\Controllers\Api\RegistrationController@verify');
+
     Route::get('/products/{product}', 'App\Http\Controllers\Api\ProductController@show');
 
     Route::get('/iii-foro/streaming-noauth', 'App\Http\Controllers\Api\IIIForoController@streamingNoAuth');

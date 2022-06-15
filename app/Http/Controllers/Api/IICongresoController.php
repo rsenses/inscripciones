@@ -33,20 +33,11 @@ class IICongresoController extends Controller
     private function getStream($lang = 'es')
     {
         return [
-            'test_mañana' => 'XntGUHCjKWc',
-            'mañana' => 'nGBLFkKYjJI',
-            'test_tarde' => 'CtF9aLqI3Ro',
-            'tarde' => '80x88C0eH1I',
-            'test_taller_salud' => 'qW8Q3-WbNx8',
-            'taller_salud' => '_swAHlO1Vgk',
-            'test_taller_escucha' => 'iIJF5O6lomE',
-            'taller_escucha' => 'O08o16E8Rew',
-            'test_taller_meditacion' => 'YQ7K8G7BF34',
-            'taller_meditacion' => 'dlPvq2Uozlk',
-            'test_taller_humor' => 'WhOX3tUx9k4',
-            'taller_humor' => 'b31qp4lvXJA',
-            'test_gratis' => 'r3TK1xEeNW4',
-            'gratis' => 'EPPSYwAsDY4'
+            'congreso' => 'tOzBGN95gEU',
+            'meditacion' => 'DWJwhJX5b3E',
+            'health' => 'wrjvdzLoV1E',
+            'alimentos' => 'OtAndny1ias',
+            'piel' => 'aIL_hnux28k',
         ];
     }
 }

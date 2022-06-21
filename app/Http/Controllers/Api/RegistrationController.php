@@ -39,13 +39,18 @@ class RegistrationController extends Controller
      * @param  \App\Models\Campaign  $campaign
      * @return \Illuminate\Http\Response
      */
-    public function campaign(Campaign $campaign)
+    public function campaign(Request $request, Campaign $campaign)
     {
+        $request->validate([
+            'mode' => 'required|in:online,presencial'
+        ]);
+
         $registrations = Registration::with('user', 'product')
             ->where('status', 'paid')
-            ->where(function ($q) use ($campaign) {
-                $q->whereHas('product', function ($q) use ($campaign) {
-                    return $q->where('campaign_id', $campaign->id);
+            ->where(function ($q) use ($campaign, $request) {
+                $q->whereHas('product', function ($q) use ($campaign, $request) {
+                    return $q->where('campaign_id', $campaign->id)
+                    ->where('mode', $request->mode);
                 });
             })
             ->get();

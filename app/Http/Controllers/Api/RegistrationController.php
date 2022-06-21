@@ -13,13 +13,14 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\Rule;
 use App\Rules\MaxRegistrations;
 use App\Http\Controllers\Controller;
+use App\Models\Campaign;
 
 class RegistrationController extends Controller
 {
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Registration  $registration
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function show(Product $product)
@@ -30,6 +31,26 @@ class RegistrationController extends Controller
             ->findOrFail($product->id);
 
         return $product;
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Campaign  $campaign
+     * @return \Illuminate\Http\Response
+     */
+    public function campaign(Campaign $campaign)
+    {
+        $registrations = Registration::with('user', 'product')
+            ->where('status', 'paid')
+            ->where(function ($q) use ($campaign) {
+                $q->whereHas('product', function ($q) use ($campaign) {
+                    return $q->where('campaign_id', $campaign->id);
+                });
+            })
+            ->get();
+
+        return $registrations;
     }
 
     /**

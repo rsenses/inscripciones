@@ -29,6 +29,7 @@ Route::prefix('v1')->group(function () {
         Route::get('/products', 'App\Http\Controllers\Api\ProductController@index');
         Route::get('/campaigns', 'App\Http\Controllers\Api\CampaignController@index');
         Route::get('/registrations/{product}', 'App\Http\Controllers\Api\RegistrationController@show');
+        Route::get('/registrations/campaign/{campaign}', 'App\Http\Controllers\Api\RegistrationController@campaign');
         Route::get('/verify/{uniqueId}', 'App\Http\Controllers\Api\VerificationController@update');
 
         // Específico de Productos

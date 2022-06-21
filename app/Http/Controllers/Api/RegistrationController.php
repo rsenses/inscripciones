@@ -97,36 +97,4 @@ class RegistrationController extends Controller
 
         return response()->json($response);
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Registration  $registration
-     * @return \Illuminate\Http\Response
-     */
-    public function verify(Request $request, Product $product)
-    {
-        $request->validate([
-            'unique_id' => 'required|exists:registrations,unique_id',
-        ]);
-
-        try {
-            $registration = Registration::where('unique_id', $request->unique_id)
-                ->where('product_id', $product->id)
-                ->firstOrFail();
-        } catch (\Throwable $th) {
-            abort(403, 'Registro no existente');
-        }
-        
-        try {
-            $registration->guardAgainstAlreadyVerifiedRegistration($request);
-        } catch (\Throwable $th) {
-            abort(403, $th->getMessage());
-        }
-
-        $registration->status = 'verified';
-        $registration->save();
-
-        return $registration;
-    }
 }

@@ -29,23 +29,27 @@ class Cif implements Rule
 
         $cif_codes = 'JABCDEFGHI';
 
-        if (preg_match('/([ABCDEFGHJKLMNPQRSUVW])(\d{7})([0-9A-J])/', $cif)) {
-            $sum = (string) $this->getCifSum($cif);
-            $n = (10 - substr($sum, -1)) % 10;
+        if (ctype_alnum($cif)) {
+            if (strlen($cif) === 9) {
+                if (preg_match('/([ABCDEFGHJKLMNPQRSUVW])(\d{7})([0-9A-J])/', $cif)) {
+                    $sum = (string) $this->getCifSum($cif);
+                    $n = (10 - substr($sum, -1)) % 10;
 
-            if (preg_match('/^[ABCDEFGHJNPQRSUVW]{1}/', $cif)) {
-                if (in_array($cif[0], array('A', 'B', 'E', 'H'))) {
-                    // Numerico
-                    return ($cif[8] == $n);
-                } elseif (in_array($cif[0], array('K', 'P', 'Q', 'S'))) {
-                    // Letras
-                    return ($cif[8] == $cif_codes[$n]);
-                } else {
-                    // Alfanumérico
-                    if (is_numeric($cif[8])) {
-                        return ($cif[8] == $n);
-                    } else {
-                        return ($cif[8] == $cif_codes[$n]);
+                    if (preg_match('/^[ABCDEFGHJNPQRSUVW]{1}/', $cif)) {
+                        if (in_array($cif[0], array('A', 'B', 'E', 'H'))) {
+                            // Numerico
+                            return ($cif[8] == $n);
+                        } elseif (in_array($cif[0], array('K', 'P', 'Q', 'S'))) {
+                            // Letras
+                            return ($cif[8] == $cif_codes[$n]);
+                        } else {
+                            // Alfanumérico
+                            if (is_numeric($cif[8])) {
+                                return ($cif[8] == $n);
+                            } else {
+                                return ($cif[8] == $cif_codes[$n]);
+                            }
+                        }
                     }
                 }
             }

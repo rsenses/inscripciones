@@ -14,6 +14,19 @@ class ProductController extends Controller
      * @param  \App\Models\Registration  $registration
      * @return \Illuminate\Http\Response
      */
+    public function index()
+    {
+        return Product::active()
+        ->where('mode', 'presencial')
+        ->get();
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Registration  $registration
+     * @return \Illuminate\Http\Response
+     */
     public function show(Product $product)
     {
         return $product;

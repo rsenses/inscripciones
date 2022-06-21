@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Events\RegistrationPaid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Exception;
 
 class Registration extends Model
 {
@@ -128,5 +129,17 @@ class Registration extends Model
         $this->changeStatus('denied');
 
         return $this;
+    }
+
+    /**
+     * Check if the registration has benn verified recently, we gave it a 60 seconds margin in case of accidental double validation
+     *
+     * @return mixed
+     */
+    public function guardAgainstAlreadyVerifiedRegistration()
+    {
+        if ($this->status === 'verified') {
+            throw new Exception('Acceso realizado anteriormente');
+        }
     }
 }

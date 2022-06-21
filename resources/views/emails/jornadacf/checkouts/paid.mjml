@@ -72,6 +72,20 @@
                             >https://jornadagestioncf.diariomedico.com/</a
                         ></mj-text
                     >
+                    <mj-text
+                        line-height="22px"
+                        font-size="14px"
+                        color="#2a3a4a"
+                    >
+                        @if(!empty($checkout->mode()['online'])) Si no recuerdas
+                        tu contraseña de acceso, puedes recuperarla en el
+                        siguiente enlace:
+                        <a
+                            href="https://inscripciones.unidadeditorial.es/password/reset"
+                            >https://inscripciones.unidadeditorial.es/password/reset</a
+                        >
+                        @endif
+                    </mj-text>
                     <mj-button
                         href="{{ route('calendar.show', ['product' => $checkout->products[0]]) }}"
                         background-color="#f45e43"

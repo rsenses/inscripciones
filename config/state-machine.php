@@ -24,7 +24,8 @@ return [
             'pending',
             'denied',
             'cancelled',
-            'disabled'
+            'disabled',
+            'verified'
         ],
 
         // list of all possible transitions
@@ -60,6 +61,10 @@ return [
             'cancel' => [
                 'from' => ['new', 'accepted', 'paid', 'pending'],
                 'to' => 'cancelled',
+            ],
+            'verify' => [
+                'from' => ['paid'],
+                'to' => 'verified',
             ],
         ],
 

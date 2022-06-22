@@ -15,7 +15,7 @@ class CampaignController extends Controller
      */
     public function index()
     {
-        $campaigns = Campaign::active()->with('products')->get();
+        $campaigns = Campaign::active()->get();
 
         return $campaigns;
     }

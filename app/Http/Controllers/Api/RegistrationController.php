@@ -10,13 +10,14 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Rules\MaxRegistrations;
 use App\Http\Controllers\Controller;
+use App\Models\Campaign;
 
 class RegistrationController extends Controller
 {
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Registration  $registration
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function show(Product $product)
@@ -27,6 +28,31 @@ class RegistrationController extends Controller
             ->findOrFail($product->id);
 
         return $product;
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Campaign  $campaign
+     * @return \Illuminate\Http\Response
+     */
+    public function campaign(Request $request, Campaign $campaign)
+    {
+        $request->validate([
+            'mode' => 'required|in:online,presencial'
+        ]);
+
+        $registrations = Registration::with('user', 'product')
+            ->where('status', 'paid')
+            ->where(function ($q) use ($campaign, $request) {
+                $q->whereHas('product', function ($q) use ($campaign, $request) {
+                    return $q->where('campaign_id', $campaign->id)
+                    ->where('mode', $request->mode);
+                });
+            })
+            ->get();
+
+        return $registrations;
     }
 
     /**

@@ -14,6 +14,7 @@ use Illuminate\Validation\Rule;
 use App\Rules\MaxRegistrations;
 use App\Http\Controllers\Controller;
 use App\Models\Campaign;
+use App\Http\Resources\RegistrationCollection;
 
 class RegistrationController extends Controller
 {
@@ -25,12 +26,9 @@ class RegistrationController extends Controller
      */
     public function show(Product $product)
     {
-        $product = Product::with(['registrations' => function ($query) {
-            $query->where('status', 'paid');
-        }, 'registrations.user'])
-            ->findOrFail($product->id);
+        $registrations = $product->registrations()->with('user')->whereIn('status', ['paid', 'verified'])->get();
 
-        return $product;
+        return new RegistrationCollection($registrations);
     }
 
     /**
@@ -46,7 +44,7 @@ class RegistrationController extends Controller
         ]);
 
         $registrations = Registration::with('user', 'product')
-            ->where('status', 'paid')
+            ->whereIn('status', ['paid', 'verified'])
             ->where(function ($q) use ($campaign, $request) {
                 $q->whereHas('product', function ($q) use ($campaign, $request) {
                     return $q->where('campaign_id', $campaign->id)
@@ -55,7 +53,7 @@ class RegistrationController extends Controller
             })
             ->get();
 
-        return $registrations;
+        return new RegistrationCollection($registrations);
     }
 
     /**

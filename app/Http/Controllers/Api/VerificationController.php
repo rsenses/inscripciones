@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\RegistrationResource;
 use Illuminate\Http\Request;
 use App\Models\Registration;
 use App\Models\Checkout;
@@ -28,6 +29,7 @@ class VerificationController extends Controller
 
             if ($checkout) {
                 $registration = $checkout->registrations()
+                    ->with(['user', 'product'])
                     ->where('unique_id', $uniqueId)
                     ->where(function ($q) use ($request) {
                         if ($request->campaign_id) {
@@ -40,7 +42,7 @@ class VerificationController extends Controller
                     })
                     ->firstOrFail();
             } else {
-                $registration = Registration::where('unique_id', $uniqueId)
+                $registration = Registration::with(['user', 'product'])->where('unique_id', $uniqueId)
                     ->where(function ($q) use ($request) {
                         if ($request->campaign_id) {
                             $q->whereHas('product', function ($q) use ($request) {
@@ -65,6 +67,6 @@ class VerificationController extends Controller
         $registration->status = 'verified';
         $registration->save();
 
-        return $registration;
+        return new RegistrationResource($registration);
     }
 }

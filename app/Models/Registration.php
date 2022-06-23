@@ -38,6 +38,20 @@ class Registration extends Model
     ];
 
     /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'asigned',
+        'checkout_id',
+        'promo',
+        'campaign_id'
+    ];
+
+    /**
      * The "booted" method of the model.
      *
      * @return void

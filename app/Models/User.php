@@ -39,6 +39,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'email_verified_at',
+        'created_at',
+        'updated_at',
+        'advertising',
+        'role'
     ];
 
     /**
@@ -49,6 +54,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'data' => 'array',
+        'advertising' => 'boolean'
     ];
 
     /**

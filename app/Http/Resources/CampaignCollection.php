@@ -15,7 +15,7 @@ class CampaignCollection extends ResourceCollection
     public function toArray($request)
     {
         $campaigns = $this->collection->map(function ($item, $key) {
-            return collect($item)->except(['folder', 'partner_id', 'mailer', 'from_address', 'from_name', 'short_name', 'conditions', 'created_at', 'updated_at', 'legal'])->toArray();
+            return collect($item)->except(['partner_id', 'conditions', 'legal'])->toArray();
         });
 
         return [

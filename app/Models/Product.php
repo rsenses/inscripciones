@@ -39,6 +39,20 @@ class Product extends Model
     ];
 
     /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'image',
+        'remember_token',
+        'created_at',
+        'updated_at',
+        'max_quantity',
+        'first_action'
+    ];
+
+    /**
      * The "booted" method of the model.
      *
      * @return void

@@ -22,6 +22,21 @@ class Campaign extends Model
     ];
 
     /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'folder',
+        'mailer',
+        'from_address',
+        'from_name',
+        'short_name',
+        'created_at',
+        'updated_at'
+    ];
+
+    /**
      * Get the partner that owns the campaign.
      */
     public function partner()

@@ -11,10 +11,11 @@ use App\Events\CheckoutPaid;
 use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class Registration extends Model
 {
-    use HasFactory;
+    use HasFactory, UsesTenantConnection;
 
     /**
      * The attributes that are mass assignable.

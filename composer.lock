@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9b15488e3b5695c66ee4c69c80613a1f",
+    "content-hash": "994657f8d8a5e357125814c73c8569cd",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3327,6 +3327,143 @@
                 "source": "https://github.com/spatie/icalendar-generator/tree/2.3.3"
             },
             "time": "2022-02-10T16:20:14+00:00"
+        },
+        {
+            "name": "spatie/laravel-multitenancy",
+            "version": "2.3.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-multitenancy.git",
+                "reference": "e94fba8284dfbb829f7f4e6db069972695f4b4c8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-multitenancy/zipball/e94fba8284dfbb829f7f4e6db069972695f4b4c8",
+                "reference": "e94fba8284dfbb829f7f4e6db069972695f4b4c8",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^9.0|^8.0",
+                "php": "^8.0",
+                "spatie/laravel-package-tools": "^1.9"
+            },
+            "require-dev": {
+                "laravel/legacy-factories": "^1.0.4",
+                "laravel/octane": "^1.0",
+                "mockery/mockery": "^1.4",
+                "orchestra/testbench": "^6.23|^7.0",
+                "phpunit/phpunit": "^9.4",
+                "spatie/valuestore": "^1.2"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\Multitenancy\\MultitenancyServiceProvider"
+                    ],
+                    "aliases": {
+                        "Multitenancy": "Spatie\\Multitenancy\\MultitenancyFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Multitenancy\\": "src",
+                    "Spatie\\Multitenancy\\Database\\Factories\\": "database/factories"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "http://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Make your Laravel app usable by multiple tenants",
+            "homepage": "https://github.com/spatie/laravel-multitenancy",
+            "keywords": [
+                "laravel-multitenancy",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-multitenancy/issues",
+                "source": "https://github.com/spatie/laravel-multitenancy/tree/2.3.6"
+            },
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-05-05T16:03:44+00:00"
+        },
+        {
+            "name": "spatie/laravel-package-tools",
+            "version": "1.12.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-package-tools.git",
+                "reference": "9e6c0382553f1317c02f1ae0ee71c64821eb5af0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/9e6c0382553f1317c02f1ae0ee71c64821eb5af0",
+                "reference": "9e6c0382553f1317c02f1ae0ee71c64821eb5af0",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^7.0|^8.0|^9.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.4",
+                "orchestra/testbench": "^5.0|^6.23|^7.0",
+                "phpunit/phpunit": "^9.4",
+                "spatie/test-time": "^1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\LaravelPackageTools\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Tools for creating Laravel packages",
+            "homepage": "https://github.com/spatie/laravel-package-tools",
+            "keywords": [
+                "laravel-package-tools",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-package-tools/issues",
+                "source": "https://github.com/spatie/laravel-package-tools/tree/1.12.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-06-19T20:01:24+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -8506,5 +8643,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }

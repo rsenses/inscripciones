@@ -14,12 +14,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Sermepa\Tpv\Tpv;
 use Sermepa\Tpv\TpvException;
+use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class Checkout extends Model
 {
     const PREMIOSMESA_ID = 16;
 
-    use HasFactory;
+    use HasFactory, UsesTenantConnection;
 
     /**
      * The attributes that are mass assignable.

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Partner;
 use App\Models\Invoice;
 use Illuminate\Http\Request;
+use Spatie\Multitenancy\Models\Tenant;
 
 class DashboardController extends Controller
 {

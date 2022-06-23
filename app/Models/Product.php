@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, UsesTenantConnection;
 
     /**
      * The attributes that are mass assignable.

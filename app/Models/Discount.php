@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class Discount extends Model
 {
-    use HasFactory;
+    use HasFactory, UsesTenantConnection;
 
     /**
      * The attributes that should be cast.

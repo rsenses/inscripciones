@@ -6,10 +6,11 @@ use App\Events\RegistrationPaid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Exception;
+use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class Registration extends Model
 {
-    use HasFactory;
+    use HasFactory, UsesTenantConnection;
 
     /**
      * The attributes that are mass assignable.

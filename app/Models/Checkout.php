@@ -18,9 +18,9 @@ use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class Checkout extends Model
 {
+    use HasFactory, UsesTenantConnection;
+    
     const PREMIOSMESA_ID = 16;
-
-    use HasFactory, Statable, UsesTenantConnection;
 
     /**
      * The attributes that are mass assignable.

@@ -8,8 +8,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use App\Mail\CheckoutPaid as CheckoutPaidMailable;
+use Spatie\Multitenancy\Jobs\TenantAware;
 
-class CheckoutPaid extends Notification implements ShouldQueue
+class CheckoutPaid extends Notification implements ShouldQueue, TenantAware
 {
     use Queueable;
 

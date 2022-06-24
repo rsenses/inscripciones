@@ -6,8 +6,9 @@ use App\Events\CheckoutCreated as CheckoutCreatedEvent;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Log;
+use Spatie\Multitenancy\Jobs\TenantAware;
 
-class CheckoutCreated implements ShouldQueue
+class CheckoutCreated implements ShouldQueue, TenantAware
 {
     const PREMIOSMESA_ID = 16;
 

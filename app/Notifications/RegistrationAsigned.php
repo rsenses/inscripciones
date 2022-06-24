@@ -8,8 +8,9 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use App\Mail\RegistrationPaid as RegistrationPaidMailable;
 use App\Models\Registration;
+use Spatie\Multitenancy\Jobs\TenantAware;
 
-class RegistrationAsigned extends Notification implements ShouldQueue
+class RegistrationAsigned extends Notification implements ShouldQueue, TenantAware
 {
     use Queueable;
 

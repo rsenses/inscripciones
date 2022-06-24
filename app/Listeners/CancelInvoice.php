@@ -5,11 +5,12 @@ namespace App\Listeners;
 use App\Events\CheckoutCancelled;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Spatie\Multitenancy\Jobs\TenantAware;
 
-class CancelInvoice
+class CancelInvoice implements ShouldQueue, TenantAware
 {
     /**
-     * Create the event listener.
+     * Create the event listener.s
      *
      * @return void
      */

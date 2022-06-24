@@ -8,8 +8,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use App\Mail\InvoiceCreated as InvoiceCreatedMailable;
+use Spatie\Multitenancy\Jobs\TenantAware;
 
-class InvoiceCreated extends Notification implements ShouldQueue
+class InvoiceCreated extends Notification implements ShouldQueue, TenantAware
 {
     use Queueable;
 

@@ -9,6 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\URL;
+use Spatie\Multitenancy\Jobs\TenantAware;
 
 class CheckoutAccepted extends Mailable implements ShouldQueue
 {

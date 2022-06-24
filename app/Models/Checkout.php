@@ -18,7 +18,7 @@ use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class Checkout extends Model
 {
-    use HasFactory, UsesTenantConnection;
+    use HasFactory, UsesTenantConnection, Statable;
     
     const PREMIOSMESA_ID = 16;
 

@@ -149,10 +149,25 @@ class InvoiceController extends Controller
                     // TODO
                     $concept = substr(strip_tags(trim(preg_replace('/\t+/', '', $product->name))), 0, 132);
                     $quantity = $checkout->productQuantity($product->id);
+                    $order = $product->order ?: $product->product_id;
+
+                    $class = '';
+                    if ($product->order) {
+                        $class = 'ZCF';
+                    } else {
+                        $class = $checkout->amount > 0 ? 'ZAT' : 'ZAB';
+                    }
+
+                    $type = '';
+                    if ($product->order) {
+                        $type = $checkout->amount > 0 ? 'ZL2N' : 'ZG2N';
+                    } else {
+                        $type = $checkout->amount > 0 ? 'L2N' : 'G2N';
+                    }
 
                     $input = [
                         $counter,
-                        $checkout->amount > 0 ? 'ZAT' : 'ZAB',
+                        $class,
                         str_pad($corporation, 4, '0', STR_PAD_LEFT),
                         str_pad($corporation, 4, '0', STR_PAD_LEFT),
                         '02',
@@ -164,8 +179,8 @@ class InvoiceController extends Controller
                         date('d.m.Y', strtotime(date('Y-m-d H:i:s'))),
                         $vat > 0 ? 'SDPATROCPUB' : 'SDPATROCPUB0',
                         $checkout->id,
-                        $checkout->amount > 0 ? 'L2N' : 'G2N',
-                        $product->product_id,
+                        $type,
+                        $order,
                         ' ',
                         $quantity,
                         number_format((abs($product->price) / (1 + ($vat / 100))), 2, ',', ''),

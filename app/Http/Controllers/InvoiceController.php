@@ -25,6 +25,7 @@ class InvoiceController extends Controller
             ->whereNull('number')
             ->where('to_bill', true)
             ->whereHas('checkout', function ($q) use ($campaignId) {
+                $q->where('amount', '>', 0);
                 $q->where('status', 'paid');
                 if ($campaignId) {
                     $q->where(function ($q) use ($campaignId) {

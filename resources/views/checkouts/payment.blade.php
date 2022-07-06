@@ -86,7 +86,7 @@
                 </div>
             </div>
         </div>
-        @if($checkout->campaign->partner->slug !== 'marca')
+        @if($checkout->campaign->partner->slug !== 'marca' && $checkout->campaign->partner->slug !== 'grupogmp')
         @if(($checkout->amount > 99 && $checkout->campaign->partner->slug !== 'telva') || $checkout->amount > 999)
         <div class="col-lg-6">
             <div class="card bg-white">

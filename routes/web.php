@@ -42,6 +42,7 @@ Route::post('/preusers/{user}', [PreUserController::class, 'update'])->name('pre
 Route::get('/checkouts/{checkout}', [CheckoutController::class, 'show'])->name('checkouts');
 Route::post('/checkouts/{checkout}', [CheckoutController::class, 'update'])->name('checkouts.update');
 Route::get('/checkouts/payment/{checkout}', [CheckoutController::class, 'payment'])->name('checkouts.payment');
+Route::get('/checkouts/purchase/{checkout}', [CheckoutController::class, 'purchase'])->name('checkouts.purchase');
 
 Route::get('/tickets/checkout/{checkout}/{token}', [TicketController::class, 'showCheckout'])->name('tickets.show.checkout');
 Route::get('/tickets/{registration}/{id}', [TicketController::class, 'show'])->name('tickets.show');
@@ -52,8 +53,8 @@ Route::post('/deals/{checkout_id}', [DealController::class, 'store'])->name('dea
 
 // TPV
 Route::post('tpv/notify/{checkout}', [TpvController::class, 'notify'])->name('tpv.notify');
-Route::get('tpv/success/{checkout}', [TpvController::class, 'success'])->name('tpv.success');
-Route::get('tpv/error/{checkout}', [TpvController::class, 'error'])->name('tpv.error');
+Route::get('tpv/return/{checkout}', [TpvController::class, 'return'])->name('tpv.return');
+// Route::get('tpv/error/{checkout}', [TpvController::class, 'error'])->name('tpv.error');
 
 // Calendar
 Route::get('/calendar/{product}', [CalendarController::class, 'show'])->name('calendar.show');

@@ -168,7 +168,7 @@ class CheckoutController extends Controller
             abort(404);
         }
 
-        $form = $checkout->generatePaymentForm();
+        // $form = $checkout->generatePaymentForm();
 
         if ($checkout->status === 'accepted') {
             $checkout->apply('process');
@@ -177,9 +177,16 @@ class CheckoutController extends Controller
         
         return view('checkouts.payment', [
             'checkout' => $checkout,
-            'form' => $form,
+            // 'form' => $form,
             'discount' => Session::has('discount') ? true : false,
             'products' => $checkout->productsArray(),
         ]);
+    }
+
+    public function purchase(Checkout $checkout)
+    {
+        $response = $checkout->gateway();
+
+        $response->redirect();
     }
 }

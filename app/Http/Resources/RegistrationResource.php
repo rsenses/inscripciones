@@ -24,6 +24,7 @@ class RegistrationResource extends JsonResource
             "unique_id" => $this->unique_id,
             "type" => $this->type,
             "metadata" => $metadata,
+            "status" => $this->status,
             "user" => [
                 "name" => $this->user->name,
                 "email" => $this->user->email,

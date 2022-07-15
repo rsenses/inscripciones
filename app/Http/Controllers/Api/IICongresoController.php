@@ -33,7 +33,7 @@ class IICongresoController extends Controller
     private function getStream($lang = 'es')
     {
         return [
-            'congreso' => 'tOzBGN95gEU',
+            'congreso' => 'aq2wZvM3_H0',
             'meditacion' => 'DWJwhJX5b3E',
             'health' => 'wrjvdzLoV1E',
             'alimentos' => 'OtAndny1ias',

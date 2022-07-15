@@ -6,6 +6,7 @@ use App\Notifications\CheckoutCreated;
 use App\Events\CheckoutCreated as CheckoutCreatedEvent;
 use App\Models\Product;
 use App\Models\Checkout;
+use App\Models\Registration;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Rules\MaxRegistrations;

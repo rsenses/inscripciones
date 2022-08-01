@@ -23,7 +23,7 @@ class DomainTenantFinder extends TenantFinder
         }
         $domain = join('.', $hostNames);
 
-        if (in_array($domain, ['unidadeditorial.es', 'marca.com', 'telva.com', 'elmundo.es', 'expansion.com'])) {
+        if (in_array($domain, ['unidadeditorial.es', 'marca.com', 'telva.com', 'elmundo.es', 'expansion.com', 'diariomedico.com'])) {
             $domain = 'unidadeditorial.es';
         }
 

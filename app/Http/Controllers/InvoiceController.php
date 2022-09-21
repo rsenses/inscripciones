@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 
 class InvoiceController extends Controller
 {
-    const PARTNERS_UE = [1, 2, 3, 4, 5];
+    public const PARTNERS_UE = [1, 2, 3, 4, 5];
     /**
      * Display a listing of the resource.
      *
@@ -99,17 +99,17 @@ class InvoiceController extends Controller
 
                 $taxId = strtoupper($address->tax_id);
                 $taxType = $address->tax_type;
-                
+
                 $corporation = $checkout->campaign->partner->corporation;
 
                 if ($taxType == 'CIF') {
-                    $type = 'ATIC';
+                    $tax = 'ATIC';
                 } elseif ($taxType == 'Pasaporte' || $taxType == 'Extranjero') {
-                    $type = 'COEX';
+                    $tax = 'COEX';
                 } elseif ($taxType == 'NIF' || $taxType == 'NIE') {
-                    $type = 'ATIN';
+                    $tax = 'ATIN';
                 } else {
-                    $type = 'ATIN';
+                    $tax = 'ATIN';
                 }
 
                 // $vat = $type === 'COEX' ? 0.00 : 21.00;
@@ -165,20 +165,6 @@ class InvoiceController extends Controller
                         $type = $checkout->amount > 0 ? 'L2N' : 'G2N';
                     }
 
-                    $class = '';
-                    if ($product->order) {
-                        $class = 'ZCF';
-                    } else {
-                        $class = $checkout->amount > 0 ? 'ZAT' : 'ZAB';
-                    }
-
-                    $type = '';
-                    if ($product->order) {
-                        $type = $checkout->amount > 0 ? 'ZL2N' : 'ZG2N';
-                    } else {
-                        $type = $checkout->amount > 0 ? 'L2N' : 'G2N';
-                    }
-
                     $input = [
                         $counter,
                         $class,
@@ -206,7 +192,7 @@ class InvoiceController extends Controller
                         'C10',
                         ' ',
                         $concept,
-                        $type,
+                        $tax,
                         $clientCode,
                         strtoupper($address->name),
                         strtoupper($address->contact),

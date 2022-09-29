@@ -204,7 +204,7 @@ class Checkout extends Model
             'consumerLanguage' => 'es',
             'description' => "Evento {$company->name} " . now()->year,
             'testMode' => true,
-            'testMode' => config('app.env') === 'local' ? true : false,
+            // 'testMode' => config('app.env') === 'local' ? true : false,
         ])->send();
     }
 

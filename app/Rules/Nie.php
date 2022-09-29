@@ -27,14 +27,18 @@ class Nie implements Rule
     {
         $original = strtoupper($value);
 
-        if (preg_match('/([XYZ]\d{7,8}[A-Z])/', $original)) {
-            $nie = (int) str_replace(['X', 'Y', 'Z'], [0, 1, 2], substr($original, 0, -1));
+        if (ctype_alnum($original)) {
+            if (strlen($original) === 9) {
+                if (preg_match('/([XYZ]\d{7,8}[A-Z])/', $original)) {
+                    $nie = (int) str_replace(['X', 'Y', 'Z'], [0, 1, 2], substr($original, 0, -1));
 
-            $portion = $nie % 23;
+                    $portion = $nie % 23;
 
-            $letter = substr("TRWAGMYFPDXBNJZSQVHLCKE", $portion, 1);
+                    $letter = substr("TRWAGMYFPDXBNJZSQVHLCKE", $portion, 1);
 
-            return $letter == substr($original, -1);
+                    return $letter == substr($original, -1);
+                }
+            }
         }
 
         return false;

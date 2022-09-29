@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, UsesTenantConnection;
 
     /**
      * The attributes that are mass assignable.
@@ -39,6 +40,20 @@ class Product extends Model
     ];
 
     /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'image',
+        'remember_token',
+        'created_at',
+        'updated_at',
+        'max_quantity',
+        'first_action'
+    ];
+
+    /**
      * The "booted" method of the model.
      *
      * @return void
@@ -51,11 +66,11 @@ class Product extends Model
     }
 
     /**
-     * Get the discounts for the product
+     * Get the product discounts
      */
     public function discounts()
     {
-        return $this->hasMany(Discount::class);
+        return $this->morphMany(Discount::class, 'discountable');
     }
 
     /**

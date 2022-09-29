@@ -2,34 +2,56 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Events\CheckoutAccepted;
-use App\Events\CheckoutCreated;
+use App\Notifications\CheckoutCreated;
+use App\Events\CheckoutCreated as CheckoutCreatedEvent;
 use App\Models\Product;
-use App\Models\Registration;
 use App\Models\Checkout;
+use App\Models\Registration;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Validation\Rule;
 use App\Rules\MaxRegistrations;
 use App\Http\Controllers\Controller;
+use App\Models\Campaign;
+use App\Http\Resources\RegistrationCollection;
 
 class RegistrationController extends Controller
 {
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Registration  $registration
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function show(Product $product)
     {
-        $product = Product::with(['registrations' => function ($query) {
-            $query->where('status', 'paid');
-        }, 'registrations.user'])
-            ->findOrFail($product->id);
+        $registrations = $product->registrations()->with('user')->whereIn('status', ['paid', 'verified'])->get();
 
-        return $product;
+        return new RegistrationCollection($registrations);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Campaign  $campaign
+     * @return \Illuminate\Http\Response
+     */
+    public function campaign(Request $request, Campaign $campaign)
+    {
+        $request->validate([
+            'mode' => 'required|in:online,presencial'
+        ]);
+
+        $registrations = Registration::with('user', 'product')
+            ->whereIn('status', ['paid', 'verified'])
+            ->where(function ($q) use ($campaign, $request) {
+                $q->whereHas('product', function ($q) use ($campaign, $request) {
+                    return $q->where('campaign_id', $campaign->id)
+                    ->where('mode', $request->mode);
+                });
+            })
+            ->get();
+
+        return new RegistrationCollection($registrations);
     }
 
     /**
@@ -61,8 +83,6 @@ class RegistrationController extends Controller
             'token' => uniqid()
         ]);
 
-        $response['checkout'] = $checkout;
-
         foreach ($request->products as $productId) {
             $product = Product::find($productId);
             $user = User::find($request->user_id);
@@ -89,11 +109,18 @@ class RegistrationController extends Controller
 
         $checkout->applyAutomaticDiscount();
 
+        $checkout = $checkout->fresh();
+
         if ($firstAction) {
-            $checkout->$firstAction();
+            $checkout->apply($firstAction);
+            $checkout->save();
         } else {
-            CheckoutCreated::dispatch($checkout);
+            CheckoutCreatedEvent::dispatch($checkout);
+            
+            $checkout->user->notify(new CheckoutCreated($checkout));
         }
+
+        $response['checkout'] = $checkout;
 
         return response()->json($response);
     }

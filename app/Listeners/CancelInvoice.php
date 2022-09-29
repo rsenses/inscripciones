@@ -5,11 +5,12 @@ namespace App\Listeners;
 use App\Events\CheckoutCancelled;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Spatie\Multitenancy\Jobs\TenantAware;
 
-class CancelInvoice
+class CancelInvoice implements ShouldQueue, TenantAware
 {
     /**
-     * Create the event listener.
+     * Create the event listener.s
      *
      * @return void
      */
@@ -29,7 +30,7 @@ class CancelInvoice
         $checkout = $event->checkout;
         $invoice = $checkout->invoice;
 
-        if ($invoice) {
+        if ($invoice && $checkout->status === 'cancelled') {
             if ($invoice->billed_at) {
                 $negativeCheckout = $checkout->replicate();
                 $negativeCheckout->amount = $checkout->amount * -1;

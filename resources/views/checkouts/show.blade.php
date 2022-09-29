@@ -33,7 +33,7 @@
 
         </div>
     </div>
-    @if($checkout->status != 'new' && $checkout->invoice)
+    @if($checkout->status === 'pending' || $checkout->status === 'paid')
     <div class="row justify-content-center">
         <div class="alert alert-danger">
             Proceso de compra realizado anteriormente, disculpe las molestias.<br>Si tiene alguna duda contacte con
@@ -48,12 +48,12 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('deals.store', ['checkout_id' => $checkout->id]) }}" id="discount_data">
                         @csrf
-                        <p>Introducir código de descuento</p>
+                        <p>¿Tienes un código de descuento?</p>
                         <div class="form-group row">
                             <label for="code" class="col-md-4 col-form-label text-md-right">{{ __('Código') }}</label>
 
                             <div class="col-md-8">
-                                <input id="code" type="text" class="form-control @error('code') is-invalid @enderror" name="code" value="{{ old('code') }}" autocomplete="code" autofocus>
+                                <input id="code" type="text" class="form-control @error('code') is-invalid @enderror" name="code" value="{{ old('code') }}">
                                 @error('code')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -528,7 +528,7 @@
                                     <option value="PR" {{ old('country')==='PR' ? 'selected' : '' }}>Puerto Rico
                                     </option>
                                     <option value="QA" {{ old('country')==='QA' ? 'selected' : '' }}>Qatar</option>
-                                    <option value="UK" {{ old('country')==='UK' ? 'selected' : '' }}>Reino Unido
+                                    <option value="GB" {{ old('country')==='GB' ? 'selected' : '' }}>Reino Unido
                                     </option>
                                     <option value="CF" {{ old('country')==='CF' ? 'selected' : '' }}>República
                                         Centroafricana</option>

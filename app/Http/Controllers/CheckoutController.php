@@ -53,33 +53,29 @@ class CheckoutController extends Controller
     public function show(Request $request, Checkout $checkout)
     {
         if (!$checkout->user->password) {
-            return redirect()->route('preusers.show', ['user' => $checkout->user, 'checkout' => $checkout, 'redirect' => url()->full()]);
+            return redirect()->route('preusers.show', [
+                'user' => $checkout->user,
+                'checkout' => $checkout,
+                'redirect' => url()->full()
+            ]);
         }
 
         $checkout = Checkout::where('token', $request->t)
-            ->where('status', '!=', 'disabled')
+            ->where(function ($q) {
+                $q->where('status', 'accepted');
+                $q->orWhere('status', 'processing');
+            })
             ->firstOrFail();
 
         if ($checkout->status === 'processing') {
-            $checkout = $checkout->new();
-        }
-
-        $productNames = [];
-        $productCounts = [];
-        $productPrices = [];
-        foreach ($checkout->products->groupBy('id') as $key => $product) {
-            $productNames[$key] = $product[0]->name;
-            $productCounts[$key] = $product->count();
-            $productPrices[$key] = intval($product[0]->price);
+            $checkout = $checkout->regenerateId();
         }
 
         return view('checkouts.show', [
             'discount' => Session::has('discount') ? true : false,
             'checkout' => $checkout,
             'addresses' => $checkout->user->addresses,
-            'productNames' => $productNames,
-            'productCounts' => $productCounts,
-            'productPrices' => $productPrices,
+            'products' => $checkout->productsArray(),
         ]);
     }
 
@@ -149,9 +145,10 @@ class CheckoutController extends Controller
 
         $toBill = $request->has('to_bill') && $request->to_bill == 0 ? false : true;
 
-        $invoice = Invoice::firstOrCreate(['checkout_id' => $checkout->id], [
+        $invoice = Invoice::updateOrCreate(['checkout_id' => $checkout->id], [
             'address_id' => $address->id,
-            'to_bill' => $toBill
+            'to_bill' => $toBill,
+            'checkout_id' => $checkout->id
         ]);
 
         $checkout->invoice()->save($invoice);
@@ -173,22 +170,16 @@ class CheckoutController extends Controller
 
         // $form = $checkout->generatePaymentForm();
 
-        $productNames = [];
-        $productCounts = [];
-        $productPrices = [];
-        foreach ($checkout->products->groupBy('id') as $key => $product) {
-            $productNames[$key] = $product[0]->name;
-            $productCounts[$key] = $product->count();
-            $productPrices[$key] = intval($product[0]->price);
+        if ($checkout->status === 'accepted') {
+            $checkout->apply('process');
+            $checkout->save();
         }
-
+        
         return view('checkouts.payment', [
             'checkout' => $checkout,
             // 'form' => $form,
             'discount' => Session::has('discount') ? true : false,
-            'productNames' => $productNames,
-            'productCounts' => $productCounts,
-            'productPrices' => $productPrices,
+            'products' => $checkout->productsArray(),
         ]);
     }
 

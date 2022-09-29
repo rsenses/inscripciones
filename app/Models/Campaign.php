@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class Campaign extends Model
 {
-    use HasFactory;
+    use HasFactory, UsesTenantConnection;
 
     /**
      * The attributes that are mass assignable.
@@ -20,6 +21,29 @@ class Campaign extends Model
         'image',
         'partner_id',
     ];
+
+    /*
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'folder',
+        'mailer',
+        'from_address',
+        'from_name',
+        'short_name',
+        'created_at',
+        'updated_at'
+    ];
+
+    /**
+     * Get the campaign discount
+     */
+    public function discounts()
+    {
+        return $this->morphMany(Discount::class, 'discountable');
+    }
 
     /**
      * Get the partner that owns the campaign.

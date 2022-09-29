@@ -38,30 +38,33 @@ class IIIForoController extends Controller
 
     private function getStream($lang)
     {
-        $url = 'https://metechdevelopment.github.io/json-api/iiiforo.json';
-        $stream = Http::get($url)['stream'];
+        $now = gmdate("Y-m-d H:i:s", time());
 
-        if ($stream == 1) {
+        if ($now >= gmdate("Y-m-d H:i:s", mktime(6, 0, 0, 6, 9, 2022)) && $now < gmdate("Y-m-d H:i:s", mktime(14, 0, 0, 6, 9, 2022))) {
+            $stream = 2;
             if ($lang === 'en') {
-                $streaming = '<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%;"><iframe style="position: absolute; width: 100%; height: 100%;" src="https://ikuna.s3.amazonaws.com/sync01/event_660_ccf98b/streaming.html" frameborder="0" allowtransparency="true" allowfullscreen></iframe></div></div>';
+                $streaming = '<iframe src="https://vimeo.com/event/2175507/embed" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>';
             } else {
-                $streaming = '<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%;"><iframe style="position: absolute; width: 100%; height: 100%;" src="https://ikuna.s3.amazonaws.com/sync01/event_659_20286a/streaming.html" frameborder="0" allowtransparency="true" allowfullscreen></iframe></div></div>';
+                $streaming = '<iframe src="https://vimeo.com/event/2175476/embed" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>';
             }
-        } elseif ($stream == 2) {
+        } elseif ($now < gmdate("Y-m-d H:i:s", mktime(6, 0, 0, 6, 9, 2022))) {
+            $stream = 1;
             if ($lang === 'en') {
-                $streaming = '<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%;"><iframe style="position: absolute; width: 100%; height: 100%;" src="https://ikuna.s3.amazonaws.com/sync01/event_662_ddeb88/streaming.html" frameborder="0" allowtransparency="true" allowfullscreen></iframe></div></div>';
+                $streaming = '<iframe src="https://vimeo.com/event/2167476/embed" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>';
             } else {
-                $streaming = '<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%;"><iframe style="position: absolute; width: 100%; height: 100%;" src="https://ikuna.s3.amazonaws.com/sync01/event_661_10b763/streaming.html" frameborder="0" allowtransparency="true" allowfullscreen></iframe></div></div>';
+                $streaming = '<iframe src="https://vimeo.com/event/2167464/embed" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>';
             }
         } else {
+            $stream = 3;
             if ($lang === 'en') {
-                $streaming = '<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%;"><iframe style="position: absolute; width: 100%; height: 100%;" src="https://ikuna.s3.amazonaws.com/sync01/event_658_40b7d6/streaming.html" frameborder="0" allowtransparency="true" allowfullscreen></iframe></div></div>';
+                $streaming = '<iframe src="https://vimeo.com/event/2175526/embed" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>';
             } else {
-                $streaming = '<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%;"><iframe style="position: absolute; width: 100%; height: 100%;" src="https://ikuna.s3.amazonaws.com/sync01/event_657_993572/streaming.html" frameborder="0" allowtransparency="true" allowfullscreen></iframe></div></div>';
+                $streaming = '<iframe src="https://vimeo.com/event/2175518/embed" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>';
             }
         }
 
         return [
+            'now' => $now,
             'stream' => $stream,
             'lang' => $lang,
             'streaming' => $streaming

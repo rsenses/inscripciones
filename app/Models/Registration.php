@@ -2,18 +2,15 @@
 
 namespace App\Models;
 
-use App\Events\CheckoutCancelled;
-use App\Events\CheckoutPending;
-use App\Events\CheckoutAccepted;
 use App\Events\RegistrationPaid;
-use App\Events\CheckoutDenied;
-use App\Events\CheckoutPaid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Exception;
+use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class Registration extends Model
 {
-    use HasFactory;
+    use HasFactory, UsesTenantConnection;
 
     /**
      * The attributes that are mass assignable.
@@ -39,6 +36,20 @@ class Registration extends Model
     protected $casts = [
         'metadata' => 'array',
         'asigned' => 'boolean',
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'asigned',
+        'checkout_id',
+        'promo',
+        'campaign_id'
     ];
 
     /**
@@ -95,45 +106,55 @@ class Registration extends Model
 
     public function accept()
     {
-        $registration = $this->changeStatus('accepted');
+        $this->changeStatus('accepted');
 
-        return $registration;
+        return $this;
     }
 
     public function invite()
     {
-        $registration = $this->changeStatus('paid');
+        $this->changeStatus('paid');
 
-        return $registration;
+        return $this;
     }
 
     public function cancel()
     {
-        $registration = $this->changeStatus('cancelled');
+        $this->changeStatus('cancelled');
 
-        return $registration;
+        return $this;
     }
 
     public function pay()
     {
-        $registration = $this->changeStatus('paid');
+        $this->changeStatus('paid');
 
-        RegistrationPaid::dispatch($this);
-
-        return $registration;
+        return $this;
     }
 
-    public function pending()
+    public function hang()
     {
-        $registration = $this->changeStatus('pending');
+        $this->changeStatus('pending');
 
-        return $registration;
+        return $this;
     }
 
     public function deny()
     {
-        $registration = $this->changeStatus('denied');
+        $this->changeStatus('denied');
 
-        return $registration;
+        return $this;
+    }
+
+    /**
+     * Check if the registration has benn verified recently, we gave it a 60 seconds margin in case of accidental double validation
+     *
+     * @return mixed
+     */
+    public function guardAgainstAlreadyVerifiedRegistration()
+    {
+        if ($this->status === 'verified') {
+            throw new Exception('Acceso realizado anteriormente');
+        }
     }
 }

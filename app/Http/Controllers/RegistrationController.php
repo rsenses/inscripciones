@@ -7,7 +7,7 @@ use App\Models\Registration;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use App\Events\RegistrationAsigned;
+use App\Notifications\RegistrationAsigned as RegistrationAsignedNotification;
 
 class RegistrationController extends Controller
 {
@@ -69,8 +69,6 @@ class RegistrationController extends Controller
         ]);
 
         $registration = Registration::create($request->except('_token'));
-
-        $registration->accept();
 
         return redirect()->route('registrations.show', [
             'registration' => $registration
@@ -135,9 +133,6 @@ class RegistrationController extends Controller
 
         $registration->update($request->except('_token'));
 
-        $registration->status = 'accepted';
-        $registration->save();
-
         return redirect()->route('registrations.show', [
             'registration' => $registration
         ]);
@@ -177,7 +172,7 @@ class RegistrationController extends Controller
             'user_id' => $user->id,
         ]);
 
-        RegistrationAsigned::dispatch($registration);
+        $registration->user->notify(new RegistrationAsignedNotification($registration));
 
         return redirect()->back();
     }
@@ -200,7 +195,8 @@ class RegistrationController extends Controller
 
         $action = $request->action;
 
-        $registration->checkout->$action();
+        $registration->checkout->apply($action);
+        $registration->checkout->save();
 
         return redirect()->back();
     }

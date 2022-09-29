@@ -4,9 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Checkout;
 use Illuminate\Http\Request;
-use Sermepa\Tpv\Tpv;
-use Sermepa\Tpv\TpvException;
-use Throwable;
 use Illuminate\Support\Facades\Log;
 
 class TpvController extends Controller
@@ -16,15 +13,14 @@ class TpvController extends Controller
         $response = $checkout->gateway();
 
         if ($response->isSuccessful()) {
-            $checkout->update(['method' => 'card']);
-                
-            $checkout->pay();
+            $checkout->apply('pay');
+            $checkout->save();
         } else {
             Log::debug($response->getMessage());
             $checkout->tpv = $response->getMessage();
             $checkout->save();
 
-            $checkout->new();
+            $checkout->regenerateId();
         }
     }
 
@@ -33,13 +29,13 @@ class TpvController extends Controller
         $template = 'payments.success';
 
         if ($request->method && $request->method === 'transfer') {
-            $checkout->pending();
+            $checkout->apply('hang');
         } else {
             $response = $checkout->gateway();
 
             if ($response->isSuccessful()) {
                 if ($checkout->status === 'processing') {
-                    $checkout->pay();
+                    $checkout->apply('pay');
                 }
             } else {
                 if ($checkout->status === 'disabled') {
@@ -48,27 +44,20 @@ class TpvController extends Controller
                     ->where('token', $checkout->token)
                     ->first();
                 } else {
-                    $checkout = $checkout->new();
+                    $checkout = $checkout->regenerateId();
                 }
 
                 $template = 'payments.error';
             }
         }
 
-        $productNames = [];
-        $productCounts = [];
-        $productPrices = [];
-        foreach ($checkout->products->groupBy('id') as $key => $product) {
-            $productNames[$key] = $product[0]->name;
-            $productCounts[$key] = $product->count();
-            $productPrices[$key] = intval($product[0]->price);
+        if (!$checkout) {
+            $checkout = $checkout->regenerateId();
         }
 
         return view($template, [
             'checkout' => $checkout,
-            'productNames' => $productNames,
-            'productCounts' => $productCounts,
-            'productPrices' => $productPrices,
+            'products' => $checkout->productsArray(),
         ]);
     }
 }

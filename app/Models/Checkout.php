@@ -2,22 +2,26 @@
 
 namespace App\Models;
 
-use App\Events\CheckoutAccepted;
-use App\Events\CheckoutDenied;
-use App\Events\CheckoutCancelled;
-use App\Events\CheckoutPaid;
-use App\Events\CheckoutPending;
-use App\Services\Discounts;
-use Carbon\Carbon;
+use App\Notifications\CheckoutAccepted as CheckoutAcceptedNotification;
+use App\Notifications\CheckoutCancelled as CheckoutCancelledNotification;
+use App\Notifications\CheckoutDenied as CheckoutDeniedNotification;
+use App\Notifications\CheckoutPending as CheckoutPendingNotification;
+use App\Notifications\CheckoutPaid as CheckoutPaidNotification;
+use App\Notifications\CheckoutCreated as CheckoutCreatedNotification;
+use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Omnipay\Omnipay;
+use Iben\Statable\Statable;
+use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class Checkout extends Model
 {
-    const PREMIOSMESA_ID = 16;
-
     use HasFactory;
+    use UsesTenantConnection;
+    use Statable;
+
+    public const PREMIOSMESA_ID = 16;
 
     /**
      * The attributes that are mass assignable.
@@ -30,7 +34,10 @@ class Checkout extends Model
         'amount',
         'paid_at',
         'token',
-        'method'
+        'method',
+        'status',
+        'quantity',
+        'tpv'
     ];
 
     /**
@@ -43,18 +50,6 @@ class Checkout extends Model
     ];
 
     /**
-     * The "booted" method of the model.
-     *
-     * @return void
-     */
-    protected static function booted()
-    {
-        // static::creating(function ($model) {
-        //     $model->token = uniqid();
-        // });
-    }
-
-    /**
      * Get the invoice associated with the checkout.
      */
     public function invoice()
@@ -65,9 +60,14 @@ class Checkout extends Model
     /**
      * Get the deal associated with the checkout.
      */
-    public function deal()
+    public function deals()
     {
-        return $this->hasOne(Deal::class);
+        return $this->hasMany(Deal::class);
+    }
+
+    protected function getGraph()
+    {
+        return 'checkout'; // the SM config to use
     }
 
     /**
@@ -102,103 +102,14 @@ class Checkout extends Model
         return $this->hasMany(Registration::class);
     }
 
-    private function changeStatus($status)
+    public function initialAmount()
     {
-        $this->status = $status;
-        $this->save();
-
-        return $this;
+        return $this->products->sum('price');
     }
 
-    public function cancel()
-    {
-        $this->changeStatus('cancelled');
-        $this->registrationsStatus('cancel');
-
-        CheckoutCancelled::dispatch($this);
-
-        return $this;
-    }
-
-    public function disable()
-    {
-        $this->changeStatus('disabled');
-
-        return $this;
-    }
-
-    public function processing()
-    {
-        $this->changeStatus('processing');
-
-        return $this;
-    }
-
-    public function pay()
-    {
-        $this->changeStatus('paid');
-        $this->update(['paid_at' => Carbon::now()]);
-
-        $this->registrationsStatus('pay');
-
-        CheckoutPaid::dispatch($this);
-
-        return $this;
-    }
-
-    public function invite()
-    {
-        $this->update(['paid_at' => Carbon::now(), 'amount' => 0]);
-
-        $this->changeStatus('paid');
-        $this->registrationsStatus('pay');
-
-        CheckoutPaid::dispatch($this);
-
-        return $this;
-    }
-
-    public function accept()
-    {
-        if ($this->amount > 0) {
-            $this->changeStatus('accepted');
-            $this->registrationsStatus('accept');
-
-            CheckoutAccepted::dispatch($this);
-        } else {
-            $this->pay();
-        }
-
-        return $this;
-    }
-
-    public function pending()
-    {
-        $this->changeStatus('pending');
-        $this->registrationsStatus('pending');
-
-        $this->update(['method' => 'transfer']);
-
-        CheckoutPending::dispatch($this);
-
-        return $this;
-    }
-
-    public function deny()
-    {
-        $this->changeStatus('denied');
-        $this->registrationsStatus('deny');
-
-        CheckoutDenied::dispatch($this);
-
-        return $this;
-    }
-
-    public function new()
+    public function regenerateId()
     {
         $checkout = $this->replicate();
-
-        $checkout->status = 'accepted';
 
         $checkout->push();
 
@@ -212,7 +123,8 @@ class Checkout extends Model
             'checkout_id' => $checkout->id,
         ]);
 
-        $this->disable();
+        $this->apply('disable');
+        $this->save();
 
         return $checkout;
     }
@@ -273,27 +185,7 @@ class Checkout extends Model
         ])->send();
     }
 
-    public function applyDiscount(Discount $discount)
-    {
-        $originalPrice = $this->amount;
-
-        $newPrice = $originalPrice * ((100 - $discount->quantity) / 100);
-
-        if ($discount->quantity === 100) {
-            $this->update(['paid_at' => Carbon::now(), 'amount' => 0]);
-            $this->changeStatus('paid');
-            $this->registrationsStatus('pay');
-
-            CheckoutPaid::dispatch($this);
-        } else {
-            $this->amount = $newPrice;
-            $this->save();
-        }
-
-        return $this;
-    }
-
-    private function registrationsStatus(string $status)
+    public function registrationsStatus(string $status)
     {
         foreach ($this->registrations()->get() as $registration) {
             $registration->$status();
@@ -302,30 +194,44 @@ class Checkout extends Model
         return $this;
     }
 
-    public function CheckForDiscounts()
-    {
-        $iiCongreso = Discounts::iiCongreso($this);
-        $jornadaCF = Discounts::jornadaCF($this);
-        
-        if ($iiCongreso) {
-            return $iiCongreso;
-        }
-
-        if ($jornadaCF) {
-            return $jornadaCF;
-        }
-
-        return false;
-    }
-
     public function applyAutomaticDiscount()
     {
-        $discount = $this->CheckForDiscounts();
+        $discounts = $this->campaign->discounts()->where('automatic', true)->get();
 
-        if ($discount) {
-            $this->amount = $this->amount - $discount['amount'];
-            $this->save();
+        foreach ($this->products as $product) {
+            $collection = $product->discounts()->where('automatic', true)->get();
+
+            $discounts = $discounts->merge($collection);
         }
+
+        // Sobre la colección, primero aplicar los cumulable TRUE, luego el de mayor amount calculado de los NO cumulables
+        $cumulables = $discounts->where('cumulable', true);
+        $noCumulables = $discounts->where('cumulable', false);
+
+        foreach ($cumulables as $discount) {
+            if ($discount->applicable($this)) {
+                $discount->apply($this);
+            }
+        }
+
+        $noCumulableDiscountToApply = null;
+        foreach ($noCumulables as $discount) {
+            if ($discount->applicable($this)) {
+                if ($noCumulableDiscountToApply) {
+                    if ($discount->amount($this) > $noCumulableDiscountToApply->amount($this)) {
+                        $noCumulableDiscountToApply = $discount;
+                    }
+                } else {
+                    $noCumulableDiscountToApply = $discount;
+                }
+            }
+        }
+
+        if ($noCumulableDiscountToApply) {
+            $noCumulableDiscountToApply->apply($this);
+        }
+
+        return $this;
     }
 
     public function mode()
@@ -342,38 +248,59 @@ class Checkout extends Model
 
     public function resendLastEmail()
     {
-        $this->sendEventByStatus();
+        $this->notifyUserByStatus();
 
         return $this;
     }
 
-    private function sendEventByStatus()
+    private function notifyUserByStatus()
     {
         switch ($this->status) {
             case 'accepted':
-                $invite = false;
-                $sendEmail = true;
-
-                CheckoutAccepted::dispatch($this, $invite, $sendEmail);
+                $notification = new CheckoutAcceptedNotification($this);
                 break;
             case 'paid':
-                CheckoutPaid::dispatch($this);
+                $notification = new CheckoutPaidNotification($this);
                 break;
             case 'pending':
-                CheckoutPending::dispatch($this);
+                $notification = new CheckoutPendingNotification($this);
                 break;
             case 'denied':
-                CheckoutDenied::dispatch($this);
+                $notification = new CheckoutDeniedNotification($this);
                 break;
             case 'cancelled':
-                CheckoutCancelled::dispatch($this);
+                $notification = new CheckoutCancelledNotification($this);
+                break;
+            default:
+                $notification = new CheckoutCreatedNotification($this);
                 break;
         }
+
+        $this->user->notify($notification);
+    }
+
+    public function productsArray()
+    {
+        $names = [];
+        $counts = [];
+        $prices = [];
+
+        foreach ($this->products->groupBy('id') as $key => $product) {
+            $names[$key] = $product[0]->name;
+            $counts[$key] = $product->count();
+            $prices[$key] = intval($product[0]->price);
+        }
+
+        return [
+            'names' => $names,
+            'counts' => $counts,
+            'prices' => $prices
+        ];
     }
 
     public function productQuantity($id)
     {
-        if ($this->products()->where('products.id', self::PREMIOSMESA_ID)->count()) {
+        if ($id === self::PREMIOSMESA_ID) {
             return 1;
         }
 

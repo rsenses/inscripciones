@@ -12,6 +12,10 @@ Te esperamos el próximo 13 de junio a las 8.45 en el Salón Círculo Palace del
 A través del siguiente enlace podrás ver toda la información relativa al evento:
 https://jornadagestioncf.diariomedico.com/
 
+@if(!empty($checkout->mode()['online'])) Si no recuerdas tu contraseña de acceso, puedes recuperarla en el siguiente enlace:
+https://inscripciones.unidadeditorial.es/password/reset
+@endif
+
 Incluir en mi calendario: {{ route('calendar.show', ['product' => $checkout->products[0]]) }}
 
 Esperamos que disfrutes del evento,

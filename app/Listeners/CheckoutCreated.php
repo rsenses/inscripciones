@@ -6,9 +6,12 @@ use App\Events\CheckoutCreated as CheckoutCreatedEvent;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Log;
+use Spatie\Multitenancy\Jobs\TenantAware;
 
-class CheckoutCreated implements ShouldQueue
+class CheckoutCreated implements ShouldQueue, TenantAware
 {
+    const PREMIOSMESA_ID = 16;
+
     /**
      * Create the event listener.
      *
@@ -27,7 +30,7 @@ class CheckoutCreated implements ShouldQueue
      */
     public function handle(CheckoutCreatedEvent $event)
     {
-        if ($event->checkout->products()->where('products.id', 16)->count()) {
+        if ($event->checkout->products()->where('products.id', self::PREMIOSMESA_ID)->count()) {
             $this->mesaJuridicoTenInscriptions($event->checkout);
         }
     }

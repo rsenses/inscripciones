@@ -46,39 +46,21 @@ class DealController extends Controller
 
         $discount = ModelsDiscount::where('code', $request->code)->firstOrFail();
 
-        $checkout->applyDiscount($discount);
+        $discount->apply($checkout);
 
-        $checkout->deal()->create([
-            'discount_id' => $discount->id
-        ]);
+        $checkout = $checkout->fresh();
 
-        if ($discount->quantity === 100) {
+        if ($checkout->amount === 0) {
             return redirect(route('tpv.success', ['checkout' => $checkout]));
         } else {
+            if ($discount->type === 'fixed') {
+                $value = 'de '.$discount->value.'€';
+            } else {
+                $value = 'del '.$discount->value.'%';
+            }
             return redirect()->back()
-            ->with('message', "Descuento del $discount->quantity% aplicado correctamente")
-            ->with('discount', true);
-
-            // $form = $checkout->generatePaymentForm();
-
-            // $productNames = [];
-            // $productCounts = [];
-            // $productPrices = [];
-            // foreach ($checkout->products->groupBy('id') as $key => $product) {
-            //     $productNames[$key] = $product[0]->name;
-            //     $productCounts[$key] = $product->count();
-            //     $productPrices[$key] = intval($product[0]->price);
-            // }
-
-            // return view('checkouts.payment', [
-            //     'checkout' => $checkout,
-            //     'form' => $form,
-            //     'message' => "Descuento del $discount->quantity% aplicado correctamente",
-            //     'discount' => true,
-            //     'productNames' => $productNames,
-            //     'productCounts' => $productCounts,
-            //     'productPrices' => $productPrices,
-            // ]);
+                ->with('message', "Descuento $value aplicado correctamente")
+                ->with('discount', true);
         }
     }
 

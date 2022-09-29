@@ -185,6 +185,28 @@ class Checkout extends Model
         ])->send();
     }
 
+    public function gatewayResponse()
+    {
+        $company = $this->campaign->partner;
+
+        $gateway = Omnipay::create('Redsys_Redirect');
+
+        return $gateway->completePurchase([
+            'amount' => $this->amount,
+            'currency' => 'EUR',
+            'merchantId' => $company->merchant_code,
+            'merchantName' => $company->name,
+            'terminalId' => '1',
+            'hmacKey' => $company->merchant_key,
+            'transactionId' => sprintf('%012d', $this->id),
+            'notifyUrl' => route('tpv.notify', ['checkout' => $this]),
+            'returnUrl' => route('tpv.return', ['checkout' => $this]),
+            'consumerLanguage' => 'es',
+            'description' => "Evento {$company->name} " . now()->year,
+            'testMode' => config('app.env') === 'local' ? true : false,
+        ])->send();
+    }
+
     public function registrationsStatus(string $status)
     {
         foreach ($this->registrations()->get() as $registration) {

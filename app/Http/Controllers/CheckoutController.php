@@ -108,13 +108,13 @@ class CheckoutController extends Controller
         } else {
             switch ($request->tax_type) {
                 case 'NIF':
-                    $taxId = ['alpha_num', 'required', 'size:9', 'regex:/(\d{8}[TRWAGMYFPDXBNJZSQVHLCKE]{1})/', new Nif];
+                    $taxId = ['alpha_num', 'required', 'size:9', 'regex:/(\d{8}[TRWAGMYFPDXBNJZSQVHLCKE]{1})/', new Nif()];
                     break;
                 case 'NIE':
-                    $taxId = ['alpha_num', 'required', 'size:9', 'regex:/([XYZ]\d{7,8}[A-Z])/', new Nie];
+                    $taxId = ['alpha_num', 'required', 'size:9', 'regex:/([XYZ]\d{7,8}[A-Z])/', new Nie()];
                     break;
                 case 'CIF':
-                    $taxId = ['alpha_num', 'required', 'size:9', 'regex:/([ABCDEFGHJKLMNPQRSUVW])(\d{7})([0-9A-J])/', new Cif];
+                    $taxId = ['alpha_num', 'required', 'size:9', 'regex:/([ABCDEFGHJKLMNPQRSUVW])(\d{7})([0-9A-J])/', new Cif()];
                     break;
                 case 'Pasaporte':
                     $taxId = ['alpha_num', 'required', 'min:6', 'max:12'];
@@ -174,7 +174,7 @@ class CheckoutController extends Controller
             $checkout->apply('process');
             $checkout->save();
         }
-        
+
         return view('checkouts.payment', [
             'checkout' => $checkout,
             // 'form' => $form,

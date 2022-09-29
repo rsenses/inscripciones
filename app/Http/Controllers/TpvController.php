@@ -10,7 +10,10 @@ class TpvController extends Controller
 {
     public function notify(Request $request, Checkout $checkout)
     {
-        $response = $checkout->gateway();
+        $response = $checkout->gatewayResponse();
+
+        Log::debug($response->isSuccessful());
+        Log::debug($response->getMessage());
 
         if ($response->isSuccessful()) {
             $checkout->apply('pay');
@@ -31,23 +34,29 @@ class TpvController extends Controller
         if ($request->method && $request->method === 'transfer') {
             $checkout->apply('hang');
         } else {
-            $response = $checkout->gateway();
+            $response = $checkout->gatewayResponse();
 
-            if ($response->isSuccessful()) {
-                if ($checkout->status === 'processing') {
-                    $checkout->apply('pay');
-                }
-            } else {
-                if ($checkout->status === 'disabled') {
-                    $checkout = Checkout::where('user_id', $checkout->user_id)
-                    ->where('status', '!=', 'disabled')
-                    ->where('token', $checkout->token)
-                    ->first();
+            try {
+                if ($response->isSuccessful()) {
+                    if ($checkout->status === 'processing') {
+                        $checkout->apply('pay');
+                    }
                 } else {
-                    $checkout = $checkout->regenerateId();
-                }
+                    if ($checkout->status === 'disabled') {
+                        $checkout = Checkout::where('user_id', $checkout->user_id)
+                        ->where('status', '!=', 'disabled')
+                        ->where('token', $checkout->token)
+                        ->first();
+                    } else {
+                        $checkout = $checkout->regenerateId();
+                    }
 
-                $template = 'payments.error';
+                    $template = 'payments.error';
+                }
+            } catch (\Exception $e) {
+                Log::debug($e->getMessage());
+                // internal error, log exception and display a generic message to the customer
+                exit('Sorry, there was an error processing your payment. Please try again later.');
             }
         }
 
